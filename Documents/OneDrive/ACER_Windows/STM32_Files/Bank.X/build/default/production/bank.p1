@@ -1,0 +1,947 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"3041 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 3041: extern volatile __bit TXIF __attribute__((address(0x64)));
+[v _TXIF `Vb ~T0 @X0 0 e@100 ]
+"1059
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1059: extern volatile unsigned char TXREG __attribute__((address(0x019)));
+[v _TXREG `Vuc ~T0 @X0 0 e@25 ]
+"44 bank.c
+[; ;bank.c: 44: ATMState state = STATE_WAIT_COMMAND;
+[c E1499 0 1 2 3 4 5 6 7 .. ]
+[n E1499 . STATE_WAIT_COMMAND STATE_ENTER_PIN STATE_ENTER_ACCOUNT STATE_ENTER_MOBILE STATE_ENTER_AMOUNT STATE_COMPLETE STATE_CHECK_BALANCE STATE_CHECK_ACCOUNT  ]
+[p mainexit ]
+"1999 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1999: extern volatile unsigned char TXSTA __attribute__((address(0x098)));
+[v _TXSTA `Vuc ~T0 @X0 0 e@152 ]
+"964
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 964: extern volatile unsigned char RCSTA __attribute__((address(0x018)));
+[v _RCSTA `Vuc ~T0 @X0 0 e@24 ]
+"2080
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2080: extern volatile unsigned char SPBRG __attribute__((address(0x099)));
+[v _SPBRG `Vuc ~T0 @X0 0 e@153 ]
+"2747
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2747: extern volatile __bit RCIF __attribute__((address(0x65)));
+[v _RCIF `Vb ~T0 @X0 0 e@101 ]
+"1066
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1066: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"39 C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/string.h
+[; ;C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/string.h: 39: int strcmp (const char *, const char *);
+[v _strcmp `(i ~T0 @X0 0 ef2`*Cuc`*Cuc ]
+"121 C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h
+[; ;C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdio.h: 121: int sprintf(char *restrict, const char *restrict, ...);
+[v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
+"23 C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdlib.h
+[; ;C:\Program Files\Microchip\xc8\v3.00\pic\include\c99/stdlib.h: 23: int atoi (const char *);
+[v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
+"1 bank.c
+[p x FOSC  =  EXTRC      ]
+"2
+[p x WDTE  =  OFF        ]
+"3
+[p x PWRTE  =  OFF       ]
+"4
+[p x BOREN  =  OFF       ]
+"5
+[p x LVP  =  OFF       ]
+"6
+[p x CPD  =  OFF         ]
+"7
+[p x WRT  =  OFF         ]
+"8
+[p x CP  =  OFF         ]
+"54 C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 54: __asm("INDF equ 00h");
+[; <" INDF equ 00h ;# ">
+"61
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 61: __asm("TMR0 equ 01h");
+[; <" TMR0 equ 01h ;# ">
+"68
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 68: __asm("PCL equ 02h");
+[; <" PCL equ 02h ;# ">
+"75
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 75: __asm("STATUS equ 03h");
+[; <" STATUS equ 03h ;# ">
+"161
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 161: __asm("FSR equ 04h");
+[; <" FSR equ 04h ;# ">
+"168
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 168: __asm("PORTA equ 05h");
+[; <" PORTA equ 05h ;# ">
+"218
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 218: __asm("PORTB equ 06h");
+[; <" PORTB equ 06h ;# ">
+"280
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 280: __asm("PORTC equ 07h");
+[; <" PORTC equ 07h ;# ">
+"342
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 342: __asm("PORTD equ 08h");
+[; <" PORTD equ 08h ;# ">
+"404
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 404: __asm("PORTE equ 09h");
+[; <" PORTE equ 09h ;# ">
+"436
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 436: __asm("PCLATH equ 0Ah");
+[; <" PCLATH equ 0Ah ;# ">
+"456
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 456: __asm("INTCON equ 0Bh");
+[; <" INTCON equ 0Bh ;# ">
+"534
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 534: __asm("PIR1 equ 0Ch");
+[; <" PIR1 equ 0Ch ;# ">
+"596
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 596: __asm("PIR2 equ 0Dh");
+[; <" PIR2 equ 0Dh ;# ">
+"636
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 636: __asm("TMR1 equ 0Eh");
+[; <" TMR1 equ 0Eh ;# ">
+"643
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 643: __asm("TMR1L equ 0Eh");
+[; <" TMR1L equ 0Eh ;# ">
+"650
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 650: __asm("TMR1H equ 0Fh");
+[; <" TMR1H equ 0Fh ;# ">
+"657
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 657: __asm("T1CON equ 010h");
+[; <" T1CON equ 010h ;# ">
+"732
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 732: __asm("TMR2 equ 011h");
+[; <" TMR2 equ 011h ;# ">
+"739
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 739: __asm("T2CON equ 012h");
+[; <" T2CON equ 012h ;# ">
+"810
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 810: __asm("SSPBUF equ 013h");
+[; <" SSPBUF equ 013h ;# ">
+"817
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 817: __asm("SSPCON equ 014h");
+[; <" SSPCON equ 014h ;# ">
+"887
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 887: __asm("CCPR1 equ 015h");
+[; <" CCPR1 equ 015h ;# ">
+"894
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 894: __asm("CCPR1L equ 015h");
+[; <" CCPR1L equ 015h ;# ">
+"901
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 901: __asm("CCPR1H equ 016h");
+[; <" CCPR1H equ 016h ;# ">
+"908
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 908: __asm("CCP1CON equ 017h");
+[; <" CCP1CON equ 017h ;# ">
+"966
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 966: __asm("RCSTA equ 018h");
+[; <" RCSTA equ 018h ;# ">
+"1061
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1061: __asm("TXREG equ 019h");
+[; <" TXREG equ 019h ;# ">
+"1068
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1068: __asm("RCREG equ 01Ah");
+[; <" RCREG equ 01Ah ;# ">
+"1075
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1075: __asm("CCPR2 equ 01Bh");
+[; <" CCPR2 equ 01Bh ;# ">
+"1082
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1082: __asm("CCPR2L equ 01Bh");
+[; <" CCPR2L equ 01Bh ;# ">
+"1089
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1089: __asm("CCPR2H equ 01Ch");
+[; <" CCPR2H equ 01Ch ;# ">
+"1096
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1096: __asm("CCP2CON equ 01Dh");
+[; <" CCP2CON equ 01Dh ;# ">
+"1154
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1154: __asm("ADRESH equ 01Eh");
+[; <" ADRESH equ 01Eh ;# ">
+"1161
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1161: __asm("ADCON0 equ 01Fh");
+[; <" ADCON0 equ 01Fh ;# ">
+"1257
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1257: __asm("OPTION_REG equ 081h");
+[; <" OPTION_REG equ 081h ;# ">
+"1327
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1327: __asm("TRISA equ 085h");
+[; <" TRISA equ 085h ;# ">
+"1377
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1377: __asm("TRISB equ 086h");
+[; <" TRISB equ 086h ;# ">
+"1439
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1439: __asm("TRISC equ 087h");
+[; <" TRISC equ 087h ;# ">
+"1501
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1501: __asm("TRISD equ 088h");
+[; <" TRISD equ 088h ;# ">
+"1563
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1563: __asm("TRISE equ 089h");
+[; <" TRISE equ 089h ;# ">
+"1620
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1620: __asm("PIE1 equ 08Ch");
+[; <" PIE1 equ 08Ch ;# ">
+"1682
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1682: __asm("PIE2 equ 08Dh");
+[; <" PIE2 equ 08Dh ;# ">
+"1722
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1722: __asm("PCON equ 08Eh");
+[; <" PCON equ 08Eh ;# ">
+"1756
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1756: __asm("SSPCON2 equ 091h");
+[; <" SSPCON2 equ 091h ;# ">
+"1818
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1818: __asm("PR2 equ 092h");
+[; <" PR2 equ 092h ;# ">
+"1825
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1825: __asm("SSPADD equ 093h");
+[; <" SSPADD equ 093h ;# ">
+"1832
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 1832: __asm("SSPSTAT equ 094h");
+[; <" SSPSTAT equ 094h ;# ">
+"2001
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2001: __asm("TXSTA equ 098h");
+[; <" TXSTA equ 098h ;# ">
+"2082
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2082: __asm("SPBRG equ 099h");
+[; <" SPBRG equ 099h ;# ">
+"2089
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2089: __asm("CMCON equ 09Ch");
+[; <" CMCON equ 09Ch ;# ">
+"2159
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2159: __asm("CVRCON equ 09Dh");
+[; <" CVRCON equ 09Dh ;# ">
+"2224
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2224: __asm("ADRESL equ 09Eh");
+[; <" ADRESL equ 09Eh ;# ">
+"2231
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2231: __asm("ADCON1 equ 09Fh");
+[; <" ADCON1 equ 09Fh ;# ">
+"2290
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2290: __asm("EEDATA equ 010Ch");
+[; <" EEDATA equ 010Ch ;# ">
+"2297
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2297: __asm("EEADR equ 010Dh");
+[; <" EEADR equ 010Dh ;# ">
+"2304
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2304: __asm("EEDATH equ 010Eh");
+[; <" EEDATH equ 010Eh ;# ">
+"2311
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2311: __asm("EEADRH equ 010Fh");
+[; <" EEADRH equ 010Fh ;# ">
+"2318
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2318: __asm("EECON1 equ 018Ch");
+[; <" EECON1 equ 018Ch ;# ">
+"2363
+[; ;C:/Program Files/Microchip/MPLABX/v6.25/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc/pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
+[; <" EECON2 equ 018Dh ;# ">
+"17 bank.c
+[; ;bank.c: 17: void uart_send_char(char data) {
+[v _uart_send_char `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _uart_send_char ]
+[v _data `uc ~T0 @X0 1 r1 ]
+[f ]
+"18
+[; ;bank.c: 18:     while (!TXIF);
+[e $U 103  ]
+[e :U 104 ]
+[e :U 103 ]
+[e $ ! _TXIF 104  ]
+[e :U 105 ]
+"19
+[; ;bank.c: 19:     TXREG = data;
+[e = _TXREG -> _data `uc ]
+"20
+[; ;bank.c: 20: }
+[e :UE 102 ]
+}
+"22
+[; ;bank.c: 22: void uart_send_string(const char *str) {
+[v _uart_send_string `(v ~T0 @X0 1 ef1`*Cuc ]
+{
+[e :U _uart_send_string ]
+[v _str `*Cuc ~T0 @X0 1 r1 ]
+[f ]
+"23
+[; ;bank.c: 23:     while (*str != '\0') {
+[e $U 107  ]
+[e :U 108 ]
+{
+"24
+[; ;bank.c: 24:         uart_send_char(*str++);
+[e ( _uart_send_char (1 *U ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+"25
+[; ;bank.c: 25:     }
+}
+[e :U 107 ]
+"23
+[; ;bank.c: 23:     while (*str != '\0') {
+[e $ != -> *U _str `ui -> 0 `ui 108  ]
+[e :U 109 ]
+"26
+[; ;bank.c: 26: }
+[e :UE 106 ]
+}
+"28
+[; ;bank.c: 28: void uart_newline() {
+[v _uart_newline `(v ~T0 @X0 1 ef ]
+{
+[e :U _uart_newline ]
+[f ]
+"29
+[; ;bank.c: 29:     uart_send_string("\r\n");
+[e ( _uart_send_string (1 :s 1C ]
+"30
+[; ;bank.c: 30: }
+[e :UE 110 ]
+}
+"44
+[; ;bank.c: 44: ATMState state = STATE_WAIT_COMMAND;
+[v _state `E1499 ~T0 @X0 1 e ]
+[i _state
+. `E1499 0
+]
+"46
+[; ;bank.c: 46: char buffer[40];
+[v _buffer `uc ~T0 @X0 -> 40 `i e ]
+"47
+[; ;bank.c: 47: int index = 0;
+[v _index `i ~T0 @X0 1 e ]
+[i _index
+-> 0 `i
+]
+"50
+[; ;bank.c: 50: const char* correctPin = "100702";
+[v _correctPin `*Cuc ~T0 @X0 1 e ]
+[i _correctPin
+:s 2C
+]
+"51
+[; ;bank.c: 51: const char* correctAccount = "170802";
+[v _correctAccount `*Cuc ~T0 @X0 1 e ]
+[i _correctAccount
+:s 3C
+]
+"52
+[; ;bank.c: 52: const char* correctMobile = "6374886240";
+[v _correctMobile `*Cuc ~T0 @X0 1 e ]
+[i _correctMobile
+:s 4C
+]
+"54
+[; ;bank.c: 54: void reset_buffer()
+[v _reset_buffer `(v ~T0 @X0 1 ef ]
+"55
+[; ;bank.c: 55: {
+{
+[e :U _reset_buffer ]
+[f ]
+"56
+[; ;bank.c: 56:     index = 0;
+[e = _index -> 0 `i ]
+"57
+[; ;bank.c: 57:     buffer[0] = '\0';
+[e = *U + &U _buffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+"58
+[; ;bank.c: 58: }
+[e :UE 111 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"60
+[; ;bank.c: 60: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"61
+[; ;bank.c: 61: {
+{
+[e :U _main ]
+[f ]
+"62
+[; ;bank.c: 62:     char received;
+[v _received `uc ~T0 @X0 1 a ]
+"63
+[; ;bank.c: 63:     int balance = 20000;
+[v _balance `i ~T0 @X0 1 a ]
+[e = _balance -> 20000 `i ]
+"64
+[; ;bank.c: 64:     int pinAttempts = 0;
+[v _pinAttempts `i ~T0 @X0 1 a ]
+[e = _pinAttempts -> 0 `i ]
+"66
+[; ;bank.c: 66:     TXSTA = 0x24;
+[e = _TXSTA -> -> 36 `i `uc ]
+"67
+[; ;bank.c: 67:     RCSTA = 0x90;
+[e = _RCSTA -> -> 144 `i `uc ]
+"68
+[; ;bank.c: 68:     SPBRG = 129;
+[e = _SPBRG -> -> 129 `i `uc ]
+"70
+[; ;bank.c: 70:     uart_send_string("Welcome to Secure Bank ATM\r");
+[e ( _uart_send_string (1 :s 5C ]
+"71
+[; ;bank.c: 71:     uart_send_string("Type '1' to withdraw amount\r");
+[e ( _uart_send_string (1 :s 6C ]
+"72
+[; ;bank.c: 72:     uart_send_string("Type '2' to check balance: ");
+[e ( _uart_send_string (1 :s 7C ]
+"74
+[; ;bank.c: 74:     while (1) {
+[e :U 114 ]
+{
+"75
+[; ;bank.c: 75:         if (RCIF)
+[e $ ! _RCIF 116  ]
+"76
+[; ;bank.c: 76:         {
+{
+"77
+[; ;bank.c: 77:             received = RCREG;
+[e = _received -> _RCREG `uc ]
+"79
+[; ;bank.c: 79:             if (received == '\r')
+[e $ ! == -> _received `ui -> 13 `ui 117  ]
+"80
+[; ;bank.c: 80:             {
+{
+"81
+[; ;bank.c: 81:                 buffer[index] = '\0';
+[e = *U + &U _buffer * -> -> _index `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+"83
+[; ;bank.c: 83:                 switch (state)
+[e $U 119  ]
+"84
+[; ;bank.c: 84:                 {
+{
+"85
+[; ;bank.c: 85:                     case STATE_WAIT_COMMAND:
+[e :U 120 ]
+"86
+[; ;bank.c: 86:                         if (strcmp(buffer, "1") == 0)
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc :s 8C -> 0 `i 121  ]
+"87
+[; ;bank.c: 87:                         {
+{
+"88
+[; ;bank.c: 88:                             uart_newline();
+[e ( _uart_newline ..  ]
+"89
+[; ;bank.c: 89:                             uart_send_string("Enter your PIN to withdraw amount: ");
+[e ( _uart_send_string (1 :s 9C ]
+"90
+[; ;bank.c: 90:                             state = STATE_ENTER_PIN;
+[e = _state . `E1499 1 ]
+"91
+[; ;bank.c: 91:                         }
+}
+[e $U 122  ]
+"92
+[; ;bank.c: 92:                         else if (strcmp(buffer, "2") == 0)
+[e :U 121 ]
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc :s 10C -> 0 `i 123  ]
+"93
+[; ;bank.c: 93:                         {
+{
+"94
+[; ;bank.c: 94:                             uart_newline();
+[e ( _uart_newline ..  ]
+"95
+[; ;bank.c: 95:                             uart_send_string("Enter your PIN to check balance: ");
+[e ( _uart_send_string (1 :s 11C ]
+"96
+[; ;bank.c: 96:                             state = STATE_CHECK_BALANCE;
+[e = _state . `E1499 6 ]
+"97
+[; ;bank.c: 97:                         }
+}
+[e $U 124  ]
+"98
+[; ;bank.c: 98:                         else
+[e :U 123 ]
+"99
+[; ;bank.c: 99:                         {
+{
+"100
+[; ;bank.c: 100:                             uart_newline();
+[e ( _uart_newline ..  ]
+"101
+[; ;bank.c: 101:                             uart_send_string("Invalid input. Type '1' or '2' to continue: ");
+[e ( _uart_send_string (1 :s 12C ]
+"102
+[; ;bank.c: 102:                         }
+}
+[e :U 124 ]
+[e :U 122 ]
+"103
+[; ;bank.c: 103:                         break;
+[e $U 118  ]
+"105
+[; ;bank.c: 105:                     case STATE_CHECK_BALANCE:
+[e :U 125 ]
+"106
+[; ;bank.c: 106:                         if (strcmp(buffer, correctPin) == 0) {
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc _correctPin -> 0 `i 126  ]
+{
+"107
+[; ;bank.c: 107:                             uart_send_string("Enter your account number: ");
+[e ( _uart_send_string (1 :s 13C ]
+"108
+[; ;bank.c: 108:                             state = STATE_CHECK_ACCOUNT;
+[e = _state . `E1499 7 ]
+"109
+[; ;bank.c: 109:                         }
+}
+[e $U 127  ]
+"110
+[; ;bank.c: 110:                         else
+[e :U 126 ]
+"111
+[; ;bank.c: 111:                         {
+{
+"112
+[; ;bank.c: 112:                             uart_send_string("\rInvalid PIN.\rREMEMBER YOU HAVE ONLY 2 CHANCES\rAFTER 3RD YOUR ACCOUNT WILL BE BLOCKED\r Retype your PIN :");
+[e ( _uart_send_string (1 :s 14C ]
+"113
+[; ;bank.c: 113:                         }
+}
+[e :U 127 ]
+"114
+[; ;bank.c: 114:                         break;
+[e $U 118  ]
+"116
+[; ;bank.c: 116:                     case STATE_CHECK_ACCOUNT:
+[e :U 128 ]
+"117
+[; ;bank.c: 117:                         if (strcmp(buffer, correctAccount) == 0)
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc _correctAccount -> 0 `i 129  ]
+"118
+[; ;bank.c: 118:                         {
+{
+"119
+[; ;bank.c: 119:                             uart_newline();
+[e ( _uart_newline ..  ]
+"120
+[; ;bank.c: 120:                             uart_send_string("PIN verified.\r\nYour balance is: ");
+[e ( _uart_send_string (1 :s 15C ]
+"121
+[; ;bank.c: 121:                             char balStr[10];
+[v _balStr `uc ~T0 @X0 -> 10 `i a ]
+"122
+[; ;bank.c: 122:                             sprintf(balStr, "%d", balance);
+[e ( _sprintf (1 , (. , &U _balStr :s 16C _balance ]
+"123
+[; ;bank.c: 123:                             uart_send_string(balStr);
+[e ( _uart_send_string (1 -> &U _balStr `*Cuc ]
+"124
+[; ;bank.c: 124:                             uart_send_string("\r\n");
+[e ( _uart_send_string (1 :s 17C ]
+"125
+[; ;bank.c: 125:                             state = STATE_COMPLETE;
+[e = _state . `E1499 5 ]
+"126
+[; ;bank.c: 126:                         }
+}
+[e $U 130  ]
+"127
+[; ;bank.c: 127:                         else
+[e :U 129 ]
+"128
+[; ;bank.c: 128:                         {
+{
+"129
+[; ;bank.c: 129:                             uart_newline();
+[e ( _uart_newline ..  ]
+"130
+[; ;bank.c: 130:                             uart_send_string("Incorrect account number. Retype your account number.");
+[e ( _uart_send_string (1 :s 18C ]
+"131
+[; ;bank.c: 131:                         }
+}
+[e :U 130 ]
+"132
+[; ;bank.c: 132:                         break;
+[e $U 118  ]
+"134
+[; ;bank.c: 134:                     case STATE_ENTER_PIN:
+[e :U 131 ]
+"135
+[; ;bank.c: 135:                         if (strcmp(buffer, correctPin) == 0)
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc _correctPin -> 0 `i 132  ]
+"136
+[; ;bank.c: 136:                         {
+{
+"137
+[; ;bank.c: 137:                             uart_newline();
+[e ( _uart_newline ..  ]
+"138
+[; ;bank.c: 138:                             uart_send_string("PIN verified.\r\nEnter Bank Account Number: ");
+[e ( _uart_send_string (1 :s 19C ]
+"139
+[; ;bank.c: 139:                             state = STATE_ENTER_ACCOUNT;
+[e = _state . `E1499 2 ]
+"140
+[; ;bank.c: 140:                             pinAttempts = 0;
+[e = _pinAttempts -> 0 `i ]
+"141
+[; ;bank.c: 141:                         }
+}
+[e $U 133  ]
+"142
+[; ;bank.c: 142:                         else
+[e :U 132 ]
+"143
+[; ;bank.c: 143:                         {
+{
+"144
+[; ;bank.c: 144:                             pinAttempts++;
+[e ++ _pinAttempts -> 1 `i ]
+"145
+[; ;bank.c: 145:                             if (pinAttempts >= 3)
+[e $ ! >= _pinAttempts -> 3 `i 134  ]
+"146
+[; ;bank.c: 146:                             {
+{
+"147
+[; ;bank.c: 147:                                 uart_newline();
+[e ( _uart_newline ..  ]
+"148
+[; ;bank.c: 148:                                 uart_send_string("Too many incorrect attempts.\r\nYour account has been blocked.\r\n");
+[e ( _uart_send_string (1 :s 20C ]
+"149
+[; ;bank.c: 149:                                 state = STATE_COMPLETE;
+[e = _state . `E1499 5 ]
+"150
+[; ;bank.c: 150:                             }
+}
+[e $U 135  ]
+"151
+[; ;bank.c: 151:                             else
+[e :U 134 ]
+"152
+[; ;bank.c: 152:                             {
+{
+"153
+[; ;bank.c: 153:                                 char msg[40];
+[v _msg `uc ~T0 @X0 -> 40 `i a ]
+"154
+[; ;bank.c: 154:                                 uart_newline();
+[e ( _uart_newline ..  ]
+"155
+[; ;bank.c: 155:                                 uart_send_string("Invalid PIN\r\nYOU HAVE ONLY 3 ATTEMPTS\r\n");
+[e ( _uart_send_string (1 :s 21C ]
+"156
+[; ;bank.c: 156:                                 sprintf(msg, "Attempt %d of 3.\r\nRetype your PIN: ", pinAttempts);
+[e ( _sprintf (1 , (. , &U _msg :s 22C _pinAttempts ]
+"157
+[; ;bank.c: 157:                                 uart_send_string(msg);
+[e ( _uart_send_string (1 -> &U _msg `*Cuc ]
+"158
+[; ;bank.c: 158:                             }
+}
+[e :U 135 ]
+"159
+[; ;bank.c: 159:                         }
+}
+[e :U 133 ]
+"160
+[; ;bank.c: 160:                         break;
+[e $U 118  ]
+"162
+[; ;bank.c: 162:                     case STATE_ENTER_ACCOUNT:
+[e :U 136 ]
+"163
+[; ;bank.c: 163:                         if (strcmp(buffer, correctAccount) == 0)
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc _correctAccount -> 0 `i 137  ]
+"164
+[; ;bank.c: 164:                         {
+{
+"165
+[; ;bank.c: 165:                             uart_newline();
+[e ( _uart_newline ..  ]
+"166
+[; ;bank.c: 166:                             uart_send_string("Account verified.\r\nEnter Registered Mobile Number: ");
+[e ( _uart_send_string (1 :s 23C ]
+"167
+[; ;bank.c: 167:                             state = STATE_ENTER_MOBILE;
+[e = _state . `E1499 3 ]
+"168
+[; ;bank.c: 168:                         }
+}
+[e $U 138  ]
+"169
+[; ;bank.c: 169:                         else
+[e :U 137 ]
+"170
+[; ;bank.c: 170:                         {
+{
+"171
+[; ;bank.c: 171:                             uart_newline();
+[e ( _uart_newline ..  ]
+"172
+[; ;bank.c: 172:                             uart_send_string("Invalid account number. Retype your account number ");
+[e ( _uart_send_string (1 :s 24C ]
+"173
+[; ;bank.c: 173:                         }
+}
+[e :U 138 ]
+"174
+[; ;bank.c: 174:                         break;
+[e $U 118  ]
+"176
+[; ;bank.c: 176:                     case STATE_ENTER_MOBILE:
+[e :U 139 ]
+"177
+[; ;bank.c: 177:                         if (strcmp(buffer, correctMobile) == 0)
+[e $ ! == ( _strcmp (2 , -> &U _buffer `*Cuc _correctMobile -> 0 `i 140  ]
+"178
+[; ;bank.c: 178:                         {
+{
+"179
+[; ;bank.c: 179:                             uart_newline();
+[e ( _uart_newline ..  ]
+"180
+[; ;bank.c: 180:                             uart_send_string("Mobile verified.\r\nEnter Amount to Withdraw: ");
+[e ( _uart_send_string (1 :s 25C ]
+"181
+[; ;bank.c: 181:                             state = STATE_ENTER_AMOUNT;
+[e = _state . `E1499 4 ]
+"182
+[; ;bank.c: 182:                         }
+}
+[e $U 141  ]
+"183
+[; ;bank.c: 183:                         else
+[e :U 140 ]
+"184
+[; ;bank.c: 184:                         {
+{
+"185
+[; ;bank.c: 185:                             uart_newline();
+[e ( _uart_newline ..  ]
+"186
+[; ;bank.c: 186:                             uart_send_string("Incorrect mobile number. Retype your mobile number ");
+[e ( _uart_send_string (1 :s 26C ]
+"187
+[; ;bank.c: 187:                         }
+}
+[e :U 141 ]
+"188
+[; ;bank.c: 188:                         break;
+[e $U 118  ]
+"190
+[; ;bank.c: 190:                     case STATE_ENTER_AMOUNT:
+[e :U 142 ]
+"191
+[; ;bank.c: 191:                     {
+{
+"192
+[; ;bank.c: 192:                         uart_newline();
+[e ( _uart_newline ..  ]
+"195
+[; ;bank.c: 195:                         for (int i = 0; buffer[i] != '\0'; i++) {
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 146  ]
+[e :U 143 ]
+{
+"196
+[; ;bank.c: 196:                             if (buffer[i] < '0' || buffer[i] > '9') {
+[e $ ! || < -> *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux `ui -> 48 `ui > -> *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux `ui -> 57 `ui 147  ]
+{
+"197
+[; ;bank.c: 197:                                 buffer[i] = '\0';
+[e = *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux -> -> 0 `ui `uc ]
+"198
+[; ;bank.c: 198:                                 break;
+[e $U 144  ]
+"199
+[; ;bank.c: 199:                             }
+}
+[e :U 147 ]
+"200
+[; ;bank.c: 200:                         }
+}
+[e ++ _i -> 1 `i ]
+[e :U 146 ]
+[e $ != -> *U + &U _buffer * -> -> _i `ui `ux -> -> # *U &U _buffer `ui `ux `ui -> 0 `ui 143  ]
+[e :U 144 ]
+}
+"202
+[; ;bank.c: 202:                         int amount = atoi(buffer);
+[v _amount `i ~T0 @X0 1 a ]
+[e = _amount ( _atoi (1 -> &U _buffer `*Cuc ]
+"204
+[; ;bank.c: 204:                         if (amount <= 0)
+[e $ ! <= _amount -> 0 `i 148  ]
+"205
+[; ;bank.c: 205:                         {
+{
+"206
+[; ;bank.c: 206:                             uart_send_string("Invalid amount entered. Try again.\r\n");
+[e ( _uart_send_string (1 :s 27C ]
+"207
+[; ;bank.c: 207:                         }
+}
+[e $U 149  ]
+"208
+[; ;bank.c: 208:                         else if (amount <= balance)
+[e :U 148 ]
+[e $ ! <= _amount _balance 150  ]
+"209
+[; ;bank.c: 209:                         {
+{
+"210
+[; ;bank.c: 210:                             char amountStr[10];
+[v _amountStr `uc ~T0 @X0 -> 10 `i a ]
+"211
+[; ;bank.c: 211:                             sprintf(amountStr, "%d", amount);
+[e ( _sprintf (1 , (. , &U _amountStr :s 28C _amount ]
+"212
+[; ;bank.c: 212:                             uart_send_string("Processing...\r\nPlease collect ");
+[e ( _uart_send_string (1 :s 29C ]
+"213
+[; ;bank.c: 213:                             uart_send_string(amountStr);
+[e ( _uart_send_string (1 -> &U _amountStr `*Cuc ]
+"214
+[; ;bank.c: 214:                             uart_send_string(" from the dispenser.\r\nClick ENTER for new transaction.\r\nThank you!");
+[e ( _uart_send_string (1 :s 30C ]
+"215
+[; ;bank.c: 215:                             balance -= amount;
+[e =- _balance _amount ]
+"216
+[; ;bank.c: 216:                         }
+}
+[e $U 151  ]
+"217
+[; ;bank.c: 217:                         else
+[e :U 150 ]
+"218
+[; ;bank.c: 218:                         {
+{
+"219
+[; ;bank.c: 219:                             uart_send_string("Sorry, insufficient balance to withdraw this amount.\r\nClick ENTER to continue");
+[e ( _uart_send_string (1 :s 31C ]
+"220
+[; ;bank.c: 220:                         }
+}
+[e :U 151 ]
+[e :U 149 ]
+"222
+[; ;bank.c: 222:                         state = STATE_COMPLETE;
+[e = _state . `E1499 5 ]
+"223
+[; ;bank.c: 223:                         break;
+[e $U 118  ]
+"224
+[; ;bank.c: 224:                     }
+}
+"226
+[; ;bank.c: 226:                     case STATE_COMPLETE:
+[e :U 152 ]
+"227
+[; ;bank.c: 227:                         uart_newline();
+[e ( _uart_newline ..  ]
+"228
+[; ;bank.c: 228:                         uart_send_string("Type '1' to withdraw amount\r\n");
+[e ( _uart_send_string (1 :s 32C ]
+"229
+[; ;bank.c: 229:                         uart_send_string("Type '2' to check balance: ");
+[e ( _uart_send_string (1 :s 33C ]
+"230
+[; ;bank.c: 230:                         state = STATE_WAIT_COMMAND;
+[e = _state . `E1499 0 ]
+"231
+[; ;bank.c: 231:                         break;
+[e $U 118  ]
+"232
+[; ;bank.c: 232:                 }
+}
+[e $U 118  ]
+[e :U 119 ]
+[e [\ -> _state `ui , $ -> . `E1499 0 `ui 120
+ , $ -> . `E1499 6 `ui 125
+ , $ -> . `E1499 7 `ui 128
+ , $ -> . `E1499 1 `ui 131
+ , $ -> . `E1499 2 `ui 136
+ , $ -> . `E1499 3 `ui 139
+ , $ -> . `E1499 4 `ui 142
+ , $ -> . `E1499 5 `ui 152
+ 118 ]
+[e :U 118 ]
+"234
+[; ;bank.c: 234:                 reset_buffer();
+[e ( _reset_buffer ..  ]
+"235
+[; ;bank.c: 235:             }
+}
+[e $U 153  ]
+"236
+[; ;bank.c: 236:             else
+[e :U 117 ]
+"237
+[; ;bank.c: 237:             {
+{
+"238
+[; ;bank.c: 238:                 if (index < sizeof(buffer) - 1)
+[e $ ! < -> _index `ui - -> # _buffer `ui -> -> 1 `i `ui 154  ]
+"239
+[; ;bank.c: 239:                 {
+{
+"240
+[; ;bank.c: 240:                     buffer[index++] = received;
+[e = *U + &U _buffer * -> -> ++ _index -> 1 `i `ui `ux -> -> # *U &U _buffer `ui `ux _received ]
+"241
+[; ;bank.c: 241:                     uart_send_char(received);
+[e ( _uart_send_char (1 _received ]
+"242
+[; ;bank.c: 242:                 }
+}
+[e :U 154 ]
+"243
+[; ;bank.c: 243:             }
+}
+[e :U 153 ]
+"244
+[; ;bank.c: 244:         }
+}
+[e :U 116 ]
+"245
+[; ;bank.c: 245:     }
+}
+[e :U 113 ]
+[e $U 114  ]
+[e :U 115 ]
+"246
+[; ;bank.c: 246: }
+[e :UE 112 ]
+}
+[p f _sprintf 8388736 ]
+[a 31C 83 111 114 114 121 44 32 105 110 115 117 102 102 105 99 105 101 110 116 32 98 97 108 97 110 99 101 32 116 111 32 119 105 116 104 100 114 97 119 32 116 104 105 115 32 97 109 111 117 110 116 46 13 10 67 108 105 99 107 32 69 78 84 69 82 32 116 111 32 99 111 110 116 105 110 117 101 0 ]
+[a 16C 37 100 0 ]
+[a 28C 37 100 0 ]
+[a 14C 13 73 110 118 97 108 105 100 32 80 73 78 46 13 82 69 77 69 77 66 69 82 32 89 79 85 32 72 65 86 69 32 79 78 76 89 32 50 32 67 72 65 78 67 69 83 13 65 70 84 69 82 32 51 82 68 32 89 79 85 82 32 65 67 67 79 85 78 84 32 87 73 76 76 32 66 69 32 66 76 79 67 75 69 68 13 32 82 101 116 121 112 101 32 121 111 117 114 32 80 73 78 32 58 0 ]
+[a 3C 49 55 48 56 48 50 0 ]
+[a 2C 49 48 48 55 48 50 0 ]
+[a 10C 50 0 ]
+[a 8C 49 0 ]
+[a 4C 54 51 55 52 56 56 54 50 52 48 0 ]
+[a 18C 73 110 99 111 114 114 101 99 116 32 97 99 99 111 117 110 116 32 110 117 109 98 101 114 46 32 82 101 116 121 112 101 32 121 111 117 114 32 97 99 99 111 117 110 116 32 110 117 109 98 101 114 46 0 ]
+[a 30C 32 102 114 111 109 32 116 104 101 32 100 105 115 112 101 110 115 101 114 46 13 10 67 108 105 99 107 32 69 78 84 69 82 32 102 111 114 32 110 101 119 32 116 114 97 110 115 97 99 116 105 111 110 46 13 10 84 104 97 110 107 32 121 111 117 33 0 ]
+[a 29C 80 114 111 99 101 115 115 105 110 103 46 46 46 13 10 80 108 101 97 115 101 32 99 111 108 108 101 99 116 32 0 ]
+[a 24C 73 110 118 97 108 105 100 32 97 99 99 111 117 110 116 32 110 117 109 98 101 114 46 32 82 101 116 121 112 101 32 121 111 117 114 32 97 99 99 111 117 110 116 32 110 117 109 98 101 114 32 0 ]
+[a 26C 73 110 99 111 114 114 101 99 116 32 109 111 98 105 108 101 32 110 117 109 98 101 114 46 32 82 101 116 121 112 101 32 121 111 117 114 32 109 111 98 105 108 101 32 110 117 109 98 101 114 32 0 ]
+[a 25C 77 111 98 105 108 101 32 118 101 114 105 102 105 101 100 46 13 10 69 110 116 101 114 32 65 109 111 117 110 116 32 116 111 32 87 105 116 104 100 114 97 119 58 32 0 ]
+[a 9C 69 110 116 101 114 32 121 111 117 114 32 80 73 78 32 116 111 32 119 105 116 104 100 114 97 119 32 97 109 111 117 110 116 58 32 0 ]
+[a 15C 80 73 78 32 118 101 114 105 102 105 101 100 46 13 10 89 111 117 114 32 98 97 108 97 110 99 101 32 105 115 58 32 0 ]
+[a 13C 69 110 116 101 114 32 121 111 117 114 32 97 99 99 111 117 110 116 32 110 117 109 98 101 114 58 32 0 ]
+[a 19C 80 73 78 32 118 101 114 105 102 105 101 100 46 13 10 69 110 116 101 114 32 66 97 110 107 32 65 99 99 111 117 110 116 32 78 117 109 98 101 114 58 32 0 ]
+[a 23C 65 99 99 111 117 110 116 32 118 101 114 105 102 105 101 100 46 13 10 69 110 116 101 114 32 82 101 103 105 115 116 101 114 101 100 32 77 111 98 105 108 101 32 78 117 109 98 101 114 58 32 0 ]
+[a 12C 73 110 118 97 108 105 100 32 105 110 112 117 116 46 32 84 121 112 101 32 39 49 39 32 111 114 32 39 50 39 32 116 111 32 99 111 110 116 105 110 117 101 58 32 0 ]
+[a 11C 69 110 116 101 114 32 121 111 117 114 32 80 73 78 32 116 111 32 99 104 101 99 107 32 98 97 108 97 110 99 101 58 32 0 ]
+[a 7C 84 121 112 101 32 39 50 39 32 116 111 32 99 104 101 99 107 32 98 97 108 97 110 99 101 58 32 0 ]
+[a 33C 84 121 112 101 32 39 50 39 32 116 111 32 99 104 101 99 107 32 98 97 108 97 110 99 101 58 32 0 ]
+[a 22C 65 116 116 101 109 112 116 32 37 100 32 111 102 32 51 46 13 10 82 101 116 121 112 101 32 121 111 117 114 32 80 73 78 58 32 0 ]
+[a 6C 84 121 112 101 32 39 49 39 32 116 111 32 119 105 116 104 100 114 97 119 32 97 109 111 117 110 116 13 0 ]
+[a 5C 87 101 108 99 111 109 101 32 116 111 32 83 101 99 117 114 101 32 66 97 110 107 32 65 84 77 13 0 ]
+[a 32C 84 121 112 101 32 39 49 39 32 116 111 32 119 105 116 104 100 114 97 119 32 97 109 111 117 110 116 13 10 0 ]
+[a 21C 73 110 118 97 108 105 100 32 80 73 78 13 10 89 79 85 32 72 65 86 69 32 79 78 76 89 32 51 32 65 84 84 69 77 80 84 83 13 10 0 ]
+[a 27C 73 110 118 97 108 105 100 32 97 109 111 117 110 116 32 101 110 116 101 114 101 100 46 32 84 114 121 32 97 103 97 105 110 46 13 10 0 ]
+[a 20C 84 111 111 32 109 97 110 121 32 105 110 99 111 114 114 101 99 116 32 97 116 116 101 109 112 116 115 46 13 10 89 111 117 114 32 97 99 99 111 117 110 116 32 104 97 115 32 98 101 101 110 32 98 108 111 99 107 101 100 46 13 10 0 ]
+[a 1C 13 10 0 ]
+[a 17C 13 10 0 ]

@@ -1,0 +1,25 @@
+table,tr,td,th
+{
+border:1px solid black;
+border-collapse:collapse;	
+text-align:center;
+padding:10px 5px; 
+margin:20px;
+}
+table
+{
+width:auto;
+height:auto;
+
+
+}
+td
+{
+vertical-align:top;	
+}
+tr:hover
+{
+color:blue;
+}
+
+	

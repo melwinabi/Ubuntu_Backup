@@ -1,0 +1,84 @@
+#include"ThingSpeak.h"  //calling thingspeek software library 
+#include<DHT.h>         //calling humidity sensor library include temperature reading
+#include<ESP8266WiFi.h> // calling esp8266 wifi library no need any other wifi library while using node mcu
+#define DHTPIN 2   // defining the connected digital pin with sensor out data pin
+//D0 - 16 
+//D1 - 5 
+//D2 - 4
+//D3 - 0
+//D4 - 2
+//D5 - 14
+//D6 - 12
+//D7 - 13
+//D8 - 15
+#define DHPTYPE DHT11  //sensor type
+
+char ssid[] = "MelwinAbi";    //  your network SSID (name) 
+char pass[] = "Melwin@321";   // your network password
+
+WiFiClient  client;   //
+
+
+
+//************************API section****************************//
+
+unsigned long myChannel =  000000;
+const char * myReadAPIKey = "xyxyxyxy";
+const char * myWriteAPIKey = "hegfuh4683hdgu3k";
+
+
+********************************************************************
+DHT dht(DHTPIN,DHTTYPE); //class and object
+
+//***********************setup loop**********************//
+
+void setup(){
+  // put your setup code here, to run once:
+
+ Serial.begin(9600); //baud rate
+ WiFi.begin(ssid, pass);  //connect to wifi
+ ThingSpeak.begin(client);  //connect to thingsppek as a client
+ delay(10000); 
+ }
+
+ //**********************programing loop**************//
+
+ void loop(){
+  printWifiStatus();// function call to print wifi status of connection __mentioned down____
+  Serial.println("Reading Sensor Data... ");
+
+  //write the program or formulas
+
+  delay(100);
+
+ // ??$$$$$----write in thingspeak---$$$$$?? //
+
+    Serial.print("Writing to ThingSpeak... ");
+    ThingSpeak.setField(1, (float)stored varriable names example : h);
+    ThingSpeak.setField(2, (float)"""""""""""""""""""""""""""""""""t);
+    ThingSpeak.setField(3, (float)"""""""""""""""""""""""""""""""""f);
+    Serial.print("... ");
+    ThingSpeak.writeFields(myChannel, myWriteAPIKey);
+    delay(5000);
+
+//if required write code for serial monitor print data
+
+     Serial.print(XXXX);
+     Serial.println("YYYYYY");
+     delay(1000);
+}
+//*******************Pogram loop end****************//
+
+//Area used for extra function
+
+void printWifiStatus() { 
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
+  IPAddress ip = WiFi.localIP();
+  Serial.print("IP Address: ");
+  Serial.println(ip);
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
+}

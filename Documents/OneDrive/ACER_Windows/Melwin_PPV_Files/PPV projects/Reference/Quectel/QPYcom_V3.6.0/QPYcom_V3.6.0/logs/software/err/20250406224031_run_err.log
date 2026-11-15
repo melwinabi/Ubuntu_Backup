@@ -1,0 +1,48 @@
+[2025-04-06 23:40:12] Traceback (most recent call last):
+[2025-04-06 23:40:12]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:40:12]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:40:12] serial.serialutil[2025-04-06 23:40:12] .[2025-04-06 23:40:12] SerialException[2025-04-06 23:40:12] : [2025-04-06 23:40:12] could not open port 'COM10': OSError(22, 'A device which does not exist was specified.', None, 433)[2025-04-06 23:40:12] 
+[2025-04-06 23:40:12] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:40:12] Traceback (most recent call last):
+[2025-04-06 23:40:12]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:40:12]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:40:12] serial.serialutil[2025-04-06 23:40:12] .[2025-04-06 23:40:12] SerialException[2025-04-06 23:40:12] : [2025-04-06 23:40:12] could not open port 'COM10': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)[2025-04-06 23:40:12] 
+[2025-04-06 23:40:12] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:40:12] Traceback (most recent call last):
+[2025-04-06 23:40:12]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:40:12]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:40:12] serial.serialutil[2025-04-06 23:40:12] .[2025-04-06 23:40:12] SerialException[2025-04-06 23:40:12] : [2025-04-06 23:40:12] could not open port 'COM10': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)[2025-04-06 23:40:12] 
+[2025-04-06 23:40:12] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:40:12] Traceback (most recent call last):
+[2025-04-06 23:40:12]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-04-06 23:40:12] TypeError[2025-04-06 23:40:12] : [2025-04-06 23:40:12] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-04-06 23:40:12] 
+[2025-04-06 23:42:19] Traceback (most recent call last):
+[2025-04-06 23:42:19]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:42:19]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:42:19] serial.serialutil[2025-04-06 23:42:19] .[2025-04-06 23:42:19] SerialException[2025-04-06 23:42:19] : [2025-04-06 23:42:19] could not open port 'COM10': OSError(22, 'A device which does not exist was specified.', None, 433)[2025-04-06 23:42:19] 
+[2025-04-06 23:42:19] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:42:19] Traceback (most recent call last):
+[2025-04-06 23:42:19]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:42:19]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:42:19] serial.serialutil[2025-04-06 23:42:19] .[2025-04-06 23:42:19] SerialException[2025-04-06 23:42:19] : [2025-04-06 23:42:19] could not open port 'COM10': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)[2025-04-06 23:42:19] 
+[2025-04-06 23:42:19] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:42:19] Traceback (most recent call last):
+[2025-04-06 23:42:19]   File "wxglade_out.py", line 4919, in comOpenBtn
+[2025-04-06 23:42:19]   File "serial\serialwin32.py", line 64, in open
+[2025-04-06 23:42:19] serial.serialutil[2025-04-06 23:42:19] .[2025-04-06 23:42:19] SerialException[2025-04-06 23:42:19] : [2025-04-06 23:42:19] could not open port 'COM10': FileNotFoundError(2, 'The system cannot find the file specified.', None, 2)[2025-04-06 23:42:19] 
+[2025-04-06 23:42:19] 
+During handling of the above exception, another exception occurred:
+
+[2025-04-06 23:42:19] Traceback (most recent call last):
+[2025-04-06 23:42:19]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-04-06 23:42:19] TypeError[2025-04-06 23:42:19] : [2025-04-06 23:42:19] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-04-06 23:42:19] 

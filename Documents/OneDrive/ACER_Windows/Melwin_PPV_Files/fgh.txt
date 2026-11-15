@@ -1,0 +1,106 @@
+#include "lcd.h"
+#include "stm32f1xx_hal.h"
+
+void LCD_Init(void) {
+    HAL_Delay(40); // Wait for LCD to be ready
+    LCD_Send4Bits(0x03);  // Initialization sequence
+    LCD_PulseEnable();
+    HAL_Delay(5);
+    LCD_Send4Bits(0x03);  // Repeat initialization
+    LCD_PulseEnable();
+    HAL_Delay(5);
+    LCD_Send4Bits(0x03);  // Repeat initialization
+    LCD_PulseEnable();
+    HAL_Delay(5);
+    LCD_Send4Bits(0x02);  // Set to 4-bit mode
+    LCD_PulseEnable();
+    HAL_Delay(5);
+
+    LCD_Command(0x28); // 4-bit mode, 2-line display, 5x8 font (this works for 20x4 as well)
+    LCD_Command(0x0C); // Display ON, cursor OFF, blink OFF
+    LCD_Command(0x06); // Entry mode set (increment cursor)
+    LCD_Clear();       // Clear display
+}
+
+void LCD_Command(uint8_t cmd) {
+    HAL_GPIO_WritePin(LCD_PORT, RS_PIN, GPIO_PIN_RESET); // RS = 0 for command
+    LCD_Send4Bits(cmd >> 4);  // Send higher nibble
+    LCD_PulseEnable();
+    LCD_Send4Bits(cmd & 0x0F);  // Send lower nibble
+    LCD_PulseEnable();
+    HAL_Delay(2);  // Command execution delay
+}
+
+void LCD_Char(uint8_t data) {
+    HAL_GPIO_WritePin(LCD_PORT, RS_PIN, GPIO_PIN_SET); // RS = 1 for data
+    LCD_Send4Bits(data >> 4);  // Send higher nibble
+    LCD_PulseEnable();
+    LCD_Send4Bits(data & 0x0F);  // Send lower nibble
+    LCD_PulseEnable();
+    HAL_Delay(2);  // Data execution delay
+}
+
+void LCD_String(char *str) {
+    while(*str) {
+        LCD_Char(*str++);
+    }
+}
+
+void LCD_Clear(void) {
+    LCD_Command(0x01); // Clear display
+    HAL_Delay(2);      // Wait for command to complete
+}
+
+void LCD_SetCursor(uint8_t row, uint8_t col) {
+    uint8_t row_offsets[] = {0x00, 0x40, 0x14, 0x54}; // DDRAM addresses for 20x4 LCD
+    LCD_Command(0x80 | (col + row_offsets[row]));  // Set cursor position
+}
+
+void LCD_PulseEnable(void) {
+    HAL_GPIO_WritePin(LCD_PORT, E_PIN, GPIO_PIN_SET);  // Enable pulse
+    HAL_Delay(1);
+    HAL_GPIO_WritePin(LCD_PORT, E_PIN, GPIO_PIN_RESET);
+    HAL_Delay(1);
+}
+
+void LCD_Send4Bits(uint8_t data) {
+    HAL_GPIO_WritePin(LCD_PORT, D1_PIN, (data & 0x01) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LCD_PORT, D2_PIN, (data & 0x02) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LCD_PORT, D3_PIN, (data & 0x04) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LCD_PORT, D4_PIN, (data & 0x08) ? GPIO_PIN_SET : GPIO_PIN_RESET);
+}
+
+
+// note for lcd port decleration use the GPIOx port name also mody the lcd.h below code
+
+
+
+
+
+#ifndef LCD_H
+#define LCD_H
+
+#include "stm32f1xx_hal.h"
+
+// Pin definitions for LCD
+#define RS_PIN GPIO_PIN_0
+#define E_PIN  GPIO_PIN_1
+#define D1_PIN GPIO_PIN_2
+#define D2_PIN GPIO_PIN_3
+#define D3_PIN GPIO_PIN_4
+#define D4_PIN GPIO_PIN_5
+
+// Define the GPIO port used for the LCD
+#define LCD_PORT GPIOA
+
+// Function prototypes for LCD control
+void LCD_Init(void);
+void LCD_Command(uint8_t cmd);
+void LCD_Char(uint8_t data);
+void LCD_String(char *str);
+void LCD_Clear(void);
+void LCD_SetCursor(uint8_t row, uint8_t col);
+void LCD_Enable(void);
+void LCD_Send4Bits(uint8_t data);
+
+#endif

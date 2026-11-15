@@ -1,0 +1,12 @@
+# Configuration settings
+PROJECT_NAME = "Cen_Networks"
+PROJECT_VERSION = "V.1.2.0"
+Master_ID = 3002850
+Publish_Master = "3002850_PUB"
+Subscribe_Master = "3002850_SUC"
+latitude = "00.0000000"
+longitude = "11.1111111"
+LdR = 1
+ip = ""
+port = ""
+Send_ok = 0

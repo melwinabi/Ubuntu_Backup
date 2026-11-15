@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Button to Firebase</title>
+    <!-- Add Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-database.js"></script>
+</head>
+<body>
+    <button id="push-btn">Push 0 or 1 to Firebase</button>
+
+    <!-- Initialize Firebase -->
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAe7Sj6Vs3m41hYDyxdhNZREdRniJY4y9I",
+    authDomain: "smart-agri-robot.firebaseapp.com",
+    databaseURL: "https://smart-agri-robot-default-rtdb.firebaseio.com",
+    projectId: "smart-agri-robot",
+    storageBucket: "smart-agri-robot.appspot.com",
+    messagingSenderId: "966841294563",
+    appId: "1:966841294563:web:ef1e132a80c67ca8606fd6",
+    measurementId: "G-JQVD2B336R"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Function to handle button click
+        document.getElementById("push-btn").addEventListener("click", function() {
+            // Get a reference to the Firebase database
+            const database = firebase.database();
+
+            // Choose the node in the database where you want to store the value
+            const ref = database.ref("your_node_name");
+
+            // Generate a random value (0 or 1)
+            const value = Math.round(Math.random());
+
+            // Set the value in the database
+            ref.set(value);
+
+            // Log the value to the console
+            console.log("Value sent to Firebase:", value);
+        });
+    </script>
+</body>
+</html>

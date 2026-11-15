@@ -1,0 +1,51 @@
+param(
+    [string]$portName = "COM14",
+    [int]$baudRate = 115200
+)
+
+$port = New-Object System.IO.Ports.SerialPort $portName, $baudRate, 'None', 8, 'One'
+$port.Open()
+Write-Host "Serial port $portName opened at $baudRate baud."
+Write-Host "Press F1 to receive for 2 seconds, type messages and press Enter to send."
+Write-Host "Press 'E' to exit.`n"
+
+while ($true) {
+    # Check if a key is pressed
+    if ($host.UI.RawUI.KeyAvailable) {
+        $key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+        # Exit
+        if ($key.Character -eq 'E') {
+            Write-Host "`nExit command received. Closing port..."
+            break
+        }
+
+        # Receive mode (F1)
+        if ($key.VirtualKeyCode -eq 112) {  # F1 key
+            Write-Host "Receiving data for 2 seconds..."
+            $endTime = (Get-Date).AddSeconds(2)
+            while ((Get-Date) -lt $endTime) {
+                $data = $port.ReadExisting()
+                if ($data -ne "") {
+                    Write-Host $data -NoNewline
+                }
+                Start-Sleep -Milliseconds 50
+            }
+            Write-Host "`nReceive period ended.`n"
+        }
+        # TX mode: type a line and press Enter
+        elseif ($key.Character -ne $null) {
+            # Read full line input
+            $line = Read-Host "Type message to send"
+            if ($line -ne "") {
+                $port.WriteLine($line)
+                Write-Host "Sent: $line`n"
+            }
+        }
+    }
+
+    Start-Sleep -Milliseconds 50
+}
+
+$port.Close()
+Write-Host "Port closed."

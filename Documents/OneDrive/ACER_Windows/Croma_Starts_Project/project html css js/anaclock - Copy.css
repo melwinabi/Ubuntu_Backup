@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+body{
+    position: absolute;
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+   
+}
+.anaclk{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 50%;
+    border: 10px double black;
+    
+      
+}
+.anaclk::before{
+    content: "clock";
+    color:gray;
+    top: 30%;
+    left:40%;
+    position: absolute;
+    font-size: 200%;
+    font-family: cursive;
+}
+
+.anaclk::after{
+    content:'';
+    position:absolute;
+    width:15px;
+    height: 15px;
+    background-color: black ;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 8px;
+
+}
+.num{
+    
+    
+}

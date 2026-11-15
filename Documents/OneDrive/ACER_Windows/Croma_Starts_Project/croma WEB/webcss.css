@@ -1,0 +1,323 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
+    background: #050505;
+    color: #eaeaea;
+    animation: pageFade 0.8s ease-in;
+}
+
+/* ================= HERO ================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    padding: 30px;
+    background: radial-gradient(circle at top right, #2a1a00, #050505 70%);
+    background-size: 200% 200%;
+    animation: bgMove 25s ease infinite;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin-top: 40px;
+}
+/* ================================== HOME ================================ */
+
+/* ================= LOGO ================= */
+.logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid black;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: logoIn 1s ease forwards;
+}
+
+/* ================= COMPANY NAME ================= */
+.company-name {
+    color: #f5c542;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+/* ================= MAIN TITLE ================= */
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+/* ================= WHO FOR ================= */
+.who-for {
+    font-size: 1.1rem;
+    color: #b5b5b5;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.8s;
+}
+
+/* ================= PROCESS ================= */
+.hero h2 {
+    font-size: 1.6rem;
+    color: #e0b84c;
+    font-weight: 400;
+    margin-bottom: 25px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1s;
+}
+
+/* ================= SERVICES ================= */
+.services {
+    font-size: 1.1rem;
+    color: #b5b5b5;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+/* ================= TRUST ================= */
+.trust {
+    font-size: 1rem;
+    color: #cfcfcf;
+    margin-bottom: 35px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.6s;
+}
+
+/* ================= BUTTONS ================= */
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.9s;
+}
+
+.btn {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: 2px solid #f5c542;
+    background: transparent;
+    color: #f5c542;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: #e0b84c;
+    color: #000;
+    box-shadow: 0 10px 25px rgba(245,197,66,0.5);
+}
+
+/* ================= TAGLINE ================= */
+.tagline {
+    display: block;
+    margin-top: 40px;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: #888;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 2.2s;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes pageFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes logoIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+        box-shadow: 0 0 0 rgba(245,197,66,0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(245,197,66,0.3);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero h2 {
+        font-size: 1.3rem;
+    }
+    .logo {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* ================================== HOME ================================ */
+
+/* SERVICES SECTION */
+.services {
+    padding: 90px 20px;
+    background: #0a0a0a;
+    color: #ffffff;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: #cccccc;
+    margin-bottom: 50px;
+}
+
+/* GRID */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    max-width: 1100px;
+    margin: auto;
+
+}
+
+/* CARD */
+/* Make service cards behave like normal divs */
+.service-card {
+    display: block;
+    text-decoration: none;   /* removes underline */
+    color: #eaeaea;          /* force text color */
+    background: #0b0b0b;
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: #f5c542;
+}
+
+/* ICON */
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 1url(http://127.0.0.1:5500/embedded.html)5px;
+}
+
+/* TITLE */
+.service-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* TEXT */
+.service-card p {
+    font-size: 14px;
+    color: #bbbbbb;
+    line-height: 1.6;
+}
+
+/* VIEW BUTTON */
+.view-services-btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 14px 34px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #f5c542;
+    border: 2px solid #f5c542;
+    transition: 0.3s;
+}
+
+.view-services-btn:hover {
+    background: #f5c542;
+    color: #000;
+}
+
+.service-detail {
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 0 30px;
+}
+
+.service-detail h1 {
+    color: #f5c542;
+    margin-bottom: 20px;
+}
+
+.service-detail h3 {
+    margin-top: 30px;
+    color: #e0b84c;
+}
+
+.service-detail p,
+.service-detail li {
+    color: #ccc;
+    line-height: 1.7;
+}
+
+.service-detail ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}

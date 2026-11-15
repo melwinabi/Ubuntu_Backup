@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="digclk.css">
+    <script>
+        
+        function updateTime() {
+            const clockElement = document.getElementById("Clock");
+            if (clockElement) {
+                const date = new Date();
+                const hh = date.getHours();
+                const mm = date.getMinutes();
+                const ss = date.getSeconds();
+                const session = hh >= 12 ? "PM" : "AM";
+
+                let hours = hh % 12;
+                if (hours === 0) {
+                    hours = 12;
+                }
+
+                const timeString = `${hours}:${mm < 10 ? '0' : ''}${mm}:${ss < 10 ? '0' : ''}${ss} ${session}`;
+                clockElement.innerText = timeString;
+            } else {
+                console.log('Element not found.');
+            }
+        }
+
+        updateTime(); // Call the function initially
+
+        // Update the time every second (1000 milliseconds)
+        setInterval(updateTime, 1000);
+
+    </script>
+    
+</head>
+<body>
+    <!-- <script src="./digclk.js"></script> -->
+    <h1>DIGITAL CLOCK</h1>
+    <div class="frame">
+        <div id="Clock"></div>
+    <div class="ap"></div>
+    </div>
+    
+</body>
+</html>

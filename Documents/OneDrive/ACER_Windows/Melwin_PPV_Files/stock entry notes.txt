@@ -1,0 +1,41 @@
+
+
+ resistor, capacitor  - 853340 
+
+ transistor,dIODES - 854130 
+
+Transform - 85043100
+HEAT SINK - 760410
+thermistor - 85334030
+Zener Diode - 85414090
+RMC connectors- 8536 
+header burg strip - 85369090
+crystal oscillator - 85416000
+Spacer - 12051000
+micro switch  - 853650
+Relay - 8536
+MOV - 85334090  
+cONVERTORS - 85423900 
+vl -         85423100	
+rectifr - 85044021
+Screw - 7318
+HI LINK - 8536
+opto 8541
+.....................................................
+
+capacitor
+1000μF/35v(Black Gold-JWCO)
+
+±                                                                                                                                                                                                                                    
+
+Ω
+
+3 Pin RMC head With Wires
+
+μ
+
+
+
+
+Hsn web
+https://www.volza.com/p/smd-ic/import/import-in-india/hsn-code-8542/

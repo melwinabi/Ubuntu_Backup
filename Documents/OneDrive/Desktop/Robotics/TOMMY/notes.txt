@@ -1,0 +1,67 @@
+ 
+25 aug 2023
+
+if(distance>30){
+   action(); 
+  }
+      
+    
+if(distance<30){
+  int flag=5;
+  back();
+  delay(100);
+  s1.write(0);
+  turnR();
+}
+}
+
+
+void back(){
+   
+   digitalWrite(6,HIGH);
+   digitalWrite(5,LOW);
+   digitalWrite(8,HIGH);
+   digitalWrite(7,LOW);
+   delay (300);
+   stopw();
+   }
+
+void stopw(){          //stop for afer reverse
+  
+  digitalWrite(6,LOW);
+  digitalWrite(8,LOW);
+  delay(300);
+  }
+
+
+void turnR(){     // head turning program
+  
+    if(distance>35){
+    s2.write(95);  
+    movefrwd();
+    delay(1000);  // turning delay
+    action();
+    delay(2000);
+    servostrt();
+    }
+}
+
+
+void servostrt(){
+  s1.write(90);// head stright
+  s2.write(70); // steer straight
+}
+  
+  
+
+void movefrwd(){
+   digitalWrite(5,HIGH);
+   digitalWrite(6,LOW);
+   digitalWrite(7,HIGH);
+   digitalWrite(8,LOW);  
+}
+   
+void action(){
+  servostrt();
+  movefrwd();
+  }

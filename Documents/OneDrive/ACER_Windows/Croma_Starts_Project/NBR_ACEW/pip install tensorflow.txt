@@ -1,0 +1,22 @@
+pip install tensorflow
+pip install numpy
+pip install matplotlib
+pip install pillow
+
+pip install fastapi
+pip install uvicorn
+pip install python-multipart
+
+pip install pillow
+pip install numpy
+
+pip install tensorflow fastapi uvicorn python-multipart pillow numpy matplotlib
+
+or
+
+python -m pip install tensorflow fastapi uvicorn python-multipart pillow numpy matplotlib
+
+
+pip install tensorflow numpy matplotlib pillow opencv-python scikit-learn
+
+pip install tensorflow numpy matplotlib pillow opencv-python scikit-learn scipy
