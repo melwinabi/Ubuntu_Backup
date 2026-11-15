@@ -1,0 +1,7 @@
+[2025-03-31 18:42:00] TypeError[2025-03-31 18:42:00] : [2025-03-31 18:42:00] invalid result from treeDrop.OnDropText(), a 'bool' is expected not 'NoneType'[2025-03-31 18:42:00] 
+[2025-03-31 19:06:44] Traceback (most recent call last):
+[2025-03-31 19:06:44]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-31 19:06:44] TypeError[2025-03-31 19:06:44] : [2025-03-31 19:06:44] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-31 19:06:44] 
+[2025-03-31 19:19:13] Traceback (most recent call last):
+[2025-03-31 19:19:13]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-31 19:19:13] TypeError[2025-03-31 19:19:13] : [2025-03-31 19:19:13] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-31 19:19:13] 

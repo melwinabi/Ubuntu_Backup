@@ -1,0 +1,109 @@
+
+
+Sending: int> 
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244594*7*00.0000000*11.1111111*0*$$
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+
+LFS mount.
+x backup restore procedure error: '/bak/backup_restore.json not exist
+
+  ____                         __  __           
+ / __ \__ _____ _______  __ __/ /_/ /  ___  ___ 
+/ /_/ / // / -_) __/ _ \/ // / __/ _ \/ _ \/ _ \
+\___\_\_,_/\__/\__/ .__/\_, /\__/_//_/\___/_//_/
+                 /_/   /___/                    
+Quecpython v1.12 on Mon_Mar_11_2024_5:26:00_PM ; EC200U with QUECTEL 
+ Type "help()" for more information.
+>>>
+import example
+>>> example.exec('/usr/streem.py'
+
+INFO:MQTT:Network connection successful
+INFO:MQTT:Connected to Cenmark_PPV topic
+INFO:MQTT:Publish topic: 3002850_PUB, msg: my name is Quecpytho
+
+import example
+>>> example.exec('/usr/streem.py'
+INFO:MQTT:Network connection successful
+
+INFO:MQTT:Connected to Cenmark_PPV topic
+INFO:MQTT:Publish topic: 3002850_PUB, msg: my name is Quecpytho
+
+LFS mount.
+x backup restore procedure error: '/bak/backup_restore.json not exist
+
+  ____                         __  __           
+ / __ \__ _____ _______  __ __/ /_/ /  ___  ___ 
+/ /_/ / // / -_) __/ _ \/ // / __/ _ \/ _ \/ _ \
+\___\_\_,_/\__/\__/ .__/\_, /\__/_//_/\___/_//_/
+                 /_/   /___/                    
+Quecpython v1.12 on Fri_Aug_30_2024_6:00:45_PM ; EC200U with QUECTEL 
+ Type "help()" for more information.
+>>>
+{
+  "IP": "mqtt.ppvgroups.in",
+  "Port": "1883"
+}
+CenMark_hardware_894
+INFO:MQTT:Network connection successful
+Sending: int> 
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244564*7*00.0000000*11.1111111*0*$$
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+LFS mount.
+x backup restore procedure error: '/bak/backup_restore.json not exist
+
+  ____                         __  __           
+ / __ \__ _____ _______  __ __/ /_/ /  ___  ___ 
+/ /_/ / // / -_) __/ _ \/ // / __/ _ \/ _ \/ _ \
+\___\_\_,_/\__/\__/ .__/\_, /\__/_//_/\___/_//_/
+                 /_/   /___/                    
+Quecpython v1.12 on Fri_Aug_30_2024_6:00:45_PM ; EC200U with QUECTEL 
+ Type "help()" for more information.
+>>>
+Sending: int> 
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244594*7*00.0000000*11.1111111*0*$$'
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+
+LFS mount.
+x backup restore procedure error: '/bak/backup_restore.json not exist
+
+  ____                         __  __           
+ / __ \__ _____ _______  __ __/ /_/ /  ___  ___ 
+/ /_/ / // / -_) __/ _ \/ // / __/ _ \/ _ \/ _ \
+\___\_\_,_/\__/\__/ .__/\_, /\__/_//_/\___/_//_/
+                 /_/   /___/                    
+Quecpython v1.12 on Fri_Aug_30_2024_6:00:45_PM ; EC200U with QUECTEL 
+ Type "help()" for more information.
+>>>
+{
+  "IP": "mqtt.ppvgroups.in",
+  "Port": "1883"

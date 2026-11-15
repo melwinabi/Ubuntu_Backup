@@ -1,0 +1,1 @@
+{successtrue,statusCode200,titleOK,messageSuccess,data{id3379,createdDate2025-11-15T175853.287,v1401.70,v20.00,v30.00,v40.00,v50.00}}

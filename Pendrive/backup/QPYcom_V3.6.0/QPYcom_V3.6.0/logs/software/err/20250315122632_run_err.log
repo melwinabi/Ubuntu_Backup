@@ -1,0 +1,16 @@
+[2025-03-15 12:45:00] Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "threading.py", line 916, in _bootstrap_inner
+  File "wxglade_out.py", line 6334, in run
+  File "pubsub\core\publisher.py", line 216, in sendMessage
+    topicObj.publish(**msgData)
+  File "pubsub\core\topicobj.py", line 452, in publish
+    self.__sendMessage(msgData, topicObj, msgDataSubset)
+  File "pubsub\core\topicobj.py", line 482, in __sendMessage
+    listener(data, self, allData)
+  File "pubsub\core\listener.py", line 237, in __call__
+    cb(**kwargs)
+  File "wxglade_out.py", line 4344, in updateDisplay
+  File "wx\core.py", line 2572, in _ItemContainer_SetItems
+RuntimeError: wrapped C/C++ object of type Choice has been deleted
+[2025-03-15 12:45:00] 
