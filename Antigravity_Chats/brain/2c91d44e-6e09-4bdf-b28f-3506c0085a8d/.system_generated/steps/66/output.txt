@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+total 12
+drwxr-xr-x  3 melwinabi melwinabi 4096 Oct 25 19:43 .
+drwxr-xr-x 47 melwinabi melwinabi 4096 Nov 15 12:38 ..
+drwxr-xr-x  3 melwinabi melwinabi 4096 Oct 25 19:43 .system_generated

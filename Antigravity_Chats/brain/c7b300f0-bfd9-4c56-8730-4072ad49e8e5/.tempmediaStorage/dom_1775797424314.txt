@@ -1,0 +1,11 @@
+My Dashboard
+Live Connected
+[0] (865,58)<button class='btn'>Add Device />
+[1] (950,58)<button class='btn btn-outline'>Logout />
+[2] (56,143)<button >Back to My Devices />
+xcxcxcxvxvcvcv
+Managing IoT Node
+[3] (946,229)<button class='btn'>Unlink Device />
+[4] (113,347)<button title='Edit Widget' />
+Main Switch
+[5] (71,455)<button class='btn btn-outline'>OFF />

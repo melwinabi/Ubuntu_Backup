@@ -1,0 +1,6 @@
+# Settings Page Verification Checklist
+
+- [ ] Navigate to /settings (currently there)
+- [ ] Verify User ID is visible
+- [ ] Verify Date of Birth field is successfully rendered
+- [ ] Verify Profile Photo field is successfully rendered

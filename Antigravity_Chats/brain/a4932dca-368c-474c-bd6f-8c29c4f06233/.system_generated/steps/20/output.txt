@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+0	/home/melwinabi/Desktop
+0	/home/melwinabi/Documents
+0	/home/melwinabi/Downloads

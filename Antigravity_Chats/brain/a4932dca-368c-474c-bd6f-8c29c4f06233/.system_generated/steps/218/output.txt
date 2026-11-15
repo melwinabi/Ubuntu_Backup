@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+Files < 80MB in SOFTWARES: 2939 files, 823.42 MB

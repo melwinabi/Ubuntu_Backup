@@ -1,0 +1,177 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Skip to main content
+Accessibility help
+Accessibility feedback
+[0] (65,55)<a aria-label='Go to Google Home' href='https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQPAgJ' id='logo' title='Go to Google Home' />
+[1] (302,54)<textarea aria-label='Search' class='gLFyf' id='APjFqb' role='combobox' />
+[2] (494,54)<div  />
+	[3] (492,54)<div aria-label='Clear' class='vOY7J M2vV3' role='button' />
+		[4] (492,54)<span  />
+	[5] (506,54)<span  />
+[6] (519,54)<div aria-label='Search by voice' class='XDyW0e' role='button' />
+[7] (540,54)<div aria-label='Search by image' class='nDcEnd' role='button' />
+[8] (565,54)<button aria-label='Search' class='HZVG1b Tg7LZd' />
+	[9] (562,54)<div  />
+		[10] (562,54)<span  />
+[11] (905,54)<div aria-label='Share' class='apFnFf' role='button' />
+	[12] (905,54)<div  />
+		[13] (905,54)<div  />
+[14] (929,54)<a aria-label='Search Labs' class='gb_B' href='https://labs.google.com/search?source=srp' role='button' />
+[15] (955,54)<a aria-label='Google apps' class='gb_B' href='https://www.google.co.in/intl/en/about/products?tab=wh' role='button' />
+[16] (978,54)<a aria-label='Google Account: AS MELWIN  
+(asmelwin3@gmail.com)' class='gb_B gb_0a' href='https://accounts.google.com/SignOutOptions?hl=en&continue=https://www.google.com/search%3Fq%3DSmartsedate%2Bpatient%2Bsedation%2Bpredictor%2Barchitecture%2Bdiagram%2Bflowchart&ec=futura_srp_og_si_72236_p' role='button' />
+[17] (139,117)<a class='XVMlrc C6AK7c' href='/search?q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=50&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&aep=1&ntc=1&sa=X&ved=2ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQ2J8OegQIDhAE' />
+	[18] (139,117)<div  />
+		[19] (139,125)<div  />
+			[20] (139,120)<span >AI Mode />
+[21] (171,117)<a class='C6AK7c' role='link' />
+	All
+[22] (201,117)<a class='C6AK7c' href='/search?sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&sa=X&ved=2ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQtKgLegQIFRAB' />
+	[23] (201,117)<div  />
+		[24] (201,125)<span >Images />
+[25] (249,117)<a class='C6AK7c' href='/search?sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=39&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&sa=X&ved=2ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQs6gLegQIFhAB' />
+	[26] (249,117)<div  />
+		[27] (249,125)<span >Short videos />
+[28] (296,117)<a class='C6AK7c' href='/search?sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=7&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&sa=X&ved=2ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQtKgLegQIFBAB' />
+	[29] (296,117)<div  />
+		[30] (296,125)<span >Videos />
+[31] (338,117)<a class='C6AK7c' href='/search?sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=28&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&ved=1t:220175&ictx=111' />
+	[32] (338,117)<div  />
+		[33] (338,125)<span >Shopping />
+[34] (381,117)<a class='C6AK7c' href='/search?sca_esv=aaa5e99ecd6c9da9&sxsrf=ANbL-n7dCP01mQqbDUztDsAuFxdNylw84A:1775715767475&udm=18&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vxYI1tojT_24H7Q4iMwclSJUz4FcZOM5Pq33gz9PnkyoDbNxwPAI30sUsI7Rk4CaqX7VqkFjNabX1-idtRqZ6_wC-ZuZz-nRTnsmrvzzZ-b3C7e09pOB1nDFJVdsXsAyHk8yB3j8Zlgf0PqJVXM8vPST15Ml0RVLwPTPl2aMLqOBOovJg&q=Smartsedate+patient+sedation+predictor+architecture+diagram+flowchart&sa=X&ved=2ahUKEwiEhavckOCTAxW3q5UCHd-7OQcQs6gLegQIERAB' />
+	[35] (381,117)<div  />
+		[36] (381,125)<span >Forums />
+[37] (421,117)<div class='mTpL7c' role='button' />
+	[38] (421,117)<div  />
+		[39] (421,125)<div  />
+			[40] (416,120)<span >More />
+			[41] (430,120)<span  />
+[42] (462,117)<div class='mOKdDc' id='hdtb-tls' role='button' />
+	[43] (462,117)<div  />
+		[44] (462,125)<div  />
+			[45] (457,120)<span >Tools />
+			[46] (472,120)<span  />
+Search Results
+Web results
+[47] (230,213)<a class='zReHs' href='https://www.researchgate.net/figure/Flow-diagram-of-sedation-protocol_fig1_331878891' />
+	[48] (207,234)<h3 >Flow diagram of sedation protocol />
+	[49] (230,194)<div  />
+		[50] (230,194)<div  />
+			[51] (132,194)<span  />
+				[52] (132,194)<div  />
+					[53] (132,194)<img  />
+			[54] (241,194)<div  />
+				[55] (241,183)<div  />
+					[56] (241,183)<span >ResearchGate />
+				[57] (241,204)<div  />
+					[58] (241,204)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://www.researchgate.net />
+						[59] (290,204)<span class='ylgVCe ob9lvb' role='text'>› figure › Flow-diagram-of... />
+[60] (347,202)<div aria-label='About this result' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[61] (347,202)<span  />
+		[62] (347,203)<span  />
+Download scientific diagram |
+Flow diagram of sedation protocol
+from publication: Low‐dose midazolam and propofol use for conscious sedation during ...
+Missing:
+Smartsedate
+‎
+predictor
+‎
+architecture
+[63] (270,396)<a class='zReHs' href='https://pmc.ncbi.nlm.nih.gov/articles/PMC7551629/' />
+	[64] (270,417)<h3 >A Smart Architecture for Diabetic Patient Monitoring Using ... />
+	[65] (223,377)<div  />
+		[66] (223,377)<div  />
+			[67] (132,377)<span  />
+				[68] (132,377)<div  />
+					[69] (132,377)<img  />
+			[70] (234,377)<div  />
+				[71] (234,366)<div  />
+					[72] (234,366)<span >PubMed Central (PMC) (.gov) />
+				[73] (234,387)<div  />
+					[74] (234,387)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://pmc.ncbi.nlm.nih.gov />
+						[75] (281,387)<span class='ylgVCe ob9lvb' role='text'>› articles › PMC7551629 />
+[76] (334,385)<div aria-label='About this result' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[77] (334,385)<span  />
+		[78] (334,386)<span  />
+by A Rghioui
+·
+2020
+·
+Cited by 86
+—
+This article presents an
+intelligent architecture for monitoring diabetic patients
+by using machine learning algorithms.
+[79] (335,473)<a class='vzmbzf' href='https://pmc.ncbi.nlm.nih.gov/articles/PMC7551629/#:~:text=This%20article%20presents%20an%20intelligent,by%20using%20machine%20learning%20algorithms.' />
+	[80] (335,473)<span >Read more />
+[81] (273,556)<a class='zReHs' href='https://www.researchgate.net/figure/Proposed-Smart-Healthcare-Architecture-Detailed-flowchart-of-the-proposed-model-is_fig4_379736286' />
+	[82] (273,577)<h3 >Proposed Smart Healthcare Architecture Detailed flowchart ... />
+	[83] (232,537)<div  />
+		[84] (232,537)<div  />
+			[85] (132,537)<span  />
+				[86] (132,537)<div  />
+					[87] (132,537)<img  />
+			[88] (242,537)<div  />
+				[89] (242,527)<div  />
+					[90] (242,527)<span >ResearchGate />
+				[91] (242,547)<div  />
+					[92] (242,547)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://www.researchgate.net />
+						[93] (291,547)<span class='ylgVCe ob9lvb' role='text'>› figure › Proposed-Smart-... />
+[94] (350,545)<div aria-label='About this result' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[95] (350,545)<span  />
+		[96] (350,546)<span  />
+Download scientific diagram |
+Proposed Smart Healthcare Architecture
+Detailed flowchart of the proposed model is presented below in fig 3.2 and its ...
+[97] (259,717)<a class='zReHs' href='https://www.researchgate.net/figure/Sedation-algorithm-chart_fig1_7206915' />
+	[98] (259,737)<h3 >Sedation algorithm chart. | Download Scientific Diagram />
+	[99] (231,697)<div  />
+		[100] (231,697)<div  />
+			[101] (132,697)<span  />
+				[102] (132,697)<div  />
+					[103] (132,697)<img  />
+			[104] (242,697)<div  />
+				[105] (242,687)<div  />
+					[106] (242,687)<span >ResearchGate />
+				[107] (242,708)<div  />
+					[108] (242,708)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://www.researchgate.net />
+						[109] (291,708)<span class='ylgVCe ob9lvb' role='text'>› figure › Sedation-algorith... />
+[110] (349,706)<div aria-label='About this result' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[111] (349,706)<span  />
+		[112] (349,707)<span  />
+Download scientific diagram
+| Sedation algorithm chart. from publication: Rethinking Sedation and Agitation Management in Critical Illness | To examine ...
+Missing:
+Smartsedate
+‎
+predictor
+[113] (262,900)<a class='zReHs' href='https://www.researchgate.net/figure/Proposed-decision-making-flowchart-to-guide-sedation-induction-procedure-for-flexible_fig4_330917568' />
+	[114] (262,920)<h3 >Proposed decision-making flowchart to guide sedation ... />
+	[115] (232,880)<div  />
+		[116] (232,880)<div  />
+			[117] (132,880)<span  />
+				[118] (132,880)<div  />
+					[119] (132,880)<img  />
+			[120] (243,880)<div  />
+				[121] (243,870)<div  />
+					[122] (243,870)<span >ResearchGate />
+				[123] (243,891)<div  />
+					[124] (243,891)<cite class='qLRx3b tjvcx GvPZzd cHaqb' role='text'>https://www.researchgate.net />
+						[125] (291,891)<span class='ylgVCe ob9lvb' role='text'>› figure › Proposed-decisio... />
+[126] (351,889)<div aria-label='About this result' class='MJ8UF iTPLzd rNSxBe eY4mx lUn2nc' role='button' />
+	[127] (351,889)<span  />
+		[128] (351,890)<span  />
+Proposed decision-making flowchart
+to guide sedation induction procedure for flexible bronchoscopy based on clinical signs of hypoventilation.
+[129] (286,977)<a class='vzmbzf' href='https://www.researchgate.net/figure/Proposed-decision-making-flowchart-to-guide-sedation-induction-procedure-for-flexible_fig4_330917568#:~:text=Proposed%20decision%2Dmaking%20flowchart%20to%20guide,on%20clinical%20signs%20of%20hypoventilation.' />
+	[130] (286,977)<span >Read more />
+Missing:
+Smartsedate
+‎| Show results with:
+Smartsedate
+
+</current_dom>

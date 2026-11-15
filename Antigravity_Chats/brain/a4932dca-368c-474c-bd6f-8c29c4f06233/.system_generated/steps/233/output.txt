@@ -1,0 +1,7 @@
+Command exited with code 128.
+
+Command output:
+warning: in the working copy of 'Documents/OneDrive/ACER_Windows/Arduino/libraries/DallasTemperature/examples/ExternalPullup/ExternalPullup.ino', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'Documents/OneDrive/ACER_Windows/Arduino/libraries/DallasTemperature/examples/Timing/Timing.ino', CRLF will be replaced by LF the next time Git touches it
+error: 'Documents/OneDrive/ACER_Windows/Embedded With IoT/EMBEDDED/' does not have a commit checked out
+fatal: adding files failed

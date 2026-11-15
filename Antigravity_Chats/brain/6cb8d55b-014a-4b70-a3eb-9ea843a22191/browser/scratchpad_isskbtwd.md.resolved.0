@@ -1,0 +1,11 @@
+# SIP Management Verification Checklist
+
+- [ ] Open http://localhost:3000/investments and login if needed
+- [ ] Locate the "SBI" investment row in the Holdings Ledger table
+- [ ] Find and click the "Manage SIP Skips & Status" button
+- [ ] Verify SIP stats in the modal (Start Date, Deposits, Skipped Payments, Invested Capital)
+- [ ] Toggle first installment to "Skipped" and verify
+- [ ] Toggle second installment to "Skipped" and verify "Skipped Payments" count increases
+- [ ] Click "Stop Plan" and confirm in warning modal
+- [ ] Verify SIP status updates to "Plan Suspended / Cancelled"
+- [ ] Click "Done" to close modal and report success

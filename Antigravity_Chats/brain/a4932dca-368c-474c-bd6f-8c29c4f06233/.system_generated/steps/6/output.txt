@@ -1,0 +1,19 @@
+Command exited with code 0.
+
+Command output:
+total 28
+dr-xr-xr-x 14 melwinabi melwinabi  300 Nov 15 12:38 .
+dr-xr-xr-x  3 melwinabi melwinabi   60 Nov 15 12:38 ..
+drwx------ 35 melwinabi melwinabi 4096 Oct 25 21:08 .cache
+drwx------ 38 melwinabi melwinabi 4096 Oct 25 21:05 .config
+drwxrwxrwx  2 melwinabi melwinabi   40 Nov 15 12:38 Desktop
+drwxrwxrwx  2 melwinabi melwinabi   40 Nov 15 12:38 Documents
+drwxrwxr-x  3 melwinabi melwinabi 4096 Apr 28  2026 .dotnet
+drwxrwxrwx  2 melwinabi melwinabi   40 Nov 15 12:38 Downloads
+dr-xr-xr-x  5 melwinabi melwinabi  100 Nov 15 12:38 .gemini
+-rw-rw-r--  1 melwinabi melwinabi   92 May  3  2026 .gitconfig
+drwxrwxr-x  9 melwinabi melwinabi 4096 May 23 23:26 .gradle
+drwxrwxr-x  5 melwinabi melwinabi 4096 Apr  1  2026 .npm
+drwxrwxr-x  5 melwinabi melwinabi 4096 Apr  1  2026 .nvm
+drwxrwxrwx  2 melwinabi melwinabi   40 Nov 15 12:38 .ssh
+dr-xr-xr-x  3 melwinabi melwinabi   60 Nov 15 12:38 .vscode

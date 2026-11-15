@@ -1,0 +1,52 @@
+# Implementation Plan - Switch from OneDrive to GitHub Backup
+
+The goal is to remove the existing `onedrive` setup and replace it with a Git-based backup system using GitHub for the `~/Documents` folder.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - **Privacy**: GitHub repositories are public by default unless you choose a **Private** repository. Please ensure you create a Private repository if your documents contain sensitive information.
+> - **File Size**: Git is not designed for very large files (e.g., >100MB). We will use a `.gitignore` file to skip large or temporary files.
+> - **Authentication**: You will need to authenticate with GitHub (via SSH or Personal Access Token).
+
+## Proposed Changes
+
+### 1. Unified Removal of OneDrive
+1. **Stop Service**: `systemctl --user stop onedrive`
+2. **Disable Service**: `systemctl --user disable onedrive`
+3. **Uninstall Package**: `sudo apt remove --purge onedrive`
+4. **Clean up Repository**:
+   - Remove [/etc/apt/sources.list.d/onedrive.list](file:///etc/apt/sources.list.d/onedrive.list)
+   - Remove [/usr/share/keyrings/obs-onedrive.gpg](file:///usr/share/keyrings/obs-onedrive.gpg)
+5. **Remove Configuration**: Delete `~/.config/onedrive`
+
+### 2. GitHub Backup Setup
+1. **Initialize Git**:
+   ```bash
+   cd ~/Documents
+   git init
+   ```
+2. **Configure .gitignore**:
+   Add common excludes (e.g., `.tmp`, `node_modules`, etc.).
+3. **GitHub Integration**:
+   - I will ask you for your GitHub username and the name you want for the repository.
+   - We will link the local repository to GitHub:
+     ```bash
+     git remote add origin https://github.com/USERNAME/REPO_NAME.git
+     ```
+4. **Initial Backup**:
+   ```bash
+   git add .
+   git commit -m "Initial backup"
+   git branch -M main
+   git push -u origin main
+   ```
+
+## Verification Plan
+
+### Automated Tests
+- Verify `onedrive` command is gone.
+- Verify `git status` in `~/Documents` shows the repository is active.
+
+### Manual Verification
+- Check GitHub repository to see the uploaded documents.

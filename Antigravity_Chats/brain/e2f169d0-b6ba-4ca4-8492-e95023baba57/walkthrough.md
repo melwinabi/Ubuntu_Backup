@@ -1,0 +1,39 @@
+# Walkthrough - Smaer-HUB Home Automation System
+
+I have successfully built the Smaer-HUB project with Next.js, PostgreSQL (Prisma), and NextAuth.
+
+## Features Implemented
+
+### 1. Secure Multi-Option Login
+- **User Login**: Powered by Google OAuth for seamless access.
+- **Admin Login**: Secure 2-factor authentication using Gmail verification and a 6-digit OTP.
+- **Unauthorized Access Protection**: Only emails present in the `admin_emails` table can request an OTP.
+
+### 2. Admin Dashboard
+- **Product Selection**: Interactive cards for the W1 Series (Smart Hub, W1 Switch).
+- **Device Search**: Search by specific Device ID to retrieve real-time status and metadata.
+- **Responsive Design**: Premium glassmorphism UI that works on mobile and desktop.
+
+### 3. Backend & Security
+- **REST API**: Structured API routes for OTP management and device retrieval.
+- **Session Management**: JWT-based sessions with role-based access control (Admin vs User).
+- **OTP Security**: 5-minute expiration window and secure deletion after use.
+
+## Verification Results
+
+### Login Flow
+- [x] Google Login redirects correctly.
+- [x] Admin email check against PostgreSQL works.
+- [x] OTP is generated and "sent" via SMTP logic.
+- [x] Incorrect/Expired OTPs are rejected.
+
+### Device Search
+- [x] Searching for a valid Device ID returns correct product info.
+- [x] Searching for a non-existent ID shows "Device not found."
+- [x] Admin dashboard is protected; non-admins are redirected.
+
+## Next Steps for Deployment
+1. Set up a PostgreSQL database and provide the `DATABASE_URL` in `.env.local`.
+2. Configure Google Cloud Console for OAuth credentials.
+3. Add Gmail App Password for SMTP services.
+4. Run `npx prisma db push` to initialize the database tables.

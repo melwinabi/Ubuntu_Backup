@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+total 16K
+drwxr-xr-x   4 melwinabi melwinabi 4.0K Jan  1  1970  .
+drwxr-x---+  3 root      root      4.0K Nov 15 12:47  ..
+drwxr-xr-x  14 melwinabi melwinabi 4.0K Mar 24  2026  Pendrive
+drwxr-xr-x   2 melwinabi melwinabi 4.0K Mar 26  2026 'System Volume Information'

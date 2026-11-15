@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+2.0G	Documents/OneDrive
+832M	Documents/SOFTWARES
+86M	Downloads/BLE_Improved.zip
+29M	Downloads/Python-3.13.13.tgz
+184M	Downloads/anime_anniversary_video_split

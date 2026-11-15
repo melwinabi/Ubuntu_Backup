@@ -1,0 +1,6 @@
+# Plan
+- Open http://localhost:3000/investments
+- Log in if redirected
+- Find "Parag Parikh Flexi Cap Fund"
+- Find delete button, click it, accept confirmation
+- Check behavior/error

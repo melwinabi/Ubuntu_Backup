@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+total 12
+drwxr-xr-x  3 melwinabi melwinabi 4096 Mar 27  2026  .
+drwxr-x--- 53 melwinabi melwinabi 4096 Nov 15 12:51  ..
+drwxrwxr-x  2 melwinabi melwinabi 4096 Mar 25  2026 'New Folder'

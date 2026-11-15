@@ -1,0 +1,12 @@
+# Verification Checklist
+- [ ] Open http://localhost:3000/login or register "Test User" / "user@example.com" / "password123"
+- [ ] Navigate to Investments page (/investments)
+- [ ] Verify Live Gold and Live Silver prices are visible in the top cards with live spot rates
+- [ ] Click "Add Asset" button
+- [ ] Verify form fields change for Gold (Physical, Grams/Kilograms) and Mutual Funds/SIP (Is SIP? checkbox and details)
+- [ ] Fill out and submit SIP form for "Parag Parikh Flexi Cap Fund" (Mutual Funds, SIP, Multi Cap, Monthly, 5000, 2026-06-25)
+- [ ] Verify holding is added with SIP badge, category division, monthly payment info
+- [ ] Verify automated reminder alert is created at the bottom
+- [ ] Click "Set Reminder" at top, choose holding, title "Custom Premium Payment", date, create alert, verify scheduled
+- [ ] Dismiss custom alert (trash icon) and verify deletion
+- [ ] Return report

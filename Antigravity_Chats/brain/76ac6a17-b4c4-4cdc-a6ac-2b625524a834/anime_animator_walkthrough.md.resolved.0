@@ -1,0 +1,82 @@
+# Anime Motion Studio Walkthrough
+
+Welcome to **Anime Motion Studio**, a premium, interactive web application developed to animate your collection of 25 anime photos sequentially. 
+
+The application has been fully set up, dependencies installed, and the local server is actively running!
+
+---
+
+## 🚀 Getting Started
+
+The local development server is already running. You can open and interact with the application immediately:
+
+👉 **[http://localhost:5173/](http://localhost:5173/)**
+
+---
+
+## 🎨 Key Features & Technical Details
+
+Anime Motion Studio is built as a single-page application using **Vite**, **Vanilla JS**, and **HTML5 Canvas** for high-performance rendering.
+
+### 1. Sequential Frame Player
+- **Preloading & Buffering**: The application scans and preloads all 25 files (`1.jpg` to `18.jpg`, and `19.jpeg` to `25.jpeg`) from `/home/melwinabi/Downloads/Animiice` so playback is completely smooth and stutter-free.
+- **Speed Slider (FPS)**: Adjustable playback speed from 1 to 24 FPS. Preset buttons let you instantly toggle between *Slow* (2 FPS), *Normal* (4 FPS), *Fast* (10 FPS), and *Action* (18 FPS).
+- **Aspect Ratio Controls**: Change the canvas container shape instantly (16:9 widescreen, 4:3 TV size, 1:1 square, or 9:16 vertical for mobile/TikTok).
+
+### 2. Cinematic Transitions
+We implemented double-buffered canvas frame interpolation. When playing, the renderer calculates frame transitions in real-time:
+* **Dissolve Crossfade**: Overlaps frames by gradually fading out the old one while fading in the new one.
+* **Ken Burns Effect**: Pans and zooms into each photo dynamically, creating the illusion of smooth motion from static anime art.
+* **Slide Left/Right**: Horizontally slides frames across the viewport.
+* **Fade to Black**: Fades the current frame down to black and brings the next one up.
+
+### 3. Built-in Synth Soundtracks
+Using the browser's native **Web Audio API**, the application synthesizes lo-fi background beats without loading heavy audio files.
+* **Lofi Anime Beat**: Uses a low-pass filter to generate warm 110 BPM basslines, a noise-based hi-hat, soft kick/snare, and pentatonic synth chord pads.
+* **Chiptune Retro Theme**: Fast-tempo 8-bit square wave arpeggios.
+* **Dreamy Ambient Pad**: High-feedback echo delays and slow-moving lush pads.
+* *Volume slider included for custom adjustment.*
+
+### 4. Color Grading Filters
+Direct pixel and styling adjustments using canvas filter pipelines:
+* **Anime Boost**: Multiplies saturation and contrast for vibrant colors.
+* **Cyberpunk Glow**: Shifts hues and cranks saturation for a neon Tokyo look.
+* **Vintage Warm**: Sepia-based retro aesthetic.
+* **Noir Monochromatic**: Deep, high-contrast black and white.
+* **Golden Sunset**: Adds a warm golden hour tone.
+
+### 5. Drag-and-Drop Timeline & Sequencer
+* **Filmstrip Visualizer**: Displays a horizontal scrolling ribbon of frame thumbnails.
+* **Timeline Sort Utilities**: Sort alphabetically, reverse the entire sequence, or shuffle frames.
+* **Grab & Drag**: Drag and drop cards in the sequencer panel (right side) to change the playback order.
+* **Frame Manipulation**: Duplicate, rearrange, or delete specific frames.
+
+### 6. Video & Snapshot Exporter
+* **MediaRecorder Video Compilation**: Captures the `<canvas>` stream in real-time at the target FPS.
+* **Audio Track Injector**: Captures the synthesized soundtrack from the Web Audio destination stream and muxes it with the canvas video track.
+* **Downloadable WebM/MP4**: Automatically downloads the finished video file.
+* **Snapshots**: Save the current canvas scene instantly as a JPEG image.
+
+---
+
+## 🛠️ Folder Structure
+
+The project has been established in your scratch space:
+```bash
+/home/melwinabi/.gemini/antigravity/scratch/anime-animator/
+├── index.html           # Main UI Layout
+├── package.json         # Scripts and Dev Dependencies
+├── public/
+│   ├── favicon.svg      # Page icon
+│   └── images/          # Co-located anime images (1.jpg to 25.jpeg)
+└── src/
+    ├── main.js          # Core animation player & Web Audio logic
+    └── style.css        # Glassmorphic cyber dark-mode styles
+```
+
+---
+
+## 💡 Quick Tips
+1. **Try the Ken Burns transition** along with **Anime Boost** color grading. It makes the static images look like a professional anime montage.
+2. **Enable the Lofi Anime Beat** soundtrack while playing to experience synthesized ambient beats synced to the playhead.
+3. Click **Export MP4/WebM Video** to save your creation to your machine. The exporter runs client-side and compiles your timeline and music into a single file!

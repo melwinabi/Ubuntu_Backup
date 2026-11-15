@@ -1,0 +1,7 @@
+# Task: Navigate to dashboard, wait 3 seconds, capture screenshot, and save to /home/melwinabi/Documents/Finance_Folio/dashboard.png
+
+## Checklist
+- [ ] Verify/Navigate to http://localhost:3000/dashboard
+- [ ] Wait 3 seconds
+- [ ] Capture screenshot named 'dashboard'
+- [ ] Verify screenshot is saved

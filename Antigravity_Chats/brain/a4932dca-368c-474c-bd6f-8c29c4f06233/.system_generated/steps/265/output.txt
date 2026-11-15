@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+/media/melwinabi/UBUNTU 24_0/Pendrive/ACER_Windows.zip
+/media/melwinabi/UBUNTU 24_0/Pendrive/NBR_ACEW.zip
+/media/melwinabi/UBUNTU 24_0/Pendrive/SOFTWARES.zip
+/media/melwinabi/UBUNTU 24_0/Pendrive/.Trash-1000/files/Linux_.zip

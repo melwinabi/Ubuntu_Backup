@@ -1,0 +1,10 @@
+# Task List
+- [ ] Register a new user at http://localhost:3001/register (Test User, user@example.com, password123)
+- [ ] Go to http://localhost:3001/investments
+- [ ] Verify Live Gold and Live Silver prices in rates bar
+- [ ] Click "Add Asset" and verify dynamic fields for Gold & Mutual Funds/SIP
+- [ ] Fill out and submit a sample SIP investment
+- [ ] Verify holding added and automatic alert created
+- [ ] Create a custom reminder alert and verify it appears
+- [ ] Test dismissing a reminder
+- [ ] Return success summary

@@ -1,0 +1,7 @@
+My Dashboard
+Live Connected
+[0] (865,58)<button class='btn'>Add Device />
+[1] (950,58)<button class='btn btn-outline'>Logout />
+My Devices
+No devices added yet
+Click the "Add Device" button above to get started.

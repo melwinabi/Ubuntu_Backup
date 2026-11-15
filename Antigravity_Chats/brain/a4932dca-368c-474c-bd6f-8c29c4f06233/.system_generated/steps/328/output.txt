@@ -1,0 +1,18 @@
+Command exited with code 0.
+
+Command output:
+total 52
+drwxrwxr-x  7 melwinabi melwinabi 4096 Jul 31 22:22 .
+drwxr-x--- 53 melwinabi melwinabi 4096 Nov 15 12:51 ..
+-rw-rw-r--  1 melwinabi melwinabi   46 Sep 27 19:01 adb.5037
+-rw-------  1 melwinabi melwinabi 1704 May 23 22:19 adbkey
+-rw-rw-r--  1 melwinabi melwinabi  721 May 23 22:19 adbkey.pub
+-rw-r-----  1 melwinabi melwinabi  260 Jul 31 22:22 adb_known_hosts.pb
+-rw-rw-r--  1 melwinabi melwinabi  218 May 23 22:01 analytics.settings
+drwxrwxr-x  2 melwinabi melwinabi 4096 May 23 21:53 avd
+drwxrwxr-x  2 melwinabi melwinabi 4096 May 23 22:36 cache
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jul 26 22:15 cli
+-rw-rw-r--  1 melwinabi melwinabi 2618 May 23 23:29 debug.keystore
+-rw-rw-r--  1 melwinabi melwinabi    0 May 23 23:29 debug.keystore.lock
+drwxrwxr-x  3 melwinabi melwinabi 4096 May 23 21:53 metrics
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jul 26 22:15 studio

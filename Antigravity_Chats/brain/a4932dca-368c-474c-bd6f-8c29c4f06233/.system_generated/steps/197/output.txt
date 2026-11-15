@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/Downloads/.pdf: PDF document, version 1.4, 2 page(s)

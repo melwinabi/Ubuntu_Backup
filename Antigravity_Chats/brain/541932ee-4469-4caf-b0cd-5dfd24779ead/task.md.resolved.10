@@ -1,0 +1,14 @@
+# Task: Switch from OneDrive to GitHub for Documents Backup
+
+- [/] Remove OneDrive Client and Configuration <!-- id: 0 -->
+    - [ ] Stop and disable `onedrive` service <!-- id: 1 -->
+    - [ ] Uninstall `onedrive` package <!-- id: 2 -->
+    - [ ] Remove OBS repository and key <!-- id: 3 -->
+    - [ ] Remove configuration and log files <!-- id: 4 -->
+- [ ] Set up GitHub-based Backup for Documents <!-- id: 5 -->
+    - [ ] Initialize Git repository in `~/Documents` <!-- id: 6 -->
+    - [ ] Configure `.gitignore` to avoid syncing unnecessary files <!-- id: 7 -->
+    - [ ] Create a GitHub repository (Manual User Action or via CLI if authenticated) <!-- id: 8 -->
+    - [ ] Push initial commit to GitHub <!-- id: 9 -->
+    - [ ] Set up automatic backup script/service <!-- id: 10 -->
+- [ ] Create walkthrough documentation <!-- id: 11 -->

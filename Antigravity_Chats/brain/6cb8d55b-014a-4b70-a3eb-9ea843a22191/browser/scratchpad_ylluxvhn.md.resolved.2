@@ -1,0 +1,16 @@
+# SIP Management Verification Plan
+- [x] Open http://localhost:3000/investments and login if needed
+  - Encountered `PrismaClientValidationError` in the Next.js Turbopack dev server.
+  - The error is: `Unknown field sipSkips for include statement on model Investment.`
+  - This is because the dev server's in-memory Prisma client is stale and does not reflect the database schema update that added `sipSkips`.
+  - Since we have a strict restriction to ONLY view and edit the scratchpad file, we cannot modify source code files or restart the dev server.
+- [ ] Locate the Holdings Ledger table and find "SBI" (SIP)
+- [ ] Click "Manage SIP Skips & Status" button
+- [ ] Verify initial stats on the modal (Start Date, Deposits Paid, Skipped Payments, Invested Capital)
+- [ ] Toggle first installment to "Skipped" and verify state
+- [ ] Toggle second installment to "Skipped" and verify "Skipped Payments" count increases
+- [ ] Click "Stop Plan" and confirm the cancellation
+- [ ] Verify modal status updates to "Plan Suspended / Cancelled"
+- [ ] Click "Done" and close modal
+- [ ] Verify that Net Return/ROI in the stats grid and Holdings Ledger has been re-evaluated
+

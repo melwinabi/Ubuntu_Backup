@@ -1,0 +1,18 @@
+# discord update plan
+
+the user has downloaded a discord update file ([discord-0.0.132.deb](file:///home/melwinabi/Downloads/discord-0.0.132.deb)) and wants to apply it.
+
+## current state
+- update file: [/home/melwinabi/Downloads/discord-0.0.132.deb](file:///home/melwinabi/Downloads/discord-0.0.132.deb)
+- workspace: `/home/melwinabi/.gemini/antigravity/scratch` (contains some old scripts and zip files)
+
+## proposed changes
+1. **verify current installation**: check if discord is installed via apt, flatpak, or snap.
+2. **apply update**:
+   - use `sudo apt install` to install the `.deb` file, which handles dependencies better than `dpkg`.
+3. **verify update**: check the version of discord after installation.
+
+## verification plan
+### automated tests
+- run `discord --version` to confirm the update.
+- check if the desktop entry is updated.

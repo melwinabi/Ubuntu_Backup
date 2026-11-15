@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to implement persistent user-specific device dashboards. Includes schema updates for User and UserDevice models, a new API endpoint for relationship management, and UI updates to support persistent device lists.",
+  "updatedAt": "2026-04-09T04:02:15.319089074Z",
+  "version": "1"
+}

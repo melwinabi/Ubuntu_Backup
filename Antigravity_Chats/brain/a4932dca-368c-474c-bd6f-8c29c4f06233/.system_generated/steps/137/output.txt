@@ -1,0 +1,21 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/Applications:
+total 197340
+drwxrwxr-x  3 melwinabi melwinabi      4096 May  9  2026 .
+drwxr-x--- 53 melwinabi melwinabi      4096 Nov 15 12:51 ..
+-rwxrwxr-x  1 melwinabi melwinabi 202058647 Feb 25  2026 arduino-ide.AppImage
+drwx------  5 melwinabi melwinabi      4096 May  9  2026 arduino-ide-extracted
+
+/home/melwinabi/development:
+total 12
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jun 28 22:28 .
+drwxr-x--- 53 melwinabi melwinabi 4096 Nov 15 12:51 ..
+drwxrwxr-x 17 melwinabi melwinabi 4096 Jun 28 22:30 flutter
+
+/home/melwinabi/StudioProjects:
+total 12
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jul 31 22:59 .
+drwxr-x--- 53 melwinabi melwinabi 4096 Nov 15 12:51 ..
+drwxrwxr-x 13 melwinabi melwinabi 4096 Jul 26 22:20 chat_bot_financial_trading

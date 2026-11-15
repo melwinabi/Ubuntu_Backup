@@ -1,0 +1,40 @@
+Command exited with code 0.
+
+Command output:
+3561:function get_windows() {
+3562-    if [ "${OS}" == "windows-server" ]; then
+3563-        download_windows_server "windows-server-${RELEASE}"
+3564-    else
+3565-        download_windows_workstation "${RELEASE}"
+3566-    fi
+3567-
+3568-    if [ "${OPERATION}" == "download" ]; then
+3569-        exit 0
+3570-    fi
+3571-
+3572-    echo "Downloading VirtIO drivers..."
+3573-    web_get "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" "${VM_PATH}"
+3574-
+3575-    rm -f "${VM_PATH}/unattended.iso"
+3576-    case ${RELEASE} in
+3577-        10|11)
+3578-            unattended_windows "${VM_PATH}"
+3579-            ;;
+3580-    esac
+3581-
+3582-    if [ -n "${FILE_NAME}" ]; then
+3583-        make_vm_config "${FILE_NAME}" "virtio-win.iso"
+3584-    else
+3585-        make_vm_config "windows-${RELEASE}.iso" "virtio-win.iso"
+3586-    fi
+--
+4050:        get_windows
+4051-    else
+4052-        validate_release "releases_${OS}"
+4053-        create_vm "$("get_${OS}")"
+4054-    fi
+4055-else
+4056-    error_specify_release
+4057-fi
+4058-
+4059-# vim:tabstop=4:shiftwidth=4:expandtab

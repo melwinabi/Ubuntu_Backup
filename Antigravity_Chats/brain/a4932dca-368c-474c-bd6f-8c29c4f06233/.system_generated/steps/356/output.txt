@@ -1,0 +1,12 @@
+Command exited with code 1.
+
+Command output:
+
+**********************************************
+      Ventoy: 1.1.18  x86_64
+      longpanda admin@ventoy.net
+      https://www.ventoy.net
+**********************************************
+
+/dev/sda1 /media/melwinabi/UBUNTU\04024_0 vfat rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,showexec,utf8,flush,errors=remount-ro 0 0
+/dev/sda is already mounted, please umount it first!

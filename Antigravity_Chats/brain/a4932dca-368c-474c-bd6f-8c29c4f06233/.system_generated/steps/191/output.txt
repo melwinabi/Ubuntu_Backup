@@ -1,0 +1,46 @@
+Command exited with code 0.
+
+Command output:
+=== 1. Top-Level Home Items NOT in Backup ===
+  - .bash_logout: 0.0 MB
+  - .ssh: 0.0 MB
+  - Android: 4122.6 MB
+  - Applications: 719.5 MB
+  - DbGate: 479.9 MB
+  - Desktop: 0.0 MB
+  - development: 1349.5 MB
+  - flutter: 681.1 MB
+  - flutter_linux_3.35.1-stable.tar.xz: 1370.8 MB
+  - java_error_in_studio_8869.log: 0.5 MB
+
+=== 2. Missing Whole Folders in Documents ===
+  - Documents/ACER_Windows.zip: 2322.5 MB
+  - Documents/OneDrive: 4039.9 MB
+  - Documents/SOFTWARES: 4037.2 MB
+  - Documents/Smart_Hub.zip: 343.8 MB
+
+=== 3. Missing Large Files inside tracked Documents (> 50MB) ===
+  - Documents/./ACER_Windows.zip: 2322.5 MB
+  - Documents/./Smart_Hub.zip: 343.8 MB
+  - Documents/PPV projects/Softwares/kicad-9.0.1-x86_64.exe: 1074.6 MB
+  - Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe: 1074.6 MB
+  - Documents/ACER_Windows/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe: 113.6 MB
+
+=== 4. Missing Items in Downloads ===
+  - Downloads/.pdf: 0.4 MB
+  - Downloads/BLE_Improved.zip: 86.0 MB
+  - Downloads/Python-3.13.13.tgz: 28.5 MB
+  - Downloads/android-studio-panda4-patch1-linux.tar.gz: 1403.0 MB
+  - Downloads/anime_anniversary_video_created.mp4: 183.5 MB
+  - Downloads/anydesk_8.0.2-1_amd64.deb: 15.3 MB
+  - Downloads/code_1.117.0-1776814346_amd64.deb: 141.7 MB
+  - Downloads/code_1.119.0-1778006717_amd64.deb: 141.0 MB
+  - Downloads/code_1.143.1-1792691907_amd64.deb: 231.9 MB
+  - Downloads/dbgate-latest.deb: 108.2 MB
+  - Downloads/dbgate-premium-latest.AppImage: 188.8 MB
+  - Downloads/dbgate.AppImage: 166.7 MB
+  - Downloads/discord-0.0.132.deb: 102.3 MB
+  - Downloads/easyeda-pro: 954.0 MB
+  - Downloads/easyeda-pro-linux-x64-2.2.45.4.zip: 314.4 MB
+  - Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1): 804.8 MB
+  - Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1).zip: 804.8 MB

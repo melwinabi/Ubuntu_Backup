@@ -1,0 +1,44 @@
+# Walkthrough - OneDrive Setup Complete
+
+The OneDrive setup is now finished. The `onedrive` client (abraunegg/onedrive) has been installed, authenticated, and configured to run automatically in the background.
+
+## Changes Made
+
+### 1. Repository Configuration
+- Added the official OpenSuSE Build Service (OBS) repository release key for Ubuntu 24.04.
+- Configured the OBS repository for supported `onedrive` client packages.
+
+### 2. Client Installation
+- Installed the latest `onedrive` client via `apt`.
+- Verified the version and connectivity to Microsoft services.
+
+### 3. Authentication
+- Authenticated the client using a Microsoft account redirect URI provide by the user.
+
+### 4. Background Sync
+- Enabled and started the `systemd` user service to handle automatic file synchronization.
+- Verified that the service is running and active using `systemctl` and `journalctl`.
+
+## Verification Results
+
+### Service Status
+The OneDrive background service is active and sincronizing files.
+
+```bash
+systemctl --user status onedrive
+```
+Output snippets:
+- `Active: active (running)`
+- `Starting a sync with Microsoft OneDrive`
+- `Fetching items from the OneDrive API...`
+
+### Sync Directory
+By default, your files will be synced to:
+`~/OneDrive`
+
+## How to Manage OneDrive
+
+- **Check sync status**: `onedrive --display-sync-status` (Note: Stop the background service first if you want to run manual commands).
+- **Check logs**: `journalctl --user -u onedrive -f`
+- **Stop sync**: `systemctl --user stop onedrive`
+- **Start sync**: `systemctl --user start onedrive`

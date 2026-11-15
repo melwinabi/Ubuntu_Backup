@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+-rw-rw-r-- 1 melwinabi melwinabi    47 Jun 28 21:45 /home/melwinabi/.config/Code/User/settings.json
+-rw------- 1 melwinabi melwinabi 34242 Nov 15 12:30 /home/melwinabi/.config/google-chrome/Default/Bookmarks

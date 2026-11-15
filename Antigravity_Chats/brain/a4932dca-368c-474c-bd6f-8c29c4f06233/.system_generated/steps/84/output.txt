@@ -1,0 +1,24 @@
+Command exited with code 0.
+
+Command output:
+total 324
+drwxr-xr-x  7 melwinabi melwinabi  4096 Mar 24  2026  .
+drwxr-xr-x 26 melwinabi melwinabi  4096 Jul 23 20:57  ..
+-rw-r--r--  1 melwinabi melwinabi 30094 Apr  6  2025  060425022.txt
+-rw-r--r--  1 melwinabi melwinabi 30125 Apr  6  2025  060425033.txt
+-rw-r--r--  1 melwinabi melwinabi 23776 Apr  8  2025  0804251216.txt
+-rw-r--r--  1 melwinabi melwinabi 23786 Apr  8  2025  1337080825.txt
+-rw-r--r--  1 melwinabi melwinabi 30499 Apr  6  2025  6425_01.txt
+-rw-r--r--  1 melwinabi melwinabi 23612 Apr 17  2025  Arduino_Merge_Mega.txt
+drwxr-xr-x  5 melwinabi melwinabi  4096 Mar 24  2026  EC200U
+drwxr-xr-x  3 melwinabi melwinabi  4096 Mar 24  2026  EC200UCNABR03A01M08_OCPU_QPY_BETA0831
+-rw-r--r--  1 melwinabi melwinabi 30499 Apr  6  2025  final_programs.txt
+-rw-r--r--  1 melwinabi melwinabi  7907 Apr  8  2025 'final working  50.txt'
+-rw-r--r--  1 melwinabi melwinabi 23553 Apr 25  2025 'final working ard 50.txt'
+-rw-r--r--  1 melwinabi melwinabi 23485 Apr  8  2025 'final working ard node51.txt'
+-rw-r--r--  1 melwinabi melwinabi  8052 Apr  8  2025 'final working node 51.txt'
+-rw-r--r--  1 melwinabi melwinabi  8100 Feb 24  2025 'from gsm.txt'
+-rw-r--r--  1 melwinabi melwinabi 23831 Apr 17  2025 'merge final 50.txt'
+drwxr-xr-x 19 melwinabi melwinabi  4096 Mar 24  2026  QFlash_V6.1_Temp_20221104
+drwxr-xr-x  3 melwinabi melwinabi  4096 Mar 24  2026  QPYcom_V3.6.0
+drwxr-xr-x  5 melwinabi melwinabi  4096 Mar 24  2026 'Valve Control Cenmark'

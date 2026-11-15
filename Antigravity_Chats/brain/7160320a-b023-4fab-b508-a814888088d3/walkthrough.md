@@ -1,0 +1,14 @@
+# STM32CubeIDE Installation Walkthrough
+
+## Summary
+Successfully extracted the installed script `st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh` and performed a full silent installation of the underlying packages using `dpkg`/`apt`. This included:
+- Segger J-Link udev rules
+- ST-LINK Server
+- ST-LINK udev rules
+- STM32CubeIDE application core
+
+## Verification
+- Confirmed the binary core is present in `/opt/st/stm32cubeide_2.1.1/stm32cubeide`.
+- Confirmed the desktop application shortcut is properly installed at `/usr/share/applications/st-stm32cubeide-2.1.1.desktop`.
+
+You should now be able to launch STM32CubeIDE from your application menu.

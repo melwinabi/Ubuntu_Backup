@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+308K	Arduino
+2.5M	STM32CubeIDE
+43M	StudioProjects
+20K	configs
+8.1M	drawing.svg

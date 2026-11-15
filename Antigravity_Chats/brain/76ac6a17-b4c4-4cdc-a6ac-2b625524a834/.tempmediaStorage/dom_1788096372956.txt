@@ -1,0 +1,180 @@
+Anime Motion Studio
+Flipbook & Cinematic Sequencer
+Ready • 25 Frames Loaded
+01
+Playback Controls
+[0] (87,137)<label >Duration:
+5
+s per Photo />
+	5
+[1] (88,160)<input id='fps-slider' />
+[2] (29,194)<button class='btn btn-sm btn-preset'>2s />
+[3] (68,194)<button class='btn btn-sm btn-preset active'>5s />
+[4] (106,194)<button class='btn btn-sm btn-preset'>8s />
+[5] (145,194)<button class='btn btn-sm btn-preset'>12s />
+[6] (87,233)<label >Aspect Ratio />
+[7] (87,273)<select id='aspect-ratio' />
+02
+Cinematic Transitions
+[8] (87,386)<label >Transition Mode />
+[9] (87,426)<select id='transition-select' />
+[10] (14,477)<input id='chk-pan-zoom' />
+[11] (76,477)<label >Continuous Motion (Pan & Zoom) />
+Transitions will interpolate between frame changes.
+03
+Audio Soundtrack
+[12] (87,624)<label >Atmosphere Synth Track />
+[13] (87,664)<select id='audio-preset' />
+04
+Color Grading / Filters
+[14] (48,785)<button class='btn btn-filter active'>Normal />
+[15] (126,785)<button class='btn btn-filter'>Vintage Warm />
+[16] (48,830)<button class='btn btn-filter'>Cyberpunk Glow />
+[17] (126,830)<button class='btn btn-filter'>Anime Boost />
+[18] (48,883)<button class='btn btn-filter'>Noir Monochromatic />
+[19] (126,883)<button class='btn btn-filter'>Golden Sunset />
+[20] (404,690)<button class='btn-ctrl' id='btn-prev' title='Previous Frame' />
+[21] (431,690)<button class='btn-ctrl btn-play' id='btn-play-pause' title='Play / Pause' />
+[22] (458,690)<button class='btn-ctrl' id='btn-next' title='Next Frame' />
+[23] (483,690)<button class='btn-ctrl' id='btn-loop' title='Toggle Loop' />
+01 / 25
+0.00s
+[24] (583,690)<button class='btn btn-outline' id='btn-snapshot' title='Download Current Frame as JPG'>Snapshot />
+Timeline Channel
+[25] (701,848)<button class='btn btn-xs' id='btn-sort-asc'>Sort A-Z />
+[26] (738,848)<button class='btn btn-xs' id='btn-reverse'>Reverse />
+[27] (774,848)<button class='btn btn-xs' id='btn-shuffle'>Shuffle />
+[28] (805,848)<button class='btn btn-xs text-danger' id='btn-clear-all'>Reset />
+[29] (507,887)<input id='scrubber-bar' />
+[30] (505,936)<div class='filmstrip-wrapper' scrollable='true' />
+	[31] (210,931)<div  />
+		[32] (210,931)<img  />
+		[33] (223,941)<span >1 />
+	[34] (249,931)<div  />
+		[35] (249,931)<img  />
+		[36] (261,940)<span >2 />
+	[37] (288,931)<div  />
+		[38] (288,931)<img  />
+		[39] (301,940)<span >3 />
+	[40] (328,931)<div  />
+		[41] (328,931)<img  />
+		[42] (340,940)<span >4 />
+	[43] (367,931)<div  />
+		[44] (367,931)<img  />
+		[45] (379,940)<span >5 />
+	[46] (406,931)<div  />
+		[47] (406,931)<img  />
+		[48] (418,940)<span >6 />
+	[49] (445,931)<div  />
+		[50] (445,931)<img  />
+		[51] (458,940)<span >7 />
+	[52] (485,931)<div  />
+		[53] (485,931)<img  />
+		[54] (497,940)<span >8 />
+	[55] (524,931)<div  />
+		[56] (524,931)<img  />
+		[57] (536,940)<span >9 />
+	[58] (563,931)<div  />
+		[59] (563,931)<img  />
+		[60] (574,940)<span >10 />
+	[61] (603,931)<div  />
+		[62] (603,931)<img  />
+		[63] (613,940)<span >11 />
+	[64] (642,931)<div  />
+		[65] (642,931)<img  />
+		[66] (653,940)<span >12 />
+	[67] (681,931)<div  />
+		[68] (681,931)<img  />
+		[69] (692,940)<span >13 />
+	[70] (720,931)<div  />
+		[71] (720,931)<img  />
+		[72] (731,940)<span >14 />
+	[73] (760,931)<div  />
+		[74] (760,931)<img  />
+		[75] (770,940)<span >15 />
+	[76] (799,931)<div  />
+		[77] (799,931)<img  />
+		[78] (810,940)<span >16 />
+	17
+	18
+	19
+	20
+05
+Export Video File
+Compile the sequence into an actual video file (includes selected synthesized audio track).
+[79] (918,237)<button class='btn btn-primary btn-block' id='btn-export-video'>Export MP4/WebM Video />
+06
+Frame Sequencer
+Manage individual frame order. Click thumbnail to edit, or drag to reorder.
+[80] (918,620)<div class='sequencer-list' id='sequencer-list' scrollable='true' />
+	[81] (916,439)<div  />
+		[82] (858,439)<div  />
+		[83] (881,439)<div  />
+			[84] (881,439)<img  />
+		[85] (916,439)<div  />
+			[86] (916,425)<span >1.jpg />
+			[87] (916,447)<span >Frame 1 • JPG />
+		[88] (959,439)<div  />
+			[89] (944,439)<button class='btn-seq-action move-up' title='Move Up' />
+			[90] (959,439)<button class='btn-seq-action move-down' title='Move Down' />
+			[91] (973,439)<button class='btn-seq-action delete' title='Remove Frame' />
+	[92] (916,510)<div  />
+		[93] (858,510)<div  />
+		[94] (881,510)<div  />
+			[95] (881,510)<img  />
+		[96] (916,510)<div  />
+			[97] (916,496)<span >2.jpg />
+			[98] (916,518)<span >Frame 2 • JPG />
+		[99] (959,510)<div  />
+			[100] (944,510)<button class='btn-seq-action move-up' title='Move Up' />
+			[101] (959,510)<button class='btn-seq-action move-down' title='Move Down' />
+			[102] (973,510)<button class='btn-seq-action delete' title='Remove Frame' />
+	[103] (916,581)<div  />
+		[104] (858,581)<div  />
+		[105] (881,581)<div  />
+			[106] (881,581)<img  />
+		[107] (916,581)<div  />
+			[108] (916,568)<span >3.jpg />
+			[109] (916,589)<span >Frame 3 • JPG />
+		[110] (959,581)<div  />
+			[111] (944,581)<button class='btn-seq-action move-up' title='Move Up' />
+			[112] (959,581)<button class='btn-seq-action move-down' title='Move Down' />
+			[113] (973,581)<button class='btn-seq-action delete' title='Remove Frame' />
+	[114] (916,653)<div  />
+		[115] (858,653)<div  />
+		[116] (881,653)<div  />
+			[117] (881,653)<img  />
+		[118] (916,653)<div  />
+			[119] (916,639)<span >4.jpg />
+			[120] (916,661)<span >Frame 4 • JPG />
+		[121] (959,653)<div  />
+			[122] (944,653)<button class='btn-seq-action move-up' title='Move Up' />
+			[123] (959,653)<button class='btn-seq-action move-down' title='Move Down' />
+			[124] (973,653)<button class='btn-seq-action delete' title='Remove Frame' />
+	[125] (916,724)<div  />
+		[126] (858,724)<div  />
+		[127] (881,724)<div  />
+			[128] (881,724)<img  />
+		[129] (916,724)<div  />
+			[130] (916,710)<span >5.jpg />
+			[131] (916,732)<span >Frame 5 • JPG />
+		[132] (959,724)<div  />
+			[133] (944,724)<button class='btn-seq-action move-up' title='Move Up' />
+			[134] (959,724)<button class='btn-seq-action move-down' title='Move Down' />
+			[135] (973,724)<button class='btn-seq-action delete' title='Remove Frame' />
+	[136] (916,795)<div  />
+		[137] (858,795)<div  />
+		[138] (881,795)<div  />
+			[139] (881,795)<img  />
+		[140] (916,795)<div  />
+			[141] (916,781)<span >6.jpg />
+			[142] (916,803)<span >Frame 6 • JPG />
+		[143] (959,795)<div  />
+			[144] (944,795)<button class='btn-seq-action move-up' title='Move Up' />
+			[145] (959,795)<button class='btn-seq-action move-down' title='Move Down' />
+			[146] (973,795)<button class='btn-seq-action delete' title='Remove Frame' />
+	7.jpg
+	Frame 7 • JPG
+	8.jpg
+	Frame 8 • JPG
+	9.jpg

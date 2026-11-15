@@ -9,3 +9,4 @@ This repository contains the backup of personal files, projects, and system conf
 - `Pictures/`: Personal photos and images
 - `Music/` & `Videos/`: Media directories
 - `system_info/`: Complete list of installed APT packages, Snap packages, and system specs for reference on Windows.
+- `Antigravity_Chats/`: Complete archive of all Google Antigravity R&D chat histories, implementation plans, architecture artifacts, and conversation database.

@@ -1,0 +1,82 @@
+# Implementation Plan - Production IoT Home Automation
+
+## Objectives
+- Migrate to PostgreSQL.
+- Implement secure Google OAuth for users and admins.
+- Implement OTP-based admin verification.
+- Refine Admin Dashboard "Add Device" multi-step workflow.
+- Enhance User Dashboard with device search and MQTT-connected widgets.
+- Connect to `wss://mymqtt.uvfarms.in`.
+
+## User Review Required
+> [!IMPORTANT]
+> - Ensure PostgreSQL is running locally with the credentials in [.env](file:///home/melwinabi/Documents/Smart_Hub/.env).
+> - The Google OAuth redirect URI is `http://localhost:3000/api/auth/callback/google`.
+
+### Authentication & Security
+- [x] Secure Google OAuth for Users.
+- [x] Admin Login with Email OTP.
+- [NEW] Admin TOTP (Google Authenticator) Integration.
+    - [ ] Add `totpSecret` to `AdminEmail` model.
+    - [ ] Implement TOTP setup UI with QR Code.
+    - [ ] Update NextAuth `admin-otp` provider to support TOTP verification.
+
+## Proposed Changes
+
+### Database [schema.prisma](file:///home/melwinabi/Documents/Smart_Hub/prisma/schema.prisma)
+- Add `totpSecret` to `AdminEmail`.
+- Add `lastValue` to [Widget](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx#14-19).
+
+### Admin Auth Flow
+1. Admin enters email.
+2. System sends Email OTP (for setup/verification).
+3. If TOTP not set up: Show QR Code + Secret. Admin scans in Google Authenticator.
+4. If TOTP set up: Admin enters 6-digit code from Google Authenticator.
+5. Login success.
+
+### Authentication
+#### [MODIFY] [.env](file:///home/melwinabi/Documents/Smart_Hub/.env)
+- Add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`.
+- Add MQTT broker URL: `MQTT_BROKER_URL=wss://mymqtt.uvfarms.in`.
+
+#### [MODIFY] [authOptions](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/auth/[...nextauth]/route.ts)
+- Configure Google Provider with the provided Client ID.
+- Implement logic to handle Admin OTP verification.
+
+### Admin Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx)
+- Strictly follow the multi-step workflow:
+  - Step 1: `W1_Series`.
+  - Step 2: `W1_Smart_Hub` or `W1_Switch`.
+  - Branching logic for Switch (ID, Topic, ServerID) vs Hub (ID, ServerID, Name -> Widgets -> Topics).
+- Disable widget animations in Admin view.
+
+### User Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx)
+- Search by ID flow.
+- "Display all default widgets?" prompt.
+- Dynamic widget display based on MQTT topics and data.
+
+### Widget Management
+- [NEW] `/api/widgets`: Support [PATCH](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/widgets/route.ts#6-24) (edit topic) and [DELETE](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/widgets/route.ts#25-44) (remove widget).
+### Personalized Device Management
+- [MODIFY] `authOptions`: Synchronize users with the [User](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx#29-347) table on sign-in.
+- [NEW] `/api/user/devices`: API for personalized device lists.
+- [MODIFY] Dashboard UI:
+    - Default view: Grid of "My Devices".
+    - corner "Add Device" button.
+    - "No devices yet" empty state.
+    - Search/Add flow moved to a Modal or secondary view.
+
+### API Layer
+- Update `/api/devices` to handle PostgreSQL and specific field mappings.
+- Implement OTP generation and email sending logic.
+- Implement `/api/widgets` for CRUD on widgets.
+- Implement `/api/user/devices` for personalized device tracking.
+
+## Verification Plan
+- Run Prisma migrations for PostgreSQL.
+- Test Google Login.
+- Test Admin OTP workflow (using mock email logs for now).
+- Verify Admin device creation workflow steps.
+- Verify User Dashboard widget loading and MQTT subscription.

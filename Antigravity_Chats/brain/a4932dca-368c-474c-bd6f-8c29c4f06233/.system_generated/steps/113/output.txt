@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/Ubuntu_Backup/Downloads/Sz/220 to 5v/.history/.git

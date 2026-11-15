@@ -1,0 +1,20 @@
+Command exited with code 0.
+
+Command output:
+2.3G	/media/melwinabi/UBUNTU 24_0/Pendrive/ACER_Windows.zip
+787M	/media/melwinabi/UBUNTU 24_0/Pendrive/backup
+20K	/media/melwinabi/UBUNTU 24_0/Pendrive/Copy
+52K	/media/melwinabi/UBUNTU 24_0/Pendrive/EC200U
+9.5M	/media/melwinabi/UBUNTU 24_0/Pendrive/EC200U_quectel_driver.zip
+8.0K	/media/melwinabi/UBUNTU 24_0/Pendrive/esp_with_rtc_alarm
+8.0K	/media/melwinabi/UBUNTU 24_0/Pendrive/from gsm.txt
+118M	/media/melwinabi/UBUNTU 24_0/Pendrive/Library
+44K	/media/melwinabi/UBUNTU 24_0/Pendrive/Linux_
+13M	/media/melwinabi/UBUNTU 24_0/Pendrive/Linux_.zip
+24K	/media/melwinabi/UBUNTU 24_0/Pendrive/Load_Cell_IoT
+339M	/media/melwinabi/UBUNTU 24_0/Pendrive/NBR_ACEW.zip
+20K	/media/melwinabi/UBUNTU 24_0/Pendrive/proteous zip link.zip
+44K	/media/melwinabi/UBUNTU 24_0/Pendrive/Select_Energy_Monitoring
+12K	/media/melwinabi/UBUNTU 24_0/Pendrive/sketch_feb08c
+3.8G	/media/melwinabi/UBUNTU 24_0/Pendrive/SOFTWARES.zip
+34M	/media/melwinabi/UBUNTU 24_0/Pendrive/SPD_Driver_R4.20.4201

@@ -1,0 +1,65 @@
+Command exited with code 0.
+
+Command output:
+total 3.9G
+drwxr-xr-x 14 melwinabi melwinabi 4.0K Oct 25 21:12  .
+drwxr-x--- 53 melwinabi melwinabi 4.0K Nov 15 12:51  ..
+-rw-rw-r--  1 melwinabi melwinabi  60K Apr  5  2026 'Abinaya V_Circuits PS_CynLr.pdf'
+-rw-rw-r--  1 melwinabi melwinabi 229K Apr  8  2026  Abinaya_V_Resume.pdf
+drwxrwxr-x  3 melwinabi melwinabi 4.0K Apr 18  2026  AggressionDetector_final
+-rw-rw-r--  1 melwinabi melwinabi 5.8M Apr 18  2026  AggressionDetector_final.zip
+-rw-rw-r--  1 melwinabi melwinabi  18K Jul  3 21:45  AI_Trading_Automation_Plan.pdf
+-rw-rw-r--  1 melwinabi melwinabi 1.4G May 23 21:45  android-studio-panda4-patch1-linux.tar.gz
+-rw-rw-r--  1 melwinabi melwinabi 184M Aug 30 18:55  anime_anniversary_video_created.mp4
+-rw-rw-r--  1 melwinabi melwinabi  14M Aug 30 12:57  anime_anniversary_video.mp4
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Aug 30 18:27  Animiice
+-rw-rw-r--  1 melwinabi melwinabi 3.8M Aug 30 12:47  Animiice.zip
+-rw-rw-r--  1 melwinabi melwinabi  16M Apr 18  2026  anydesk_8.0.2-1_amd64.deb
+-rw-rw-r--  1 melwinabi melwinabi 102K May  7  2026  B32922C3154M000.zip
+drwxrwxrwx  8 melwinabi melwinabi 4.0K Apr 27  2026  BLE_Improved
+-rw-rw-r--  1 melwinabi melwinabi  86M Apr 28  2026  BLE_Improved.zip
+-rw-rw-r--  1 melwinabi melwinabi 142M Apr 28  2026  code_1.117.0-1776814346_amd64.deb
+-rw-rw-r--  1 melwinabi melwinabi 141M May  8  2026  code_1.119.0-1778006717_amd64.deb
+-rw-rw-r--  1 melwinabi melwinabi 232M Oct 25 21:12  code_1.143.1-1792691907_amd64.deb
+-rw-rw-r--  1 melwinabi melwinabi  476 Apr  8  2026  config.json
+-rw-rw-r--  1 melwinabi melwinabi  60K Apr  5  2026 'CynLr (1).pdf'
+-rwxrwxr-x  1 melwinabi melwinabi 167M Apr  9  2026  dbgate.AppImage
+-rw-rw-r--  1 melwinabi melwinabi 109M Apr  8  2026  dbgate-latest.deb
+-rw-rw-r--  1 melwinabi melwinabi 189M Apr  8  2026  dbgate-premium-latest.AppImage
+-rw-rw-r--  1 melwinabi melwinabi 103M Apr  8  2026  discord-0.0.132.deb
+-rw-rw-r--  1 melwinabi melwinabi 527K Jun  5 21:29  DK1203-SOP-7-Datasheet-ENG-Rev1.0.pdf
+drwxrwxr-x  5 melwinabi melwinabi 4.0K Mar 30  2026  easyeda-pro
+-rw-rw-r--  1 melwinabi melwinabi 315M Mar 30  2026  easyeda-pro-linux-x64-2.2.45.4.zip
+-rw-rw-r--  1 melwinabi melwinabi 218K May 23 20:58  EEUED2G220S.zip
+-rw-rw-r--  1 melwinabi melwinabi  23K May  9  2026 'embedded_assignment (1).docx'
+-rw-rw-r--  1 melwinabi melwinabi  24K May  9  2026  embedded_assignment.docx
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Apr  1  2026  Gemini
+-rw-rw-r--  1 melwinabi melwinabi 5.7M Jul 19 15:14  Gemini_Generated_Image_wond73wond73wond.png
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Aug 30 12:18  Ice
+-rw-rw-r--  1 melwinabi melwinabi  12K Apr 19  2026  iot_product_demand_guide.html
+-rw-rw-r--  1 melwinabi melwinabi 626K May  7  2026  KF301-2P--3DModel-STEP-510211.STEP
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Mar 31  2026  KIcad
+-rw-rw-r--  1 melwinabi melwinabi 2.0M Jun  5 21:20  linkswitch-cv-data-sheet.pdf
+-rw-rw-r--  1 melwinabi melwinabi 183K Apr  2  2026  Melwin_Abishek_Alchi.pdf
+-rw-rw-r--  1 melwinabi melwinabi 228K Mar 25  2026 'Melwin Abishek M P (Resume).pdf'
+-rw-rw-r--  1 melwinabi melwinabi 391K Apr 21  2026 'Melwin Abishek M P_Resume_.pdf'
+-rw-rw-r--  1 melwinabi melwinabi 391K Apr 20  2026  .pdf
+-rw-rw-r--  1 melwinabi melwinabi 2.6K Jun 19 21:19  Piconnect.postman_collection.zip
+-rw-rw-r--  1 melwinabi melwinabi  28K Jul 16 21:29  pngwing.com.png
+-rw-rw-r--  1 melwinabi melwinabi 862K Apr  8  2026 'PPT REVIEW 2.pdf'
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Apr 30  2026 'PPV projects-20260330T072610Z-3-001'
+-rw-rw-r--  1 melwinabi melwinabi  16M Apr 30  2026  ProbotsPlasticEnclosureCatalog.pdf
+-rw-rw-r--  1 melwinabi melwinabi  29M May  9  2026  Python-3.13.13.tgz
+-rw-rw-r--  1 melwinabi melwinabi 2.3M Jul 23 21:10  SHL_BW.png
+-rw-rw-r--  1 melwinabi melwinabi 4.1M Jul 23 21:05  SHL_BWS.png
+-rw-rw-r--  1 melwinabi melwinabi 865K Apr 11  2026 'Signed Offer Letter.pdf'
+drwxrwxr-x  4 melwinabi melwinabi 4.0K Apr  9  2026  srm
+-rw-rw-r--  1 melwinabi melwinabi 2.7M Apr  1  2026  stm32f405zg.pdf
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Mar 26  2026 'st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1)'
+-rw-rw-r--  1 melwinabi melwinabi 805M Mar 26  2026 'st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1).zip'
+drwxrwxr-x  4 melwinabi melwinabi 4.0K May 23 19:12  Sz
+-rw-rw-r--  1 melwinabi melwinabi 842K May 23 19:11  Sz.zip
+-rw-rw-r--  1 melwinabi melwinabi 898K Apr 16  2026  TENANT.pdf
+-rw-rw-r--  1 melwinabi melwinabi 202K Mar 27  2026 'WhatsApp Image 2026-03-27 at 12.26.34 PM.jpeg'
+drwxrwxr-x  2 melwinabi melwinabi 4.0K Mar 27  2026 'WhatsApp Unknown 2026-03-27 at 12.19.38 PM'
+-rw-rw-r--  1 melwinabi melwinabi 145K Mar 27  2026 'WhatsApp Unknown 2026-03-27 at 12.19.38 PM.zip'

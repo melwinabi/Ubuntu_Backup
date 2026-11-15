@@ -1,0 +1,7 @@
+My Dashboard
+Connecting...
+[0] (950,58)<button class='btn btn-outline'>Logout />
+Search Your Device
+[1] (500,440)<label >Select Series />
+[2] (419,473)<select class='select-field' />
+[3] (500,520)<label >Select Device ID />

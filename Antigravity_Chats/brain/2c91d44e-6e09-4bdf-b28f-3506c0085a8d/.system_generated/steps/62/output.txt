@@ -1,0 +1,23 @@
+Command exited with code 0.
+
+Command output:
+total 8316
+drwxrwxr-x 16 melwinabi melwinabi    4096 Nov 15 13:30 .
+drwxr-x--- 54 melwinabi melwinabi    4096 Nov 15 17:31 ..
+drwxrwxr-x  5 melwinabi melwinabi    4096 May  9  2026 Arduino
+drwxrwxr-x  3 melwinabi melwinabi    4096 Nov 15 13:38 configs
+drwxrwxr-x  2 melwinabi melwinabi    4096 Nov 15 13:14 Desktop
+drwxrwxr-x 26 melwinabi melwinabi    4096 Nov 15 13:16 Documents
+drwxrwxr-x 12 melwinabi melwinabi    4096 Nov 15 13:17 Downloads
+-rw-rw-r--  1 melwinabi melwinabi 8437847 Jul 20 08:53 drawing.svg
+drwxrwxr-x  8 melwinabi melwinabi    4096 Nov 15 17:35 .git
+-rw-rw-r--  1 melwinabi melwinabi     128 Nov 15 12:53 .gitignore
+drwxrwxr-x  2 melwinabi melwinabi    4096 Nov 15 12:53 Music
+drwxrwxr-x 13 melwinabi melwinabi    4096 Nov 15 13:31 Pendrive
+drwxr-xr-x  4 melwinabi melwinabi    4096 Mar 27  2026 Pictures
+-rw-rw-r--  1 melwinabi melwinabi     637 Nov 15 12:53 README.md
+drwxrwxr-x  4 melwinabi melwinabi    4096 Apr  9  2026 srm
+drwxrwxr-x  3 melwinabi melwinabi    4096 Nov 15 13:07 STM32CubeIDE
+drwxrwxr-x  3 melwinabi melwinabi    4096 Nov 15 13:07 StudioProjects
+drwxrwxr-x  2 melwinabi melwinabi    4096 Nov 15 12:52 system_info
+drwxrwxr-x  2 melwinabi melwinabi    4096 Nov 15 12:53 Videos

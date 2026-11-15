@@ -1,0 +1,17 @@
+# Task: Update Smart Hub
+
+- [ ] Initial Research and Planning [x]
+    - [x] Explore codebase and identify components
+    - [x] Review database schema
+    - [ ] Create implementation plan [/]
+- [ ] Fix Typos and Brand Consistency [ ]
+    - [ ] Rename "Smaer-HUB" to "Smart-HUB" across all files [ ]
+- [ ] Implement Real Authentication [ ]
+    - [ ] Replace demo admin login with real OTP flow [ ]
+    - [ ] Set up real Google OAuth for users [ ]
+- [ ] Enhance Admin Dashboard [ ]
+    - [ ] Improve device search and management [ ]
+    - [ ] Implement CRUD for devices [ ]
+- [ ] Develop User Dashboard [ ]
+    - [ ] Show user-specific devices [ ]
+    - [ ] Implement device control interface [ ]

@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+total 20
+drwxr-xr-x  5 melwinabi melwinabi 4096 Nov 15 12:38 .
+drwxr-xr-x 47 melwinabi melwinabi 4096 Nov 15 12:38 ..
+drwxr-xr-x  2 melwinabi melwinabi 4096 Nov 15 12:38 scratch
+drwxr-xr-x  6 melwinabi melwinabi 4096 Nov 15 12:53 .system_generated
+drwxr-xr-x  2 melwinabi melwinabi 4096 Nov 15 13:17 .user_uploaded

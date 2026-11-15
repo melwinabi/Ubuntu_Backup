@@ -1,0 +1,8 @@
+Smaer-HUB
+Home Automation Management
+[0] (453,456)<button class='btn btn-primary'>User Login />
+[1] (547,456)<button class='btn btn-outline'>Admin Login />
+Access your personal device dashboard
+[2] (500,582)<input placeholder='Enter your Gmail' />
+[3] (500,651)<button class='btn btn-primary'>Login with Google />
+	[4] (466,651)<img  />

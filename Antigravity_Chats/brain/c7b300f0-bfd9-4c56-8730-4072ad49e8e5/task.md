@@ -1,0 +1,29 @@
+# Task: Implement Advanced Device Management
+
+- [x] Analyze existing code and API endpoints
+- [x] Secure Google OAuth for Users.
+- [x] Admin Login with Email OTP.
+- [x] Admin TOTP (Google Authenticator) Integration.
+- [x] Removed redundant login screen from Admin Dashboard.
+- [x] Streamlined Login flow (skips Email OTP if TOTP exists).
+- [x] Multi-step Register Device workflow with branching logic.
+- [x] Device Search and MQTT Widget display.
+    - [x] Search device by series/ID
+    - [x] "Display all default widgets" option
+    - [x] Dynamic widget rendering
+- [x] Verification and Debugging
+    - [x] Fixed Hydration Mismatches
+    - [x] Fixed ReferenceErrors in Dashboard
+    - [x] Fixed Router/Auth state inconsistencies
+    - [x] Verified Browser navigation flow
+- [x] Widget Management (User Dashboard)
+    - [x] Create API for widget update/delete
+    - [x] Add edit menu to widget cards
+    - [x] Implement topic editing modal/inline form
+    - [x] Implement widget and device deletion
+- [x] Personalized Device Management
+    - [x] Sync users with DB in NextAuth
+    - [x] Create API for user-device relationships
+    - [x] Redesign User Dashboard (Grid view + Add button)
+    - [x] Implement Add Device modal
+    - [x] Fixed 500 errors in Device API (Robust ID parsing)

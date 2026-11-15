@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Detailed implementation plan for Smaer-HUB, covering tech stack, backend API, authentication flows, and frontend architecture. Includes PostgreSQL schema and security measures.",
+  "updatedAt": "2026-04-01T14:08:57.731754784Z"
+}

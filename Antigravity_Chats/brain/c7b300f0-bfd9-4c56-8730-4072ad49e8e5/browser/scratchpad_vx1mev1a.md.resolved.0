@@ -1,0 +1,17 @@
+# Task Progress - Smart Hub Device Registration
+
+## Checklist
+- [x] Navigate to http://localhost:3000/admin/dashboard
+- [ ] Login as admin (admin@example.com) - **In Progress** (Encountered "Unauthorized" and form fill issues)
+- [ ] Add W1_Switch (ID: 101, Server: serv_switch, Topic: home/switch/101)
+- [ ] Add W1_Smart Hub (ID: 202, Server: serv_hub, Name: Living Room, Widgets: Temp, Humidity, Light)
+- [ ] Verify Hub configuration topics: home/202/temp, home/202/hum, home/202/light
+- [ ] Navigate to User Dashboard (/dashboard)
+- [ ] Select W1_Series and Device ID 202
+- [ ] Verify "Display all default widgets?" prompt
+- [ ] Verify widgets are displayed
+
+## Findings
+- Admin dashboard requires email `admin@example.com`.
+- Encountered `401 Unauthorized` when trying to save a device, likely due to session/cookie not being set correctly via the bypass email prompt.
+- Retrying login flow to ensure proper session initialization.

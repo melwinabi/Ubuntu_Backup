@@ -1,0 +1,18 @@
+Command exited with code 0.
+
+Command output:
+total 208
+drwx------ 10 melwinabi melwinabi  4096 Mar 30  2026  .
+drwxr-xr-x 26 melwinabi melwinabi  4096 Jul 23 20:57  ..
+drwxrwxrwx 10 melwinabi melwinabi  4096 Mar 24  2026  ACER_Windows
+drwx------  3 melwinabi melwinabi  4096 Mar 30  2026  Apps
+drwx------  2 melwinabi melwinabi  4096 Jan 22  2025  Attachments
+-rw-------  1 melwinabi melwinabi 98031 Dec 16  2024  Bus_Ticket_TTDC32684158.docx
+drwx------ 25 melwinabi melwinabi  4096 Mar 30  2026  Desktop
+-rw-------  1 melwinabi melwinabi 12361 Feb 23  2024 'Document (1).docx'
+-rw-------  1 melwinabi melwinabi 12115 Feb 23  2024  Document.docx
+drwx------  2 melwinabi melwinabi  4096 Apr 20  2026  Documents
+drwx------ 15 melwinabi melwinabi  4096 Mar 30  2026 'Embedded With IoT'
+drwx------  8 melwinabi melwinabi  4096 Mar 30  2026  Pictures
+-rw-------  1 melwinabi melwinabi 42553 Jan 31  2024  Presentation.pptx
+drwx------  2 melwinabi melwinabi  4096 Jan 23  2025  Scans

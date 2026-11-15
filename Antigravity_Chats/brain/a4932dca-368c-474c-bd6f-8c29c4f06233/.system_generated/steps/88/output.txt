@@ -1,0 +1,4 @@
+Command exited with code 255.
+
+Command output:
+git@github.com: Permission denied (publickey).

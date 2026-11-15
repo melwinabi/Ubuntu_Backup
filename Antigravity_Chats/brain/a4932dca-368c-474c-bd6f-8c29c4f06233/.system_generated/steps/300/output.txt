@@ -1,0 +1,44 @@
+Command exited with code 0.
+
+Command output:
+NAME          SIZE TYPE MOUNTPOINTS                         LABEL
+loop0       341.3M loop /snap/antigravity-ide-snap/7        
+loop1        55.5M loop /snap/core18/3084                   
+loop2           4K loop /snap/bare/5                        
+loop3        55.5M loop /snap/core18/2999                   
+loop4        63.8M loop /snap/core20/2866                   
+loop5        63.8M loop /snap/core20/2922                   
+loop6          74M loop /snap/core22/2292                   
+loop7          74M loop /snap/core22/2411                   
+loop8        66.8M loop /snap/core24/1643                   
+loop9        66.8M loop /snap/core24/2124                   
+loop10      291.8M loop /snap/antigravity-ide-snap/11       
+loop11       60.6M loop /snap/core26/646                    
+loop12      257.6M loop /snap/firefox/8664                  
+loop13      283.8M loop /snap/firefox/9057                  
+loop14       16.5M loop /snap/firmware-updater/226          
+loop15      118.8M loop /snap/telegram-desktop/7190         
+loop16       19.1M loop /snap/flutter/157                   
+loop17       19.1M loop /snap/flutter/161                   
+loop18      531.4M loop /snap/gnome-42-2204/247             
+loop19      164.8M loop /snap/gnome-3-28-1804/198           
+loop20      606.1M loop /snap/gnome-46-2404/153             
+loop21       91.7M loop /snap/gtk-common-themes/1535        
+loop22        402M loop /snap/mesa-2404/1781                
+loop24       11.8M loop /snap/snap-store/1390               
+loop25       50.1M loop /snap/snapd/27710                   
+loop26       15.7M loop /snap/snap-store/1367               
+loop27        828K loop /snap/snapd-desktop-integration/387 
+loop28       44.7M loop /snap/snapd/28254                   
+loop30        828K loop /snap/snapd-desktop-integration/391 
+loop31      114.1M loop /snap/telegram-desktop/7175         
+loop32      321.1M loop /snap/vlc/3777                      
+loop33       85.6M loop /snap/whatsapp-linux-app/2          
+loop34        402M loop /snap/mesa-2404/1839                
+loop35       12.7M loop /snap/firmware-updater/262          
+loop36       60.7M loop /snap/core26/750                    
+sda           7.5G disk                                     
+└─sda1        7.5G part /media/melwinabi/UBUNTU 24_0        UBUNTU 24_0
+nvme0n1     476.9G disk                                     
+├─nvme0n1p1     1G part /boot/efi                           
+└─nvme0n1p2 475.9G part /                                   

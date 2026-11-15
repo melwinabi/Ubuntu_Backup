@@ -1,0 +1,56 @@
+Command exited with code 0.
+
+Command output:
+total 52M
+drwxr-xr-x 2 melwinabi melwinabi 4.0K Jun 16 20:13 artifacts
+drwxr-xr-x 2 melwinabi melwinabi  12K Jul 31 22:09 browser
+-rw-r--r-- 1 melwinabi melwinabi 3.4M Jun 17 20:30 custom_account_type_1781708074906.webp
+-rw-r--r-- 1 melwinabi melwinabi 323K Jun 16 20:12 dashboard_1781620953829.png
+-rw-r--r-- 1 melwinabi melwinabi 300K Jul 27 21:45 dashboard_loaded_1785168944853.png
+-rw-r--r-- 1 melwinabi melwinabi 304K Jun 16 20:11 dashboard_overview_1781620918853.png
+-rw-r--r-- 1 melwinabi melwinabi 178K Jun 16 20:12 finance_dashboard_check_1781620893562.webp
+-rw-r--r-- 1 melwinabi melwinabi  12K Jun 16 20:13 finance_dashboard_screenshot_1781620932980.webp
+-rw-r--r-- 1 melwinabi melwinabi  12K Jun 16 20:13 finance_folio_verification_1781620690321.webp
+-rw-r--r-- 1 melwinabi melwinabi 261K Jun 16 20:48 investment_reminders_page_1781623112833.png
+-rw-r--r-- 1 melwinabi melwinabi  13M Jun 16 21:01 investments_live_metrics_1781622622291.webp
+-rw-r--r-- 1 melwinabi melwinabi 3.6M Jun 16 20:39 investments_metals_alerts_1781622285115.webp
+-rw-r--r-- 1 melwinabi melwinabi 178K Jun 16 20:30 media__1781621674541.png
+-rw-r--r-- 1 melwinabi melwinabi 238K Jun 16 21:25 media__1781625129240.png
+-rw-r--r-- 1 melwinabi melwinabi 231K Jun 16 22:02 media__1781627233195.png
+-rw-r--r-- 1 melwinabi melwinabi 128K Jun 17 20:22 media__1781707854433.png
+-rw-r--r-- 1 melwinabi melwinabi  81K Jun 17 22:23 media__1781715197011.png
+-rw-r--r-- 1 melwinabi melwinabi 231K Jun 19 22:44 media__1781889210393.png
+-rw-r--r-- 1 melwinabi melwinabi  48K Jun 19 22:59 media__1781890125945.png
+-rw-r--r-- 1 melwinabi melwinabi  53K Jun 28 21:19 media__1782661750716.png
+-rw-r--r-- 1 melwinabi melwinabi 170K Jun 28 21:42 media__1782663044249.png
+-rw-r--r-- 1 melwinabi melwinabi 109K Jul 15 20:11 media__1784126305313.png
+-rw-r--r-- 1 melwinabi melwinabi  39K Jul 26 19:49 media__1785075504987.png
+-rw-r--r-- 1 melwinabi melwinabi  40K Jul 26 19:56 media__1785075965473.png
+-rw-r--r-- 1 melwinabi melwinabi  79K Jul 26 21:26 media__1785081355682.png
+-rw-r--r-- 1 melwinabi melwinabi  55K Jul 26 21:33 media__1785081828136.png
+-rw-r--r-- 1 melwinabi melwinabi 148K Jul 26 21:42 media__1785082329834.png
+-rw-r--r-- 1 melwinabi melwinabi 172K Jul 26 22:12 media__1785084142089.png
+-rw-r--r-- 1 melwinabi melwinabi  24K Jul 26 22:16 media__1785084388038.png
+-rw-r--r-- 1 melwinabi melwinabi  22K Jul 26 22:45 media__1785086122851.png
+-rw-r--r-- 1 melwinabi melwinabi  83K Jul 26 22:47 media__1785086241745.png
+-rw-r--r-- 1 melwinabi melwinabi 235K Jul 27 21:21 media__1785167491395.png
+-rw-r--r-- 1 melwinabi melwinabi 258K Jul 31 22:35 media__1785517523695.png
+-rw-r--r-- 1 melwinabi melwinabi  33K Jul 31 23:12 media__1785519719754.png
+-rw-r--r-- 1 melwinabi melwinabi  83K Aug  3 21:24 media__1785772495233.png
+-rw-r--r-- 1 melwinabi melwinabi  80K Aug  3 21:26 media__1785772570239.png
+-rw-r--r-- 1 melwinabi melwinabi 192K Aug  3 21:29 media__1785772788543.png
+-rw-r--r-- 1 melwinabi melwinabi 129K Aug  3 21:53 media__1785774223933.png
+-rw-r--r-- 1 melwinabi melwinabi 249K Aug  3 21:58 media__1785774479129.png
+-rw-r--r-- 1 melwinabi melwinabi 120K Aug  3 22:03 media__1785774804520.png
+-rw-r--r-- 1 melwinabi melwinabi 917K Jun 16 21:32 modal_confirm_delete_1781625640397.webp
+-rw-r--r-- 1 melwinabi melwinabi 308K Jun 16 21:45 prisma_validation_error_1781626539449.png
+-rw-r--r-- 1 melwinabi melwinabi 1.7M Jul 27 21:25 register_after_generate_1785167549766.webp
+-rw-r--r-- 1 melwinabi melwinabi 6.8M Jul 27 21:41 register_flow_final_check_1785167814565.webp
+-rw-r--r-- 1 melwinabi melwinabi 1.6M Jul 27 21:27 register_flow_success_1785167681874.webp
+drwxr-xr-x 2 melwinabi melwinabi 4.0K Jul 26 20:49 scratch
+-rw-r--r-- 1 melwinabi melwinabi 206K Jul 27 21:42 settings_page_verification_1785168721105.png
+-rw-r--r-- 1 melwinabi melwinabi 208K Jul 27 21:42 settings_web_verify_1785168709043.webp
+-rw-r--r-- 1 melwinabi melwinabi 9.2M Jun 16 22:15 sip_alerts_validation_1781627720801.webp
+-rw-r--r-- 1 melwinabi melwinabi 1.2M Jun 16 21:46 sip_skips_management_1781626474455.webp
+-rw-r--r-- 1 melwinabi melwinabi 3.2M Jun 16 21:54 sip_skip_validation_1781626791155.webp
+-rw-r--r-- 1 melwinabi melwinabi 2.2M Jun 16 21:28 test_delete_holding_1781625316312.webp

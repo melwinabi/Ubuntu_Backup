@@ -1,0 +1,24 @@
+Command exited with code 0.
+
+Command output:
+total 84
+drwxrwxr-x 13 melwinabi melwinabi 4096 Jul 26 22:20 .
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jul 31 22:59 ..
+-rw-rw-r--  1 melwinabi melwinabi 1420 Jul 22 20:24 analysis_options.yaml
+drwxrwxr-x  6 melwinabi melwinabi 4096 Jul 22 21:36 android
+drwxrwxr-x  9 melwinabi melwinabi 4096 Jul 26 22:23 build
+-rw-rw-r--  1 melwinabi melwinabi  619 Jul 22 20:28 chat_bot_financial_trading.iml
+drwxrwxr-x  4 melwinabi melwinabi 4096 Jul 26 22:20 .dart_tool
+-rw-rw-r--  1 melwinabi melwinabi  703 Jul 22 20:24 .gitignore
+drwxrwxr-x  5 melwinabi melwinabi 4096 Jul 26 21:30 .idea
+drwxrwxr-x  7 melwinabi melwinabi 4096 Jul 22 20:24 ios
+drwxrwxr-x  4 melwinabi melwinabi 4096 Jul 26 21:25 lib
+drwxrwxr-x  4 melwinabi melwinabi 4096 Jul 22 20:24 linux
+drwxrwxr-x  7 melwinabi melwinabi 4096 Jul 22 20:24 macos
+-rw-rw-r--  1 melwinabi melwinabi 1706 Jul 22 20:24 .metadata
+-rw-rw-r--  1 melwinabi melwinabi 6985 Jul 23 22:31 pubspec.lock
+-rw-rw-r--  1 melwinabi melwinabi 3916 Jul 23 22:31 pubspec.yaml
+-rw-rw-r--  1 melwinabi melwinabi  648 Jul 22 20:24 README.md
+drwxrwxr-x  2 melwinabi melwinabi 4096 Jul 22 20:24 test
+drwxrwxr-x  3 melwinabi melwinabi 4096 Jul 22 20:24 web
+drwxrwxr-x  4 melwinabi melwinabi 4096 Jul 22 20:24 windows

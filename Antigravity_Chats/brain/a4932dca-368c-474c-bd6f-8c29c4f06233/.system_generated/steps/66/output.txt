@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOEk1GbTRIHcA9ee2O5ptUDPO2U0hh5KGSJwjQZa9Kky asmelwin3@gmail.com

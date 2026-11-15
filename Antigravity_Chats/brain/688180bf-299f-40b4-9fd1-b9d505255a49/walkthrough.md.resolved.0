@@ -1,0 +1,3191 @@
+# Walkthrough: Smart-HUB Bug Fixes and Verification
+
+I have completed the reanalysis and correction of bugs in the Smart-HUB project. All identified issues have been resolved and verified.
+
+## Changes Made
+
+### 1. Typo Corrections
+- Fixed the typo **"Smaer-HUB"** to **"Smart-HUB"** in:
+    - Main layout metadata ([src/app/layout.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/layout.tsx))
+    - Login page header ([src/app/page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/page.tsx))
+    - Admin dashboard sidebar ([src/app/admin/dashboard/page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx))
+    - Admin OTP email template ([src/app/api/auth/otp/route.ts](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/auth/otp/route.ts))
+
+### 2. Dashboard Stability & UX
+- **Fixed Dashboard Crash**: Resolved a React "render-time update" error that caused the dashboard to crash when no session was active.
+- **Improved MQTT Status**: The connection indicator now correctly displays "Select a Device" or "Offline" when no device is active, instead of being stuck on "Connecting...".
+- **Reliable Logout**: Updated `signOut` calls to ensure consistent redirection back to the home page.
+
+### 3. Routing & Redirects
+- **Fixed 404 Routes**: Added redirects for `/admin` and `/login` to ensure users are guided to the correct pages (`/admin/dashboard` and `/` respectively).
+
+### 4. Data & Testing Improvements
+- **Seeded Sample Data**: Added a test device (ID: #101, Living Room Hub) to the database to facilitate the verification of the "Add Device" workflow.
+- **Data Cleanup**: Added logic to clean up placeholder/garbage data (e.g., "xcxcxcxvxvcvcv") from the database.
+
+## Verification Results
+
+### Final Browser Check
+I performed a comprehensive verification using a browser subagent:
+- ✅ **Typo Fix**: Verified "Smart-HUB" is displayed correctly.
+- ✅ **Redirects**: Navigating to `/admin` and `/login` correctly redirects.
+- ✅ **User Login**: Logged in as user, verified dashboard loads without crashing.
+- ✅ **Device Management**: Successfully added the seeded "Living Room Hub" to the user dashboard.
+- ✅ **Admin Login**: Verified admin bypass login works and leads to the managed system overview.
+- ✅ **Logout**: Confirmed logout redirect to the home page works for both user and admin.
+
+![Final Verification Overview](/home/melwinabi/.gemini/antigravity/brain/688180bf-299f-40b4-9fd1-b9d505255a49/dashboard_blank_with_issue_1776757553285.png)
+*(Note: This screenshot was taken during the intermediate debugging phase showing the dashboard fix in progress)*
+
+## Summary
+The application is now stable, with corrected branding and functional core workflows.
+
+```diff:layout.tsx
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { ReactNode } from 'react'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Smaer-HUB | Home Automation',
+  description: 'Secure management for W1 series devices',
+}
+
+import Providers from '@/components/Providers'
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={inter.className} suppressHydrationWarning>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  )
+}
+
+===
+import { Inter } from 'next/font/google'
+import './globals.css'
+import { ReactNode } from 'react'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata = {
+  title: 'Smart-HUB | Home Automation',
+  description: 'Secure management for W1 series devices',
+}
+
+import Providers from '@/components/Providers'
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en">
+      <body className={inter.className} suppressHydrationWarning>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  )
+}
+
+```
+```diff:page.tsx
+"use client"
+
+import { useState, useEffect } from "react"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { Mail, Loader2 } from "lucide-react"
+
+export default function LoginPage() {
+  const [activeTab, setActiveTab] = useState<"user" | "admin">("user")
+  const [email, setEmail] = useState("")
+  const [otp, setOtp] = useState("")
+  const [otpSent, setOtpSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [qrCodeUrl, setQrCodeUrl] = useState("")
+  const [tempSecret, setTempSecret] = useState("")
+  const [totpRequired, setTotpRequired] = useState(false)
+  const [isSettingUpTotp, setIsSettingUpTotp] = useState(false)
+  const router = useRouter()
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    // Check for Auth errors in URL
+    const params = new URLSearchParams(window.location.search)
+    const authError = params.get("error")
+    if (authError) {
+      if (authError === "OAuthCallback") {
+        setError("Google Login failed: Invalid Client Secret in .env file.")
+      } else {
+        setError(`Authentication Error: ${authError}`)
+      }
+      setLoading(false)
+    }
+  }, [])
+
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+    try {
+      // First, check if TOTP is already set up
+      const checkRes = await fetch(`/api/auth/totp/setup?email=${email}`)
+      const checkData = await checkRes.json()
+
+      if (checkData.isSet) {
+        // TOTP is enabled, go straight to TOTP entry
+        setTotpRequired(true)
+        setLoading(false)
+        return
+      }
+
+      // If not set up, send Email OTP for bootstrap
+      const res = await fetch("/api/auth/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setOtpSent(true)
+      } else {
+        setError(data.error || "Failed to send OTP.")
+      }
+    } catch (err) {
+      setError("An error occurred.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleVerifyEmailOtp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+
+    try {
+      // Check if TOTP is already set up for this email
+      const checkRes = await fetch(`/api/auth/totp/setup?email=${email}`)
+      const checkData = await checkRes.json()
+
+      if (checkData.isSet) {
+        setTotpRequired(true)
+        setOtpSent(false) // Swap to TOTP mode
+      } else {
+        // Not set up, show QR code
+        const setupRes = await fetch("/api/auth/totp/setup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        })
+        const setupData = await setupRes.json()
+        setQrCodeUrl(setupData.qrCodeUrl)
+        setTempSecret(setupData.secret)
+        setIsSettingUpTotp(true)
+        setOtpSent(false)
+      }
+    } catch (err) {
+      setError("Verification failed.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCompleteTotpSetup = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+
+    try {
+      const res = await fetch("/api/auth/totp/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, secret: tempSecret, token: otp })
+      })
+      if (res.ok) {
+        // Setup successful, now login
+        handleAdminLogin()
+      } else {
+        const data = await res.json()
+        setError(data.error || "Invalid TOTP code.")
+      }
+    } catch (err) {
+      setError("Setup failed.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleAdminLogin = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
+    setLoading(true)
+    setError("")
+    
+    const result = await signIn("admin-otp", {
+      email,
+      otp,
+      redirect: false,
+    })
+
+    if (result?.error) {
+      setError("Invalid code or expired.")
+      setLoading(false)
+    } else {
+      router.push("/admin/dashboard")
+    }
+  }
+
+  const handleUserLogin = async () => {
+    if (email === "asmelwin3@gmail.com") {
+      setLoading(true)
+      await signIn("user-dummy", { email, callbackUrl: "/dashboard" })
+      return
+    }
+    setLoading(true)
+    await signIn("google", { callbackUrl: "/dashboard" })
+  }
+
+  if (!mounted) return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+
+  return (
+    <div className="flex-center">
+      <div className="glass-container card animate-fade-in" style={{ maxWidth: isSettingUpTotp ? "500px" : "400px" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "var(--primary)" }}>Smaer-HUB</h1>
+          <p style={{ color: "var(--text-secondary)" }}>Home Automation Management</p>
+        </div>
+
+        <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem" }}>
+          <button 
+            className={`btn ${activeTab === "user" ? "btn-primary" : "btn-outline"}`}
+            onClick={() => { setActiveTab("user"); setError(""); setOtpSent(false); setIsSettingUpTotp(false); setTotpRequired(false); }}
+          >
+            User Login
+          </button>
+          <button 
+            className={`btn ${activeTab === "admin" ? "btn-primary" : "btn-outline"}`}
+            onClick={() => { setActiveTab("admin"); setError(""); setOtpSent(false); setIsSettingUpTotp(false); setTotpRequired(false); }}
+          >
+            Admin Login
+          </button>
+        </div>
+
+        {activeTab === "user" ? (
+          <div>
+            <p style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--text-secondary)" }}>
+              Access your personal device dashboard
+            </p>
+            <div className="input-group" style={{ marginBottom: "1.5rem" }}>
+              <div style={{ position: "relative" }}>
+                <Mail size={18} style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--text-secondary)" }} />
+                <input 
+                  type="email" 
+                  placeholder="Enter your Gmail" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{ paddingLeft: "40px" }}
+                />
+              </div>
+            </div>
+            <button 
+              className="btn btn-primary" 
+              onClick={handleUserLogin}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}
+              disabled={loading}
+            >
+              <img src="https://authjs.dev/img/providers/google.svg" width="20" />
+              {loading ? <Loader2 className="spinner" /> : "Login with Google"}
+            </button>
+          </div>
+        ) : (
+          <div>
+            {!otpSent && !isSettingUpTotp && !totpRequired ? (
+              <form onSubmit={handleSendOtp}>
+                <div className="input-group">
+                  <label>Admin Gmail Address</label>
+                  <div style={{ position: "relative" }}>
+                    <Mail size={18} style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--text-secondary)" }} />
+                    <input 
+                      type="email" 
+                      placeholder="admin@domain.com" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      style={{ paddingLeft: "40px" }}
+                      required
+                    />
+                  </div>
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Verify Identity"}
+                </button>
+              </form>
+            ) : otpSent ? (
+              <form onSubmit={handleVerifyEmailOtp}>
+                <div className="input-group">
+                  <label>Enter Email OTP</label>
+                  <input 
+                    type="text" 
+                    placeholder="000000" 
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength={6}
+                    required
+                    autoFocus
+                  />
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", marginTop: "0.5rem" }}>
+                    Verify email to proceed with TOTP
+                  </p>
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Verify Email"}
+                </button>
+              </form>
+            ) : isSettingUpTotp ? (
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ marginBottom: "1rem" }}>Setup Google Authenticator</h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "1.5rem" }}>
+                  Scan this QR code in your Google Authenticator app, then enter the 6-digit code.
+                </p>
+                <img src={qrCodeUrl} alt="QR Code" style={{ background: "white", padding: "10px", borderRadius: "8px", margin: "0 auto 1.5rem" }} />
+                <form onSubmit={handleCompleteTotpSetup}>
+                  <div className="input-group">
+                    <input 
+                      type="text" 
+                      placeholder="Enter 6-digit App Code" 
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      maxLength={6}
+                      required
+                      autoFocus
+                      style={{ textAlign: "center", fontSize: "1.25rem", letterSpacing: "4px" }}
+                    />
+                  </div>
+                  {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                  <button type="submit" className="btn btn-primary" disabled={loading}>
+                    {loading ? <Loader2 className="spinner" /> : "Verify & Enable TOTP"}
+                  </button>
+                </form>
+              </div>
+            ) : totpRequired ? (
+              <form onSubmit={handleAdminLogin}>
+                <div className="input-group">
+                  <label>Google Authenticator Code</label>
+                  <input 
+                    type="text" 
+                    placeholder="000 000" 
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength={6}
+                    required
+                    autoFocus
+                    style={{ textAlign: "center", fontSize: "1.5rem", letterSpacing: "8px" }}
+                  />
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Login Now"}
+                </button>
+                <button 
+                  type="button" 
+                  className="btn btn-outline" 
+                  style={{ marginTop: "1rem" }}
+                  onClick={() => setTotpRequired(false)}
+                >
+                  Back
+                </button>
+              </form>
+            ) : null}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+===
+"use client"
+
+import { useState, useEffect } from "react"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { Mail, Loader2 } from "lucide-react"
+
+export default function LoginPage() {
+  const [activeTab, setActiveTab] = useState<"user" | "admin">("user")
+  const [email, setEmail] = useState("")
+  const [otp, setOtp] = useState("")
+  const [otpSent, setOtpSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [qrCodeUrl, setQrCodeUrl] = useState("")
+  const [tempSecret, setTempSecret] = useState("")
+  const [totpRequired, setTotpRequired] = useState(false)
+  const [isSettingUpTotp, setIsSettingUpTotp] = useState(false)
+  const router = useRouter()
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    // Check for Auth errors in URL
+    const params = new URLSearchParams(window.location.search)
+    const authError = params.get("error")
+    if (authError) {
+      if (authError === "OAuthCallback") {
+        setError("Google Login failed: Invalid Client Secret in .env file.")
+      } else {
+        setError(`Authentication Error: ${authError}`)
+      }
+      setLoading(false)
+    }
+  }, [])
+
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+    try {
+      // First, check if TOTP is already set up
+      const checkRes = await fetch(`/api/auth/totp/setup?email=${email}`)
+      const checkData = await checkRes.json()
+
+      if (checkData.isSet) {
+        // TOTP is enabled, go straight to TOTP entry
+        setTotpRequired(true)
+        setLoading(false)
+        return
+      }
+
+      // If not set up, send Email OTP for bootstrap
+      const res = await fetch("/api/auth/otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setOtpSent(true)
+      } else {
+        setError(data.error || "Failed to send OTP.")
+      }
+    } catch (err) {
+      setError("An error occurred.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleVerifyEmailOtp = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+
+    try {
+      // Check if TOTP is already set up for this email
+      const checkRes = await fetch(`/api/auth/totp/setup?email=${email}`)
+      const checkData = await checkRes.json()
+
+      if (checkData.isSet) {
+        setTotpRequired(true)
+        setOtpSent(false) // Swap to TOTP mode
+      } else {
+        // Not set up, show QR code
+        const setupRes = await fetch("/api/auth/totp/setup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        })
+        const setupData = await setupRes.json()
+        setQrCodeUrl(setupData.qrCodeUrl)
+        setTempSecret(setupData.secret)
+        setIsSettingUpTotp(true)
+        setOtpSent(false)
+      }
+    } catch (err) {
+      setError("Verification failed.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleCompleteTotpSetup = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setError("")
+
+    try {
+      const res = await fetch("/api/auth/totp/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, secret: tempSecret, token: otp })
+      })
+      if (res.ok) {
+        // Setup successful, now login
+        handleAdminLogin()
+      } else {
+        const data = await res.json()
+        setError(data.error || "Invalid TOTP code.")
+      }
+    } catch (err) {
+      setError("Setup failed.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleAdminLogin = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
+    setLoading(true)
+    setError("")
+    
+    const result = await signIn("admin-otp", {
+      email,
+      otp,
+      redirect: false,
+    })
+
+    if (result?.error) {
+      setError("Invalid code or expired.")
+      setLoading(false)
+    } else {
+      router.push("/admin/dashboard")
+    }
+  }
+
+  const handleUserLogin = async () => {
+    if (email === "asmelwin3@gmail.com") {
+      setLoading(true)
+      await signIn("user-dummy", { email, callbackUrl: "/dashboard" })
+      return
+    }
+    setLoading(true)
+    await signIn("google", { callbackUrl: "/dashboard" })
+  }
+
+  if (!mounted) return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+
+  return (
+    <div className="flex-center">
+      <div className="glass-container card animate-fade-in" style={{ maxWidth: isSettingUpTotp ? "500px" : "400px" }}>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "var(--primary)" }}>Smart-HUB</h1>
+          <p style={{ color: "var(--text-secondary)" }}>Home Automation Management</p>
+        </div>
+
+        <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem" }}>
+          <button 
+            className={`btn ${activeTab === "user" ? "btn-primary" : "btn-outline"}`}
+            onClick={() => { setActiveTab("user"); setError(""); setOtpSent(false); setIsSettingUpTotp(false); setTotpRequired(false); }}
+          >
+            User Login
+          </button>
+          <button 
+            className={`btn ${activeTab === "admin" ? "btn-primary" : "btn-outline"}`}
+            onClick={() => { setActiveTab("admin"); setError(""); setOtpSent(false); setIsSettingUpTotp(false); setTotpRequired(false); }}
+          >
+            Admin Login
+          </button>
+        </div>
+
+        {activeTab === "user" ? (
+          <div>
+            <p style={{ textAlign: "center", marginBottom: "1.5rem", color: "var(--text-secondary)" }}>
+              Access your personal device dashboard
+            </p>
+            <div className="input-group" style={{ marginBottom: "1.5rem" }}>
+              <div style={{ position: "relative" }}>
+                <Mail size={18} style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--text-secondary)" }} />
+                <input 
+                  type="email" 
+                  placeholder="Enter your Gmail" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{ paddingLeft: "40px" }}
+                />
+              </div>
+            </div>
+            <button 
+              className="btn btn-primary" 
+              onClick={handleUserLogin}
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px" }}
+              disabled={loading}
+            >
+              <img src="https://authjs.dev/img/providers/google.svg" width="20" />
+              {loading ? <Loader2 className="spinner" /> : "Login with Google"}
+            </button>
+          </div>
+        ) : (
+          <div>
+            {!otpSent && !isSettingUpTotp && !totpRequired ? (
+              <form onSubmit={handleSendOtp}>
+                <div className="input-group">
+                  <label>Admin Gmail Address</label>
+                  <div style={{ position: "relative" }}>
+                    <Mail size={18} style={{ position: "absolute", left: "12px", top: "50%", transform: "translateY(-50%)", color: "var(--text-secondary)" }} />
+                    <input 
+                      type="email" 
+                      placeholder="admin@domain.com" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      style={{ paddingLeft: "40px" }}
+                      required
+                    />
+                  </div>
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Verify Identity"}
+                </button>
+              </form>
+            ) : otpSent ? (
+              <form onSubmit={handleVerifyEmailOtp}>
+                <div className="input-group">
+                  <label>Enter Email OTP</label>
+                  <input 
+                    type="text" 
+                    placeholder="000000" 
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength={6}
+                    required
+                    autoFocus
+                  />
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", marginTop: "0.5rem" }}>
+                    Verify email to proceed with TOTP
+                  </p>
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Verify Email"}
+                </button>
+              </form>
+            ) : isSettingUpTotp ? (
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ marginBottom: "1rem" }}>Setup Google Authenticator</h3>
+                <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", marginBottom: "1.5rem" }}>
+                  Scan this QR code in your Google Authenticator app, then enter the 6-digit code.
+                </p>
+                <img src={qrCodeUrl} alt="QR Code" style={{ background: "white", padding: "10px", borderRadius: "8px", margin: "0 auto 1.5rem" }} />
+                <form onSubmit={handleCompleteTotpSetup}>
+                  <div className="input-group">
+                    <input 
+                      type="text" 
+                      placeholder="Enter 6-digit App Code" 
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      maxLength={6}
+                      required
+                      autoFocus
+                      style={{ textAlign: "center", fontSize: "1.25rem", letterSpacing: "4px" }}
+                    />
+                  </div>
+                  {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                  <button type="submit" className="btn btn-primary" disabled={loading}>
+                    {loading ? <Loader2 className="spinner" /> : "Verify & Enable TOTP"}
+                  </button>
+                </form>
+              </div>
+            ) : totpRequired ? (
+              <form onSubmit={handleAdminLogin}>
+                <div className="input-group">
+                  <label>Google Authenticator Code</label>
+                  <input 
+                    type="text" 
+                    placeholder="000 000" 
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength={6}
+                    required
+                    autoFocus
+                    style={{ textAlign: "center", fontSize: "1.5rem", letterSpacing: "8px" }}
+                  />
+                </div>
+                {error && <p className="error-text" style={{ marginBottom: "1rem" }}>{error}</p>}
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Login Now"}
+                </button>
+                <button 
+                  type="button" 
+                  className="btn btn-outline" 
+                  style={{ marginTop: "1rem" }}
+                  onClick={() => setTotpRequired(false)}
+                >
+                  Back
+                </button>
+              </form>
+            ) : null}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+```
+```diff:page.tsx
+"use client"
+
+import { useState, useEffect } from "react"
+import { useSession, signOut } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { 
+  Loader2, LogOut, Home, Search, Tv, 
+  Thermometer, Droplets, Flame, Lightbulb, 
+  ToggleRight, MousePointer2, Radio, Zap, Activity, Info, Settings
+} from "lucide-react"
+
+import { useMqtt } from "@/hooks/use-mqtt"
+
+type Widget = {
+  id: number
+  widgetName: string
+  mqttTopic: string
+}
+
+type Device = {
+  id: number
+  deviceName: string | null
+  mqttTopic: string | null
+  widgets: Widget[]
+}
+
+type Series = { id: number; seriesName: string }
+
+export default function UserDashboard() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  
+  // State for user-specific devices
+  const [userDevices, setUserDevices] = useState<Device[]>([])
+  const [deviceData, setDeviceData] = useState<Device | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // State for the Search/Add Modal
+  const [allSeries, setAllSeries] = useState<Series[]>([])
+  const [selectedSeriesId, setSelectedSeriesId] = useState("")
+  const [availableDevices, setAvailableDevices] = useState<Device[]>([])
+  const [selectedDeviceId, setSelectedDeviceId] = useState("")
+  const [addingDevice, setAddingDevice] = useState(false)
+
+  // MQTT Hook logic - include root topic and widget topics
+  const rootTopic = deviceData?.mqttTopic ? [deviceData.mqttTopic] : []
+  const widgetTopics = deviceData?.widgets.map(w => w.mqttTopic) || []
+  const combinedTopics = Array.from(new Set([...rootTopic, ...widgetTopics]))
+  
+  const brokerUrl = "wss://mymqtt.uvfarms.in"
+  const { messages, status: mqttStatus, publish } = useMqtt(brokerUrl, combinedTopics)
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      fetchUserDevices()
+      fetchSeries()
+    }
+  }, [session])
+
+  useEffect(() => {
+    if (selectedSeriesId) {
+      fetchAvailableDevices(selectedSeriesId)
+    } else {
+      setAvailableDevices([])
+      setSelectedDeviceId("")
+    }
+  }, [selectedSeriesId])
+
+  const fetchUserDevices = async () => {
+    try {
+      const res = await fetch("/api/user/devices")
+      if (res.ok) setUserDevices(await res.json())
+    } catch (err) { console.error(err) }
+    finally { setLoading(false) }
+  }
+
+  const fetchSeries = async () => {
+    try {
+      const res = await fetch("/api/series")
+      if (res.ok) setAllSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const fetchAvailableDevices = async (seriesId: string) => {
+    try {
+      const res = await fetch(`/api/devices?seriesId=${seriesId}`)
+      if (res.ok) setAvailableDevices(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const handleAddDevice = async () => {
+    if (!selectedDeviceId) return
+    setAddingDevice(true)
+    try {
+      const res = await fetch("/api/user/devices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId: selectedDeviceId })
+      })
+      if (res.ok) {
+        await fetchUserDevices()
+        setIsModalOpen(false)
+        setSelectedDeviceId("")
+        setSelectedSeriesId("")
+      }
+    } catch (err) { console.error(err) }
+    finally { setAddingDevice(false) }
+  }
+
+  const handleOpenDevice = (device: Device) => {
+    setDeviceData(device)
+  }
+
+  const [confirmUnlink, setConfirmUnlink] = useState<number | null>(null)
+
+  const handleRemoveDevice = async (deviceId: number) => {
+    setLoading(true)
+    try {
+      const res = await fetch(`/api/user/devices?deviceId=${deviceId}`, { method: "DELETE" })
+      if (res.ok) {
+        if (deviceData?.id === deviceId) setDeviceData(null)
+        await fetchUserDevices()
+      } else {
+        const errorData = await res.json()
+        alert(`Failed to remove device: ${errorData.details || errorData.error}`)
+      }
+    } catch (error) {
+      console.error("Error removing device:", error)
+    } finally {
+      setLoading(false)
+      setConfirmUnlink(null)
+    }
+  }
+
+  const [editingWidgetId, setEditingWidgetId] = useState<string | number | null>(null)
+  const [newTopic, setNewTopic] = useState("")
+
+  const handleUpdateTopic = async (widget: any, isMainSwitch: boolean) => {
+    try {
+      if (isMainSwitch) {
+        const res = await fetch("/api/devices", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: deviceData?.id, mqttTopic: newTopic })
+        })
+        if (res.ok) {
+           const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+           setDeviceData(updated)
+           fetchUserDevices()
+        }
+      } else {
+        const res = await fetch("/api/widgets", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: widget.id, mqttTopic: newTopic })
+        })
+        if (res.ok) {
+           const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+           setDeviceData(updated)
+        }
+      }
+      setEditingWidgetId(null)
+    } catch (err) { console.error(err) }
+  }
+
+  const handleDeleteWidget = async (id: number) => {
+    if (!confirm("Are you sure you want to delete this widget?")) return
+    try {
+      const res = await fetch(`/api/widgets?id=${id}`, { method: "DELETE" })
+      if (res.ok) {
+        const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+        setDeviceData(updated)
+      }
+    } catch (err) { console.error(err) }
+  }
+
+  const renderWidget = (widget: any) => {
+    const isMainSwitch = widget.id === 0 && widget.widgetName === "Main Switch"
+    const type = widget.widgetName.toLowerCase()
+    const liveValue = messages[widget.mqttTopic] || "..."
+    const isEditing = editingWidgetId === widget.id
+    
+    const containerStyle = {
+      padding: "1.5rem",
+      display: "flex",
+      flexDirection: "column" as const,
+      alignItems: "center",
+      gap: "1rem",
+      minWidth: "200px",
+      position: "relative" as const
+    }
+
+    const toggleSwitch = (currentValue: string, topic: string) => {
+      const isCurrentlyOn = currentValue === "1" || currentValue.toLowerCase() === "on"
+      const nextValue = isCurrentlyOn ? "0" : "1"
+      publish(topic, nextValue)
+    }
+
+    if (isEditing) {
+      return (
+        <div key={widget.id} className="glass-container" style={containerStyle}>
+          <h4 style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>Edit {widget.widgetName}</h4>
+          <input 
+            className="input-field"
+            value={newTopic}
+            onChange={(e) => setNewTopic(e.target.value)}
+            placeholder="New MQTT Topic"
+            style={{ fontSize: "0.875rem", padding: "0.5rem" }}
+          />
+          <div style={{ display: "flex", gap: "0.5rem", width: "100%" }}>
+            <button className="btn btn-primary" style={{ flex: 1, padding: "0.5rem" }} onClick={() => handleUpdateTopic(widget, isMainSwitch)}>Save</button>
+            <button className="btn btn-outline" style={{ flex: 1, padding: "0.5rem" }} onClick={() => setEditingWidgetId(null)}>Cancel</button>
+          </div>
+          {!isMainSwitch && (
+            <button className="btn" style={{ background: "#ef4444", color: "white", width: "100%", padding: "0.5rem", marginTop: "0.5rem" }} onClick={() => handleDeleteWidget(widget.id)}>
+              Delete Widget
+            </button>
+          )}
+        </div>
+      )
+    }
+
+    const renderHeader = () => (
+      <div style={{ position: "absolute", top: "10px", right: "10px", display: "flex", gap: "5px" }}>
+        <button 
+          onClick={() => { setEditingWidgetId(widget.id); setNewTopic(widget.mqttTopic); }}
+          style={{ background: "rgba(255,255,255,0.05)", border: "none", color: "var(--text-secondary)", cursor: "pointer", padding: "5px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}
+          title="Edit Widget"
+        >
+          <Settings size={14} />
+        </button>
+      </div>
+    )
+
+    const baseWidget = (icon: any, content: any) => (
+      <div key={widget.id} className="glass-container" style={containerStyle}>
+        {renderHeader()}
+        {icon}
+        <p style={{ fontSize: "0.875rem", fontWeight: "500" }}>{widget.widgetName}</p>
+        {content}
+      </div>
+    )
+
+    if (type === "temperature") {
+      return baseWidget(<Thermometer size={32} color="#f87171" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}°C</div>)
+    }
+    if (type === "humidity") {
+      return baseWidget(<Droplets size={32} color="#60a5fa" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}%</div>)
+    }
+    if (type === "gas") {
+      return baseWidget(<Flame size={32} color="#fbbf24" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}</div>)
+    }
+    if (type === "light" || type === "relay" || type === "switch" || isMainSwitch) {
+      const isOn = liveValue === "1" || liveValue.toLowerCase() === "on"
+      return baseWidget(
+        <Lightbulb size={32} color={isOn ? "#fde047" : "#4b5563"} />,
+        <button 
+          className={`btn ${isOn ? "btn-primary" : "btn-outline"}`} 
+          style={{ padding: "0.25rem 0.5rem", width: "auto" }}
+          onClick={() => toggleSwitch(liveValue, widget.mqttTopic)}
+        >
+          <ToggleRight /> {isOn ? "ON" : "OFF"}
+        </button>
+      )
+    }
+    if (type === "push button") {
+      return baseWidget(
+        <MousePointer2 size={32} color="#a855f7" />,
+        <button className="btn btn-primary" style={{ padding: "0.5rem", width: "auto" }} onClick={() => publish(widget.mqttTopic, "1")}>Press</button>
+      )
+    }
+    if (type === "motion sensor") {
+      const isMotion = liveValue.toLowerCase() === "motion" || liveValue === "1"
+      return baseWidget(
+        <Radio size={32} color={isMotion ? "#ec4899" : "#4b5563"} />,
+        <div style={{ color: isMotion ? "var(--error)" : "var(--success)", display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem" }}>
+          <Activity size={16} /> {isMotion ? "Motion" : "No Motion"}
+        </div>
+      )
+    }
+    if (type === "voltage" || type === "current") {
+      return baseWidget(<Zap size={32} color="#fca5a5" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}{type === "voltage" ? "V" : "A"}</div>)
+    }
+
+    return baseWidget(<Info size={32} />, <div style={{ fontSize: "1rem" }}>{liveValue}</div>)
+  }
+
+  if (status === "loading") return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+  if (!session) {
+    if (typeof window !== "undefined") router.push("/")
+    return null
+  }
+
+  return (
+    <div className="main-container" style={{ padding: "2rem" }}>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <Home size={32} color="var(--primary)" />
+          <h1 style={{ fontSize: "2rem" }}>My Dashboard</h1>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem" }}>
+            <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: mqttStatus === "connected" ? "var(--success)" : "var(--error)" }} />
+            <span style={{ color: "var(--text-secondary)" }}>{mqttStatus === "connected" ? "Live Connected" : "Connecting..."}</span>
+          </div>
+          <button className="btn" style={{ background: "var(--primary)", color: "white", width: "auto", display: "flex", gap: "0.5rem" }} onClick={() => setIsModalOpen(true)}>
+            <Search size={18} /> Add Device
+          </button>
+          <button className="btn btn-outline" onClick={() => signOut({ callbackUrl: "/" })} style={{ width: "auto" }}>
+            <LogOut size={18} /> Logout
+          </button>
+        </div>
+      </header>
+
+      {/* Device View (Widgets) */}
+      {deviceData ? (
+        <div className="animate-fade-in">
+          <button 
+            onClick={() => setDeviceData(null)}
+            style={{ background: "none", border: "none", color: "var(--text-secondary)", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "2rem" }}
+          >
+            <Home size={18} /> Back to My Devices
+          </button>
+          
+          <div style={{ marginBottom: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <h2 style={{ fontSize: "2.5rem" }}>{deviceData?.deviceName || "Device ID: #" + deviceData?.id}</h2>
+              <p style={{ color: "var(--text-secondary)" }}>Managing IoT Node</p>
+            </div>
+            <button className="btn" style={{ background: "#ef4444", color: "white", width: "auto" }} onClick={() => handleRemoveDevice(deviceData.id)}>
+              Unlink Device
+            </button>
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+            {deviceData?.widgets.length === 0 && deviceData?.mqttTopic ? (
+               renderWidget({
+                 id: 0,
+                 widgetName: "Main Switch",
+                 mqttTopic: deviceData.mqttTopic
+               })
+            ) : (
+              deviceData?.widgets.map(renderWidget)
+            )}
+          </div>
+        </div>
+      ) : (
+        /* Grid View (My Devices) */
+        <div className="animate-fade-in">
+          <h2 style={{ marginBottom: "2rem" }}>My Devices</h2>
+          
+          {loading ? (
+            <div className="flex-center" style={{ height: "40vh" }}><Loader2 className="spinner" /></div>
+          ) : userDevices.length === 0 ? (
+            <div className="flex-center" style={{ height: "40vh", flexDirection: "column", gap: "1.5rem" }}>
+              <Tv size={64} style={{ opacity: 0.2 }} />
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ marginBottom: "0.5rem" }}>No devices added yet</h3>
+                <p style={{ color: "var(--text-secondary)" }}>Click the "Add Device" button above to get started.</p>
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.5rem" }}>
+              {userDevices.map(device => (
+                <div 
+                  key={device.id} 
+                  className="glass-container card animate-fade-in" 
+                  style={{ padding: "1.5rem", cursor: "pointer", transition: "transform 0.2s" }}
+                  onClick={() => handleOpenDevice(device)}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+                    <div style={{ background: "var(--primary-light)", padding: "0.75rem", borderRadius: "12px" }}>
+                      <Tv size={24} color="var(--primary)" />
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: "1.125rem" }}>{device.deviceName || "Untitled Device"}</h3>
+                      <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>ID: #{device.id}</p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>{device.widgets.length} Widgets</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "var(--success)" }}>
+                      <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--success)" }} />
+                      Online
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Add Device Modal */}
+      {isModalOpen && (
+        <div className="modal-overlay" style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.8)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "1rem" }}>
+          <div className="glass-container card animate-fade-in" style={{ padding: "2.5rem", width: "100%", maxWidth: "450px", position: "relative" }}>
+             <button title="Close" onClick={() => setIsModalOpen(false)} style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "none", color: "var(--text-secondary)", cursor: "pointer" }}>
+               <LogOut size={20} />
+             </button>
+             
+             <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Add New Device</h2>
+             
+             <div className="input-group">
+               <label>Select Series</label>
+               <select 
+                 value={selectedSeriesId} 
+                 onChange={(e) => setSelectedSeriesId(e.target.value)}
+                 className="select-field"
+               >
+                 <option value="">Select Series</option>
+                 {allSeries.map(s => <option key={s.id} value={s.id.toString()}>{s.seriesName}</option>)}
+               </select>
+             </div>
+
+             <div className="input-group">
+               <label>Select Device ID</label>
+               <select 
+                 value={selectedDeviceId} 
+                 onChange={(e) => setSelectedDeviceId(e.target.value)}
+                 disabled={!selectedSeriesId}
+                 className="select-field"
+                 style={{ opacity: selectedSeriesId ? 1 : 0.5 }}
+               >
+                 <option value="">Select Device ID</option>
+                 {availableDevices.map(d => <option key={d.id} value={d.id.toString()}>ID: #{d.id} {d.deviceName ? `(${d.deviceName})` : ""}</option>)}
+               </select>
+             </div>
+
+             <button 
+               className="btn btn-primary" 
+               style={{ marginTop: "1rem" }}
+               disabled={!selectedDeviceId || addingDevice}
+               onClick={handleAddDevice}
+             >
+               {addingDevice ? <Loader2 className="spinner" /> : "Add to Dashboard"}
+             </button>
+          </div>
+        </div>
+      )}
+      {/* Confirmation Modal */}
+      {confirmUnlink !== null && (
+        <div className="modal-overlay" onClick={() => setConfirmUnlink(null)}>
+          <div className="modal-content glass" onClick={e => e.stopPropagation()}>
+            <h2 className="modal-title">Remove Device</h2>
+            <p style={{ marginBottom: "20px", color: "rgba(255,255,255,0.7)" }}>
+              Are you sure you want to remove this device from your dashboard?
+            </p>
+            <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+              <button 
+                className="btn" 
+                style={{ background: "rgba(255,255,255,0.1)", color: "white", width: "auto" }}
+                onClick={() => setConfirmUnlink(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                id="confirm-unlink-btn"
+                className="btn" 
+                style={{ background: "#ef4444", color: "white", width: "auto" }}
+                onClick={() => handleRemoveDevice(confirmUnlink)}
+              >
+                {loading ? <Loader2 className="spinner" /> : "Remove"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+===
+"use client"
+
+import { useState, useEffect } from "react"
+import { useSession, signOut } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import { 
+  Loader2, LogOut, Home, Search, Tv, 
+  Thermometer, Droplets, Flame, Lightbulb, 
+  ToggleRight, MousePointer2, Radio, Zap, Activity, Info, Settings
+} from "lucide-react"
+
+import { useMqtt } from "@/hooks/use-mqtt"
+
+type Widget = {
+  id: number
+  widgetName: string
+  mqttTopic: string
+}
+
+type Device = {
+  id: number
+  deviceName: string | null
+  mqttTopic: string | null
+  widgets: Widget[]
+}
+
+type Series = { id: number; seriesName: string }
+
+export default function UserDashboard() {
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  
+  // State for user-specific devices
+  const [userDevices, setUserDevices] = useState<Device[]>([])
+  const [deviceData, setDeviceData] = useState<Device | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  // State for the Search/Add Modal
+  const [allSeries, setAllSeries] = useState<Series[]>([])
+  const [selectedSeriesId, setSelectedSeriesId] = useState("")
+  const [availableDevices, setAvailableDevices] = useState<Device[]>([])
+  const [selectedDeviceId, setSelectedDeviceId] = useState("")
+  const [addingDevice, setAddingDevice] = useState(false)
+
+  // MQTT Hook logic - include root topic and widget topics
+  const rootTopic = deviceData?.mqttTopic ? [deviceData.mqttTopic] : []
+  const widgetTopics = deviceData?.widgets.map(w => w.mqttTopic) || []
+  const combinedTopics = Array.from(new Set([...rootTopic, ...widgetTopics]))
+  
+  const brokerUrl = "wss://mymqtt.uvfarms.in"
+  const { messages, status: mqttStatus, publish } = useMqtt(brokerUrl, combinedTopics)
+
+  useEffect(() => {
+    if (session?.user?.id) {
+      fetchUserDevices()
+      fetchSeries()
+    }
+  }, [session])
+
+  useEffect(() => {
+    if (selectedSeriesId) {
+      fetchAvailableDevices(selectedSeriesId)
+    } else {
+      setAvailableDevices([])
+      setSelectedDeviceId("")
+    }
+  }, [selectedSeriesId])
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/")
+    }
+  }, [status, router])
+
+  const fetchUserDevices = async () => {
+    try {
+      const res = await fetch("/api/user/devices")
+      if (res.ok) setUserDevices(await res.json())
+    } catch (err) { console.error(err) }
+    finally { setLoading(false) }
+  }
+
+  const fetchSeries = async () => {
+    try {
+      const res = await fetch("/api/series")
+      if (res.ok) setAllSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const fetchAvailableDevices = async (seriesId: string) => {
+    try {
+      const res = await fetch(`/api/devices?seriesId=${seriesId}`)
+      if (res.ok) setAvailableDevices(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const handleAddDevice = async () => {
+    if (!selectedDeviceId) return
+    setAddingDevice(true)
+    try {
+      const res = await fetch("/api/user/devices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deviceId: selectedDeviceId })
+      })
+      if (res.ok) {
+        await fetchUserDevices()
+        setIsModalOpen(false)
+        setSelectedDeviceId("")
+        setSelectedSeriesId("")
+      }
+    } catch (err) { console.error(err) }
+    finally { setAddingDevice(false) }
+  }
+
+  const handleOpenDevice = (device: Device) => {
+    setDeviceData(device)
+  }
+
+  const [confirmUnlink, setConfirmUnlink] = useState<number | null>(null)
+
+  const handleRemoveDevice = async (deviceId: number) => {
+    setLoading(true)
+    try {
+      const res = await fetch(`/api/user/devices?deviceId=${deviceId}`, { method: "DELETE" })
+      if (res.ok) {
+        if (deviceData?.id === deviceId) setDeviceData(null)
+        await fetchUserDevices()
+      } else {
+        const errorData = await res.json()
+        alert(`Failed to remove device: ${errorData.details || errorData.error}`)
+      }
+    } catch (error) {
+      console.error("Error removing device:", error)
+    } finally {
+      setLoading(false)
+      setConfirmUnlink(null)
+    }
+  }
+
+  const [editingWidgetId, setEditingWidgetId] = useState<string | number | null>(null)
+  const [newTopic, setNewTopic] = useState("")
+
+  const handleUpdateTopic = async (widget: any, isMainSwitch: boolean) => {
+    try {
+      if (isMainSwitch) {
+        const res = await fetch("/api/devices", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: deviceData?.id, mqttTopic: newTopic })
+        })
+        if (res.ok) {
+           const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+           setDeviceData(updated)
+           fetchUserDevices()
+        }
+      } else {
+        const res = await fetch("/api/widgets", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: widget.id, mqttTopic: newTopic })
+        })
+        if (res.ok) {
+           const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+           setDeviceData(updated)
+        }
+      }
+      setEditingWidgetId(null)
+    } catch (err) { console.error(err) }
+  }
+
+  const handleDeleteWidget = async (id: number) => {
+    if (!confirm("Are you sure you want to delete this widget?")) return
+    try {
+      const res = await fetch(`/api/widgets?id=${id}`, { method: "DELETE" })
+      if (res.ok) {
+        const updated = await fetch(`/api/devices?id=${deviceData?.id}`).then(r => r.json())
+        setDeviceData(updated)
+      }
+    } catch (err) { console.error(err) }
+  }
+
+  const renderWidget = (widget: any) => {
+    const isMainSwitch = widget.id === 0 && widget.widgetName === "Main Switch"
+    const type = widget.widgetName.toLowerCase()
+    const liveValue = messages[widget.mqttTopic] || "..."
+    const isEditing = editingWidgetId === widget.id
+    
+    const containerStyle = {
+      padding: "1.5rem",
+      display: "flex",
+      flexDirection: "column" as const,
+      alignItems: "center",
+      gap: "1rem",
+      minWidth: "200px",
+      position: "relative" as const
+    }
+
+    const toggleSwitch = (currentValue: string, topic: string) => {
+      const isCurrentlyOn = currentValue === "1" || currentValue.toLowerCase() === "on"
+      const nextValue = isCurrentlyOn ? "0" : "1"
+      publish(topic, nextValue)
+    }
+
+    if (isEditing) {
+      return (
+        <div key={widget.id} className="glass-container" style={containerStyle}>
+          <h4 style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>Edit {widget.widgetName}</h4>
+          <input 
+            className="input-field"
+            value={newTopic}
+            onChange={(e) => setNewTopic(e.target.value)}
+            placeholder="New MQTT Topic"
+            style={{ fontSize: "0.875rem", padding: "0.5rem" }}
+          />
+          <div style={{ display: "flex", gap: "0.5rem", width: "100%" }}>
+            <button className="btn btn-primary" style={{ flex: 1, padding: "0.5rem" }} onClick={() => handleUpdateTopic(widget, isMainSwitch)}>Save</button>
+            <button className="btn btn-outline" style={{ flex: 1, padding: "0.5rem" }} onClick={() => setEditingWidgetId(null)}>Cancel</button>
+          </div>
+          {!isMainSwitch && (
+            <button className="btn" style={{ background: "#ef4444", color: "white", width: "100%", padding: "0.5rem", marginTop: "0.5rem" }} onClick={() => handleDeleteWidget(widget.id)}>
+              Delete Widget
+            </button>
+          )}
+        </div>
+      )
+    }
+
+    const renderHeader = () => (
+      <div style={{ position: "absolute", top: "10px", right: "10px", display: "flex", gap: "5px" }}>
+        <button 
+          onClick={() => { setEditingWidgetId(widget.id); setNewTopic(widget.mqttTopic); }}
+          style={{ background: "rgba(255,255,255,0.05)", border: "none", color: "var(--text-secondary)", cursor: "pointer", padding: "5px", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}
+          title="Edit Widget"
+        >
+          <Settings size={14} />
+        </button>
+      </div>
+    )
+
+    const baseWidget = (icon: any, content: any) => (
+      <div key={widget.id} className="glass-container" style={containerStyle}>
+        {renderHeader()}
+        {icon}
+        <p style={{ fontSize: "0.875rem", fontWeight: "500" }}>{widget.widgetName}</p>
+        {content}
+      </div>
+    )
+
+    if (type === "temperature") {
+      return baseWidget(<Thermometer size={32} color="#f87171" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}°C</div>)
+    }
+    if (type === "humidity") {
+      return baseWidget(<Droplets size={32} color="#60a5fa" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}%</div>)
+    }
+    if (type === "gas") {
+      return baseWidget(<Flame size={32} color="#fbbf24" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}</div>)
+    }
+    if (type === "light" || type === "relay" || type === "switch" || isMainSwitch) {
+      const isOn = liveValue === "1" || liveValue.toLowerCase() === "on"
+      return baseWidget(
+        <Lightbulb size={32} color={isOn ? "#fde047" : "#4b5563"} />,
+        <button 
+          className={`btn ${isOn ? "btn-primary" : "btn-outline"}`} 
+          style={{ padding: "0.25rem 0.5rem", width: "auto" }}
+          onClick={() => toggleSwitch(liveValue, widget.mqttTopic)}
+        >
+          <ToggleRight /> {isOn ? "ON" : "OFF"}
+        </button>
+      )
+    }
+    if (type === "push button") {
+      return baseWidget(
+        <MousePointer2 size={32} color="#a855f7" />,
+        <button className="btn btn-primary" style={{ padding: "0.5rem", width: "auto" }} onClick={() => publish(widget.mqttTopic, "1")}>Press</button>
+      )
+    }
+    if (type === "motion sensor") {
+      const isMotion = liveValue.toLowerCase() === "motion" || liveValue === "1"
+      return baseWidget(
+        <Radio size={32} color={isMotion ? "#ec4899" : "#4b5563"} />,
+        <div style={{ color: isMotion ? "var(--error)" : "var(--success)", display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem" }}>
+          <Activity size={16} /> {isMotion ? "Motion" : "No Motion"}
+        </div>
+      )
+    }
+    if (type === "voltage" || type === "current") {
+      return baseWidget(<Zap size={32} color="#fca5a5" />, <div style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{liveValue}{type === "voltage" ? "V" : "A"}</div>)
+    }
+
+    return baseWidget(<Info size={32} />, <div style={{ fontSize: "1rem" }}>{liveValue}</div>)
+  }
+
+  if (status === "loading") return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+  if (!session) return null
+
+  return (
+    <div className="main-container" style={{ padding: "2rem" }}>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "3rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <Home size={32} color="var(--primary)" />
+          <h1 style={{ fontSize: "2rem" }}>My Dashboard</h1>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.875rem" }}>
+            <div style={{ 
+              width: "8px", 
+              height: "8px", 
+              borderRadius: "50%", 
+              background: combinedTopics.length === 0 ? "var(--text-secondary)" : (mqttStatus === "connected" ? "var(--success)" : "var(--error)") 
+            }} />
+            <span style={{ color: "var(--text-secondary)" }}>
+              {combinedTopics.length === 0 ? "Select a Device" : (mqttStatus === "connected" ? "Live Connected" : "Connecting...")}
+            </span>
+          </div>
+          <button className="btn" style={{ background: "var(--primary)", color: "white", width: "auto", display: "flex", gap: "0.5rem" }} onClick={() => setIsModalOpen(true)}>
+            <Search size={18} /> Add Device
+          </button>
+          <button className="btn btn-outline" onClick={() => signOut({ callbackUrl: "/", redirect: true })} style={{ width: "auto" }}>
+            <LogOut size={18} /> Logout
+          </button>
+        </div>
+      </header>
+
+      {/* Device View (Widgets) */}
+      {deviceData ? (
+        <div className="animate-fade-in">
+          <button 
+            onClick={() => setDeviceData(null)}
+            style={{ background: "none", border: "none", color: "var(--text-secondary)", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "2rem" }}
+          >
+            <Home size={18} /> Back to My Devices
+          </button>
+          
+          <div style={{ marginBottom: "3rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <h2 style={{ fontSize: "2.5rem" }}>{deviceData?.deviceName || "Device ID: #" + deviceData?.id}</h2>
+              <p style={{ color: "var(--text-secondary)" }}>Managing IoT Node</p>
+            </div>
+            <button className="btn" style={{ background: "#ef4444", color: "white", width: "auto" }} onClick={() => handleRemoveDevice(deviceData.id)}>
+              Unlink Device
+            </button>
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+            {deviceData?.widgets.length === 0 && deviceData?.mqttTopic ? (
+               renderWidget({
+                 id: 0,
+                 widgetName: "Main Switch",
+                 mqttTopic: deviceData.mqttTopic
+               })
+            ) : (
+              deviceData?.widgets.map(renderWidget)
+            )}
+          </div>
+        </div>
+      ) : (
+        /* Grid View (My Devices) */
+        <div className="animate-fade-in">
+          <h2 style={{ marginBottom: "2rem" }}>My Devices</h2>
+          
+          {loading ? (
+            <div className="flex-center" style={{ height: "40vh" }}><Loader2 className="spinner" /></div>
+          ) : userDevices.length === 0 ? (
+            <div className="flex-center" style={{ height: "40vh", flexDirection: "column", gap: "1.5rem" }}>
+              <Tv size={64} style={{ opacity: 0.2 }} />
+              <div style={{ textAlign: "center" }}>
+                <h3 style={{ marginBottom: "0.5rem" }}>No devices added yet</h3>
+                <p style={{ color: "var(--text-secondary)" }}>Click the "Add Device" button above to get started.</p>
+              </div>
+            </div>
+          ) : (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.5rem" }}>
+              {userDevices.map(device => (
+                <div 
+                  key={device.id} 
+                  className="glass-container card animate-fade-in" 
+                  style={{ padding: "1.5rem", cursor: "pointer", transition: "transform 0.2s" }}
+                  onClick={() => handleOpenDevice(device)}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-5px)"}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1rem" }}>
+                    <div style={{ background: "var(--primary-light)", padding: "0.75rem", borderRadius: "12px" }}>
+                      <Tv size={24} color="var(--primary)" />
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: "1.125rem" }}>{device.deviceName || "Untitled Device"}</h3>
+                      <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>ID: #{device.id}</p>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <span style={{ fontSize: "0.875rem", color: "var(--text-secondary)" }}>{device.widgets.length} Widgets</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.75rem", color: "var(--success)" }}>
+                      <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "var(--success)" }} />
+                      Online
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Add Device Modal */}
+      {isModalOpen && (
+        <div className="modal-overlay" style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.8)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, padding: "1rem" }}>
+          <div className="glass-container card animate-fade-in" style={{ padding: "2.5rem", width: "100%", maxWidth: "450px", position: "relative" }}>
+             <button title="Close" onClick={() => setIsModalOpen(false)} style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: "none", color: "var(--text-secondary)", cursor: "pointer" }}>
+               <LogOut size={20} />
+             </button>
+             
+             <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Add New Device</h2>
+             
+             <div className="input-group">
+               <label>Select Series</label>
+               <select 
+                 value={selectedSeriesId} 
+                 onChange={(e) => setSelectedSeriesId(e.target.value)}
+                 className="select-field"
+               >
+                 <option value="">Select Series</option>
+                 {allSeries.map(s => <option key={s.id} value={s.id.toString()}>{s.seriesName}</option>)}
+               </select>
+             </div>
+
+             <div className="input-group">
+               <label>Select Device ID</label>
+               <select 
+                 value={selectedDeviceId} 
+                 onChange={(e) => setSelectedDeviceId(e.target.value)}
+                 disabled={!selectedSeriesId}
+                 className="select-field"
+                 style={{ opacity: selectedSeriesId ? 1 : 0.5 }}
+               >
+                 <option value="">Select Device ID</option>
+                 {availableDevices.map(d => <option key={d.id} value={d.id.toString()}>ID: #{d.id} {d.deviceName ? `(${d.deviceName})` : ""}</option>)}
+               </select>
+             </div>
+
+             <button 
+               className="btn btn-primary" 
+               style={{ marginTop: "1rem" }}
+               disabled={!selectedDeviceId || addingDevice}
+               onClick={handleAddDevice}
+             >
+               {addingDevice ? <Loader2 className="spinner" /> : "Add to Dashboard"}
+             </button>
+          </div>
+        </div>
+      )}
+      {/* Confirmation Modal */}
+      {confirmUnlink !== null && (
+        <div className="modal-overlay" onClick={() => setConfirmUnlink(null)}>
+          <div className="modal-content glass" onClick={e => e.stopPropagation()}>
+            <h2 className="modal-title">Remove Device</h2>
+            <p style={{ marginBottom: "20px", color: "rgba(255,255,255,0.7)" }}>
+              Are you sure you want to remove this device from your dashboard?
+            </p>
+            <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
+              <button 
+                className="btn" 
+                style={{ background: "rgba(255,255,255,0.1)", color: "white", width: "auto" }}
+                onClick={() => setConfirmUnlink(null)}
+              >
+                Cancel
+              </button>
+              <button 
+                id="confirm-unlink-btn"
+                className="btn" 
+                style={{ background: "#ef4444", color: "white", width: "auto" }}
+                onClick={() => handleRemoveDevice(confirmUnlink)}
+              >
+                {loading ? <Loader2 className="spinner" /> : "Remove"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+```
+```diff:page.tsx
+"use client"
+
+import { useState, useEffect } from "react"
+import { signOut, useSession } from "next-auth/react"
+import { 
+  Search, Monitor, Cpu, LogOut, Loader2, ArrowLeft, 
+  UserPlus, ChevronRight, LayoutGrid, Plus, Save, CheckCircle2,
+  Settings, Database, Network, Activity
+} from "lucide-react"
+
+type DeviceData = {
+  id: number
+  deviceName: string | null
+  subSeries: { subSeriesName: string }
+  status: string
+  lastSeen: string
+  widgets: { widgetName: string; mqttTopic: string }[]
+}
+
+type Series = { id: number; seriesName: string }
+type SubSeries = { id: number; subSeriesName: string }
+
+export default function AdminDashboard() {
+  const { data: session, status } = useSession()
+  const [configUserEmail, setConfigUserEmail] = useState("")
+  const [isConfigured, setIsConfigured] = useState(false)
+  const [selectedSeriesId, setSelectedSeriesId] = useState<number | null>(null)
+  
+  // Device Search States
+  const [searchDeviceId, setSearchDeviceId] = useState("")
+  const [deviceResult, setDeviceResult] = useState<DeviceData | null>(null)
+  
+  // Add Device Workflow States
+  const [isAddingDevice, setIsAddingDevice] = useState(false)
+  const [workflowStep, setWorkflowStep] = useState(1)
+  const [allSeries, setAllSeries] = useState<Series[]>([])
+  const [allSubSeries, setAllSubSeries] = useState<SubSeries[]>([])
+  
+  // Creation Form State
+  const [newDevice, setNewDevice] = useState({
+    seriesId: "",
+    subSeriesId: "",
+    subSeriesName: "",
+    deviceId: "",
+    deviceName: "",
+    serverId: "",
+    mqttTopic: "",
+    selectedWidgets: [] as string[],
+    widgetTopics: {} as Record<string, string>
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      setConfigUserEmail(session.user.email)
+    }
+  }, [session])
+
+  useEffect(() => {
+    if (isAddingDevice && workflowStep === 1) {
+      fetchSeries()
+    }
+  }, [isAddingDevice, workflowStep])
+
+  const fetchSeries = async () => {
+    try {
+      const res = await fetch("/api/series")
+      if (res.ok) setAllSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const fetchSubSeries = async (id: string) => {
+    try {
+      const res = await fetch(`/api/sub-series?seriesId=${id}`)
+      if (res.ok) setAllSubSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const handleConfigSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (configUserEmail) setIsConfigured(true)
+  }
+
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!searchDeviceId) return
+    setLoading(true)
+    setError("")
+    setDeviceResult(null)
+    try {
+      const res = await fetch(`/api/devices?id=${searchDeviceId}`)
+      if (res.ok) setDeviceResult(await res.json())
+      else setError("Device not found.")
+    } catch (err) { setError("Failed to fetch device.") }
+    finally { setLoading(false) }
+  }
+
+  const handleCreateDevice = async () => {
+    setLoading(true)
+    setError("")
+    try {
+      const widgetsPayload = newDevice.selectedWidgets.map(w => ({
+        name: w,
+        topic: newDevice.widgetTopics[w]
+      }))
+
+      const res = await fetch("/api/devices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...newDevice,
+          widgets: widgetsPayload
+        })
+      })
+
+      if (res.ok) {
+        setIsAddingDevice(false)
+        setWorkflowStep(1)
+        alert("Device created successfully!")
+      } else {
+        const data = await res.json()
+        setError(data.error || "Failed to create device.")
+      }
+    } catch (err) { setError("An error occurred.") }
+    finally { setLoading(false) }
+  }
+
+  if (status === "loading") return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+  if (status === "unauthenticated" || (session?.user as any)?.role !== "admin") {
+    return <div className="flex-center" style={{ minHeight: "100vh" }}>Unauthorized. Redirecting...</div>
+  }
+
+  const isStepValid = (step: number): boolean => {
+    switch(step) {
+      case 1: return true
+      case 2: return !!newDevice.seriesId
+      case 3: return isStepValid(2) && !!newDevice.subSeriesId
+      case 4: 
+        const isSwitch = newDevice.subSeriesName.toLowerCase().includes("switch")
+        return isStepValid(3) && !!newDevice.deviceId && !!newDevice.serverId && (isSwitch ? !!newDevice.mqttTopic : !!newDevice.deviceName)
+      case 5: return isStepValid(4) && newDevice.selectedWidgets.length > 0
+      default: return false
+    }
+  }
+
+  const handleStepClick = (step: number) => {
+    if (isStepValid(step)) {
+      setWorkflowStep(step)
+    }
+  }
+
+  const availableWidgetsList = [
+    "Temperature", "Humidity", "Gas", "Light", "Relay", 
+    "Push Button", "Motion Sensor", "Voltage", "Current"
+  ]
+
+  const renderWorkflow = () => {
+    const isSwitch = newDevice.subSeriesName.toLowerCase().includes("switch")
+    const stepsCount = isSwitch ? 3 : 5
+
+    return (
+      <div className="workflow-container">
+        {/* Visual Stepper */}
+        <div className="stepper">
+          {[1, 2, 3, 4, 5].map((step) => {
+            if (isSwitch && step > 3) return null
+            const active = workflowStep === step
+            const valid = isStepValid(step)
+            return (
+              <div 
+                key={step} 
+                className={`step-item ${active ? 'active' : ''} ${valid ? 'valid' : 'disabled'}`}
+                onClick={() => handleStepClick(step)}
+              >
+                <div className="step-number">{step}</div>
+                <div className="step-label">
+                  {step === 1 && "Series"}
+                  {step === 2 && "Model"}
+                  {step === 3 && (isSwitch ? "Finish" : "Info")}
+                  {step === 4 && "Widgets"}
+                  {step === 5 && "MQTT"}
+                </div>
+                {step < stepsCount && <div className="step-connector" />}
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="glass-container workflow-card">
+          {(() => {
+            switch(workflowStep) {
+      case 1:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 1: Select Device Series</h2>
+            <div className="input-group">
+              <label>Device Series</label>
+              <select 
+                value={newDevice.seriesId} 
+                onChange={(e) => {
+                  const id = e.target.value
+                  setNewDevice({...newDevice, seriesId: id})
+                  fetchSubSeries(id)
+                }}
+                className="select-field"
+              >
+                <option value="">Select Series</option>
+                {allSeries.map(s => <option key={s.id} value={s.id}>{s.seriesName}</option>)}
+              </select>
+            </div>
+            <button 
+              className="btn btn-primary" 
+              disabled={!newDevice.seriesId}
+              onClick={() => setWorkflowStep(2)}
+            >
+              Next
+            </button>
+          </div>
+        )
+      case 2:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 2: Select Sub-Series</h2>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {allSubSeries.map(ss => (
+                <div 
+                  key={ss.id} 
+                  className={`glass-container selectable-card ${String(newDevice.subSeriesId) === String(ss.id) ? "active" : ""}`}
+                  style={{ 
+                    border: String(newDevice.subSeriesId) === String(ss.id) ? "2px solid var(--primary)" : "1px solid var(--glass-border)",
+                    transform: String(newDevice.subSeriesId) === String(ss.id) ? "scale(1.02)" : "scale(1)"
+                  }}
+                  onClick={() => {
+                    setNewDevice({...newDevice, subSeriesId: ss.id.toString(), subSeriesName: ss.subSeriesName});
+                    // Auto-advance after small delay for visual feedback
+                    setTimeout(() => setWorkflowStep(3), 300);
+                  }}
+                >
+                  <Cpu size={24} style={{ color: String(newDevice.subSeriesId) === String(ss.id) ? "var(--primary)" : "inherit" }} />
+                  <span style={{ fontWeight: String(newDevice.subSeriesId) === String(ss.id) ? "bold" : "normal" }}>
+                    {ss.subSeriesName}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(1)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={!newDevice.subSeriesId}
+                onClick={() => setWorkflowStep(3)}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )
+      case 3:
+        const subName = newDevice.subSeriesName.toLowerCase()
+        const isSwitch = subName.includes("switch")
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 3: {isSwitch ? "Configuration" : "Device Info"}</h2>
+            <div className="input-grid">
+              <div className="input-group">
+                <label>Device ID</label>
+                <input type="number" placeholder="e.g. 1" value={newDevice.deviceId} onChange={e => setNewDevice({...newDevice, deviceId: e.target.value})} />
+              </div>
+              <div className="input-group">
+                <label>Server ID</label>
+                <input type="text" placeholder="server_01" value={newDevice.serverId} onChange={e => setNewDevice({...newDevice, serverId: e.target.value})} />
+              </div>
+              {isSwitch ? (
+                <div className="input-group" style={{ gridColumn: "span 2" }}>
+                  <label>MQTT Topic</label>
+                  <input type="text" placeholder="w1/switch/1" value={newDevice.mqttTopic} onChange={e => setNewDevice({...newDevice, mqttTopic: e.target.value})} />
+                </div>
+              ) : (
+                <div className="input-group" style={{ gridColumn: "span 2" }}>
+                  <label>Device Name (Location)</label>
+                  <input type="text" placeholder="Living Room Hub" value={newDevice.deviceName} onChange={e => setNewDevice({...newDevice, deviceName: e.target.value})} />
+                </div>
+              )}
+            </div>
+            {error && <p className="error-text">{error}</p>}
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(2)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={!newDevice.deviceId || !newDevice.serverId || (isSwitch ? !newDevice.mqttTopic : !newDevice.deviceName)}
+                onClick={() => isSwitch ? handleCreateDevice() : setWorkflowStep(4)}
+              >
+                {isSwitch ? "SAVE" : "NEXT"}
+              </button>
+            </div>
+          </div>
+        )
+      case 4:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 4: Select Widgets</h2>
+            <div className="checkbox-grid">
+              {availableWidgetsList.map(w => (
+                <label key={w} className="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    checked={newDevice.selectedWidgets.includes(w)}
+                    onChange={(e) => {
+                      const selected = e.target.checked 
+                        ? [...newDevice.selectedWidgets, w]
+                        : newDevice.selectedWidgets.filter(item => item !== w)
+                      setNewDevice({...newDevice, selectedWidgets: selected})
+                    }}
+                  />
+                  <span>{w}</span>
+                </label>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(3)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={newDevice.selectedWidgets.length === 0}
+                onClick={() => setWorkflowStep(5)}
+              >
+                NEXT
+              </button>
+            </div>
+          </div>
+        )
+      case 5:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 5: Enter MQTT Topics</h2>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {newDevice.selectedWidgets.map(w => (
+                <div key={w} className="input-group">
+                  <label>{w}:</label>
+                  <input 
+                    type="text" 
+                    placeholder={`e.g. w1/hub/${newDevice.deviceId}/${w.toLowerCase().replace(" ", "")}`}
+                    value={newDevice.widgetTopics[w] || ""}
+                    onChange={(e) => setNewDevice({
+                      ...newDevice, 
+                      widgetTopics: {...newDevice.widgetTopics, [w]: e.target.value}
+                    })}
+                  />
+                </div>
+              ))}
+            </div>
+            {error && <p className="error-text">{error}</p>}
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(4)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={Object.keys(newDevice.widgetTopics).length < newDevice.selectedWidgets.length}
+                onClick={handleCreateDevice}
+              >
+                {loading ? <Loader2 className="spinner" /> : <><Save size={18} /> SAVE DEVICE</>}
+              </button>
+            </div>
+          </div>
+        )
+            }
+          })()}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="dashboard-layout">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--primary)", marginBottom: "2rem" }}>Smaer-HUB</h2>
+        <nav style={{ flex: 1 }}>
+          <div 
+            onClick={() => { setIsAddingDevice(false); setSelectedSeriesId(null); }}
+            className={`nav-item ${!isAddingDevice && !selectedSeriesId ? "active" : ""}`}
+          >
+            <Database size={20} />
+            <span>Overview</span>
+          </div>
+          <div 
+            onClick={() => { setIsAddingDevice(true); setWorkflowStep(1); }}
+            className={`nav-item ${isAddingDevice ? "active" : ""}`}
+            style={{ color: "var(--success)" }}
+          >
+            <Plus size={20} />
+            <span>Add Device</span>
+          </div>
+        </nav>
+        <button className="btn btn-outline" onClick={() => signOut({ callbackUrl: "/" })} style={{ justifyContent: "flex-start" }}>
+          <LogOut size={20} />
+          Logout
+        </button>
+      </aside>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {isAddingDevice ? (
+          renderWorkflow()
+        ) : (
+          <div className="animate-fade-in">
+            <header style={{ marginBottom: "3rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+              <div>
+                <h1 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>System Management</h1>
+                <p style={{ color: "var(--text-secondary)" }}>Managing infrastructure for: <strong>{configUserEmail}</strong></p>
+              </div>
+              <button className="btn btn-primary" style={{ width: "auto" }} onClick={() => { setIsAddingDevice(true); setWorkflowStep(1); }}>
+                <Plus size={18} /> Add New Device
+              </button>
+            </header>
+
+            <div className="stats-grid">
+              <div className="glass-container stat-card">
+                <Network className="stat-icon" />
+                <div><p>Active Series</p><h3>W1_Series</h3></div>
+              </div>
+              <div className="glass-container stat-card">
+                <Activity className="stat-icon" />
+                <div><p>System Status</p><h3 style={{ color: "var(--success)" }}>Operational</h3></div>
+              </div>
+            </div>
+
+            <div className="search-section">
+              <h2 style={{ marginBottom: "1rem" }}>Quick Search</h2>
+              <form onSubmit={handleSearch} className="glass-container search-bar">
+                <Search size={20} />
+                <input type="number" placeholder="Enter Device ID to inspect..." value={searchDeviceId} onChange={e => setSearchDeviceId(e.target.value)} />
+                <button type="submit" className="btn btn-primary" style={{ width: "auto" }} disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Inspect"}
+                </button>
+              </form>
+            </div>
+
+            {error && <div className="error-box">{error}</div>}
+
+            {deviceResult && (
+              <div className="glass-container result-card animate-fade-in">
+                <div className="result-header">
+                  <div>
+                    <h2>{deviceResult.deviceName || deviceResult.subSeries.subSeriesName}</h2>
+                    <p>ID: #{deviceResult.id} | {deviceResult.subSeries.subSeriesName}</p>
+                  </div>
+                  <span className={`status-badge ${deviceResult.status.toLowerCase()}`}>{deviceResult.status}</span>
+                </div>
+                {deviceResult.widgets.length > 0 && (
+                  <div className="result-widgets">
+                    <h3>Configured Widgets</h3>
+                    <div className="widget-pills">
+                      {deviceResult.widgets.map(w => (
+                        <span key={w.widgetName} className="widget-pill">
+                          {w.widgetName}
+                          <small>{w.mqttTopic}</small>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </main>
+
+      <style jsx>{`
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          color: var(--text-secondary);
+          cursor: pointer;
+          transition: all 0.2s;
+          margin-bottom: 0.5rem;
+        }
+        .nav-item:hover { background: var(--glass-bg); color: var(--text-primary); }
+        .nav-item.active { background: var(--glass-bg); color: var(--primary); font-weight: 600; }
+        
+        .workflow-card { padding: 3rem; max-width: 600px; margin: 0 auto; }
+        .step-title { margin-bottom: 2rem; font-size: 1.5rem; color: var(--primary); }
+        
+        .select-field {
+          width: 100%;
+          padding: 0.75rem;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          border-radius: 8px;
+          color: white;
+          outline: none;
+        }
+        
+        .selectable-card {
+          padding: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .selectable-card:hover { border-color: var(--primary); }
+        .selectable-card.active { border-color: var(--primary); background: var(--glass-bg); }
+        
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          background: var(--glass-bg);
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        /* Stepper Styles */
+        .stepper {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 2rem;
+          padding: 0 1rem;
+        }
+        .step-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          position: relative;
+          flex: 1;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+        .step-item.disabled { cursor: not-allowed; opacity: 0.5; }
+        .step-number {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 0.875rem;
+          z-index: 2;
+        }
+        .step-item.active .step-number { background: var(--primary); border-color: var(--primary); color: white; }
+        .step-item.valid:not(.active) .step-number { border-color: var(--primary); color: var(--primary); }
+        .step-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .step-item.active .step-label { color: var(--primary); font-weight: bold; }
+        .step-connector {
+          position: absolute;
+          top: 16px;
+          left: calc(50% + 16px);
+          right: calc(-50% + 16px);
+          height: 2px;
+          background: var(--glass-border);
+          z-index: 1;
+        }
+        .step-item.valid .step-connector { background: var(--primary); }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+        .stat-icon { color: var(--primary); font-size: 32px; }
+        
+        .search-bar { padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .search-bar input { flex: 1; background: none; border: none; color: white; outline: none; font-size: 1rem; }
+        
+        .result-card { margin-top: 2rem; padding: 2rem; }
+        .result-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+        .widget-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .widget-pill {
+          padding: 0.5rem 1rem;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          border-radius: 999px;
+          display: flex;
+          flex-direction: column;
+          font-size: 0.875rem;
+        }
+        .widget-pill small { font-size: 0.65rem; color: var(--text-secondary); }
+        
+        .error-box { padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--error); border-radius: 8px; color: var(--error); margin-top: 2rem; }
+      `}</style>
+    </div>
+  )
+}
+===
+"use client"
+
+import { useState, useEffect } from "react"
+import { signOut, useSession } from "next-auth/react"
+import { 
+  Search, Monitor, Cpu, LogOut, Loader2, ArrowLeft, 
+  UserPlus, ChevronRight, LayoutGrid, Plus, Save, CheckCircle2,
+  Settings, Database, Network, Activity
+} from "lucide-react"
+
+type DeviceData = {
+  id: number
+  deviceName: string | null
+  subSeries: { subSeriesName: string }
+  status: string
+  lastSeen: string
+  widgets: { widgetName: string; mqttTopic: string }[]
+}
+
+type Series = { id: number; seriesName: string }
+type SubSeries = { id: number; subSeriesName: string }
+
+export default function AdminDashboard() {
+  const { data: session, status } = useSession()
+  const [configUserEmail, setConfigUserEmail] = useState("")
+  const [isConfigured, setIsConfigured] = useState(false)
+  const [selectedSeriesId, setSelectedSeriesId] = useState<number | null>(null)
+  
+  // Device Search States
+  const [searchDeviceId, setSearchDeviceId] = useState("")
+  const [deviceResult, setDeviceResult] = useState<DeviceData | null>(null)
+  
+  // Add Device Workflow States
+  const [isAddingDevice, setIsAddingDevice] = useState(false)
+  const [workflowStep, setWorkflowStep] = useState(1)
+  const [allSeries, setAllSeries] = useState<Series[]>([])
+  const [allSubSeries, setAllSubSeries] = useState<SubSeries[]>([])
+  
+  // Creation Form State
+  const [newDevice, setNewDevice] = useState({
+    seriesId: "",
+    subSeriesId: "",
+    subSeriesName: "",
+    deviceId: "",
+    deviceName: "",
+    serverId: "",
+    mqttTopic: "",
+    selectedWidgets: [] as string[],
+    widgetTopics: {} as Record<string, string>
+  })
+
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      setConfigUserEmail(session.user.email)
+    }
+  }, [session])
+
+  useEffect(() => {
+    if (isAddingDevice && workflowStep === 1) {
+      fetchSeries()
+    }
+  }, [isAddingDevice, workflowStep])
+
+  const fetchSeries = async () => {
+    try {
+      const res = await fetch("/api/series")
+      if (res.ok) setAllSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const fetchSubSeries = async (id: string) => {
+    try {
+      const res = await fetch(`/api/sub-series?seriesId=${id}`)
+      if (res.ok) setAllSubSeries(await res.json())
+    } catch (err) { console.error(err) }
+  }
+
+  const handleConfigSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (configUserEmail) setIsConfigured(true)
+  }
+
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!searchDeviceId) return
+    setLoading(true)
+    setError("")
+    setDeviceResult(null)
+    try {
+      const res = await fetch(`/api/devices?id=${searchDeviceId}`)
+      if (res.ok) setDeviceResult(await res.json())
+      else setError("Device not found.")
+    } catch (err) { setError("Failed to fetch device.") }
+    finally { setLoading(false) }
+  }
+
+  const handleCreateDevice = async () => {
+    setLoading(true)
+    setError("")
+    try {
+      const widgetsPayload = newDevice.selectedWidgets.map(w => ({
+        name: w,
+        topic: newDevice.widgetTopics[w]
+      }))
+
+      const res = await fetch("/api/devices", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...newDevice,
+          widgets: widgetsPayload
+        })
+      })
+
+      if (res.ok) {
+        setIsAddingDevice(false)
+        setWorkflowStep(1)
+        alert("Device created successfully!")
+      } else {
+        const data = await res.json()
+        setError(data.error || "Failed to create device.")
+      }
+    } catch (err) { setError("An error occurred.") }
+    finally { setLoading(false) }
+  }
+
+  if (status === "loading") return <div className="flex-center" style={{ minHeight: "100vh" }}><Loader2 className="spinner" /></div>
+  if (status === "unauthenticated" || (session?.user as any)?.role !== "admin") {
+    return <div className="flex-center" style={{ minHeight: "100vh" }}>Unauthorized. Redirecting...</div>
+  }
+
+  const isStepValid = (step: number): boolean => {
+    switch(step) {
+      case 1: return true
+      case 2: return !!newDevice.seriesId
+      case 3: return isStepValid(2) && !!newDevice.subSeriesId
+      case 4: 
+        const isSwitch = newDevice.subSeriesName.toLowerCase().includes("switch")
+        return isStepValid(3) && !!newDevice.deviceId && !!newDevice.serverId && (isSwitch ? !!newDevice.mqttTopic : !!newDevice.deviceName)
+      case 5: return isStepValid(4) && newDevice.selectedWidgets.length > 0
+      default: return false
+    }
+  }
+
+  const handleStepClick = (step: number) => {
+    if (isStepValid(step)) {
+      setWorkflowStep(step)
+    }
+  }
+
+  const availableWidgetsList = [
+    "Temperature", "Humidity", "Gas", "Light", "Relay", 
+    "Push Button", "Motion Sensor", "Voltage", "Current"
+  ]
+
+  const renderWorkflow = () => {
+    const isSwitch = newDevice.subSeriesName.toLowerCase().includes("switch")
+    const stepsCount = isSwitch ? 3 : 5
+
+    return (
+      <div className="workflow-container">
+        {/* Visual Stepper */}
+        <div className="stepper">
+          {[1, 2, 3, 4, 5].map((step) => {
+            if (isSwitch && step > 3) return null
+            const active = workflowStep === step
+            const valid = isStepValid(step)
+            return (
+              <div 
+                key={step} 
+                className={`step-item ${active ? 'active' : ''} ${valid ? 'valid' : 'disabled'}`}
+                onClick={() => handleStepClick(step)}
+              >
+                <div className="step-number">{step}</div>
+                <div className="step-label">
+                  {step === 1 && "Series"}
+                  {step === 2 && "Model"}
+                  {step === 3 && (isSwitch ? "Finish" : "Info")}
+                  {step === 4 && "Widgets"}
+                  {step === 5 && "MQTT"}
+                </div>
+                {step < stepsCount && <div className="step-connector" />}
+              </div>
+            )
+          })}
+        </div>
+
+        <div className="glass-container workflow-card">
+          {(() => {
+            switch(workflowStep) {
+      case 1:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 1: Select Device Series</h2>
+            <div className="input-group">
+              <label>Device Series</label>
+              <select 
+                value={newDevice.seriesId} 
+                onChange={(e) => {
+                  const id = e.target.value
+                  setNewDevice({...newDevice, seriesId: id})
+                  fetchSubSeries(id)
+                }}
+                className="select-field"
+              >
+                <option value="">Select Series</option>
+                {allSeries.map(s => <option key={s.id} value={s.id}>{s.seriesName}</option>)}
+              </select>
+            </div>
+            <button 
+              className="btn btn-primary" 
+              disabled={!newDevice.seriesId}
+              onClick={() => setWorkflowStep(2)}
+            >
+              Next
+            </button>
+          </div>
+        )
+      case 2:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 2: Select Sub-Series</h2>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {allSubSeries.map(ss => (
+                <div 
+                  key={ss.id} 
+                  className={`glass-container selectable-card ${String(newDevice.subSeriesId) === String(ss.id) ? "active" : ""}`}
+                  style={{ 
+                    border: String(newDevice.subSeriesId) === String(ss.id) ? "2px solid var(--primary)" : "1px solid var(--glass-border)",
+                    transform: String(newDevice.subSeriesId) === String(ss.id) ? "scale(1.02)" : "scale(1)"
+                  }}
+                  onClick={() => {
+                    setNewDevice({...newDevice, subSeriesId: ss.id.toString(), subSeriesName: ss.subSeriesName});
+                    // Auto-advance after small delay for visual feedback
+                    setTimeout(() => setWorkflowStep(3), 300);
+                  }}
+                >
+                  <Cpu size={24} style={{ color: String(newDevice.subSeriesId) === String(ss.id) ? "var(--primary)" : "inherit" }} />
+                  <span style={{ fontWeight: String(newDevice.subSeriesId) === String(ss.id) ? "bold" : "normal" }}>
+                    {ss.subSeriesName}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(1)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={!newDevice.subSeriesId}
+                onClick={() => setWorkflowStep(3)}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )
+      case 3:
+        const subName = newDevice.subSeriesName.toLowerCase()
+        const isSwitch = subName.includes("switch")
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 3: {isSwitch ? "Configuration" : "Device Info"}</h2>
+            <div className="input-grid">
+              <div className="input-group">
+                <label>Device ID</label>
+                <input type="number" placeholder="e.g. 1" value={newDevice.deviceId} onChange={e => setNewDevice({...newDevice, deviceId: e.target.value})} />
+              </div>
+              <div className="input-group">
+                <label>Server ID</label>
+                <input type="text" placeholder="server_01" value={newDevice.serverId} onChange={e => setNewDevice({...newDevice, serverId: e.target.value})} />
+              </div>
+              {isSwitch ? (
+                <div className="input-group" style={{ gridColumn: "span 2" }}>
+                  <label>MQTT Topic</label>
+                  <input type="text" placeholder="w1/switch/1" value={newDevice.mqttTopic} onChange={e => setNewDevice({...newDevice, mqttTopic: e.target.value})} />
+                </div>
+              ) : (
+                <div className="input-group" style={{ gridColumn: "span 2" }}>
+                  <label>Device Name (Location)</label>
+                  <input type="text" placeholder="Living Room Hub" value={newDevice.deviceName} onChange={e => setNewDevice({...newDevice, deviceName: e.target.value})} />
+                </div>
+              )}
+            </div>
+            {error && <p className="error-text">{error}</p>}
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(2)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={!newDevice.deviceId || !newDevice.serverId || (isSwitch ? !newDevice.mqttTopic : !newDevice.deviceName)}
+                onClick={() => isSwitch ? handleCreateDevice() : setWorkflowStep(4)}
+              >
+                {isSwitch ? "SAVE" : "NEXT"}
+              </button>
+            </div>
+          </div>
+        )
+      case 4:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 4: Select Widgets</h2>
+            <div className="checkbox-grid">
+              {availableWidgetsList.map(w => (
+                <label key={w} className="checkbox-item">
+                  <input 
+                    type="checkbox" 
+                    checked={newDevice.selectedWidgets.includes(w)}
+                    onChange={(e) => {
+                      const selected = e.target.checked 
+                        ? [...newDevice.selectedWidgets, w]
+                        : newDevice.selectedWidgets.filter(item => item !== w)
+                      setNewDevice({...newDevice, selectedWidgets: selected})
+                    }}
+                  />
+                  <span>{w}</span>
+                </label>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(3)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={newDevice.selectedWidgets.length === 0}
+                onClick={() => setWorkflowStep(5)}
+              >
+                NEXT
+              </button>
+            </div>
+          </div>
+        )
+      case 5:
+        return (
+          <div className="animate-fade-in">
+            <h2 className="step-title">Step 5: Enter MQTT Topics</h2>
+            <div style={{ display: "grid", gap: "1rem" }}>
+              {newDevice.selectedWidgets.map(w => (
+                <div key={w} className="input-group">
+                  <label>{w}:</label>
+                  <input 
+                    type="text" 
+                    placeholder={`e.g. w1/hub/${newDevice.deviceId}/${w.toLowerCase().replace(" ", "")}`}
+                    value={newDevice.widgetTopics[w] || ""}
+                    onChange={(e) => setNewDevice({
+                      ...newDevice, 
+                      widgetTopics: {...newDevice.widgetTopics, [w]: e.target.value}
+                    })}
+                  />
+                </div>
+              ))}
+            </div>
+            {error && <p className="error-text">{error}</p>}
+            <div style={{ display: "flex", gap: "1rem", marginTop: "2rem" }}>
+              <button className="btn btn-outline" onClick={() => setWorkflowStep(4)}>Back</button>
+              <button 
+                className="btn btn-primary" 
+                disabled={Object.keys(newDevice.widgetTopics).length < newDevice.selectedWidgets.length}
+                onClick={handleCreateDevice}
+              >
+                {loading ? <Loader2 className="spinner" /> : <><Save size={18} /> SAVE DEVICE</>}
+              </button>
+            </div>
+          </div>
+        )
+            }
+          })()}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="dashboard-layout">
+      {/* Sidebar */}
+      <aside className="sidebar">
+        <h2 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "var(--primary)", marginBottom: "2rem" }}>Smart-HUB</h2>
+        <nav style={{ flex: 1 }}>
+          <div 
+            onClick={() => { setIsAddingDevice(false); setSelectedSeriesId(null); }}
+            className={`nav-item ${!isAddingDevice && !selectedSeriesId ? "active" : ""}`}
+          >
+            <Database size={20} />
+            <span>Overview</span>
+          </div>
+          <div 
+            onClick={() => { setIsAddingDevice(true); setWorkflowStep(1); }}
+            className={`nav-item ${isAddingDevice ? "active" : ""}`}
+            style={{ color: "var(--success)" }}
+          >
+            <Plus size={20} />
+            <span>Add Device</span>
+          </div>
+        </nav>
+        <button className="btn btn-outline" onClick={() => signOut({ callbackUrl: "/", redirect: true })} style={{ justifyContent: "flex-start" }}>
+          <LogOut size={20} />
+          Logout
+        </button>
+      </aside>
+
+      {/* Main Content */}
+      <main className="main-content">
+        {isAddingDevice ? (
+          renderWorkflow()
+        ) : (
+          <div className="animate-fade-in">
+            <header style={{ marginBottom: "3rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+              <div>
+                <h1 style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>System Management</h1>
+                <p style={{ color: "var(--text-secondary)" }}>Managing infrastructure for: <strong>{configUserEmail}</strong></p>
+              </div>
+              <button className="btn btn-primary" style={{ width: "auto" }} onClick={() => { setIsAddingDevice(true); setWorkflowStep(1); }}>
+                <Plus size={18} /> Add New Device
+              </button>
+            </header>
+
+            <div className="stats-grid">
+              <div className="glass-container stat-card">
+                <Network className="stat-icon" />
+                <div><p>Active Series</p><h3>W1_Series</h3></div>
+              </div>
+              <div className="glass-container stat-card">
+                <Activity className="stat-icon" />
+                <div><p>System Status</p><h3 style={{ color: "var(--success)" }}>Operational</h3></div>
+              </div>
+            </div>
+
+            <div className="search-section">
+              <h2 style={{ marginBottom: "1rem" }}>Quick Search</h2>
+              <form onSubmit={handleSearch} className="glass-container search-bar">
+                <Search size={20} />
+                <input type="number" placeholder="Enter Device ID to inspect..." value={searchDeviceId} onChange={e => setSearchDeviceId(e.target.value)} />
+                <button type="submit" className="btn btn-primary" style={{ width: "auto" }} disabled={loading}>
+                  {loading ? <Loader2 className="spinner" /> : "Inspect"}
+                </button>
+              </form>
+            </div>
+
+            {error && <div className="error-box">{error}</div>}
+
+            {deviceResult && (
+              <div className="glass-container result-card animate-fade-in">
+                <div className="result-header">
+                  <div>
+                    <h2>{deviceResult.deviceName || deviceResult.subSeries.subSeriesName}</h2>
+                    <p>ID: #{deviceResult.id} | {deviceResult.subSeries.subSeriesName}</p>
+                  </div>
+                  <span className={`status-badge ${deviceResult.status.toLowerCase()}`}>{deviceResult.status}</span>
+                </div>
+                {deviceResult.widgets.length > 0 && (
+                  <div className="result-widgets">
+                    <h3>Configured Widgets</h3>
+                    <div className="widget-pills">
+                      {deviceResult.widgets.map(w => (
+                        <span key={w.widgetName} className="widget-pill">
+                          {w.widgetName}
+                          <small>{w.mqttTopic}</small>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </main>
+
+      <style jsx>{`
+        .nav-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          color: var(--text-secondary);
+          cursor: pointer;
+          transition: all 0.2s;
+          margin-bottom: 0.5rem;
+        }
+        .nav-item:hover { background: var(--glass-bg); color: var(--text-primary); }
+        .nav-item.active { background: var(--glass-bg); color: var(--primary); font-weight: 600; }
+        
+        .workflow-card { padding: 3rem; max-width: 600px; margin: 0 auto; }
+        .step-title { margin-bottom: 2rem; font-size: 1.5rem; color: var(--primary); }
+        
+        .select-field {
+          width: 100%;
+          padding: 0.75rem;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          border-radius: 8px;
+          color: white;
+          outline: none;
+        }
+        
+        .selectable-card {
+          padding: 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s;
+        }
+        .selectable-card:hover { border-color: var(--primary); }
+        .selectable-card.active { border-color: var(--primary); background: var(--glass-bg); }
+        
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          background: var(--glass-bg);
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        /* Stepper Styles */
+        .stepper {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 2rem;
+          padding: 0 1rem;
+        }
+        .step-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          position: relative;
+          flex: 1;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+        .step-item.disabled { cursor: not-allowed; opacity: 0.5; }
+        .step-number {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          font-size: 0.875rem;
+          z-index: 2;
+        }
+        .step-item.active .step-number { background: var(--primary); border-color: var(--primary); color: white; }
+        .step-item.valid:not(.active) .step-number { border-color: var(--primary); color: var(--primary); }
+        .step-label { font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        .step-item.active .step-label { color: var(--primary); font-weight: bold; }
+        .step-connector {
+          position: absolute;
+          top: 16px;
+          left: calc(50% + 16px);
+          right: calc(-50% + 16px);
+          height: 2px;
+          background: var(--glass-border);
+          z-index: 1;
+        }
+        .step-item.valid .step-connector { background: var(--primary); }
+        
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+        .stat-icon { color: var(--primary); font-size: 32px; }
+        
+        .search-bar { padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .search-bar input { flex: 1; background: none; border: none; color: white; outline: none; font-size: 1rem; }
+        
+        .result-card { margin-top: 2rem; padding: 2rem; }
+        .result-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+        .widget-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+        .widget-pill {
+          padding: 0.5rem 1rem;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          border-radius: 999px;
+          display: flex;
+          flex-direction: column;
+          font-size: 0.875rem;
+        }
+        .widget-pill small { font-size: 0.65rem; color: var(--text-secondary); }
+        
+        .error-box { padding: 1rem; background: rgba(239, 68, 68, 0.1); border: 1px solid var(--error); border-radius: 8px; color: var(--error); margin-top: 2rem; }
+      `}</style>
+    </div>
+  )
+}
+```
+```diff:route.ts
+import { NextResponse } from "next/server"
+import prisma from "@/lib/prisma"
+import nodemailer from "nodemailer"
+
+export async function POST(req: Request) {
+  try {
+    const { email } = await req.json()
+
+    if (!email) {
+      return NextResponse.json({ error: "Email is required" }, { status: 400 })
+    }
+
+    // Bypass for dummy admin
+    if (email === "asmelwin3@gmail.com") {
+      return NextResponse.json({ message: "OTP sent successfully (Bypass Code: 123456)" })
+    }
+
+    // Check if admin exists
+    const admin = await prisma.adminEmail.findUnique({
+      where: { email },
+    })
+
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized admin email" }, { status: 403 })
+    }
+
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString()
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000) // 5 minutes
+
+    // Store OTP
+    await prisma.otpVerification.create({
+      data: {
+        email,
+        otp,
+        expiresAt,
+      },
+    })
+
+    // Log OTP for debug (in case email fails)
+    console.log(`[OTP DEBUG] OTP for ${email}: ${otp}`)
+
+    // Send email
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      })
+
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM,
+        to: email,
+        subject: "Smaer-HUB Admin OTP",
+        text: `Your 6-digit OTP for admin login is: ${otp}. It will expire in 5 minutes.`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <h2 style="color: #4f46e5;">Smaer-HUB</h2>
+            <p>You requested an admin login OTP. Please use the code below:</p>
+            <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center; font-size: 24px; font-weight: bold; letter-spacing: 4px; color: #111827;">
+              ${otp}
+            </div>
+            <p style="font-size: 14px; color: #6b7280; margin-top: 20px;">
+              This OTP will expire in 5 minutes. If you did not request this, please ignore this email.
+            </p>
+          </div>
+        `,
+      })
+    } catch (mailError) {
+      console.error("Mail Send Error (falling back to console log):", mailError)
+      // We still return success if the OTP was generated and saved, 
+      // so the user can use the console logged OTP for testing.
+    }
+
+    return NextResponse.json({ message: "OTP process completed" })
+  } catch (error) {
+    console.error("OTP Error:", error)
+    return NextResponse.json({ error: "Failed to process OTP" }, { status: 500 })
+  }
+}
+===
+import { NextResponse } from "next/server"
+import prisma from "@/lib/prisma"
+import nodemailer from "nodemailer"
+
+export async function POST(req: Request) {
+  try {
+    const { email } = await req.json()
+
+    if (!email) {
+      return NextResponse.json({ error: "Email is required" }, { status: 400 })
+    }
+
+    // Bypass for dummy admin
+    if (email === "asmelwin3@gmail.com") {
+      return NextResponse.json({ message: "OTP sent successfully (Bypass Code: 123456)" })
+    }
+
+    // Check if admin exists
+    const admin = await prisma.adminEmail.findUnique({
+      where: { email },
+    })
+
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized admin email" }, { status: 403 })
+    }
+
+    // Generate 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString()
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000) // 5 minutes
+
+    // Store OTP
+    await prisma.otpVerification.create({
+      data: {
+        email,
+        otp,
+        expiresAt,
+      },
+    })
+
+    // Log OTP for debug (in case email fails)
+    console.log(`[OTP DEBUG] OTP for ${email}: ${otp}`)
+
+    // Send email
+    try {
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: Number(process.env.SMTP_PORT),
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      })
+
+      await transporter.sendMail({
+        from: process.env.SMTP_FROM,
+        to: email,
+        subject: "Smart-HUB Admin OTP",
+        text: `Your 6-digit OTP for admin login is: ${otp}. It will expire in 5 minutes.`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <h2 style="color: #4f46e5;">Smart-HUB</h2>
+            <p>You requested an admin login OTP. Please use the code below:</p>
+            <div style="background: #f3f4f6; padding: 20px; border-radius: 8px; text-align: center; font-size: 24px; font-weight: bold; letter-spacing: 4px; color: #111827;">
+              ${otp}
+            </div>
+            <p style="font-size: 14px; color: #6b7280; margin-top: 20px;">
+              This OTP will expire in 5 minutes. If you did not request this, please ignore this email.
+            </p>
+          </div>
+        `,
+      })
+    } catch (mailError) {
+      console.error("Mail Send Error (falling back to console log):", mailError)
+      // We still return success if the OTP was generated and saved, 
+      // so the user can use the console logged OTP for testing.
+    }
+
+    return NextResponse.json({ message: "OTP process completed" })
+  } catch (error) {
+    console.error("OTP Error:", error)
+    return NextResponse.json({ error: "Failed to process OTP" }, { status: 500 })
+  }
+}
+```
+```diff:seed.ts
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  console.log('Seeding initial series and sub-series data...')
+
+  // Create W1_Series
+  const w1Series = await prisma.deviceSeries.upsert({
+    where: { seriesName: 'W1_Series' },
+    update: {},
+    create: {
+      seriesName: 'W1_Series',
+    },
+  })
+
+  const emails = ["asmelwin3@gmail.com", "admin@gmail.com"]
+
+  for (const email of emails) {
+    await prisma.adminEmail.upsert({
+      where: { email },
+      update: {},
+      create: { email },
+    })
+  }
+
+  // Create Sub-Series for W1
+  await prisma.deviceSubSeries.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      id: 1,
+      seriesId: w1Series.id,
+      subSeriesName: 'W1_Smart_Hub',
+    },
+  })
+
+  await prisma.deviceSubSeries.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      id: 2,
+      seriesId: w1Series.id,
+      subSeriesName: 'W1_Switch',
+    },
+  })
+
+  console.log('Seeding completed successfully.')
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
+===
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
+
+async function main() {
+  console.log('Seeding initial series and sub-series data...')
+
+  // Create W1_Series
+  const w1Series = await prisma.deviceSeries.upsert({
+    where: { seriesName: 'W1_Series' },
+    update: {},
+    create: {
+      seriesName: 'W1_Series',
+    },
+  })
+
+  const emails = ["asmelwin3@gmail.com", "admin@gmail.com"]
+
+  for (const email of emails) {
+    await prisma.adminEmail.upsert({
+      where: { email },
+      update: {},
+      create: { email },
+    })
+  }
+
+  const subHub = await prisma.deviceSubSeries.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      id: 1,
+      seriesId: w1Series.id,
+      subSeriesName: 'W1_Smart_Hub',
+    },
+  })
+
+  await prisma.deviceSubSeries.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      id: 2,
+      seriesId: w1Series.id,
+      subSeriesName: 'W1_Switch',
+    },
+  })
+
+  // Create a Sample Device for testing
+  await prisma.device.upsert({
+    where: { id: 101 },
+    update: {},
+    create: {
+      id: 101,
+      seriesId: w1Series.id,
+      subSeriesId: subHub.id,
+      deviceName: 'Living Room Hub',
+      serverId: 'srv_001',
+      mqttTopic: 'w1/hub/101/main',
+      status: 'Online',
+      widgets: {
+        create: [
+          { widgetName: 'Temperature', mqttTopic: 'w1/hub/101/temp' },
+          { widgetName: 'Humidity', mqttTopic: 'w1/hub/101/hum' }
+        ]
+      }
+    }
+  })
+
+  // Cleanup garbage data
+  await prisma.device.deleteMany({
+    where: {
+      deviceName: {
+        contains: 'xcxcxc'
+      }
+    }
+  })
+
+  console.log('Seeding completed successfully.')
+}
+
+main()
+  .catch((e) => {
+    console.error(e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
+```

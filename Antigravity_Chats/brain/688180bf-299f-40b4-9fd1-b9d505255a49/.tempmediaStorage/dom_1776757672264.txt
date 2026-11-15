@@ -1,0 +1,8 @@
+Smart-HUB
+Home Automation Management
+[0] (452,455)<button class='btn btn-primary'>User Login />
+[1] (548,455)<button class='btn btn-outline'>Admin Login />
+Access your personal device dashboard
+[2] (500,583)<input placeholder='Enter your Gmail' />
+[3] (500,654)<button class='btn btn-primary'>Login with Google />
+	[4] (466,654)<img  />

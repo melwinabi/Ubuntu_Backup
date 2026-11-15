@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+MELWIN ABISHEK M P
+asmelwin3@gmail.com
+bash: line 1: gh: command not found

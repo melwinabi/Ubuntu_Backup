@@ -1,0 +1,8 @@
+Command exited with code 1.
+
+Command output:
+21G	/home/melwinabi/Documents
+6.0G	/home/melwinabi/Downloads
+4.0K	/home/melwinabi/Music
+14M	/home/melwinabi/Pictures
+12K	/home/melwinabi/Videos

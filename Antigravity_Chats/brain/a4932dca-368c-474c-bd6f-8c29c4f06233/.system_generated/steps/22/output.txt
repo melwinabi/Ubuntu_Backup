@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+total 0
+dr-xr-xr-x  3 melwinabi melwinabi  60 Nov 15 12:40 .
+dr-xr-xr-x 16 melwinabi melwinabi 320 Nov 15 12:40 ..
+dr-xr-xr-x 14 melwinabi melwinabi 300 Nov 15 12:40 melwinabi

@@ -1,0 +1,12 @@
+# Task: Verify User Login and Dashboard
+
+## Checklist
+- [ ] Navigate to http://localhost:3000
+- [ ] Login with asmelwin3@gmail.com
+- [ ] Verify dashboard grid loads
+- [ ] Check for 500 errors in Network tab for /api/user/devices
+- [ ] Report success or failure
+
+## Notes
+- Base URL: http://localhost:3000 (fallback to http://127.0.0.1:3000)
+- Target User: asmelwin3@gmail.com

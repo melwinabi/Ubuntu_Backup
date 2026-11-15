@@ -1,0 +1,21 @@
+Command exited with code 0.
+
+Command output:
+4.0K	/bin.usr-is-merged
+4.0K	/cdrom
+4.0K	/lib.usr-is-merged
+4.0K	/mnt
+4.0K	/root
+4.0K	/sbin.usr-is-merged
+4.0K	/srv
+8.0K	/media
+16K	/lost+found
+96K	/snap
+564K	/tmp
+17M	/etc
+346M	/boot
+6.2G	/var
+8.7G	/opt
+14G	/usr
+111G	/home
+144G	/

@@ -1,0 +1,54 @@
+Command exited with code 0.
+
+Command output:
+            GUEST="solaris"
+            IMAGE_TYPE="iso";;
+        reactos)
+            GUEST="reactos"
+            IMAGE_TYPE="iso";;
+        ubuntu*)
+            GUEST="linux"
+            IMAGE_TYPE="iso"
+            # If there is a point in the release, check if it is less than 16.04
+            if [[ "${RELEASE}" != *"daily"* ]]; then
+                if [ "${RELEASE//./}" -lt 1604 ]; then
+                    GUEST="linux_old"
+                fi
+            fi
+            ;;
+        windows)
+            GUEST="windows"
+            IMAGE_TYPE="iso";;
+        windows-server)
+            GUEST="windows-server"
+            IMAGE_TYPE="iso";;
+        *)
+            GUEST="linux"
+            IMAGE_TYPE="iso";;
+    esac
+
+    CONF_FILE="${VM_PATH}.conf"
+
+    if [ ! -e "${CONF_FILE}" ]; then
+        echo "Making ${CONF_FILE}"
+        local ARCH_LINE=""
+        if [ "${ARCH}" != "${NORMALISED_HOST_ARCH}" ]; then
+            if [ "${ARCH}" == "arm64" ]; then
+                ARCH_LINE="arch=\"aarch64\""
+            else
+                ARCH_LINE="arch=\"x86_64\""
+            fi
+        fi
+        cat << EOF > "${CONF_FILE}"
+#!${QUICKEMU} --vm
+guest_os="${GUEST}"
+${ARCH_LINE:+${ARCH_LINE}
+}disk_img="${VM_PATH}/disk.qcow2"
+${IMAGE_TYPE}="${VM_PATH}/${IMAGE_FILE}"
+EOF
+        echo " - Setting ${CONF_FILE} executable"
+        chmod u+x "${CONF_FILE}"
+        if [ -n "${ISO_FILE}" ]; then
+            echo "fixed_iso=\"${VM_PATH}/${ISO_FILE}\"" >> "${CONF_FILE}"
+        fi
+

@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+total size is 17,533,471,247  speedup is 10,039.99 (DRY RUN)

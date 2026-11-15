@@ -1,0 +1,10 @@
+Smaer-HUB
+[0] (140,129)<div  />
+	[1] (117,129)<span >Overview />
+[2] (140,187)<div  />
+	[3] (125,187)<span >Add Device />
+Logout
+Admin Access
+Enter your admin identifier to proceed.
+[4] (531,501)<input class='jsx-b56cbb01f76ed51f' placeholder='admin@domain.com' />
+[5] (640,548)<button class='jsx-b56cbb01f76ed51f btn btn-primary'>Enter Dashboard />

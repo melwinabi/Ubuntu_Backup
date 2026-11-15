@@ -1,0 +1,13 @@
+Command exited with code 0.
+
+Command output:
+# Exclude potential large caches & build artifacts
+node_modules/
+.next/
+venv/
+__pycache__/
+*.pyc
+*.deb
+*.iso
+*.AppImage
+.cache/

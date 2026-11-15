@@ -1,0 +1,34 @@
+# Reinstall and Fix DbGate
+
+This plan addresses the issue where DbGate fails to open on Ubuntu 24.04 due to sandbox restrictions, and fulfills the user's request to install the "normal" (community) version.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - This process involves uninstalling the current version and installing v7.1.8 from the official GitHub releases.
+> - A root-level permission fix for the `chrome-sandbox` binary is required to make the application launchable on Ubuntu 24.04.
+
+## Proposed Changes
+
+### Reinstallation
+
+- **Uninstall**: Remove the currently installed `dbgate` package.
+- **Download**: Fetch `dbgate-7.1.8-linux_amd64.deb` from GitHub.
+- **Install**: Install the downloaded `.deb` package.
+
+### Configuration Fix
+
+#### [/opt/DbGate/chrome-sandbox](file:///opt/DbGate/chrome-sandbox)
+
+- The `chrome-sandbox` binary needs correct ownership and permissions to run on Ubuntu 24.04.
+- `sudo chown root:root /opt/DbGate/chrome-sandbox`
+- `sudo chmod 4755 /opt/DbGate/chrome-sandbox`
+
+---
+
+## Verification Plan
+
+### Manual Verification
+1. **Launch DbGate**: Execute `dbgate` in the terminal and verify it opens without the `FATAL:sandbox` error.
+2. **Desktop Entry**: Verify that the application can be launched from the application menu.
+3. **Version Check**: Confirm the installed version is 7.1.8 using `dbgate --version`.

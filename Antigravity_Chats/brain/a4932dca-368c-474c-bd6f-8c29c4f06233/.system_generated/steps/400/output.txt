@@ -1,0 +1,5 @@
+Command exited with code 1.
+
+Command output:
+/usr/bin/pip
+/usr/bin/pip3

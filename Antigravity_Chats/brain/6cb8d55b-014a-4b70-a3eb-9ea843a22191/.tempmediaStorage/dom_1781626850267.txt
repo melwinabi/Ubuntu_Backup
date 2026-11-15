@@ -1,0 +1,212 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Finance Folio
+[0] (69,116)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/dashboard' />
+	[1] (52,116)<span >Dashboard />
+[2] (69,168)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/income' />
+	[3] (46,168)<span >Income />
+[4] (69,220)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/expenses' />
+	[5] (50,220)<span >Expenses />
+[6] (69,272)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group bg-violet-600/10 border border-violet-500/20 text-violet-400' href='/investments' />
+	[7] (55,272)<span >Investments />
+[8] (69,324)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/credit-cards' />
+	[9] (55,324)<span >Credit Cards />
+[10] (69,376)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/credit-score' />
+	[11] (55,376)<span >Credit Score />
+[12] (69,428)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/loans' />
+	[13] (54,428)<span >Loans Given />
+[14] (69,480)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/networth' />
+	[15] (51,480)<span >Net Worth />
+[16] (69,532)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/settings' />
+	[17] (48,532)<span >Settings />
+TU
+Test User
+user@example.com
+[18] (119,963)<button class='p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/5 border border-transparent hover:border-red-500/10 transition-all shrink-0' title='Sign Out' />
+Welcome back,
+Test User
+Portfolio Investments
+Track asset performance, yields, live metals spot prices, and SIP plans.
+Set Reminder
+Update Price
+Add Asset
+Live Gold (24K)
+₹
+13,236.95
+/ gram
+Spot Rate (London PM)
+$
+4,347.4
+/ oz
+Live Silver
+₹
+214.43
+/ gram
+Spot Rate (London PM)
+$
+70.43
+/ oz
+Purchase Cost
+₹
+35,000
+Current Value
+₹
+35,000
+Net Return
+₹
+0
+ROI Percent
++
+0.00
+%
+Holdings Ledger
+Asset Name
+Qty / Unit
+Avg Purchase
+Current Price
+Current Value
+ROI
+Actions
+SBI
+SIP
+mutual_fund
+•
+mid cap
+•
+monthly
+(₹
+1000
+)
+17
+payments
+1
+skipped
+₹
+1,000
+per
+monthly
+Accumulating
+₹
+17,000
++
+₹
+0
++
+0.00
+%
+SBI
+SIP
+mutual_fund
+•
+large cap
+•
+monthly
+(₹
+1000
+)
+18
+payments
+0
+skipped
+₹
+1,000
+per
+monthly
+Accumulating
+₹
+18,000
++
+₹
+0
++
+0.00
+%
+Investment Reminder Alerts
+Schedule Alert
+SIP Due: SBI
+SBI
+Automatic reminder for your monthly SIP of ₹1000.
+Due:
+07 Dec 2026
+174 days remaining
+SIP Due: SBI
+SBI
+Automatic reminder for your monthly SIP of ₹1000.
+Due:
+07 Dec 2026
+174 days remaining
+Manage SIP Plan
+SBI
+[19] (729,184)<button class='p-1.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-slate-200 rounded-xl transition-all' />
+Active Systematic Plan
+Bank auto-debits ₹1000 monthly
+[20] (696,281)<button class='flex items-center gap-1.5 px-4 py-2 bg-red-950/20 border border-red-500/20 hover:border-red-500/40 text-xs font-semibold text-red-400 rounded-xl transition-all'>Stop Plan />
+Start Date
+08 Jan 2025
+Deposits Paid
+17
+/
+18
+Skipped Payments
+1
+Invested Capital
+₹
+17,000
+Installment Payments History
+Toggle checkboxes to mark individual monthly auto-debits as **skipped** if you skipped the bank transfer for that month.
+[21] (568,644)<div class='space-y-2 border border-slate-900 rounded-2xl p-4 bg-slate-950/50 max-h-60 overflow-y-auto' scrollable='true' />
+	[22] (566,570)<div  />
+		[23] (457,570)<div  />
+			[24] (422,570)<input class='w-4 h-4 rounded border-slate-800 text-cyan-600 bg-slate-950 focus:ring-cyan-500' />
+			[25] (464,570)<div  />
+				[26] (464,561)<p >08 January 2025 />
+				[27] (464,581)<p >Installment #
+1 />
+		[28] (700,570)<div  />
+			[29] (700,572)<span >Skipped />
+	[30] (566,644)<div  />
+		[31] (458,644)<div  />
+			[32] (422,644)<input class='w-4 h-4 rounded border-slate-800 text-cyan-600 bg-slate-950 focus:ring-cyan-500' />
+			[33] (465,644)<div  />
+				[34] (465,635)<p >08 February 2025 />
+				[35] (465,655)<p >Installment #
+2 />
+		[36] (686,644)<div  />
+			[37] (686,645)<span >Deposited (₹
+1000
+) />
+	[38] (566,718)<div  />
+		[39] (453,718)<div  />
+			[40] (422,718)<input class='w-4 h-4 rounded border-slate-800 text-cyan-600 bg-slate-950 focus:ring-cyan-500' />
+			[41] (461,718)<div  />
+				[42] (461,709)<p >08 March 2025 />
+				[43] (461,729)<p >Installment #
+3 />
+		[44] (686,718)<div  />
+			[45] (686,719)<span >Deposited (₹
+1000
+) />
+	08 April 2025
+	Installment #
+	4
+	Deposited (₹
+	1000
+	)
+	08 May 2025
+	Installment #
+	5
+	Deposited (₹
+	1000
+	)
+	08 June 2025
+	Installment #
+	6
+	Deposited (₹
+	1000
+	)
+	08 July 2025
+[46] (720,821)<button class='px-4 py-2 bg-slate-900 border border-slate-800 hover:bg-slate-850 text-slate-200 rounded-xl text-xs font-semibold'>Done />
+
+</current_dom>

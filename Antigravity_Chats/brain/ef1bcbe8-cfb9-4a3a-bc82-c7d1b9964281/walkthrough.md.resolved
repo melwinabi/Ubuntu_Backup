@@ -1,0 +1,29 @@
+# Walkthrough - Smart-Hub Navigation Fixes
+
+I have addressed the "jumping pages" errors by implementing a visual stepper and improving state validation in the Admin Dashboard workflow. I also fixed a bug that caused the dashboard to render a blank screen in certain states.
+
+## Changes Implemented
+
+### Visual Stepper
+Added a 5-step visual stepper at the top of the "Device Workshop" in the Admin Dashboard. This allows users to see their progress and jump between completed/valid steps easily.
+
+### State Validation
+Implemented a [isStepValid](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx#135-147) helper to ensure that users cannot jump ahead to steps without providing the necessary information first (e.g., selecting a Series before picking a Model).
+
+### Blank Screen Fix
+Resolved an issue where selecting a series in the main Admin view could lead to a `null` render, effectively causing the dashboard to go blank.
+
+## Verification Results
+
+### Manual Verification via Browser
+The following scenarios were verified:
+1.  **Sequential Navigation**: Moving from Step 1 to Step 2 via the "Next" button works smoothly.
+2.  **Step Jumping (Backwards)**: Successfully jumped from Step 2 back to Step 1 using the stepper.
+3.  **Step Jumping (Forwards)**: Confirmed that jumping forward to incomplete steps is correctly disabled.
+4.  **Dashboard Stability**: Verified that returning to the "Overview" page displays all components correctly without any blank spots.
+
+![Admin Dashboard Stepper](/home/melwinabi/.gemini/antigravity/brain/ef1bcbe8-cfb9-4a3a-bc82-c7d1b9964281/.system_generated/click_feedback/click_feedback_1775706638134.png)
+*Visual stepper showing navigation steps in the Device Workshop.*
+
+![Overview Page](/home/melwinabi/.gemini/antigravity/brain/ef1bcbe8-cfb9-4a3a-bc82-c7d1b9964281/.system_generated/click_feedback/click_feedback_1775706714072.png)
+*Overview page remains stable after navigation.*

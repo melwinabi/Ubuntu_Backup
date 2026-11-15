@@ -1,0 +1,28 @@
+Command exited with code 0.
+
+Command output:
+A  .gitignore
+A  Documents/ACER_Windows/Arduino/Ade_req/ADE7758.cpp
+A  Documents/ACER_Windows/Arduino/Ade_req/ADE7758.h
+A  Documents/ACER_Windows/Arduino/Ade_req/Ade_req.ino
+A  Documents/ACER_Windows/Arduino/Arduino_Silligreen/Arduino_Silligreen.ino
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_Arduino _Slave1/Node_pgrn_fot_N_nodes/Node_pgrn_fot_N_nodes.ino"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_Arduino _Slave1/Slave_1/Slave_1.ino"
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_Arduino_Master/Cenmark_Arduino_Master.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_Arduino_Master/MQTT.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_Arduino_Slave2/Slave2/Slave2.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/Cenmark_ESP_With_Master/Cenmark_ESP_With_Master.ino
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E22 400T33S/20221101638144929/E220  V1.1.exe"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E22 400T33S/Master/Master.ino"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E22 400T33S/Reciver/Reciver.ino"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E32 900T30D/CRC32 804438E0.txt"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E32 900T30D/RF_Setting4.6.exe"
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/E32 900T30D/\346\240\241\351\252\214\346\226\207\344\273\266(Hash).exe"
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-02/Master/Master.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-02/N_nodes/N_nodes.ino
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-08H/LORA wan 08H.txt"
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-08H/Master/Master.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-08H/Master/Reciver/Reciver.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/M_LoRa-08H/Master/transmitter/transmitter.ino
+A  Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/U-Cenmark_ESP_With_Master/Cenmark_ESP_With_Master/Cenmark_ESP_With_Master.ino
+A  "Documents/ACER_Windows/Arduino/Cenmark_Agri_RT/U_Cenmark_Arduino _Slave1/Node_pgrn_fot_N_nodes/Node_pgrn_fot_N_nodes.ino"

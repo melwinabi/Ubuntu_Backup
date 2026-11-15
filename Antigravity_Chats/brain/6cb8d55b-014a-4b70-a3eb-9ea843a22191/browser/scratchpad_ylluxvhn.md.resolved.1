@@ -1,0 +1,13 @@
+# SIP Management Verification Plan
+- [x] Open http://localhost:3000/investments and login if needed
+  - Encountered `PrismaClientValidationError`: Unknown field `sipSkips` for include statement on model `Investment`.
+- [ ] Locate the Holdings Ledger table and find "SBI" (SIP)
+- [ ] Click "Manage SIP Skips & Status" button
+- [ ] Verify initial stats on the modal (Start Date, Deposits Paid, Skipped Payments, Invested Capital)
+- [ ] Toggle first installment to "Skipped" and verify state
+- [ ] Toggle second installment to "Skipped" and verify "Skipped Payments" count increases
+- [ ] Click "Stop Plan" and confirm the cancellation
+- [ ] Verify modal status updates to "Plan Suspended / Cancelled"
+- [ ] Click "Done" and close modal
+- [ ] Verify that Net Return/ROI in the stats grid and Holdings Ledger has been re-evaluated
+

@@ -1,0 +1,44 @@
+Command exited with code 0.
+
+Command output:
+total 4
+dr-xr-xr-x  3 melwinabi melwinabi   60 Oct 25 21:15 .
+drwxrwxrwx 10 melwinabi melwinabi  200 Oct 25 21:15 ..
+drwxr-xr-x  5 melwinabi melwinabi 4096 Oct 25 21:10 2c91d44e-6e09-4bdf-b28f-3506c0085a8d
+total 13396
+drwxr-xr-x 10 melwinabi melwinabi     4096 Aug 30 18:08 .
+drwxrwxrwx 10 melwinabi melwinabi      200 Oct 25 21:15 ..
+drwxrwxr-x  3 melwinabi melwinabi     4096 Apr 18  2026 AggressionDetector
+drwxrwxr-x  6 melwinabi melwinabi     4096 Aug 30 18:47 anime-animator
+-rw-rw-r--  1 melwinabi melwinabi    15437 May 10 00:44 assignment.txt
+drwxrwxr-x  2 melwinabi melwinabi     4096 May  9 15:43 Esp32Task
+-rw-r--r--  1 melwinabi melwinabi      234 Mar 27  2026 extract.py
+-rw-r--r--  1 melwinabi melwinabi     1324 Mar 26  2026 install_discord.sh
+-rw-r--r--  1 melwinabi melwinabi     1673 Mar 26  2026 install_teams.sh
+drwxrwxr-x  2 melwinabi melwinabi     4096 Mar 26  2026 Linux_extracted
+-rw-r--r--  1 melwinabi melwinabi 13631488 Mar 26  2026 Linux_.zip
+-rwxrwxr-x  1 melwinabi melwinabi     1522 Mar 27  2026 motivation2.py
+-rwxrwxr-x  1 melwinabi melwinabi     1776 Mar 27  2026 motivation.py
+-rw-r--r--  1 melwinabi melwinabi     2851 Mar 27  2026 salvage_improved.py
+-rw-r--r--  1 melwinabi melwinabi     2164 Mar 27  2026 salvage.py
+drwxrwxr-x  3 melwinabi melwinabi     4096 Apr  8  2026 smart-hub
+drwxrwxr-x  2 melwinabi melwinabi     4096 Apr  1  2026 stm32f407_blink
+drwxr-xr-x  2 melwinabi melwinabi     4096 May 10 00:45 task1
+drwxrwxr-x  5 melwinabi melwinabi     4096 Apr 18  2026 venv
+-rwxrwxr-x  1 melwinabi melwinabi      165 Mar 27  2026 welcome_slogan.sh
+total 28
+dr-xr-xr-x 14 melwinabi melwinabi  300 Oct 25 21:15 .
+dr-xr-xr-x  3 melwinabi melwinabi   60 Oct 25 21:15 ..
+drwx------ 35 melwinabi melwinabi 4096 Oct 25 21:08 .cache
+drwx------ 38 melwinabi melwinabi 4096 Oct 25 21:05 .config
+drwxrwxrwx  2 melwinabi melwinabi   40 Oct 25 21:15 Desktop
+drwxrwxrwx  2 melwinabi melwinabi   40 Oct 25 21:15 Documents
+drwxrwxr-x  3 melwinabi melwinabi 4096 Apr 28 13:05 .dotnet
+drwxrwxrwx  2 melwinabi melwinabi   40 Oct 25 21:15 Downloads
+dr-xr-xr-x  5 melwinabi melwinabi  100 Oct 25 21:15 .gemini
+-rw-rw-r--  1 melwinabi melwinabi   92 May  3 16:43 .gitconfig
+drwxrwxr-x  9 melwinabi melwinabi 4096 May 23 23:26 .gradle
+drwxrwxr-x  5 melwinabi melwinabi 4096 Apr  1  2026 .npm
+drwxrwxr-x  5 melwinabi melwinabi 4096 Apr  1  2026 .nvm
+drwxrwxrwx  2 melwinabi melwinabi   40 Oct 25 21:15 .ssh
+dr-xr-xr-x  3 melwinabi melwinabi   60 Oct 25 21:15 .vscode

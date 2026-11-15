@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for updating Discord on Linux. This plan outlines the steps for installing the latest Discord version from a .deb file, which is the standard method for Ubuntu/Debian-based systems. It also covers what to do if an update is requested but the version appears to be current.",
+  "updatedAt": "2026-04-01T14:03:10.683543136Z"
+}

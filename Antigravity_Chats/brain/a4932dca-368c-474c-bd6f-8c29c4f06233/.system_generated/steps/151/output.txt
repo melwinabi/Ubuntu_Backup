@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+StudioProjects copied.
+STM32CubeIDE copied.
+Arduino copied.
+drawing.svg copied.
+configs copied.

@@ -1,0 +1,6 @@
+# Verification Checklist
+
+- [ ] Click delete button for "Parag Parikh Flexi Cap Fund" (element [24])
+- [ ] Verify glassmorphic modal "Delete Investment Asset" pops up
+- [ ] Click "Confirm Delete" inside modal
+- [ ] Verify modal closes and "Parag Parikh Flexi Cap Fund" row is deleted

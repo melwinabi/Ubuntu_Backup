@@ -1,0 +1,55 @@
+# Implementation Plan - Production IoT Home Automation
+
+## Objectives
+- Migrate to PostgreSQL.
+- Implement secure Google OAuth for users and admins.
+- Implement OTP-based admin verification.
+- Refine Admin Dashboard "Add Device" multi-step workflow.
+- Enhance User Dashboard with device search and MQTT-connected widgets.
+- Connect to `wss://mymqtt.uvfarms.in`.
+
+## User Review Required
+> [!IMPORTANT]
+> - Ensure PostgreSQL is running locally with the credentials in [.env](file:///home/melwinabi/Documents/Smart_Hub/.env).
+> - The Google OAuth redirect URI is `http://localhost:3000/api/auth/callback/google`.
+
+## Proposed Changes
+
+### Database
+#### [MODIFY] [schema.prisma](file:///home/melwinabi/Documents/Smart_Hub/prisma/schema.prisma)
+- Change provider to `postgresql`.
+- Ensure models match the table specifications: `admin_emails`, `devices`, `widgets`.
+
+### Authentication
+#### [MODIFY] [.env](file:///home/melwinabi/Documents/Smart_Hub/.env)
+- Add `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`.
+- Add MQTT broker URL: `MQTT_BROKER_URL=wss://mymqtt.uvfarms.in`.
+
+#### [MODIFY] [authOptions](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/auth/[...nextauth]/route.ts)
+- Configure Google Provider with the provided Client ID.
+- Implement logic to handle Admin OTP verification.
+
+### Admin Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx)
+- Strictly follow the multi-step workflow:
+  - Step 1: `W1_Series`.
+  - Step 2: `W1_Smart_Hub` or `W1_Switch`.
+  - Branching logic for Switch (ID, Topic, ServerID) vs Hub (ID, ServerID, Name -> Widgets -> Topics).
+- Disable widget animations in Admin view.
+
+### User Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx)
+- Search by ID flow.
+- "Display all default widgets?" prompt.
+- Dynamic widget display based on MQTT topics and data.
+
+### API Layer
+- Update `/api/devices` to handle PostgreSQL and specific field mappings.
+- Implement OTP generation and email sending logic.
+
+## Verification Plan
+- Run Prisma migrations for PostgreSQL.
+- Test Google Login.
+- Test Admin OTP workflow (using mock email logs for now).
+- Verify Admin device creation workflow steps.
+- Verify User Dashboard widget loading and MQTT subscription.

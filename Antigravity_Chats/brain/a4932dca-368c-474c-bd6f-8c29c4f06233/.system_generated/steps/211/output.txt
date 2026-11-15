@@ -1,0 +1,44 @@
+Command exited with code 0.
+
+Command output:
+Total potential missing files: 434136
+4072.12 MB : .config/google-chrome/OptGuideOnDeviceModel/2025.8.8.1141/weights.bin
+2322.47 MB : Documents/ACER_Windows.zip
+1403.01 MB : Downloads/android-studio-panda4-patch1-linux.tar.gz
+1370.77 MB : flutter_linux_3.35.1-stable.tar.xz
+1074.60 MB : Documents/PPV projects/Softwares/kicad-9.0.1-x86_64.exe
+1074.60 MB : Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe
+1074.60 MB : Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe
+804.81 MB : Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1).zip
+804.81 MB : Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1)/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh
+576.82 MB : Documents/SOFTWARES/IPCS IDE & software/KEIL 4/KEIL 4/mdk474.exe
+563.25 MB : .arduino15/staging/packages/riscv32-esp-elf-14.2.0_20260121-x86_64-linux-gnu.tar.gz
+544.64 MB : Documents/SOFTWARES/IPCS IDE & software/KEIL 4.zip
+521.03 MB : Documents/SOFTWARES/IPCS IDE & software/ZelioSoft2_V4_6_Windows_7.zip
+467.21 MB : .config/EasyEDA-Pro/updater/linux-x64-2.2.47.7/easyeda-pro/resources/app/assets/db/easyeda-std.elib
+467.21 MB : Downloads/easyeda-pro/resources/app/assets/db/easyeda-std.elib
+457.24 MB : Documents/SOFTWARES/IPCS IDE & software/KEIL 4.rar
+446.11 MB : Documents/OneDrive/Desktop/arduino/Proteus.Pro.8.13.SP0.31525/Proteus 8.13 SP0 Pro.exe
+440.26 MB : Documents/SOFTWARES/IPCS IDE & software/Proteus 8.12 SP0 Pro/Proteus 8.12 SP0 Pro.exe
+391.77 MB : development/flutter/.git/objects/pack/pack-3d19f711a5af7049301e2353df5eb99d2672a53b.pack
+374.33 MB : .gradle/caches/9.1.0/transforms/54106817123b747389f8dbc877a2b9c1/transformed/arm64_v8a_debug-1.0.0-4c525dac5ebe5971c5708ef73558ed8edcf4a362/arm64-v8a/libflutter.so
+374.33 MB : StudioProjects/chat_bot_financial_trading/build/app/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/arm64-v8a/libflutter.so
+348.90 MB : .vscode/extensions/anthropic.claude-code-2.1.325-linux-x64/resources/native-binary/claude
+343.85 MB : Documents/Smart_Hub.zip
+318.78 MB : .arduino15/staging/packages/xtensa-esp-elf-14.2.0_20260121-x86_64-linux-gnu.tar.gz
+314.37 MB : Downloads/easyeda-pro-linux-x64-2.2.45.4.zip
+310.18 MB : .config/EasyEDA-Pro/updater/linux-x64-2.2.47.7.zip
+278.13 MB : .vscode/extensions/anthropic.claude-code-2.1.310-linux-x64/resources/native-binary/claude
+249.03 MB : snap/flutter/common/flutter/.git/objects/pack/pack-5e81c04ab02590baed1f016f50b5ebf3625a4543.pack
+243.85 MB : Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002181.sst
+243.77 MB : Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00000798.sst
+237.13 MB : .gradle/caches/9.1.0/transforms/54106817123b747389f8dbc877a2b9c1/transformed/arm64_v8a_debug-1.0.0-4c525dac5ebe5971c5708ef73558ed8edcf4a362/arm64-v8a/libVkLayer_khronos_validation.so
+237.13 MB : StudioProjects/chat_bot_financial_trading/build/app/intermediates/merged_native_libs/debug/mergeDebugNativeLibs/out/lib/arm64-v8a/libVkLayer_khronos_validation.so
+234.91 MB : .platformio/.cache/downloads/02802867c8d4c819398b73958aa2d17c1c33ff72
+231.91 MB : Downloads/code_1.143.1-1792691907_amd64.deb
+221.72 MB : .gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9/gradle-9.1.0-all.zip
+217.29 MB : .local/bin/agy
+214.16 MB : Documents/OneDrive/Desktop/Robotics/processing-4.3-windows-x64.zip
+196.32 MB : Android/Sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/linux-x86_64/lib/libclang-cpp.so
+192.70 MB : Applications/arduino-ide.AppImage
+192.09 MB : DbGate/dbgate

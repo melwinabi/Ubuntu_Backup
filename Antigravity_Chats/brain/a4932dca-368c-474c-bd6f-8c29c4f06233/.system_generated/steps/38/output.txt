@@ -1,0 +1,28 @@
+Command exited with code 0.
+
+Command output:
+8.0K	/home/melwinabi/Documents/esp_with_rtc_alarm
+16K	/home/melwinabi/Documents/sketch_feb08c
+20K	/home/melwinabi/Documents/Copy
+44K	/home/melwinabi/Documents/Select_Energy_Monitoring
+60K	/home/melwinabi/Documents/EC200U
+72K	/home/melwinabi/Documents/KiCad_Project
+80K	/home/melwinabi/Documents/proteous zip link
+176K	/home/melwinabi/Documents/PlatformIO
+268K	/home/melwinabi/Documents/test assignment
+336K	/home/melwinabi/Documents/VS_Code
+3.3M	/home/melwinabi/Documents/Component Parts
+21M	/home/melwinabi/Documents/Linux_fixed
+28M	/home/melwinabi/Documents/SHL
+70M	/home/melwinabi/Documents/EasyEDA-Pro
+118M	/home/melwinabi/Documents/Library
+383M	/home/melwinabi/Documents/NBR_ACEW
+634M	/home/melwinabi/Documents/Smart_Switch
+787M	/home/melwinabi/Documents/backup
+878M	/home/melwinabi/Documents/Smart_Hub
+1.7G	/home/melwinabi/Documents/PPV projects
+2.1G	/home/melwinabi/Documents/Finance_Folio
+3.0G	/home/melwinabi/Documents/ACER_Windows
+4.0G	/home/melwinabi/Documents/SOFTWARES
+4.1G	/home/melwinabi/Documents/OneDrive
+21G	/home/melwinabi/Documents

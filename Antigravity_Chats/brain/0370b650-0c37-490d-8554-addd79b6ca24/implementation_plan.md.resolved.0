@@ -1,0 +1,32 @@
+# Update Smart Hub Implementation Plan
+
+This plan outlines the steps to "update" the Smart Hub project, starting with UI improvements and then moving to core functionality.
+
+## Proposed Changes
+
+### Fixing Typos and Branding
+
+The name "Smaer-HUB" is used consistently across the project, which appears to be a typo for "Smart-HUB".
+
+#### [MODIFY] [page.tsx](file:///home/melwinabi/.gemini/antigravity/scratch/smart-hub/src/app/page.tsx)
+- Update "Smaer-HUB" to "Smart-HUB" in the header.
+
+#### [MODIFY] [dashboard/page.tsx](file:///home/melwinabi/.gemini/antigravity/scratch/smart-hub/src/app/admin/dashboard/page.tsx)
+- Update "Smaer-HUB" to "Smart-HUB" in the sidebar.
+
+#### [MODIFY] [globals.css](file:///home/melwinabi/.gemini/antigravity/scratch/smart-hub/src/app/globals.css) (if applicable)
+- Check for any hardcoded brand names in styles.
+
+### Functional Updates (Pending User Feedback)
+
+- **Real Authentication**: implement the actual OTP login flow for admins using `nodemailer` and `OtpVerification` model.
+- **Device Management**: improve the admin search to allow creating/editing devices.
+- **User Dashboard**: implement a dashboard for non-admin users to see their own devices.
+
+## Verification Plan
+
+### Manual Verification
+1. Run `npm run dev` and navigate to [http://localhost:3000](http://localhost:3000).
+2. Verify that the header says "Smart-HUB".
+3. Log in as admin and verify the sidebar says "Smart-HUB".
+4. Check other pages for "Smaer" typos.

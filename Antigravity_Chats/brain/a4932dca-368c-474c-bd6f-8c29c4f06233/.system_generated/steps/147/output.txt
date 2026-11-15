@@ -1,0 +1,31 @@
+Command exited with code 0.
+
+Command output:
+total 247124
+drwx------  5 melwinabi melwinabi      4096 Apr 21  2026 .
+drwxr-x--- 53 melwinabi melwinabi      4096 Nov 15 12:51 ..
+-rwxr-xr-x  1 melwinabi melwinabi      3437 Apr 21  2026 AppRun
+-rw-r--r--  1 melwinabi melwinabi    167701 Apr 21  2026 chrome_100_percent.pak
+-rw-r--r--  1 melwinabi melwinabi    259856 Apr 21  2026 chrome_200_percent.pak
+-rwxr-xr-x  1 melwinabi melwinabi   1549896 Apr 21  2026 chrome_crashpad_handler
+-rwxr-xr-x  1 melwinabi melwinabi     15328 Apr 21  2026 chrome-sandbox
+-rwxr-xr-x  1 melwinabi melwinabi 201419992 Apr 21  2026 dbgate
+-rw-r--r--  1 melwinabi melwinabi       219 Apr 21  2026 dbgate.desktop
+lrwxrwxrwx  1 melwinabi melwinabi        47 Apr 21  2026 dbgate.png -> usr/share/icons/hicolor/512x512/apps/dbgate.png
+lrwxrwxrwx  1 melwinabi melwinabi        47 Apr 21  2026 .DirIcon -> usr/share/icons/hicolor/512x512/apps/dbgate.png
+-rw-r--r--  1 melwinabi melwinabi  10467680 Apr 21  2026 icudtl.dat
+-rwxr-xr-x  1 melwinabi melwinabi    253688 Apr 21  2026 libEGL.so
+-rwxr-xr-x  1 melwinabi melwinabi   2703664 Apr 21  2026 libffmpeg.so
+-rwxr-xr-x  1 melwinabi melwinabi   6378568 Apr 21  2026 libGLESv2.so
+-rwxr-xr-x  1 melwinabi melwinabi   4795488 Apr 21  2026 libvk_swiftshader.so
+-rwxr-xr-x  1 melwinabi melwinabi   2375744 Apr 21  2026 libvulkan.so.1
+-rw-r--r--  1 melwinabi melwinabi     35149 Apr 21  2026 LICENSE
+-rw-r--r--  1 melwinabi melwinabi      1096 Apr 21  2026 LICENSE.electron.txt
+-rw-r--r--  1 melwinabi melwinabi  15168645 Apr 21  2026 LICENSES.chromium.html
+drwx------  2 melwinabi melwinabi      4096 Apr 21  2026 locales
+drwx------  3 melwinabi melwinabi      4096 Apr 21  2026 resources
+-rw-r--r--  1 melwinabi melwinabi   6341846 Apr 21  2026 resources.pak
+-rw-r--r--  1 melwinabi melwinabi    337714 Apr 21  2026 snapshot_blob.bin
+drwx------  4 melwinabi melwinabi      4096 Apr 21  2026 usr
+-rw-r--r--  1 melwinabi melwinabi    712173 Apr 21  2026 v8_context_snapshot.bin
+-rw-r--r--  1 melwinabi melwinabi       107 Apr 21  2026 vk_swiftshader_icd.json

@@ -1,0 +1,15 @@
+# Verification Checklist
+
+- [x] Verify header on http://localhost:3000 says "Smart-HUB"
+- [x] Verify http://localhost:3000/admin redirects to /admin/dashboard
+- [x] Verify http://localhost:3000/login redirects to /
+- [ ] Verify /dashboard connection status says "Select a Device"
+- [ ] Click 'Add Device' and verify 'ID: #101 (Living Room Hub)' in 'Select Device ID' after selecting 'W1_Series'
+- [ ] Click 'Logout' and verify redirect to /
+
+## Findings
+- Header verified as "Smart-HUB".
+- Redirect /admin -> /admin/dashboard verified (URL changes, though content shows "Unauthorized").
+- Redirect /login -> / verified.
+- Dashboard (/dashboard) redirects back to / with a React console error: "Cannot update a component (Router) while rendering a different component (UserDashboard)".
+- Login attempt with Google results in a persistent loading spinner.

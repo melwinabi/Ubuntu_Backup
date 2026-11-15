@@ -1,0 +1,17 @@
+# Task Checklist
+
+- `[ ]` Setup Next.js App
+  - `[ ]` Run create-next-app
+  - `[ ]` Install dependencies (lucide-react, mqtt)
+- `[ ]` Implement MQTT Context
+  - `[ ]` Create `src/context/MQTTProvider.tsx`
+- `[ ]` Develop UI Components
+  - `[ ]` Create `src/components/MasterToggle.tsx`
+  - `[ ]` Create `src/components/StatusMetadata.tsx`
+  - `[ ]` Create `src/components/ControlFeatures.tsx`
+  - `[ ]` Create `src/components/LoggingSection.tsx`
+- `[ ]` Styling & Layout
+  - `[ ]` Setup Neumorphic Dark Theme in `src/app/globals.css`
+  - `[ ]` Assemble in `src/app/page.tsx`
+- `[ ]` Verification
+  - `[ ]` Run build and start dev server

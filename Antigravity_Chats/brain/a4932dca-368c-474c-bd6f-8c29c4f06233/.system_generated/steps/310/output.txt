@@ -1,0 +1,13 @@
+Command exited with code 0.
+
+Command output:
+total 36
+drwxrwxr-x  7 melwinabi melwinabi 4096 Jun 28 21:45 .
+drwx------ 23 melwinabi melwinabi 4096 Nov 15 13:30 ..
+-rw-rw-r--  1 melwinabi melwinabi    2 Apr 28  2026 chatLanguageModels.json
+drwxrwxr-x  6 melwinabi melwinabi 4096 Nov 15 13:36 globalStorage
+drwxrwxr-x  8 melwinabi melwinabi 4096 Jul 15 19:57 History
+-rw-rw-r--  1 melwinabi melwinabi   47 Jun 28 21:45 settings.json
+drwxrwxr-x  2 melwinabi melwinabi 4096 Apr 28  2026 snippets
+drwxrwxr-x 11 melwinabi melwinabi 4096 May  1  2026 sync
+drwxrwxr-x  6 melwinabi melwinabi 4096 Oct 25 21:02 workspaceStorage

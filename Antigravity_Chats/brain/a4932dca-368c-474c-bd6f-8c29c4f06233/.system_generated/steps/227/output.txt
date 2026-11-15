@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+?? Documents/OneDrive/
+?? Documents/SOFTWARES/
+?? Downloads/BLE_Improved.zip
+?? Downloads/Python-3.13.13.tgz
+?? Downloads/anime_anniversary_video_split/

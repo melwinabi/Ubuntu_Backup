@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+Clean Downloads size: 482.2 MB

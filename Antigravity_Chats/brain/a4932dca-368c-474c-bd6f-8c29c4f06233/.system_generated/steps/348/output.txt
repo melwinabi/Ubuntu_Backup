@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+      "browser_download_url": "https://github.com/ventoy/Ventoy/releases/download/v1.1.18/ventoy-1.1.18-linux.tar.gz"

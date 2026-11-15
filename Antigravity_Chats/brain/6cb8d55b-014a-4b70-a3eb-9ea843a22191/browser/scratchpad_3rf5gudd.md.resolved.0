@@ -1,0 +1,5 @@
+# Plan
+- [ ] Navigate to http://localhost:3000/dashboard
+- [ ] Verify dashboard loads successfully
+- [ ] Verify charts/summaries are displayed
+- [ ] Verify no console errors or layout issues

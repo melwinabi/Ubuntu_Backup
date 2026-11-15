@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+Count: 6579 files, Total: 947.47 MB

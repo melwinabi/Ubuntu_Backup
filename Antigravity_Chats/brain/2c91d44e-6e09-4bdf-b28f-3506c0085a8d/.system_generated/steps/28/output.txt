@@ -1,0 +1,63 @@
+Command exited with code 0.
+
+Command output:
+total 83892
+drwxr-xr-x  2 melwinabi melwinabi     4096 Nov 15 17:33 .
+drwxrwxr-x 19 melwinabi melwinabi     4096 Nov 15 17:33 ..
+-rw-r--r--  1 melwinabi melwinabi   395084 Oct 25 18:12 0370b650-0c37-490d-8554-addd79b6ca24.pb
+-rw-r--r--  1 melwinabi melwinabi   335412 Oct 25 18:12 06003b9b-b683-4160-b409-ef1d0ab554e8.pb
+-rw-r--r--  1 melwinabi melwinabi  1645678 Oct 25 18:12 0b07c215-6f7e-483e-ac26-d5eaf2dc578b.pb
+-rw-r--r--  1 melwinabi melwinabi   636555 Oct 25 18:12 0f7db04e-b56c-413a-9400-14f870b00db4.pb
+-rw-r--r--  1 melwinabi melwinabi   326166 Oct 25 18:12 0fc5eadf-9715-41ea-a0c4-712e91590f5c.pb
+-rw-r--r--  1 melwinabi melwinabi  1077095 Oct 25 18:12 212c728c-57a1-4606-8b5d-87b0e2921723.pb
+-rw-r--r--  1 melwinabi melwinabi   368794 Oct 25 18:12 258b5e5a-802f-407f-b23a-7f0af00f5b56.pb
+-rw-r--r--  1 melwinabi melwinabi   107543 Oct 25 19:37 2946bd7b-f248-4ea9-8b2f-beedddb86fc4.pb
+-rw-r--r--  1 melwinabi melwinabi   326542 Oct 25 18:12 29d26e6d-6980-4f86-b134-e49f5cf9ca38.pb
+-rw-------  1 melwinabi melwinabi   851968 Oct 25 21:31 2c91d44e-6e09-4bdf-b28f-3506c0085a8d.db
+-rw-------  1 melwinabi melwinabi    32768 Nov 15 17:33 2c91d44e-6e09-4bdf-b28f-3506c0085a8d.db-shm
+-rw-------  1 melwinabi melwinabi  3312024 Nov 15 17:33 2c91d44e-6e09-4bdf-b28f-3506c0085a8d.db-wal
+-rw-r--r--  1 melwinabi melwinabi   133537 Oct 25 19:44 2e1da35b-3b5d-41a5-af25-e94a2742417b.pb
+-rw-r--r--  1 melwinabi melwinabi   308715 Oct 25 18:12 3a1e4e8e-964d-41ca-be3a-3338ef72ffd8.pb
+-rw-r--r--  1 melwinabi melwinabi   364307 Oct 25 18:12 3febf765-3efa-4964-bab5-2aad3cafd850.pb
+-rw-r--r--  1 melwinabi melwinabi  1357974 Oct 25 18:12 541932ee-4469-4caf-b0cd-5dfd24779ead.pb
+-rw-r--r--  1 melwinabi melwinabi   759228 Oct 25 18:12 5519499e-129d-467d-b27d-fefcdb47d426.pb
+-rw-r--r--  1 melwinabi melwinabi   284693 Oct 25 18:12 5e625aa2-2a91-4dff-973c-836d4323c276.pb
+-rw-r--r--  1 melwinabi melwinabi  1742155 Oct 25 18:12 688180bf-299f-40b4-9fd1-b9d505255a49.pb
+-rw-r--r--  1 melwinabi melwinabi 31054671 Oct 25 18:12 6cb8d55b-014a-4b70-a3eb-9ea843a22191.pb
+-rw-r--r--  1 melwinabi melwinabi  3100906 Oct 25 18:12 710d2634-c8fe-4d5f-8c9a-34ee9ccfbe7a.pb
+-rw-r--r--  1 melwinabi melwinabi   651309 Oct 25 18:12 7160320a-b023-4fab-b508-a814888088d3.pb
+-rw-r--r--  1 melwinabi melwinabi   740526 Oct 25 18:12 737c33a3-7d75-4ac5-a83c-055be7526581.pb
+-rw-r--r--  1 melwinabi melwinabi  3619713 Oct 25 18:12 76ac6a17-b4c4-4cdc-a6ac-2b625524a834.pb
+-rw-r--r--  1 melwinabi melwinabi   236488 Oct 25 18:12 84e48113-4e32-40e7-8e2c-909b91efc75d.pb
+-rw-r--r--  1 melwinabi melwinabi   628753 Oct 25 18:12 8788e721-c8f2-42fe-8d3e-990d3555b8f7.pb
+-rw-r--r--  1 melwinabi melwinabi   951371 Oct 25 18:12 9e8c0244-171b-4534-84ad-86aaa2c0b33c.pb
+total 188
+drwxr-xr-x 47 melwinabi melwinabi 4096 Nov 15 12:38 .
+drwxrwxr-x 19 melwinabi melwinabi 4096 Nov 15 17:33 ..
+drwxr-xr-x  2 melwinabi melwinabi 4096 Apr  7  2026 0370b650-0c37-490d-8554-addd79b6ca24
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 30  2026 06003b9b-b683-4160-b409-ef1d0ab554e8
+drwxr-xr-x  2 melwinabi melwinabi 4096 Apr  2  2026 0b07c215-6f7e-483e-ac26-d5eaf2dc578b
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 27  2026 0f7db04e-b56c-413a-9400-14f870b00db4
+drwxr-xr-x  2 melwinabi melwinabi 4096 Apr 29  2026 0fc5eadf-9715-41ea-a0c4-712e91590f5c
+drwxr-xr-x  2 melwinabi melwinabi 4096 Apr 21  2026 212c728c-57a1-4606-8b5d-87b0e2921723
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 26  2026 258b5e5a-802f-407f-b23a-7f0af00f5b56
+drwxr-xr-x  2 melwinabi melwinabi 4096 Oct 25 19:36 2946bd7b-f248-4ea9-8b2f-beedddb86fc4
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 26  2026 29d26e6d-6980-4f86-b134-e49f5cf9ca38
+drwxr-xr-x  5 melwinabi melwinabi 4096 Oct 25 21:10 2c91d44e-6e09-4bdf-b28f-3506c0085a8d
+drwxr-xr-x  3 melwinabi melwinabi 4096 Oct 25 19:43 2e1da35b-3b5d-41a5-af25-e94a2742417b
+drwxr-xr-x  2 melwinabi melwinabi 4096 Apr  1  2026 3a1e4e8e-964d-41ca-be3a-3338ef72ffd8
+drwxr-xr-x  3 melwinabi melwinabi 4096 May  1  2026 3febf765-3efa-4964-bab5-2aad3cafd850
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 30  2026 541932ee-4469-4caf-b0cd-5dfd24779ead
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 26  2026 5519499e-129d-467d-b27d-fefcdb47d426
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 26  2026 5e625aa2-2a91-4dff-973c-836d4323c276
+drwxr-xr-x  5 melwinabi melwinabi 4096 Apr 21  2026 688180bf-299f-40b4-9fd1-b9d505255a49
+drwxr-xr-x  7 melwinabi melwinabi 4096 Aug  3 22:03 6cb8d55b-014a-4b70-a3eb-9ea843a22191
+drwxr-xr-x  4 melwinabi melwinabi 4096 Apr  9  2026 710d2634-c8fe-4d5f-8c9a-34ee9ccfbe7a
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 26  2026 7160320a-b023-4fab-b508-a814888088d3
+drwxr-xr-x  3 melwinabi melwinabi 4096 May  8  2026 737c33a3-7d75-4ac5-a83c-055be7526581
+drwxr-xr-x  5 melwinabi melwinabi 4096 Aug 30 18:59 76ac6a17-b4c4-4cdc-a6ac-2b625524a834
+drwxr-xr-x  3 melwinabi melwinabi 4096 May  9  2026 84e48113-4e32-40e7-8e2c-909b91efc75d
+drwxr-xr-x  3 melwinabi melwinabi 4096 May  9  2026 8788e721-c8f2-42fe-8d3e-990d3555b8f7
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 27  2026 9e8c0244-171b-4534-84ad-86aaa2c0b33c
+drwxr-xr-x  5 melwinabi melwinabi 4096 Nov 15 12:38 a4932dca-368c-474c-bd6f-8c29c4f06233
+drwxr-xr-x  2 melwinabi melwinabi 4096 Mar 27  2026 a7539b6a-0458-4c36-9b64-6d12e5ff1289

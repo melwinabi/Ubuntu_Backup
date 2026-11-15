@@ -1,0 +1,17 @@
+# Task: Analyze Project PDF and Open Source Data
+
+- [x] Locate the project PDF `PPT Review2.pdf`
+- [x] Read and analyze the content of the PDF
+- [x] Research open-source data related to the project
+- [x] Perform a deep analysis of the combined information
+- [x] Present the findings to the user
+- [x] Create a simple, professional flow diagram for the project
+- [x] Save the diagram image in the Documents folder
+- [/] Create a detailed "pro-level" technical architecture diagram [/]
+- [x] Save the pro-level diagram in the Documents folder
+- [x] Generate a batch of 13 professional diagrams (8 Flow, 5 Architecture)
+    - [x] Create ~/Downloads/srm folder
+    - [x] Generate 8 Flow diagrams
+    - [x] Generate 5 Architecture diagrams
+    - [x] Convert all diagrams to PNG format
+    - [x] Move all 13 diagrams to ~/Downloads/srm

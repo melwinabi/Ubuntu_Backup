@@ -1,0 +1,43 @@
+# Implementation Plan - Advanced Device Management
+
+The goal is to refine the "Add Device" workflow in the Admin Dashboard and the user experience in the User Dashboard to match the specific requirements for IoT device configuration and widget display.
+
+## Proposed Changes
+
+### Database & Seeding
+#### [MODIFY] [seed.ts](file:///home/melwinabi/Documents/Smart_Hub/prisma/seed.ts)
+- Update `subSeriesName` to match user terminology: `W1_Switch` and `W1_Smart Hub` (instead of `W1_Smart_Hub`).
+
+### Admin Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx)
+- Refine the multi-step form:
+  - **Step 2**: Ensure selection of "W1_Smart Hub" vs "W1_Switch".
+  - **Step 3 (Switch)**: Ask for [id](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx#11-16) (Device ID), `topic` (MQTT Topic), and `server id`. Save immediately.
+  - **Step 3 (Smart Hub)**: Ask for `device id`, `server id`, and `device name`. Proceed to Step 4.
+  - **Step 4 (Smart Hub)**: List widgets (hum, temp, gas, light, push button, etc.).
+  - **Step 5 (Smart Hub)**: Ask for MQTT topics for selected widgets. Save.
+- Update [handleCreateDevice](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx#94-123) to handle the specific fields for each type.
+
+### User Dashboard
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/dashboard/page.tsx)
+- After selecting Series and Device ID, add a prompt: "Display all default widgets?".
+- If "Yes" (or clicked), show all configured widgets for that ID.
+
+### API Layer
+#### [MODIFY] [route.ts](file:///home/melwinabi/Documents/Smart_Hub/src/app/api/devices/route.ts)
+- Ensure the POST request correctly parses and saves data based on the sub-series type.
+
+## Verification Plan
+
+### Automated Tests
+- Run `npx prisma db seed` to verify seeding works with updated names.
+- Use the browser tool to:
+  1. Login as Admin.
+  2. Add a new Switch (verify redirection/success).
+  3. Add a new Smart Hub with multiple widgets (verify MQTT topic mapping step).
+  4. Login as User.
+  5. Search for the newly added devices and verify widget display.
+
+### Manual Verification
+- Verify the "Display all default widgets?" confirmation appears after device selection in the user dashboard.
+- Check the SQLite database to ensure records are saved in the correct hierarchy.

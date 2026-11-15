@@ -1,0 +1,74 @@
+Command exited with code 0.
+
+Command output:
+NAME     SIZE TYPE FSTYPE MOUNTPOINTS   LABEL MODEL
+loop0  341.3M loop                            
+loop1   55.5M loop                            
+loop2      4K loop                            
+loop3   55.5M loop                            
+loop4   63.8M loop                            
+loop5   63.8M loop                            
+loop6     74M loop                            
+loop7     74M loop                            
+loop8   66.8M loop                            
+loop9   66.8M loop                            
+loop10 291.8M loop                            
+loop11  60.6M loop                            
+loop12 257.6M loop                            
+loop13 283.8M loop                            
+loop14  16.5M loop                            
+loop15 118.8M loop                            
+loop16  19.1M loop                            
+loop17  19.1M loop                            
+loop18 531.4M loop                            
+loop19 164.8M loop                            
+loop20 606.1M loop                            
+loop21  91.7M loop                            
+loop22   402M loop                            
+loop24  11.8M loop                            
+loop25  50.1M loop                            
+loop26  15.7M loop                            
+loop27   828K loop                            
+loop28  44.7M loop                            
+loop30   828K loop                            
+loop31 114.1M loop                            
+loop32 321.1M loop                            
+loop33  85.6M loop                            
+loop34   402M loop                            
+loop35  12.7M loop                            
+loop36  60.7M loop                            
+sda      7.5G disk                            Cruzer Blade    
+└─sda1   7.5G part                            
+nvme0n1
+       476.9G disk                            WD PC SN740 SDDQNQD-512G-1014     
+├─nvme0n1p1
+│          1G part                            
+└─nvme0n1p2
+       475.9G part        /var                
+                          /usr                
+                          /tmp                
+                          /sbin               
+                          /lib64              
+                          /lib                
+                          /home/melwinabi/.vscode/extensions/google.google-antigravity-1.9.0       
+                          /home/melwinabi/.nvm       
+                          /home/melwinabi/.npm       
+                          /home/melwinabi/.gradle       
+                          /home/melwinabi/.gitconfig       
+                          /home/melwinabi/.gemini/config/sidecars       
+                          /home/melwinabi/.gemini/config/projects       
+                          /home/melwinabi/.gemini/config/plugins       
+                          /home/melwinabi/.gemini/bin/agy       
+                          /home/melwinabi/.gemini/antigravity/scratch       
+                          /home/melwinabi/.gemini/antigravity/knowledge       
+                          /home/melwinabi/.gemini/antigravity/html_artifacts       
+                          /home/melwinabi/.gemini/antigravity/builtin       
+                          /home/melwinabi/.gemini/antigravity/browser_recordings       
+                          /home/melwinabi/.gemini/antigravity/brain/a4932dca-368c-474c-bd6f-8c29c4f06233       
+                          /home/melwinabi/.gemini/antigravity/bin       
+                          /home/melwinabi/.dotnet       
+                          /home/melwinabi/.config       
+                          /home/melwinabi/.cache       
+                          /etc                
+                          /dev/shm/setup/root/bin       
+                          /bin                

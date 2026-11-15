@@ -1,0 +1,12 @@
+# Browser Task Plan
+
+- [ ] Navigate to http://localhost:3000
+- [ ] Login with 'asmelwin3@gmail.com' (dummy bypass)
+- [ ] Verify 'No devices added yet' on /dashboard
+- [ ] Add device 'W1_Series' with ID '#1'
+- [ ] Verify device appears in the grid
+- [ ] Click device card and verify widgets load
+- [ ] Refresh page and verify device persistence
+
+## Observations
+- 

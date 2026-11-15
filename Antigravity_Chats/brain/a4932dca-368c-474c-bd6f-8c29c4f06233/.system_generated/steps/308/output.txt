@@ -1,0 +1,15 @@
+Command exited with code 0.
+
+Command output:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 25 20:54 .
+drwxr-xr-x 10 root root 4096 Feb 10  2026 ..
+{
+  "firstStartTime": "2026-06-28T16:15:22.553Z",
+  "machineID": "371249a60c5ff378348bf53efcd0b3b05118c598d3301cba0784ca0cd7a5a025",
+  "opusProMigrationComplete": true,
+  "sonnet1m45MigrationComplete": true,
+  "seenNotifications": {},
+  "migrationVersion": 13,
+  "userID": "55ec98f5e3336bed3f4d8b9b6bc71611b27fe865bf4cd0e2c8c0a1b519733d96"
+}

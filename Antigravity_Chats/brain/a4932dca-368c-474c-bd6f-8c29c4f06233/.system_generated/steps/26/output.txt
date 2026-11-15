@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+Filesystem     Type  1K-blocks  Used Available Use% Mounted on
+               tmpfs   8033384     0   8033384   0% /

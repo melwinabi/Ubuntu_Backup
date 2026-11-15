@@ -1,0 +1,31 @@
+Command exited with code 0.
+
+Command output:
+total 1892
+drwxrwxr-x 19 melwinabi melwinabi    4096 Nov 15 17:33 .
+drwxrwxr-x 10 melwinabi melwinabi    4096 Oct 25 21:03 ..
+-rw-------  1 melwinabi melwinabi   13431 Nov 15 17:33 agyhub_summaries_proto.pb
+drwxr-xr-x  2 melwinabi melwinabi    4096 Nov 15 17:32 annotations
+-rw-------  1 melwinabi melwinabi     872 Oct 25 20:43 antigravity_state.pbtxt
+drwxr-xr-x  2 melwinabi melwinabi    4096 Oct 25 21:11 bin
+drwxr-xr-x 47 melwinabi melwinabi    4096 Nov 15 12:38 brain
+drwxr-xr-x  3 melwinabi melwinabi    4096 Aug 30 18:51 browser_recordings
+drwxr-xr-x  3 melwinabi melwinabi    4096 Oct 25 21:05 builtin
+drwxr-xr-x  3 melwinabi melwinabi    4096 Nov 15 12:38 cache
+lrwxrwxrwx  1 melwinabi melwinabi      27 Nov 15 17:31 cli.log -> log/cli-20261115_173154.log
+drwxrwxr-x  2 melwinabi melwinabi    4096 Mar 25  2026 context_state
+drwxr-xr-x  2 melwinabi melwinabi    4096 Nov 15 17:33 conversations
+-rw-r--r--  1 melwinabi melwinabi 1687552 Nov 15 17:32 conversation_summaries.db
+-rw-r--r--  1 melwinabi melwinabi   32768 Nov 15 17:33 conversation_summaries.db-shm
+-rw-r--r--  1 melwinabi melwinabi  111272 Nov 15 17:33 conversation_summaries.db-wal
+drwxr-xr-x  2 melwinabi melwinabi    4096 Nov 15 17:31 crashes
+drwxrwxr-x  2 melwinabi melwinabi    4096 Mar 25  2026 html_artifacts
+drwxr-xr-x  2 melwinabi melwinabi    4096 Jul 31 23:44 implicit
+-rwxrwxr-x  1 melwinabi melwinabi      36 Mar 25  2026 installation_id
+drwxr-xr-x  2 melwinabi melwinabi    4096 Mar 25  2026 knowledge
+drwxr-xr-x  3 melwinabi melwinabi    4096 Oct 25 20:50 lib
+drwxr-xr-x  2 melwinabi melwinabi    4096 Nov 15 17:31 log
+lrwxrwxrwx  1 melwinabi melwinabi      46 Oct 25 18:12 mcp_config.json -> /home/melwinabi/.gemini/config/mcp_config.json
+drwxr-xr-x  2 melwinabi melwinabi    4096 Nov 15 12:38 presence
+drwxr-xr-x  3 melwinabi melwinabi    4096 Apr  8  2026 prompting
+drwxr-xr-x 10 melwinabi melwinabi    4096 Aug 30 18:08 scratch

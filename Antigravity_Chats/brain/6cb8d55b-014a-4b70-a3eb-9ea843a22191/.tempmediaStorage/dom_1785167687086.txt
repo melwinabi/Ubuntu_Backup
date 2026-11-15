@@ -1,0 +1,44 @@
+Create an account
+Sign up to track and plan your financial future
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].user.findUnique()` invocation in
+/home/melwinabi/Documents/Finance_Folio/.next/dev/server/chunks/ssr/[root-of-the-server]__13b607e._.js:273:156
+
+  270 let nextNum = count + 1;
+  271 while(true){
+  272     const formattedId = `FGAT${String(nextNum).padStart(4, "0")}`;
+→ 273     const existing = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["db"].user.findUnique({
+            where: {
+              customId: "FGAT0004",
+              ~~~~~~~~
+          ?   id?: String,
+          ?   email?: String,
+          ?   AND?: UserWhereInput | UserWhereInput[],
+          ?   OR?: UserWhereInput[],
+          ?   NOT?: UserWhereInput | UserWhereInput[],
+          ?   fullName?: StringFilter | String,
+          ?   passwordHash?: StringFilter | String,
+          ?   createdAt?: DateTimeFilter | DateTime,
+          ?   updatedAt?: DateTimeFilter | DateTime,
+          ?   accounts?: AccountListRelationFilter,
+          ?   cards?: CardListRelationFilter,
+          ?   incomeSources?: IncomeSourceListRelationFilter,
+          ?   expenseCategories?: ExpenseCategoryListRelationFilter,
+          ?   expenses?: ExpenseListRelationFilter,
+          ?   investments?: InvestmentListRelationFilter,
+          ?   creditScores?: CreditScoreListRelationFilter,
+          ?   loansGiven?: LoanGivenListRelationFilter,
+          ?   netWorthSnapshots?: NetWorthSnapshotListRelationFilter
+            }
+          })
+
+Unknown argument `customId`. Available options are marked with ?.
+[0] (417,547)<label class='text-xs font-semibold text-slate-300 uppercase tracking-wider'>Full Name />
+[1] (500,582)<input class='w-full pl-10 pr-4 py-2.5 bg-slate-900/50 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 placeholder-slate-500 transition-colors' placeholder='John Doe' />
+[2] (425,640)<label class='text-xs font-semibold text-slate-300 uppercase tracking-wider'>Email Address />
+[3] (500,676)<input class='w-full pl-10 pr-4 py-2.5 bg-slate-900/50 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 placeholder-slate-500 transition-colors' placeholder='you@example.com' />
+[4] (417,734)<label class='text-xs font-semibold text-slate-300 uppercase tracking-wider'>Password />
+[5] (500,770)<input class='w-full pl-10 pr-10 py-2.5 bg-slate-900/50 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 placeholder-slate-500 transition-colors' placeholder='••••••••' />
+[6] (594,770)<button class='absolute inset-y-0 right-0 flex items-center pr-3 text-slate-500 hover:text-slate-300' />
+[7] (500,839)<button class='w-full py-3 bg-violet-600 hover:bg-violet-500 disabled:opacity-50 text-white font-medium rounded-xl shadow-lg shadow-violet-600/20 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center'>Register />
+Already have an account?
+[8] (545,900)<a class='text-violet-400 hover:text-violet-300 font-medium transition-colors' href='/login'>Login here />

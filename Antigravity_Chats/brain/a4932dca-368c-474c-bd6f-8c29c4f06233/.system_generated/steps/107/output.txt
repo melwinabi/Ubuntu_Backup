@@ -1,0 +1,19 @@
+Command exited with code 0.
+
+Command output:
+warning: in the working copy of 'Documents/ACER_Windows/Arduino/libraries/DallasTemperature/examples/ExternalPullup/ExternalPullup.ino', CRLF will be replaced by LF the next time Git touches it
+warning: in the working copy of 'Documents/ACER_Windows/Arduino/libraries/DallasTemperature/examples/Timing/Timing.ino', CRLF will be replaced by LF the next time Git touches it
+warning: adding embedded git repository: Downloads/Sz/220 to 5v/.history
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint: 
+hint: 	git submodule add <url> Downloads/Sz/220 to 5v/.history
+hint: 
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint: 
+hint: 	git rm --cached Downloads/Sz/220 to 5v/.history
+hint: 
+hint: See "git help submodule" for more information.

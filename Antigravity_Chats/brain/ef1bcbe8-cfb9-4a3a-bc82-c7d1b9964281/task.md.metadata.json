@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Task list for implementing persistent user dashboards. Includes schema updates, API creation, and UI integration.",
+  "updatedAt": "2026-04-09T04:02:15.320813640Z",
+  "version": "5"
+}

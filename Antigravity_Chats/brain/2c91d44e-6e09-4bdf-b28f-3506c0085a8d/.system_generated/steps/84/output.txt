@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+Hi melwinabi! You've successfully authenticated, but GitHub does not provide shell access.

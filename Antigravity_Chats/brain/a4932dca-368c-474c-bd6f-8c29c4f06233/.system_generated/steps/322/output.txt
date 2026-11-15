@@ -1,0 +1,18 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/Android
+/home/melwinabi/Android/Sdk
+/home/melwinabi/Android/Sdk/platform-tools
+/home/melwinabi/Android/Sdk/skins
+/home/melwinabi/Android/Sdk/licenses
+/home/melwinabi/Android/Sdk/build-tools
+/home/melwinabi/Android/Sdk/emulator
+/home/melwinabi/Android/Sdk/sources
+/home/melwinabi/Android/Sdk/.temp
+/home/melwinabi/Android/Sdk/ndk
+/home/melwinabi/Android/Sdk/.knownPackages
+/home/melwinabi/Android/Sdk/cmake
+/home/melwinabi/Android/Sdk/cmdline-tools
+/home/melwinabi/Android/Sdk/.downloadIntermediates
+/home/melwinabi/Android/Sdk/platforms

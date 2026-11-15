@@ -1,0 +1,69 @@
+Command exited with code 0.
+
+Command output:
+-rw-rw-rw- 1 melwinabi melwinabi  27M Jan 17  2026  /home/melwinabi/Documents/ACER_Windows/Arduino/Fridge_Magnet/ui_image_cold.c
+-rw-rw-rw- 1 melwinabi melwinabi  31M Apr 28  2024  /home/melwinabi/Documents/ACER_Windows/Arduino/libraries/tflite-micro-arduino-examples-main/docs/hello_world_animation.gif
+-rw-rw-rw- 1 melwinabi melwinabi  71M Jun 30  2023 '/home/melwinabi/Documents/ACER_Windows/Croma_Starts_Project/HTML/PROJECTS CODE HTML/VEDIO/sample vedio.mp4'
+-rwxrwxrwx 1 melwinabi melwinabi 114M Jan 22  2025 '/home/melwinabi/Documents/ACER_Windows/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rwxrwxrwx 1 melwinabi melwinabi  42M Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/Drivers/Quectel_Windows_USB_DriverU_V1.0.19/setup.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  22M Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/exes/FC41D/BKFIL.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  22M Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/QPYcom.exe'
+-rw-rw-rw- 1 melwinabi melwinabi  60M Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/STM32_Projects/Architecture_Reference/STM32H7A3/Mapping & Registers.pdf'
+-rwxrwxrwx 1 melwinabi melwinabi 1.1G Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  35M Jan 17  2025  /home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/TremoProgrammer_v0.8.exe
+-rw-rw-rw- 1 melwinabi melwinabi  29M Dec 17  2023  /home/melwinabi/Documents/ACER_Windows/Photos/IMG_20211020_123219.jpg
+-rw-rw-rw- 1 melwinabi melwinabi  25M Aug 20  2025 '/home/melwinabi/Documents/ACER_Windows/Photos/Saved Pictures/IMG_20250817_123639.jpg'
+-rw-r--r-- 1 melwinabi melwinabi 2.3G Mar 24  2026  /home/melwinabi/Documents/ACER_Windows.zip
+-rwxr-xr-x 1 melwinabi melwinabi  31M Mar 18  2025  /home/melwinabi/Documents/backup/QFlash_V6.1_Temp_20221104/HIS/1/hiburn1.exe
+-rw-r--r-- 1 melwinabi melwinabi  23M Mar 18  2025  /home/melwinabi/Documents/backup/QFlash_V6.1_Temp_20221104/icudt52.dll
+-rwxr-xr-x 1 melwinabi melwinabi  22M Mar 15  2025  /home/melwinabi/Documents/backup/QPYcom_V3.6.0/QPYcom_V3.6.0/exes/FC41D/BKFIL.exe
+-rwxr-xr-x 1 melwinabi melwinabi  22M Mar 15  2025  /home/melwinabi/Documents/backup/QPYcom_V3.6.0/QPYcom_V3.6.0/QPYcom.exe
+-rwxr-xr-x 1 melwinabi melwinabi  42M Mar 18  2025 '/home/melwinabi/Documents/backup/Valve Control Cenmark/Drivers/Quectel_Windows_USB_DriverU_V1.0.19/setup.exe'
+-rw-rw-r-- 1 melwinabi melwinabi 244M Jun 17 20:19  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00000798.sst
+-rw-rw-r-- 1 melwinabi melwinabi  30M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002163.sst
+-rw-rw-r-- 1 melwinabi melwinabi 244M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002181.sst
+-rw-rw-r-- 1 melwinabi melwinabi 115M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002182.sst
+-rw-rw-r-- 1 melwinabi melwinabi  22M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002183.sst
+-rw-rw-r-- 1 melwinabi melwinabi 125M Jun 16 19:45  /home/melwinabi/Documents/Finance_Folio/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rwxrwxr-x 1 melwinabi melwinabi  30M Jul 24 22:03  /home/melwinabi/Documents/Finance_Folio/Server_Code/venv/lib/python3.12/site-packages/curl_cffi/_wrapper.abi3.so
+-rwxrwxr-x 1 melwinabi melwinabi  24M Jul 24 22:03  /home/melwinabi/Documents/Finance_Folio/Server_Code/venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-017048f4.so
+-rw-r--r-- 1 melwinabi melwinabi  31M Apr 29  2024  /home/melwinabi/Documents/Library/tflite-micro-arduino-examples-main/docs/hello_world_animation.gif
+-rw-rw-rw- 1 melwinabi melwinabi  27M Jan 17  2026  /home/melwinabi/Documents/OneDrive/ACER_Windows/Arduino/Fridge_Magnet/ui_image_cold.c
+-rw-rw-rw- 1 melwinabi melwinabi  31M Apr 28  2024  /home/melwinabi/Documents/OneDrive/ACER_Windows/Arduino/libraries/tflite-micro-arduino-examples-main/docs/hello_world_animation.gif
+-rw-rw-rw- 1 melwinabi melwinabi  71M Jun 30  2023 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Croma_Starts_Project/HTML/PROJECTS CODE HTML/VEDIO/sample vedio.mp4'
+-rwxrwxrwx 1 melwinabi melwinabi 114M Jan 22  2025 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rwxrwxrwx 1 melwinabi melwinabi  42M Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/Drivers/Quectel_Windows_USB_DriverU_V1.0.19/setup.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  22M Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/exes/FC41D/BKFIL.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  22M Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/QPYcom.exe'
+-rw-rw-rw- 1 melwinabi melwinabi  60M Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Reference/STM32_Projects/Architecture_Reference/STM32H7A3/Mapping & Registers.pdf'
+-rwxrwxrwx 1 melwinabi melwinabi 1.1G Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  35M Jan 17  2025  /home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/TremoProgrammer_v0.8.exe
+-rw-rw-rw- 1 melwinabi melwinabi  29M Dec 17  2023  /home/melwinabi/Documents/OneDrive/ACER_Windows/Photos/IMG_20211020_123219.jpg
+-rw-rw-rw- 1 melwinabi melwinabi  25M Aug 20  2025 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Photos/Saved Pictures/IMG_20250817_123639.jpg'
+-rw------- 1 melwinabi melwinabi 112M Sep  3  2020  /home/melwinabi/Documents/OneDrive/Desktop/arduino/arduino-1.8.13-windows.exe
+-rw------- 1 melwinabi melwinabi 447M Oct 16  2021 '/home/melwinabi/Documents/OneDrive/Desktop/arduino/Proteus.Pro.8.13.SP0.31525/Proteus 8.13 SP0 Pro.exe'
+-rw------- 1 melwinabi melwinabi 215M Jan  4  2024  /home/melwinabi/Documents/OneDrive/Desktop/Robotics/processing-4.3-windows-x64.zip
+-rw------- 1 melwinabi melwinabi 114M Jan 19  2025 '/home/melwinabi/Documents/OneDrive/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rw------- 1 melwinabi melwinabi  29M Dec 17  2023  /home/melwinabi/Documents/OneDrive/Pictures/IMG_20211020_123219.jpg
+-rw-rw-r-- 1 melwinabi melwinabi  42M Mar 18  2025 '/home/melwinabi/Documents/PPV projects/Reference/Quectel/Drivers/Quectel_Windows_USB_DriverU_V1.0.19/setup.exe'
+-rw-rw-r-- 1 melwinabi melwinabi  22M Mar 14  2025 '/home/melwinabi/Documents/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/exes/FC41D/BKFIL.exe'
+-rw-rw-r-- 1 melwinabi melwinabi  22M Mar 14  2025 '/home/melwinabi/Documents/PPV projects/Reference/Quectel/QPYcom_V3.6.0/QPYcom_V3.6.0/QPYcom.exe'
+-rw-rw-r-- 1 melwinabi melwinabi  60M Sep  1  2025 '/home/melwinabi/Documents/PPV projects/Reference/STM32_Projects/Architecture_Reference/STM32H7A3/Mapping & Registers.pdf'
+-rw-rw-r-- 1 melwinabi melwinabi 1.1G May  6  2025 '/home/melwinabi/Documents/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rw-rw-r-- 1 melwinabi melwinabi 173M Apr 21  2026  /home/melwinabi/Documents/Smart_Hub/.next/dev/cache/turbopack/8d0f77bf/00000260.sst
+-rw-rw-r-- 1 melwinabi melwinabi 125M Apr  1  2026  /home/melwinabi/Documents/Smart_Hub/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rw-rw-r-- 1 melwinabi melwinabi 344M Apr 21  2026  /home/melwinabi/Documents/Smart_Hub.zip
+-rw-rw-r-- 1 melwinabi melwinabi 125M May  8  2026  /home/melwinabi/Documents/Smart_Switch/APP/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rwxrwxrwx 1 melwinabi melwinabi 112M Mar 24  2024 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/arduino-1.8.19-windows.exe'
+-rwxrwxrwx 1 melwinabi melwinabi  84M Mar  1  2023 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/c51v959.exe'
+-rwxrwxrwx 1 melwinabi melwinabi 577M Jan  7  2015 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4/KEIL 4/mdk474.exe'
+-rw-rw-rw- 1 melwinabi melwinabi 458M May 29  2024 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4.rar'
+-rw-rw-rw- 1 melwinabi melwinabi 545M Jul 29  2025 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4.zip'
+-rwxrwxrwx 1 melwinabi melwinabi  84M Mar  1  2023 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 5/KEIL 5/c51v959.exe'
+-rw-rw-rw- 1 melwinabi melwinabi  82M Jun  3  2024 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 5.rar'
+-rw-rw-rw- 1 melwinabi melwinabi 101M Mar 24  2011 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/Data1.cab'
+-rw-rw-rw- 1 melwinabi melwinabi 101M Mar 24  2011 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/MPLAB_IDE_v8_66/Data1.cab'
+-rw-rw-rw- 1 melwinabi melwinabi 114M May  2  2012 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/MPLAB_IDE_v8_66.zip'
+-rwxrwxrwx 1 melwinabi melwinabi 441M Mar 14  2021 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/Proteus 8.12 SP0 Pro/Proteus 8.12 SP0 Pro.exe'
+-rw-rw-rw- 1 melwinabi melwinabi  25M May  7  2021 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/r pi/000_RPi_BeginnersGuide_DIGITAL.pdf'
+-rw-rw-rw- 1 melwinabi melwinabi 522M Aug 12  2022 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/ZelioSoft2_V4_6_Windows_7.zip'

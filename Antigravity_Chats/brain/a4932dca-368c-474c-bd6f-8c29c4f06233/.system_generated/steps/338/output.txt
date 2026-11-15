@@ -1,0 +1,4 @@
+Command exited with code 1.
+
+Command output:
+blockdev: cannot open /dev/sda: Permission denied

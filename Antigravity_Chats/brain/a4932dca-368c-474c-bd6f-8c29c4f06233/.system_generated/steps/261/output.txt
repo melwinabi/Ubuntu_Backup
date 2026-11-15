@@ -1,0 +1,25 @@
+Command exited with code 0.
+
+Command output:
+total 6.4G
+drwxr-xr-x  14 melwinabi melwinabi 4.0K Mar 24  2026  .
+drwxr-xr-x   4 melwinabi melwinabi 4.0K Jan  1  1970  ..
+-rw-r--r--   1 melwinabi melwinabi 2.3G Mar 24  2026  ACER_Windows.zip
+drwxr-xr-x   7 melwinabi melwinabi 4.0K Mar 24  2026  backup
+drwxr-xr-x   4 melwinabi melwinabi 4.0K Mar 24  2026  Copy
+drwxr-xr-x   2 melwinabi melwinabi 4.0K Mar 24  2026  EC200U
+-rw-r--r--   1 melwinabi melwinabi 9.5M Feb  9  2025  EC200U_quectel_driver.zip
+drwxr-xr-x   2 melwinabi melwinabi 4.0K Mar 24  2026  esp_with_rtc_alarm
+-rw-r--r--   1 melwinabi melwinabi 8.0K Feb 24  2025 'from gsm.txt'
+drwxr-xr-x 109 melwinabi melwinabi  12K Mar 24  2026  Library
+drwxr-xr-x   3 melwinabi melwinabi 4.0K Mar 24  2026  Linux_
+-rw-r--r--   1 melwinabi melwinabi  13M Mar 24  2026  Linux_.zip
+drwxr-xr-x   4 melwinabi melwinabi 4.0K Mar 24  2026  Load_Cell_IoT
+-rw-r--r--   1 melwinabi melwinabi 339M Dec 29  2025  NBR_ACEW.zip
+drwxr-xr-x   6 melwinabi melwinabi 4.0K Mar 24  2026  .nflc_data
+-rw-r--r--   1 melwinabi melwinabi  17K Mar 25  2025 'proteous zip link.zip'
+drwxr-xr-x   5 melwinabi melwinabi 4.0K Mar 24  2026  Select_Energy_Monitoring
+drwxr-xr-x   2 melwinabi melwinabi 4.0K Mar 24  2026  sketch_feb08c
+-rw-r--r--   1 melwinabi melwinabi 3.8G Dec 14  2025  SOFTWARES.zip
+drwxr-xr-x   3 melwinabi melwinabi 4.0K Mar 24  2026  SPD_Driver_R4.20.4201
+drwxr-xr-x   4 melwinabi melwinabi 4.0K Mar 24  2026  .Trash-1000

@@ -1,0 +1,13 @@
+My Dashboard
+Connecting...
+Add Device
+Logout
+My Devices
+No devices added yet
+Click the "Add Device" button above to get started.
+[0] (602,360)<button title='Close' />
+Add New Device
+[1] (500,446)<label >Select Series />
+[2] (428,479)<select class='select-field' />
+[3] (500,526)<label >Select Device ID />
+[4] (500,616)<button class='btn btn-primary'>Add to Dashboard />

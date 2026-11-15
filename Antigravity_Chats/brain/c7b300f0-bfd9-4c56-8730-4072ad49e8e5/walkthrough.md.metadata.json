@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Comprehensive walkthrough of the Advanced Device Management implementation, covering authentication synchronization, persistent device grids, and the custom modal-based 'Add Device' workflow. Includes visual proof of functionality and technical details on Prisma integration and session security.",
+  "updatedAt": "2026-04-10T05:15:02.111314296Z",
+  "version": "4"
+}

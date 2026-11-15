@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 0408:4033 Quanta Computer, Inc. ACER HD User Facing
+Bus 003 Device 003: ID 04f3:0c4f Elan Microelectronics Corp. ELAN:Fingerprint
+Bus 003 Device 004: ID 8087:0026 Intel Corp. AX201 Bluetooth
+Bus 003 Device 005: ID 0781:5567 SanDisk Corp. Cruzer Blade
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub

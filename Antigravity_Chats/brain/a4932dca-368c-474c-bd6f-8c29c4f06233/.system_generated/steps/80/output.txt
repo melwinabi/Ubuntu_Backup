@@ -1,0 +1,27 @@
+Command exited with code 0.
+
+Command output:
+1951.1 MB : OneDrive
+1732.2 MB : ACER_Windows
+1071.0 MB : SOFTWARES
+783.0 MB : backup
+611.5 MB : PPV projects
+380.9 MB : NBR_ACEW
+98.7 MB : Library
+69.9 MB : EasyEDA-Pro
+27.7 MB : SHL
+20.2 MB : Linux_fixed
+2.9 MB : Component Parts
+1.2 MB : Finance_Folio
+0.5 MB : Smart_Hub
+0.3 MB : Smart_Switch
+0.3 MB : test assignment
+0.1 MB : PlatformIO
+0.0 MB : proteous zip link
+0.0 MB : Select_Energy_Monitoring
+0.0 MB : EC200U
+0.0 MB : VS_Code
+0.0 MB : Copy
+0.0 MB : sketch_feb08c
+0.0 MB : esp_with_rtc_alarm
+0.0 MB : KiCad_Project

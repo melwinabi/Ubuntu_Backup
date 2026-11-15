@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+total 12
+drwxrwxr-x  3 melwinabi melwinabi 4096 Nov 15 13:42 .
+drwxr-x--- 54 melwinabi melwinabi 4096 Nov 15 13:42 ..
+drwxr-xr-x  7 melwinabi melwinabi 4096 Oct  9 09:09 ventoy-1.1.18

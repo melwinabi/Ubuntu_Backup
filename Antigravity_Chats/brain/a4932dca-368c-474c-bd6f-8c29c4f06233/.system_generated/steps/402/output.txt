@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+pip 24.0 from /usr/lib/python3/dist-packages/pip (python 3.12)

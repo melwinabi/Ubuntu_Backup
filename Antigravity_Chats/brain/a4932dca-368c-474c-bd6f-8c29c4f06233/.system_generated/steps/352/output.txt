@@ -1,0 +1,22 @@
+Command exited with code 0.
+
+Command output:
+total 216
+drwxr-xr-x 7 melwinabi melwinabi  4096 Oct  9 09:09 .
+drwxrwxr-x 3 melwinabi melwinabi  4096 Nov 15 13:42 ..
+drwxr-xr-x 2 melwinabi melwinabi  4096 Oct  9 09:09 boot
+-rwxr-xr-x 1 melwinabi melwinabi  3111 Oct  9 09:09 CreatePersistentImg.sh
+-rwxr-xr-x 1 melwinabi melwinabi  3022 Oct  9 09:09 ExtendPersistentImg.sh
+drwxr-xr-x 3 melwinabi melwinabi  4096 Oct  9 09:09 plugin
+-rw-r--r-- 1 melwinabi melwinabi  2622 Oct  9 09:09 README
+drwxr-xr-x 6 melwinabi melwinabi  4096 Oct  9 09:09 tool
+drwxr-xr-x 2 melwinabi melwinabi  4096 Oct  9 09:09 ventoy
+-rwxr-xr-x 1 melwinabi melwinabi  2267 Oct  9 09:09 Ventoy2Disk.sh
+-rwxr-xr-x 1 melwinabi melwinabi 38568 Oct  9 09:09 VentoyGUI.aarch64
+-rwxr-xr-x 1 melwinabi melwinabi 30672 Oct  9 09:09 VentoyGUI.i386
+-rwxr-xr-x 1 melwinabi melwinabi 43288 Oct  9 09:09 VentoyGUI.mips64el
+-rwxr-xr-x 1 melwinabi melwinabi 32816 Oct  9 09:09 VentoyGUI.x86_64
+-rwxr-xr-x 1 melwinabi melwinabi  5389 Oct  9 09:09 VentoyPlugson.sh
+-rwxr-xr-x 1 melwinabi melwinabi  7064 Oct  9 09:09 VentoyVlnk.sh
+-rwxr-xr-x 1 melwinabi melwinabi  2971 Oct  9 09:09 VentoyWeb.sh
+drwxr-xr-x 3 melwinabi melwinabi  4096 Oct  9 09:09 WebUI

@@ -1,0 +1,32 @@
+Command exited with code 0.
+
+Command output:
+4.0K	/home/melwinabi/.local/share/gnome-settings-daemon
+4.0K	/home/melwinabi/.local/share/ibus-table
+4.0K	/home/melwinabi/.local/share/nano
+4.0K	/home/melwinabi/.local/share/sounds
+8.0K	/home/melwinabi/.local/share/flatpak
+8.0K	/home/melwinabi/.local/share/gnome-shell
+8.0K	/home/melwinabi/.local/share/gstreamer-1.0
+8.0K	/home/melwinabi/.local/share/kotlin
+12K	/home/melwinabi/.local/share/icc
+12K	/home/melwinabi/.local/share/prisma-dev-nodejs
+16K	/home/melwinabi/.local/share/keyrings
+16K	/home/melwinabi/.local/share/org.gnome.TextEditor
+32K	/home/melwinabi/.local/share/applications
+36K	/home/melwinabi/.local/share/STM32CubeIDE
+36K	/home/melwinabi/.local/share/yelp
+52K	/home/melwinabi/.local/share/mime
+76K	/home/melwinabi/.local/share/pki
+96K	/home/melwinabi/.local/share/icons
+104K	/home/melwinabi/.local/share/xorg
+152K	/home/melwinabi/.local/share/gvfs-metadata
+160K	/home/melwinabi/.local/share/evolution
+364K	/home/melwinabi/.local/share/nautilus
+2.7M	/home/melwinabi/.local/share/kicad
+262M	/home/melwinabi/.local/share/discord
+311M	/home/melwinabi/.local/share/teams
+329M	/home/melwinabi/.local/share/Google
+775M	/home/melwinabi/.local/share/antigravity-ide
+27G	/home/melwinabi/.local/share/Trash
+28G	/home/melwinabi/.local/share

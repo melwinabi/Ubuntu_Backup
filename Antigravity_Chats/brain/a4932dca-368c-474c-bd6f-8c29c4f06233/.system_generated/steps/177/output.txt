@@ -1,0 +1,12 @@
+Command exited with code 0.
+
+Command output:
+total 28K
+drwxr-xr-x  7 root      root      4.0K Oct 25 20:54 .
+drwxr-xr-x 23 root      root      4.0K Mar 25  2026 ..
+drwxrwxr-x  8 melwinabi melwinabi 4.0K Jul 26 22:14 android-studio
+-rwxrwxr-x  1 melwinabi melwinabi    0 Mar 25  2026 antigravity.AppImage
+drwxr-xr-x  3 root      root      4.0K Apr 21  2026 apps
+drwxr-xr-x  4 root      root      4.0K Apr  8  2026 DbGate
+drwxr-xr-x  3 root      root      4.0K Mar 25  2026 google
+drwxrwxr-x  3 root      root      4.0K Mar 26  2026 st

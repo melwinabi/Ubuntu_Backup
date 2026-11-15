@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Plan to uninstall the .deb version of DbGate and setup the AppImage version with a launch fix for Ubuntu 24.04.",
+  "updatedAt": "2026-04-21T07:31:00.708014094Z",
+  "version": "1"
+}

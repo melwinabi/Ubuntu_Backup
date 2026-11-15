@@ -1,0 +1,24 @@
+Command exited with code 1.
+
+Command output:
+
+**********************************************
+      Ventoy: 1.1.18  x86_64
+      longpanda admin@ventoy.net
+      https://www.ventoy.net
+**********************************************
+
+Usage:  Ventoy2Disk.sh CMD [ OPTION ] /dev/sdX
+  CMD:
+   -i  install Ventoy to sdX (fails if disk already installed with Ventoy)
+   -I  force install Ventoy to sdX (no matter if installed or not)
+   -u  update Ventoy in sdX
+   -l  list Ventoy information in sdX
+
+  OPTION: (optional)
+   -r SIZE_MiB preserve some space (MiB) at the bottom of the disk (only for install)
+   -s/-S       enable/disable secure boot support (default is enabled)
+   -g          use GPT partition style, default is MBR (only for install)
+   -L          Label of the 1st exfat partition (default is Ventoy)
+   -n          try non-destructive installation (only for install)
+

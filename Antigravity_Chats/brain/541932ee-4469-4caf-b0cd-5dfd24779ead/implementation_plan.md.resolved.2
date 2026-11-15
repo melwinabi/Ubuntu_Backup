@@ -1,0 +1,64 @@
+# Implementation Plan - Finish OneDrive Installation
+
+The setup for OneDrive was started but not completed in the previous session. I will finish the installation and configuration of the `onedrive` client (abraunegg/onedrive) on Ubuntu 24.04.
+
+## User Review Required
+
+> [!IMPORTANT]
+> - You will need to authenticate the client by clicking a link and pasting the response URL back into the terminal.
+> - By default, it will sync to `~/OneDrive`.
+
+## Proposed Changes
+
+### System Setup
+1. **Add OBS Repository Key**:
+   ```bash
+   wget -qO - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/Release.key | gpg --dearmor | sudo tee /usr/share/keyrings/obs-onedrive.gpg > /dev/null
+   ```
+2. **Add OBS Repository**:
+   ```bash
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/ ./" | sudo tee /etc/apt/sources.list.d/onedrive.list
+   ```
+3. **Install Client**:
+   ```bash
+   sudo apt update
+   sudo apt install onedrive
+   ```
+
+### Configuration
+1. **Initial Authentication**: Run `onedrive` in a terminal. It will provide a URL; open it in a browser, log in, and paste the final response URL back into the terminal.
+2. **Setup Sync Folder**: By default, it uses `~/OneDrive`.
+3. **Enable Background Sync**:
+   ```bash
+   systemctl --user enable onedrive
+   systemctl --user start onedrive
+   ```
+
+### Relocating the Sync Folder
+1. **Stop the Service**:
+   ```bash
+   systemctl --user stop onedrive
+   ```
+2. **Move the Folder**:
+   ```bash
+   mv ~/OneDrive ~/Documents/OneDrive
+   ```
+3. **Update Configuration**:
+   Create or update `~/.config/onedrive/config` with:
+   ```text
+   sync_dir = "~/Documents/OneDrive"
+   ```
+4. **Restart the Service**:
+   ```bash
+   systemctl --user start onedrive
+   ```
+
+## Verification Plan
+
+### Automated Tests
+- Run `onedrive --display-config` to verify settings.
+- Run `onedrive --display-sync-status` to check connectivity.
+
+### Manual Verification
+- Place a test file in the `~/OneDrive` folder and verify it appears on OneDrive web.
+- Check the output of `journalctl --user -u onedrive` to see sync logs.

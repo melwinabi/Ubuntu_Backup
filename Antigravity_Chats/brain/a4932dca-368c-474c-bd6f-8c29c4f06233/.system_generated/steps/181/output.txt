@@ -1,0 +1,45 @@
+Command exited with code 0.
+
+Command output:
+4.0K	/home/melwinabi/.config/DbGate
+4.0K	/home/melwinabi/.config/enchant
+4.0K	/home/melwinabi/.config/goa-1.0
+4.0K	/home/melwinabi/.config/gtk-4.0
+4.0K	/home/melwinabi/.config/nautilus
+4.0K	/home/melwinabi/.config/update-notifier
+4.0K	/home/melwinabi/.config/yelp
+8.0K	/home/melwinabi/.config/antigravity
+8.0K	/home/melwinabi/.config/autostart
+8.0K	/home/melwinabi/.config/create-next-app-nodejs
+8.0K	/home/melwinabi/.config/eog
+8.0K	/home/melwinabi/.config/flutter
+8.0K	/home/melwinabi/.config/gnome-session
+8.0K	/home/melwinabi/.config/gtk-3.0
+8.0K	/home/melwinabi/.config/nextjs-nodejs
+8.0K	/home/melwinabi/.config/pulse
+8.0K	/home/melwinabi/.config/tiling-assistant
+12K	/home/melwinabi/.config/evolution
+20K	/home/melwinabi/.config/ibus
+24K	/home/melwinabi/.config/dconf
+24K	/home/melwinabi/.config/systemd
+32K	/home/melwinabi/.config/jxbrowser
+40K	/home/melwinabi/.local/state
+92K	/home/melwinabi/.config/inkscape
+192K	/home/melwinabi/.config/kicad
+1.8M	/home/melwinabi/.config/Arduino IDE
+2.2M	/home/melwinabi/.config/arduino-ide
+2.4M	/home/melwinabi/.config/dbgate
+2.6M	/home/melwinabi/.config/libreoffice
+3.4M	/home/melwinabi/.config/onedrive
+4.6M	/home/melwinabi/.config/Google
+71M	/home/melwinabi/.config/Antigravity
+129M	/home/melwinabi/.config/discord
+218M	/home/melwinabi/.local/bin
+261M	/home/melwinabi/.local/lib
+499M	/home/melwinabi/.config/teams-for-linux
+764M	/home/melwinabi/.config/Code
+1.3G	/home/melwinabi/.config/EasyEDA-Pro
+5.5G	/home/melwinabi/.config/google-chrome
+8.2G	/home/melwinabi/.config
+28G	/home/melwinabi/.local/share
+29G	/home/melwinabi/.local

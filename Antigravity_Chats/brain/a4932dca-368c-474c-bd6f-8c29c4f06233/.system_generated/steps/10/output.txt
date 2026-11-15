@@ -1,0 +1,45 @@
+Command exited with code 0.
+
+Command output:
+major minor  #blocks  name
+
+   7        0     349488 loop0
+   7        1      56836 loop1
+   7        2          4 loop2
+   7        3      56820 loop3
+   7        4      65312 loop4
+   7        5      65316 loop5
+   7        6      75732 loop6
+   7        7      75756 loop7
+ 259        0  500107608 nvme0n1
+ 259        1    1100800 nvme0n1p1
+ 259        2  499004416 nvme0n1p2
+   7        8      68408 loop8
+   7        9      68392 loop9
+   7       10     298772 loop10
+   7       12     263772 loop12
+   7       11      62076 loop11
+   7       13     290628 loop13
+   7       15     121660 loop15
+   7       14      16896 loop14
+   7       16      19600 loop16
+   7       17      19604 loop17
+   7       18     544128 loop18
+   7       19     168780 loop19
+   7       20     620624 loop20
+   7       21      93888 loop21
+   7       22     411628 loop22
+   7       24      12092 loop24
+   7       25      51304 loop25
+   7       26      16064 loop26
+   7       27        828 loop27
+   7       28      45784 loop28
+   7       30        828 loop30
+   7       31     116824 loop31
+   7       32     328808 loop32
+   7       33      87628 loop33
+   7       34     411628 loop34
+   8        0    7815168 sda
+   8        1    7814108 sda1
+   7       35      13008 loop35
+   7       36      62148 loop36

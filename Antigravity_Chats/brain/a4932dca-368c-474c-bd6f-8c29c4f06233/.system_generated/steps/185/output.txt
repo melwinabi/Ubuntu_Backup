@@ -1,0 +1,33 @@
+Command exited with code 0.
+
+Command output:
+total 13G
+drwx------ 22 melwinabi melwinabi  12K Oct 25 20:34 .
+drwx------  5 melwinabi melwinabi 4.0K Mar 25  2026 ..
+-rw-rw-r--  1 melwinabi melwinabi 163M Jul 19 13:07 1.4.4.msi
+-rw-r--r--  1 melwinabi melwinabi 200K Aug 28 21:23 1.jpg
+-rw-rw-r--  1 melwinabi melwinabi 1.3M Mar 27  2026 2026-03-27-140831.webm
+-rw-rw-rw-  1 melwinabi melwinabi   99 Apr 23  2026 .2.gitignore
+-rw-r--r--  1 melwinabi melwinabi 151K Aug 28 21:23 2.jpg
+-rw-rw-r--  1 melwinabi melwinabi 4.8M Mar 30  2026 3D_PCB1_2026-03-30.step
+-rw-rw-rw-  1 melwinabi melwinabi   99 Apr 23  2026 .3.gitignore
+-rw-r--r--  1 melwinabi melwinabi 113K Aug 28 21:23 3.jpg
+-rw-rw-rw-  1 melwinabi melwinabi   99 Apr 23  2026 .4.gitignore
+-rw-r--r--  1 melwinabi melwinabi 203K Aug 28 21:23 4.jpg
+-rw-rw-rw-  1 melwinabi melwinabi   99 Apr 23  2026 .5.gitignore
+-rw-r--r--  1 melwinabi melwinabi 111K Aug 28 21:23 5.jpg
+-rw-r--r--  1 melwinabi melwinabi  75K Aug 28 21:23 9.1.jpg
+-rw-rw-r--  1 melwinabi melwinabi 7.7M Aug 30 12:17 Animiice.zip
+drwxrwxr-x  3 melwinabi melwinabi 4.0K Oct 25 18:11 Antigravity
+-rw-rw-r--  1 melwinabi melwinabi 173M Oct 25 19:19 Antigravity (1).tar.gz
+drwxrwxr-x  3 melwinabi melwinabi 4.0K Oct 25 18:11 Antigravity (2)
+drwxrwxr-x  3 melwinabi melwinabi 4.0K Oct 25 20:34 Antigravity (2).2
+-rw-rw-r--  1 melwinabi melwinabi 171M Oct 25 19:46 Antigravity (2).tar.gz
+drwxrwxr-x  3 melwinabi melwinabi 4.0K Oct 25 20:34 Antigravity (3)
+-rw-rw-r--  1 melwinabi melwinabi 173M Oct 25 19:46 Antigravity (3).tar.gz
+-rw-r--r--  1 melwinabi melwinabi  73K Apr  9  2026 arch_1_system_overview.png
+-rw-r--r--  1 melwinabi melwinabi  67K Apr  9  2026 arch_2_backend.png
+-rw-r--r--  1 melwinabi melwinabi  79K Apr  9  2026 arch_3_data_engineering.png
+-rw-r--r--  1 melwinabi melwinabi  63K Apr  9  2026 arch_4_model_details.png
+-rw-r--r--  1 melwinabi melwinabi  78K Apr  9  2026 arch_5_clinical_integration.png
+-rw-r--r--  1 melwinabi melwinabi  443 Apr  9  2026 arch_data_layer.md

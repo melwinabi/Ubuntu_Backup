@@ -1,0 +1,6 @@
+# Task Checklist
+- [ ] Open http://localhost:3000
+- [ ] Access /admin/dashboard
+- [ ] Access /dashboard
+- [ ] Check console logs for errors
+- [ ] Report findings regarding login and errors

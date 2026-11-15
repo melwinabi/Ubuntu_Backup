@@ -1,0 +1,12 @@
+# Discord Installation Complete
+
+I've successfully downloaded and installed Discord with a desktop icon for you. 
+
+## What was done
+1. **Downloaded** the latest official Discord `.tar.gz` release for Linux.
+2. **Extracted** the application into the standard local applications directory (`~/.local/share/discord/`).
+3. **Created a Desktop Entry** at `~/.local/share/applications/discord.desktop`, which makes Discord searchable and accessible from your system application launcher.
+4. **Desktop Shortcut:** Placed an icon directly on your `~/Desktop/` for your convenience.
+5. **CLI Setup:** Created a symbolic link in `~/.local/bin/discord` so that you can open Discord from your terminal if you prefer (running `discord`).
+
+You should be able to search for "Discord" in your start menu or app launcher, and simply click the icon to launch it!

@@ -1,0 +1,8 @@
+# Tasks
+
+- [/] Investigate current DbGate installation <!-- id: 0 -->
+    - [x] Check installation method <!-- id: 1 -->
+    - [/] Check for error logs when running DbGate <!-- id: 2 -->
+- [ ] Uninstall current DbGate <!-- id: 3 -->
+- [ ] Install the latest community version of DbGate <!-- id: 4 -->
+- [ ] Verify installation and functionality <!-- id: 5 -->

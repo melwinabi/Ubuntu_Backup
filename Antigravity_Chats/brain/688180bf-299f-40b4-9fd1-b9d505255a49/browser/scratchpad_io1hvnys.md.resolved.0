@@ -1,0 +1,25 @@
+# Verification Plan
+
+- [ ] 1. Open http://localhost:3000 and verify "Smart-HUB" typo is fixed.
+- [ ] 2. Verify redirects for /admin and /login.
+- [ ] 3. Perform "User Login" test.
+    - [ ] Select "User Login" tab.
+    - [ ] Enter "asmelwin3@gmail.com" in the email field.
+    - [ ] Click "Login with Google".
+    - [ ] Verify it redirects to /dashboard.
+    - [ ] Verify status says "Select a Device".
+    - [ ] Click 'Add Device' button.
+    - [ ] Select 'W1_Series' from the dropdown.
+    - [ ] Verify that 'ID: #101 (Living Room Hub)' appears in the 'Select Device ID' dropdown.
+    - [ ] Select the device and click 'Add to Dashboard'.
+    - [ ] Verify the device appears in the dashboard grid.
+    - [ ] Click 'Logout' and verify redirect to /.
+- [ ] 4. Perform "Admin Login" test.
+    - [ ] Select "Admin Login" tab.
+    - [ ] Enter "asmelwin3@gmail.com".
+    - [ ] Click "Verify Identity".
+    - [ ] Enter "123456" in the OTP field.
+    - [ ] Click "Verify Email" or process the login.
+    - [ ] Verify it redirects to /admin/dashboard.
+    - [ ] Verify sidebar says "Smart-HUB".
+    - [ ] Logout.

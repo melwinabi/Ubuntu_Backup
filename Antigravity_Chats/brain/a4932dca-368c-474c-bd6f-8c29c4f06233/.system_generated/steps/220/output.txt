@@ -1,0 +1,29 @@
+Command exited with code 0.
+
+Command output:
+Unique files in OneDrive: 3021
+  446.11 MB : Desktop/arduino/Proteus.Pro.8.13.SP0.31525/Proteus 8.13 SP0 Pro.exe
+  214.16 MB : Desktop/Robotics/processing-4.3-windows-x64.zip
+  111.59 MB : Desktop/arduino/arduino-1.8.13-windows.exe
+  28.71 MB : Pictures/IMG_20211020_123219.jpg
+  5.29 MB : Desktop/HTML/PROJECTS CODE HTML/AUDIO/sample audio.mp3.mp3
+  4.81 MB : Pictures/Saved Pictures/IMG_20221103_112450.jpg
+  4.60 MB : Pictures/Saved Pictures/IMG_0186.JPG
+  4.35 MB : Pictures/Saved Pictures/IMG_0181.JPG
+  4.34 MB : Pictures/Saved Pictures/IMG_0183.JPG
+  4.34 MB : Pictures/Saved Pictures/IMG_0182.JPG
+  4.32 MB : Pictures/Saved Pictures/IMG_0184.JPG
+  4.29 MB : Pictures/Saved Pictures/IMG_0180.JPG
+  3.88 MB : Pictures/Acer/Acer_Wallpaper_04_3840x2400.jpg
+  3.75 MB : Pictures/Saved Pictures/IMG_0374.JPG
+  3.65 MB : Pictures/Saved Pictures/IMG_0373.JPG
+  3.63 MB : Pictures/Saved Pictures/IMG_0178.JPG
+  3.45 MB : Pictures/Saved Pictures/IMG_0431.JPG
+  3.32 MB : Pictures/Acer/Acer_Wallpaper_03_3840x2400.jpg
+  3.03 MB : Pictures/Saved Pictures/IMG_0387.JPG
+  2.96 MB : Pictures/Saved Pictures/IMG_0187.JPG
+  2.88 MB : Pictures/Acer/Acer_Wallpaper_05_3840x2400.jpg
+  2.77 MB : Pictures/Saved Pictures/IMG_0313.JPG
+  2.74 MB : Pictures/Saved Pictures/IMG_0372.JPG
+  2.74 MB : Pictures/Saved Pictures/IMG_0371.JPG
+  2.74 MB : Pictures/Saved Pictures/IMG_0444.JPG

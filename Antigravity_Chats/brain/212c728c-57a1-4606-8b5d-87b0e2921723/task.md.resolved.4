@@ -1,0 +1,4 @@
+- [x] Clean uninstall of current DbGate <!-- id: 3 -->
+- [x] Download latest community DbGate AppImage (v7.1.8) <!-- id: 4 -->
+- [x] Setup AppImage with no-sandbox fix <!-- id: 6 -->
+- [x] Verify functionality <!-- id: 5 -->

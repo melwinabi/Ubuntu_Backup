@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+file:///home/melwinabi/Documents
+file:///home/melwinabi/Music
+file:///home/melwinabi/Pictures
+file:///home/melwinabi/Videos
+file:///home/melwinabi/Downloads
+file:///home/melwinabi/Downloads/srm srm

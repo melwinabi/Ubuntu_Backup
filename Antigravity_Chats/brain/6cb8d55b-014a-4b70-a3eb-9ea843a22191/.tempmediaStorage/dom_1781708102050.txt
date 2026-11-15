@@ -1,0 +1,59 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+Finance Folio
+[0] (69,116)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/dashboard' />
+	[1] (52,116)<span >Dashboard />
+[2] (69,168)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/income' />
+	[3] (46,168)<span >Income />
+[4] (69,220)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/expenses' />
+	[5] (50,220)<span >Expenses />
+[6] (69,272)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/investments' />
+	[7] (55,272)<span >Investments />
+[8] (69,324)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/credit-cards' />
+	[9] (55,324)<span >Credit Cards />
+[10] (69,376)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/credit-score' />
+	[11] (55,376)<span >Credit Score />
+[12] (69,428)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/loans' />
+	[13] (54,428)<span >Loans Given />
+[14] (69,480)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group text-slate-400 hover:bg-slate-900/50 hover:text-slate-200 border border-transparent' href='/networth' />
+	[15] (51,480)<span >Net Worth />
+[16] (69,532)<a class='flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group bg-violet-600/10 border border-violet-500/20 text-violet-400' href='/settings' />
+	[17] (48,532)<span >Settings />
+TU
+Test User
+user@example.com
+[18] (119,963)<button class='p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/5 border border-transparent hover:border-red-500/10 transition-all shrink-0' title='Sign Out' />
+Welcome back,
+Test User
+Profile Settings
+Configure asset accounts, audit wallet ledger balances, and view details.
+Create Cash/Bank Account
+[19] (895,237)<button class='text-slate-500 hover:text-slate-300' />
+[20] (260,279)<label class='text-xs font-semibold text-slate-300'>Account Name />
+[21] (401,311)<input class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 text-sm' placeholder='e.g. ICICI Savings, Cash Wallet' />
+Name must be at least 2 characters
+[22] (595,279)<label class='text-xs font-semibold text-slate-300'>Account Type />
+[23] (737,311)<input class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 text-sm' placeholder='e.g. Savings, Current, Cash, Wallet' />
+Account Type is required
+[24] (264,381)<label class='text-xs font-semibold text-slate-300'>Initial Balance (₹) />
+[25] (401,413)<input class='w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl focus:border-violet-500 focus:outline-none text-slate-100 text-sm' placeholder='0.00' />
+[26] (812,475)<button class='px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs font-medium text-slate-300'>Cancel />
+[27] (869,475)<button class='px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-xl text-xs font-medium'>Create Account />
+User Account
+TE
+Test User
+user@example.com
+Account Status:
+Active
+Database engine:
+SQLite 3
+Asset Accounts
+[28] (810,569)<button class='flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300 transition-all hover:scale-[1.01]'>Adjust Balance />
+	Adjust Balance
+[29] (882,569)<button class='flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-violet-650 hover:bg-violet-600 text-xs font-semibold text-white transition-all hover:scale-[1.01]'>Add Account />
+	Add Account
+No asset accounts configured. Please configure an account to back your transactions.
+
+</current_dom>

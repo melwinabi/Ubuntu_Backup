@@ -1,0 +1,23 @@
+Command exited with code 0.
+
+Command output:
+        elementary)       INFO="elementary OS|-|https://elementary.io/|Thoughtful, capable, and ethical replacement for Windows and macOS.";;
+        kubuntu)          INFO="Kubuntu|-|https://kubuntu.org/|Free, complete, and open-source alternative to Microsoft Windows and Mac OS X which contains everything you need to work, play, or share.";;
+        reactos)          INFO="ReactOS|-|https://reactos.org/|Imagine running your favorite Windows applications and drivers in an open-source environment you can trust.";;
+        windows)          INFO="Windows|-|https://www.microsoft.com/en-us/windows/|Whether you’re gaming, studying, running a business, or running a household, Windows helps you get it done.";;
+        windows-server)   INFO="Windows Server|-|https://www.microsoft.com/en-us/windows-server/|Platform for building an infrastructure of connected applications, networks, and web services.";;
+        zorin)            INFO="Zorin OS|-|https://zorin.com/os/|Alternative to Windows and macOS designed to make your computer faster, more powerful, secure, and privacy-respecting.";;
+        *windows*)
+            # Windows uses multi-arch ISOs, skip architecture display
+            elif [[ "${OS}" == "windows"* ]]; then
+        elif [[ "${OS}" == "windows"* ]]; then
+    windows \
+    windows-server \
+function releases_windows() {
+function languages_windows() {
+function releases_windows-server() {
+function languages_windows-server() {
+    if [[ ${OS} != windows && ${OS} != macos && ${OS} != windows-server ]]; then
+        windows)
+            GUEST="windows"
+        windows-server)

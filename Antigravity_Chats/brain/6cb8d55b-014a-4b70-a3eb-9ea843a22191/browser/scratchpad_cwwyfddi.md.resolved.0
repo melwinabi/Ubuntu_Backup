@@ -1,0 +1,9 @@
+# Registration Testing Checklist
+
+- [x] Reload the page to clear the Prisma client compilation error
+- [ ] Fill out the registration form
+    - [x] Name: Test User Four
+    - [ ] Email: test4@example.com
+    - [ ] Password: password123
+- [ ] Click register and wait for response
+- [ ] Verify if registration succeeds and User ID is displayed

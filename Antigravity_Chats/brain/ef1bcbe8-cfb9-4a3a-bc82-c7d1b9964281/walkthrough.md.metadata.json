@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the navigation fixes implemented in the Smart Hub Admin Dashboard. Includes a description of the visual stepper, improved state validation, and a fix for the blank screen rendering bug.",
+  "updatedAt": "2026-04-09T03:52:25.914463826Z"
+}

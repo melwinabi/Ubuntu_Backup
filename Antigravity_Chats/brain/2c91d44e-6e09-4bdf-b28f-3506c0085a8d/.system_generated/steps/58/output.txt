@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/.history/.git
+/home/melwinabi/Documents/Finance_Folio/.git
+/home/melwinabi/Documents/VS_Code/.git
+/home/melwinabi/Ubuntu_Backup/.git
+/home/melwinabi/development/flutter/.git
+/home/melwinabi/STM32CubeIDE/.git

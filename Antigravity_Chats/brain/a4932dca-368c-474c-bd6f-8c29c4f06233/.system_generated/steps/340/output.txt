@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+NAME         SIZE
+sda    8002732032
+└─sda1 8001646592

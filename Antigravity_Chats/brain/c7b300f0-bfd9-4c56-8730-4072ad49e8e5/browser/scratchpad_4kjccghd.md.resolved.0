@@ -1,0 +1,13 @@
+# Browser Verification Task
+
+- [ ] Logout if already logged in
+- [ ] Login with 'asmelwin3@gmail.com'
+- [ ] Verify 'No devices added yet'
+- [ ] Click 'Add Device' (top right corner button)
+- [ ] Select 'W1_Series' and choose a Device (e.g. ID #1)
+- [ ] Click 'Add to Dashboard'
+- [ ] Verify the device card appears in the grid
+- [ ] Refresh the page (browser reload)
+- [ ] Verify the device is STILL there in the grid
+- [ ] Click 'Unlink Device'
+- [ ] Confirm the device is removed from the grid

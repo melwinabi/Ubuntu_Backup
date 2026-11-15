@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+Filesystem      Size  Used Avail Use% Mounted on
+                7.7G     0  7.7G   0% /
+/dev/nvme0n1p2  468G  139G  306G  32% /bin
+                7.7G     0  7.7G   0% /dev/shm
+/dev/nvme0n1p2  468G  139G  306G  32% /etc
+                7.7G  4.0K  7.7G   1% /etc/ssl/certs/ca-certificates.crt
+tmpfs           1.6G  2.8M  1.6G   1% /run/systemd/resolve/stub-resolv.conf
+efivarfs        268K  213K   51K  81% /sys/firmware/efi/efivars

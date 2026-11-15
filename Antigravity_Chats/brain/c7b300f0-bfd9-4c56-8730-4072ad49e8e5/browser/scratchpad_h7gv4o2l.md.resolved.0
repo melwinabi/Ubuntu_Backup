@@ -1,0 +1,7 @@
+# Task List
+- [ ] Navigate to http://localhost:3000
+- [ ] Login with 'asmelwin3@gmail.com'
+- [ ] Verify /dashboard and device grid (no 500 errors)
+- [ ] Verify existing device card is visible
+- [ ] Unlink the device
+- [ ] Verify unlinking success (card disappears)

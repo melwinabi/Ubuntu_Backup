@@ -1,0 +1,12 @@
+Command exited with code 1.
+
+Command output:
+
+**********************************************
+      Ventoy: 1.1.18  x86_64
+      longpanda admin@ventoy.net
+      https://www.ventoy.net
+**********************************************
+
+Failed to access /dev/sda, maybe root privilege is needed!
+

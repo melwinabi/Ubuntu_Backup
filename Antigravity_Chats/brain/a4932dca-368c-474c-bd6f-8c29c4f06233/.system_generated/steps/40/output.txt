@@ -1,0 +1,44 @@
+Command exited with code 0.
+
+Command output:
+-rwxrwxrwx 1 melwinabi melwinabi 114M Jan 22  2025 '/home/melwinabi/Documents/ACER_Windows/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rwxrwxrwx 1 melwinabi melwinabi 1.1G Jan 17  2026 '/home/melwinabi/Documents/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rw-r--r-- 1 melwinabi melwinabi 2.3G Mar 24  2026  /home/melwinabi/Documents/ACER_Windows.zip
+-rw-rw-r-- 1 melwinabi melwinabi 244M Jun 17 20:19  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00000798.sst
+-rw-rw-r-- 1 melwinabi melwinabi 244M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002181.sst
+-rw-rw-r-- 1 melwinabi melwinabi 115M Jul 31 22:03  /home/melwinabi/Documents/Finance_Folio/.next/dev/cache/turbopack/f37fad94/00002182.sst
+-rw-rw-r-- 1 melwinabi melwinabi 125M Jun 16 19:45  /home/melwinabi/Documents/Finance_Folio/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rwxrwxrwx 1 melwinabi melwinabi 114M Jan 22  2025 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rwxrwxrwx 1 melwinabi melwinabi 1.1G Jan 17  2026 '/home/melwinabi/Documents/OneDrive/ACER_Windows/Melwin_PPV_Files/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rw------- 1 melwinabi melwinabi 112M Sep  3  2020  /home/melwinabi/Documents/OneDrive/Desktop/arduino/arduino-1.8.13-windows.exe
+-rw------- 1 melwinabi melwinabi 447M Oct 16  2021 '/home/melwinabi/Documents/OneDrive/Desktop/arduino/Proteus.Pro.8.13.SP0.31525/Proteus 8.13 SP0 Pro.exe'
+-rw------- 1 melwinabi melwinabi 215M Jan  4  2024  /home/melwinabi/Documents/OneDrive/Desktop/Robotics/processing-4.3-windows-x64.zip
+-rw------- 1 melwinabi melwinabi 114M Jan 19  2025 '/home/melwinabi/Documents/OneDrive/Embedded With IoT/Arduino/Software/arduino-1.8.18-windows (1).exe'
+-rw-rw-r-- 1 melwinabi melwinabi 1.1G May  6  2025 '/home/melwinabi/Documents/PPV projects/Softwares/kicad-9.0.1-x86_64.exe'
+-rw-rw-r-- 1 melwinabi melwinabi 173M Apr 21  2026  /home/melwinabi/Documents/Smart_Hub/.next/dev/cache/turbopack/8d0f77bf/00000260.sst
+-rw-rw-r-- 1 melwinabi melwinabi 125M Apr  1  2026  /home/melwinabi/Documents/Smart_Hub/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rw-rw-r-- 1 melwinabi melwinabi 344M Apr 21  2026  /home/melwinabi/Documents/Smart_Hub.zip
+-rw-rw-r-- 1 melwinabi melwinabi 125M May  8  2026  /home/melwinabi/Documents/Smart_Switch/APP/node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node
+-rwxrwxrwx 1 melwinabi melwinabi 112M Mar 24  2024 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/arduino-1.8.19-windows.exe'
+-rwxrwxrwx 1 melwinabi melwinabi 577M Jan  7  2015 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4/KEIL 4/mdk474.exe'
+-rw-rw-rw- 1 melwinabi melwinabi 458M May 29  2024 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4.rar'
+-rw-rw-rw- 1 melwinabi melwinabi 545M Jul 29  2025 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/KEIL 4.zip'
+-rw-rw-rw- 1 melwinabi melwinabi 101M Mar 24  2011 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/Data1.cab'
+-rw-rw-rw- 1 melwinabi melwinabi 101M Mar 24  2011 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/MPLAB_IDE_v8_66/Data1.cab'
+-rw-rw-rw- 1 melwinabi melwinabi 114M May  2  2012 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/MPLAB_IDE_v8_66/MPLAB_IDE_v8_66.zip'
+-rwxrwxrwx 1 melwinabi melwinabi 441M Mar 14  2021 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/Proteus 8.12 SP0 Pro/Proteus 8.12 SP0 Pro.exe'
+-rw-rw-rw- 1 melwinabi melwinabi 522M Aug 12  2022 '/home/melwinabi/Documents/SOFTWARES/IPCS IDE & software/ZelioSoft2_V4_6_Windows_7.zip'
+-rw-rw-r-- 1 melwinabi melwinabi 1.4G May 23 21:45  /home/melwinabi/Downloads/android-studio-panda4-patch1-linux.tar.gz
+-rw-rw-r-- 1 melwinabi melwinabi 184M Aug 30 18:55  /home/melwinabi/Downloads/anime_anniversary_video_created.mp4
+-rw-rw-r-- 1 melwinabi melwinabi 142M Apr 28  2026  /home/melwinabi/Downloads/code_1.117.0-1776814346_amd64.deb
+-rw-rw-r-- 1 melwinabi melwinabi 141M May  8  2026  /home/melwinabi/Downloads/code_1.119.0-1778006717_amd64.deb
+-rw-rw-r-- 1 melwinabi melwinabi 232M Oct 25 21:12  /home/melwinabi/Downloads/code_1.143.1-1792691907_amd64.deb
+-rwxrwxr-x 1 melwinabi melwinabi 167M Apr  9  2026  /home/melwinabi/Downloads/dbgate.AppImage
+-rw-rw-r-- 1 melwinabi melwinabi 109M Apr  8  2026  /home/melwinabi/Downloads/dbgate-latest.deb
+-rw-rw-r-- 1 melwinabi melwinabi 189M Apr  8  2026  /home/melwinabi/Downloads/dbgate-premium-latest.AppImage
+-rw-rw-r-- 1 melwinabi melwinabi 103M Apr  8  2026  /home/melwinabi/Downloads/discord-0.0.132.deb
+-rwxr-xr-x 1 melwinabi melwinabi 188M Jan  1  1980  /home/melwinabi/Downloads/easyeda-pro/easyeda-pro
+-rw-rw-r-- 1 melwinabi melwinabi 315M Mar 30  2026  /home/melwinabi/Downloads/easyeda-pro-linux-x64-2.2.45.4.zip
+-rw-rw-r-- 1 melwinabi melwinabi 468M Feb 21  2025  /home/melwinabi/Downloads/easyeda-pro/resources/app/assets/db/easyeda-std.elib
+-rw-rw-r-- 1 melwinabi melwinabi 805M Mar 13  2026 '/home/melwinabi/Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1)/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh'
+-rw-rw-r-- 1 melwinabi melwinabi 805M Mar 26  2026 '/home/melwinabi/Downloads/st-stm32cubeide_2.1.1_28236_20260312_0043_amd64.deb_bundle.sh (1).zip'

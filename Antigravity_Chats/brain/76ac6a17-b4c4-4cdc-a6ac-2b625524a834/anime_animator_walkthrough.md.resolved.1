@@ -1,0 +1,59 @@
+# Anime Motion Studio Walkthrough
+
+Welcome to the updated **Anime Motion Studio**! We have upgraded the animation system so that the images no longer remain static between transitions. Instead, each photo has a **continuous, active cinematic pan and zoom (Ken Burns) animation** throughout its entire display duration.
+
+We have also created and run a local python script to compile your video directly!
+
+---
+
+## 🎥 Generated Video Output
+A high-quality compilation video has been successfully generated and saved directly to your Downloads folder:
+👉 **`/home/melwinabi/Downloads/anime_anniversary_video_created.mp4`** (74MB, 15 FPS, 9:16 vertical widescreen, matching your example video's frame layout).
+
+---
+
+## 🚀 Running the Web Application
+
+The local Vite server has automatically hot-reloaded our code changes. You can open and interact with the updated app here:
+
+👉 **[http://localhost:5173/](http://localhost:5173/)**
+
+---
+
+## 🎨 New Features & Technical Upgrades
+
+### 1. Continuous Cinematic Motion (Always Active)
+* **No More Static Slideshows**: Photos are no longer static. They animate continuously with a slow, cinematic drift.
+* **4 Panning & Zooming Styles**: The engine alternates between 4 styles to keep the video visually dynamic:
+  1. *Zoom In + Drift Right-Down*
+  2. *Zoom Out + Drift Left-Up*
+  3. *Zoom In + Drift Left-Down*
+  4. *Zoom Out + Drift Right-Up*
+* **Continuous Motion Checkbox**: A new toggle has been added to the control panel to turn this off if you ever want a standard static slideshow.
+
+### 2. Standalone Python Compiler Script
+We wrote a local Python script `create_anime_video.py` that utilizes OpenCV to compile the video directly.
+* **Timing & Dimensions**: Matches the example video exactly (63 frames display, 7 frames crossfade, 15 FPS, 480x854 resolution).
+* **Location**: `/home/melwinabi/.gemini/antigravity/scratch/anime-animator/create_anime_video.py`
+* **Run command**: 
+  ```bash
+  python3 create_anime_video.py
+  ```
+
+---
+
+## 🛠️ Updated Folder Structure
+
+```bash
+/home/melwinabi/.gemini/antigravity/scratch/anime-animator/
+├── index.html              # Updated UI Layout with Motion toggle
+├── create_anime_video.py   # OpenCV video compilation script
+├── inspect_video.py        # Video analyzer tool
+├── package.json
+├── public/
+│   ├── favicon.svg
+│   └── images/             # Loaded anime images
+└── src/
+    ├── main.js             # Updated Player logic with getPanZoomForFrame()
+    └── style.css
+```

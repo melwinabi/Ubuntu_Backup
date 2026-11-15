@@ -1,0 +1,30 @@
+Smaer-HUB
+[0] (70,129)<div  />
+	[1] (58,129)<span >Overview />
+[2] (70,187)<div  />
+	[3] (63,187)<span >Add Device />
+[4] (70,943)<button class='jsx-a918f682addfa185 btn btn-outline'>Logout />
+[5] (570,58)<div >1
+Series />
+	1
+	Series
+[6] (570,108)<div >2
+Model />
+	2
+	Model
+[7] (570,158)<div >3
+Info />
+	3
+	Info
+[8] (570,208)<div >4
+Widgets />
+	4
+	Widgets
+[9] (570,258)<div >5
+MQTT />
+	5
+	MQTT
+Step 1: Select Device Series
+[10] (570,332)<label >Device Series />
+[11] (194,366)<select class='select-field' />
+[12] (570,422)<button class='btn btn-primary'>Next />

@@ -1,0 +1,38 @@
+# Implementation Plan - Debug and Improve Navigation in Smart-Hub
+
+The user reported errors when "jumping pages" (from 1 to end, end to 1, etc.). Investigation revealed a 5-step "Device Workshop" in the Admin Dashboard that lacks a visual stepper and clear jumpable navigation. This plan addresses these issues by adding a visual stepper, improving state validation, and fixing a blank screen bug.
+
+## Proposed Changes
+
+### [Admin Dashboard]
+
+#### [MODIFY] [page.tsx](file:///home/melwinabi/Documents/Smart_Hub/src/app/admin/dashboard/page.tsx)
+
+1.  **Add Stepper Component**: Create a visual stepper at the top of the workflow card showing steps 1 to 5.
+2.  **Improve Navigation Logic**:
+    -   Allow clicking on stepper numbers to navigate.
+    -   Implement a `isValidStep(stepNumber)` function to prevent jumping ahead to steps that don't have required data.
+    -   Ensure that "jumping" back to previous steps is always allowed and preserves state.
+3.  **Fix Blank Screen Bug**:
+    -   Update the main conditional render (line 347-418) to correctly handle `selectedSeriesId` if needed, or remove the redundant check that currently renders `null`.
+    -   Based on the code, `selectedSeriesId` is not used effectively; it should probably filter the overview or be removed if it's not implemented yet. I will fix it to ensure the dashboard remains visible.
+4.  **UI Polishing**:
+    -   Ensure consistent container heights or smooth transitions for the workflow card to prevent layout "jumping".
+
+## Verification Plan
+
+### Manual Verification
+1.  **Verify Workflow Stepper**:
+    -   Open the Admin Dashboard and click "Add Device".
+    -   Confirm that a stepper (1-5) is visible.
+    -   Try clicking Step 3 without completing Step 1. It should be disabled or show an error.
+    -   Complete Step 1 and 2, then jump back to Step 1. Confirm state is preserved.
+    -   Jump from Step 2 to Step 1 and then back to Step 2.
+2.  **Verify End-to-1 Navigation**:
+    -   Go to Step 5.
+    -   Click Step 1 in the stepper.
+    -   Confirm it navigates back without error.
+3.  **Verify Blank Screen Fix**:
+    -   In the main Admin Dashboard view (Overview), interact with elements and ensure no part of the UI turns blank unexpectedly.
+4.  **Automated Browser Test**:
+    -   Use the `browser_subagent` to automate navigating the workshop and verify that the `workflowStep` state changes as expected.

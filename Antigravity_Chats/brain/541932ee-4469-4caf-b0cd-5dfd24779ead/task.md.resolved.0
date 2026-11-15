@@ -1,0 +1,8 @@
+# Task: Finish OneDrive Setup
+
+- [ ] Add OBS repository and key for `onedrive` <!-- id: 0 -->
+- [ ] Install `onedrive` client via apt <!-- id: 1 -->
+- [ ] Authenticate the client with Microsoft account (Requires User Interaction) <!-- id: 2 -->
+- [ ] Enable systemd user service for automatic background sync <!-- id: 3 -->
+- [ ] Verify installation and sync status <!-- id: 4 -->
+- [ ] Create walkthrough documentation <!-- id: 5 -->

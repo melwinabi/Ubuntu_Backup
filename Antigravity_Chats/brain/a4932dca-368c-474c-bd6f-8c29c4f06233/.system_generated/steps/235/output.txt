@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+/home/melwinabi/Ubuntu_Backup/Documents/OneDrive/ACER_Windows/Embedded With IoT/EMBEDDED/.git
+/home/melwinabi/Ubuntu_Backup/Documents/OneDrive/Embedded With IoT/EMBEDDED/.git

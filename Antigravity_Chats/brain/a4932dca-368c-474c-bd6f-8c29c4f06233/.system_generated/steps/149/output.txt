@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+total 12
+drwxrwxr-x  3 melwinabi melwinabi 4096 May 23 21:53 .
+drwxr-x--- 53 melwinabi melwinabi 4096 Nov 15 12:51 ..
+drwxrwxr-x 14 melwinabi melwinabi 4096 Jul 26 22:23 Sdk

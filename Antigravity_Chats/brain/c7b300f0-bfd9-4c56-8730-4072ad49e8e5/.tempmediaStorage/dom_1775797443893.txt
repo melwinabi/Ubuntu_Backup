@@ -1,0 +1,17 @@
+My Dashboard
+Connecting...
+[0] (865,58)<button class='btn'>Add Device />
+[1] (950,58)<button class='btn btn-outline'>Logout />
+My Devices
+[2] (109,277)<div  />
+	[3] (109,258)<div  />
+		[4] (44,258)<div  />
+		[5] (104,258)<div  />
+			[6] (104,247)<h3 >xcxcxcxvxvcvcv />
+			[7] (104,272)<p >ID: #
+1 />
+	[8] (109,314)<div  />
+		[9] (49,314)<span >0
+Widgets />
+		[10] (173,314)<div >Online />
+			[11] (161,314)<div  />

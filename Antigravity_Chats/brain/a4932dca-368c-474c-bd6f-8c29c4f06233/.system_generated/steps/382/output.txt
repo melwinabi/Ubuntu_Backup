@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+polkitd     1227  0.0  0.0 391088 12508 ?        Ssl  12:26   0:01 /usr/lib/polkit-1/polkitd --no-debug
+melwina+   14751  0.0  0.0   9952  3596 pts/0    Ss+  13:44   0:00 bash -c ps aux | grep -i polkit
+melwina+   14753  0.0  0.0   9156  2364 pts/0    S+   13:44   0:00 grep -i polkit

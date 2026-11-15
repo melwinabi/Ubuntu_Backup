@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+8.0K	/home/melwinabi/Desktop
+308K	/home/melwinabi/Arduino
+2.7M	/home/melwinabi/STM32CubeIDE
+1.3G	/home/melwinabi/StudioProjects
+1.4G	/home/melwinabi/development
+742M	/home/melwinabi/Applications
+481M	/home/melwinabi/DbGate
+8.1M	/home/melwinabi/drawing.svg
