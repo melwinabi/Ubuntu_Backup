@@ -1,0 +1,60 @@
+!SESSION 2026-03-26 19:20:38.145 -----------------------------------------------
+eclipse.buildId=Version 2.1.1
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-03-26 19:20:50.202
+!MESSAGE Log4j2 initialized with config file /home/melwinabi/STM32CubeIDE/workspace_2.1.1/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-03-26 19:20:53.101
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-03-26 19:55:27.579
+!MESSAGE Indexed 'Test_01' (3 sources, 53 headers) in 0.559 sec: 1,954 declarations; 2,864 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.041%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-03-26 21:03:40.403
+!MESSAGE Indexed 'Led_BMM' (4 sources, 55 headers) in 0.316 sec: 1,962 declarations; 2,894 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.041%)
+!SESSION 2026-03-27 11:13:32.808 -----------------------------------------------
+eclipse.buildId=Version 2.1.1
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-03-27 11:13:35.755
+!MESSAGE Log4j2 initialized with config file /home/melwinabi/STM32CubeIDE/workspace_2.1.1/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-03-27 11:13:40.597
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-03-27 22:57:25.720 -----------------------------------------------
+eclipse.buildId=Version 2.1.1
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-03-27 22:57:30.108
+!MESSAGE Log4j2 initialized with config file /home/melwinabi/STM32CubeIDE/workspace_2.1.1/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-03-27 22:57:35.872
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2026-04-01 17:39:36.294 -----------------------------------------------
+eclipse.buildId=Version 2.1.1
+java.version=21.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2026-04-01 17:39:40.350
+!MESSAGE Log4j2 initialized with config file /home/melwinabi/STM32CubeIDE/workspace_2.1.1/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2026-04-01 17:39:44.743
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-01 17:40:00.114
+!MESSAGE Indexed 'Test_01' (3 sources, 53 headers) in 0.339 sec: 1,954 declarations; 2,864 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.041%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2026-04-01 17:42:09.543
+!MESSAGE Indexed 'rtos' (3 sources, 53 headers) in 0.464 sec: 1,954 declarations; 2,864 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.041%)
