@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 0685T1000-01
+D BEL FUSE - 0685T1000-01 - FUSE, SMD, 1A, SLOW BLOW, 1206
+K
+F https://www.belfuse.com/resources/datasheets/circuitprotection/ds-cp-c1t-series.pdf
+$ENDCMP
+#
+#End Doc Library

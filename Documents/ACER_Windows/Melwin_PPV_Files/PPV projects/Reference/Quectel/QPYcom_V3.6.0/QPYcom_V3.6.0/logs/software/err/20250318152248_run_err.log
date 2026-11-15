@@ -1,0 +1,6 @@
+[2025-03-18 15:23:10] Traceback (most recent call last):
+[2025-03-18 15:23:10]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:23:10] IndexError[2025-03-18 15:23:10] : [2025-03-18 15:23:10] list index out of range[2025-03-18 15:23:10] 
+[2025-03-18 15:24:30] Traceback (most recent call last):
+[2025-03-18 15:24:30]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-18 15:24:30] TypeError[2025-03-18 15:24:30] : [2025-03-18 15:24:30] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-18 15:24:30] 

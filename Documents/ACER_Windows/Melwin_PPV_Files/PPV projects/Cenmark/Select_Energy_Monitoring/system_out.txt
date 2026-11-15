@@ -1,0 +1,32 @@
+18:12:28.760 -> Connecting to WiFi...
+18:12:29.281 -> .....10.179.236.37
+18:13:25.778 -> Sending to server:
+18:13:25.778 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=0.00*v2=-6880.00*v3=0.00*v4=0.00*v5=0.00
+18:13:27.149 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:14:25.790 -> Sending to server:
+18:14:25.790 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=398.43*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:14:26.743 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:15:25.788 -> Sending to server:
+18:15:25.788 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=0.00*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:15:26.992 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:16:25.765 -> Sending to server:
+18:16:25.765 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=399.96*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:16:27.199 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:17:25.754 -> Sending to server:
+18:17:25.754 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=397.35*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:17:27.205 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:18:25.778 -> Sending to server:
+18:18:25.778 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=400.26*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:18:27.379 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:19:25.782 -> Sending to server:
+18:19:25.782 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=399.93*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:19:27.014 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:20:25.784 -> Sending to server:
+18:20:25.784 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=400.15*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:20:27.195 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:21:25.765 -> Sending to server:
+18:21:25.765 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=400.71*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:21:27.227 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}
+18:22:25.756 -> Sending to server:
+18:22:25.756 -> https://api.smartpruner.in/api/DataInsert/SaveDataInTable?SerialNo=10001&values=v1=402.31*v2=0.00*v3=0.00*v4=0.00*v5=0.00
+18:22:27.141 -> Server Response: {"success":true,"message":"Data inserted successfully into local and client table EBMeter."}

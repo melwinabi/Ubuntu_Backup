@@ -1,0 +1,134 @@
+main.c
+
+#include "main.h"
+#include "lcd2.h"  // Include your LCD header file
+
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void) {
+    HAL_Init();
+    SystemClock_Config();
+    MX_GPIO_Init();
+
+    // Initialize the LCD
+    LCD_Init();
+
+    // Print some statements
+    LCD_Clear();
+    LCD_Set_Cursor(0, 0); // Set cursor to first row, first column
+    LCD_Write_String("Hello, STM32!");
+
+    LCD_Set_Cursor(1, 0); // Set cursor to second row, first column
+    LCD_Write_String("LCD 16x2 Demo");
+
+    while (1) {
+        // Infinite loop
+    }
+}
+
+// System Clock Configuration
+void SystemClock_Config(void) {
+    // Configure the system clock here
+}
+
+// GPIO Initialization Function
+static void MX_GPIO_Init(void) {
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    // Enable GPIO Clocks
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+
+    // Configure GPIO pins for LCD
+    GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5;
+    GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+}
+
+....................................................
+lcd2.h
+
+#ifndef __LCD_H
+#define __LCD_H
+
+#include "stm32f1xx_hal.h"
+
+void LCD_Init(void);
+void LCD_Clear(void);
+void LCD_Set_Cursor(uint8_t row, uint8_t col);
+void LCD_Write_Char(char data);
+void LCD_Write_String(char *str);
+
+#endif
+........................................................
+lcd2.c
+
+#include "lcd2.h"
+
+// Define the LCD commands and pins
+#define LCD_RS_Pin GPIO_PIN_0
+#define LCD_E_Pin GPIO_PIN_1
+#define LCD_Data_Port GPIOA
+
+void LCD_Enable(void) {
+    HAL_GPIO_WritePin(LCD_Data_Port, LCD_E_Pin, GPIO_PIN_SET);
+    HAL_Delay(1);
+    HAL_GPIO_WritePin(LCD_Data_Port, LCD_E_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1);
+}
+
+void LCD_Send_Command(uint8_t command) {
+    HAL_GPIO_WritePin(LCD_Data_Port, LCD_RS_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LCD_Data_Port, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5, (command >> 4) & 0x0F);
+    LCD_Enable();
+    HAL_GPIO_WritePin(LCD_Data_Port, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5, command & 0x0F);
+    LCD_Enable();
+}
+
+void LCD_Init(void) {
+    HAL_Delay(50);
+    LCD_Send_Command(0x02);
+    LCD_Send_Command(0x28);
+    LCD_Send_Command(0x0C);
+    LCD_Send_Command(0x06);
+    LCD_Send_Command(0x01);
+    HAL_Delay(5);
+}
+
+void LCD_Clear(void) {
+    LCD_Send_Command(0x01);
+    HAL_Delay(2);
+}
+
+void LCD_Set_Cursor(uint8_t row, uint8_t col) {
+    uint8_t address;
+
+    switch (row) {
+        case 0:
+            address = 0x80 + col;
+            break;
+        case 1:
+            address = 0xC0 + col;
+            break;
+        default:
+            address = 0x80 + col;
+            break;
+    }
+    LCD_Send_Command(address);
+}
+
+void LCD_Write_Char(char data) {
+    HAL_GPIO_WritePin(LCD_Data_Port, LCD_RS_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LCD_Data_Port, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5, (data >> 4) & 0x0F);
+    LCD_Enable();
+    HAL_GPIO_WritePin(LCD_Data_Port, GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5, data & 0x0F);
+    LCD_Enable();
+}
+
+void LCD_Write_String(char *str) {
+    while (*str) {
+        LCD_Write_Char(*str++);
+    }
+}

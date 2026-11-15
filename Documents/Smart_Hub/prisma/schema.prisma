@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model AdminEmail {
+  id         Int     @id @default(autoincrement())
+  email      String  @unique
+  totpSecret String? @map("totp_secret")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("admin_emails")
+}
+
+model DeviceSeries {
+  id         Int               @id @default(autoincrement())
+  seriesName String            @unique @map("series_name")
+  subSeries  DeviceSubSeries[]
+  devices    Device[]
+
+  @@map("device_series")
+}
+
+model DeviceSubSeries {
+  id            Int          @id @default(autoincrement())
+  seriesId      Int          @map("series_id")
+  series        DeviceSeries @relation(fields: [seriesId], references: [id])
+  subSeriesName String       @map("sub_series_name")
+  devices       Device[]
+
+  @@map("device_sub_series")
+}
+
+model Device {
+  id          Int             @id @default(autoincrement())
+  seriesId    Int             @map("series_id")
+  series      DeviceSeries    @relation(fields: [seriesId], references: [id])
+  subSeriesId Int             @map("sub_series_id")
+  subSeries   DeviceSubSeries @relation(fields: [subSeriesId], references: [id])
+  deviceName  String?         @map("device_name")
+  serverId    String?         @map("server_id")
+  mqttTopic   String?         @map("mqtt_topic")
+  status      String          @default("Offline")
+  lastSeen    DateTime        @default(now()) @map("last_seen")
+  createdAt   DateTime        @default(now()) @map("created_at")
+  widgets     Widget[]
+  users       UserDevice[]
+
+  @@map("devices")
+}
+
+model Widget {
+  id         Int    @id @default(autoincrement())
+  deviceId   Int    @map("device_id")
+  device     Device @relation(fields: [deviceId], references: [id])
+  widgetName String @map("widget_name")
+  mqttTopic  String @map("mqtt_topic")
+  lastValue  String? @map("last_value")
+
+  @@map("widgets")
+}
+
+model OtpVerification {
+  id        Int      @id @default(autoincrement())
+  email     String
+  otp       String
+  expiresAt DateTime @map("expires_at")
+
+  @@map("otp_verifications")
+}
+
+model User {
+  id        Int          @id @default(autoincrement())
+  email     String       @unique
+  devices   UserDevice[]
+  createdAt DateTime     @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model UserDevice {
+  id       Int    @id @default(autoincrement())
+  userId   Int    @map("user_id")
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  deviceId Int    @map("device_id")
+  device   Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, deviceId])
+  @@map("user_devices")
+}

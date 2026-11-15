@@ -1,0 +1,31 @@
+
+
+INFO:MQTT:Network connection successful!
+Connectin
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*167563475*7*00.0000000*11.1111111*0'
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*180844554*7*00.0000000*11.1111111*0
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+
+LFS mount.
+x backup restore procedure error: '/bak/backup_restore.json not exist
+
+  ____                         __  __           
+ / __ \__ _____ _______  __ __/ /_/ /  ___  ___ 
+/ /_/ / // / -_) __/ _ \/ // / __/ _ \/ _ \/ _ \
+\___\_\_,_/\__/\__/ .__/\_, /\__/_//_/\___/_//_/
+                 /_/   /___/                    
+Quecpython v1.12 on Fri_Aug_30_2024_6:00:45_PM ; EC200U with QUECTEL 
+ Type "help()" for more information.
+>>>

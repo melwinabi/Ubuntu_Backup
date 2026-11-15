@@ -1,0 +1,2 @@
+1、根据电脑系统类型，win10系统双击 windwos10 文件夹中 Setup.bat ,会自动安装驱动
+	win7、win8 系统双击 windows7 文件夹中的  Setup.bat ,会自动安装驱动

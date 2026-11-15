@@ -1,0 +1,716 @@
+Personal Finance & Portfolio Management
+Platform
+Implementation Plan — Next.js + PostgreSQL
+
+1. Project Overview & Assumptions
+A single-user (extensible to multi-user) web app to track:
+Income (multiple sources), daily expenses (cash/UPI/GPay/cards), and remaining balance
+Investments (stocks, gold, silver, mutual funds, etc.) with live/manual % gain-loss
+Net worth, computed automatically from all assets and liabilities
+Credit score (CIBIL) history over time
+Credit & debit cards, including credit card billing cycles (statement date, due date, outstanding)
+Money lent to other people (loans given), how it was paid, and repayment tracking
+A single dashboard summarizing all of the above in plain language
+Assumptions made (easy to change):
+1. Built first as a single-user personal finance tool — multi-tenant support is a Phase 7 add-on, not a rebuild.
+2. "Civil score" = CIBIL score (India). The schema is bureau-agnostic, so Experian/Equifax/CRIF work the same way.
+3. Credit bureau scores are entered manually/periodically (real-time bureau API access requires a business agreement — see Section 9).
+4. Currency defaults to INR but every amount field is just NUMERIC, so multi-currency is a config change, not a schema change.
+
+2. Tech Stack
+Layer
+
+Choice
+
+Framework Next.js 14+ (App Router)
+Language TypeScript
+Database PostgreSQL (open source)
+ORM
+
+Prisma (or Drizzle as a lighter alternative)
+
+Auth
+NextAuth.js (Auth.js)
+Validation Zod
+UI
+Tailwind CSS + shadcn/ui
+Charts
+
+Recharts
+
+Forms
+
+react-hook-form + Zod resolver
+Vercel (app) + Neon/Supabase/Railway (Postgres), or selfhosted via Docker
+
+Hosting
+
+Why
+SSR + API routes + Server Actions in one
+codebase
+Type-safety across forms, API, DB
+Strong relational integrity for money data
+Type-safe queries, migrations, works great with
+Postgres
+Credentials login + optional Google OAuth
+Shared schema for forms + API payloads
+Fast, consistent, accessible components
+Net worth trend, expense breakdown, investment
+performance
+Clean validation UX
+Open-source friendly options
+
+3. Feature Modules
+1. Accounts & Cards — bank accounts, wallets (GPay etc.), cash-in-hand, credit/debit cards
+2. Income — multiple income sources (salary, freelance, rental...) + individual income entries
+3. Expenses — daily spend with payment method (cash/UPI/credit/debit), tagged to an account or card
+4. Investments — stocks, gold, silver, mutual funds, etc., with purchase price vs. current price and % change
+5. Credit Score — CIBIL/bureau score history with trend
+6. Credit Cards & Billing — statement date, due date, outstanding, payment status per billing cycle
+7. Loans Given — people who borrowed from the user, how the money was sent, repayment tracking
+8. Net Worth Engine — periodic snapshot combining all assets minus liabilities
+9. Dashboard — the single screen tying everything together
+
+4. Database Schema (PostgreSQL)
+
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- ENUMS
+CREATE TYPE account_type AS ENUM ('bank', 'wallet', 'cash', 'other');
+CREATE TYPE card_type AS ENUM ('credit', 'debit');
+CREATE TYPE payment_method AS ENUM ('cash', 'upi', 'credit_card', 'debit_card', 'net_banking', 'cheque', 'other');
+CREATE TYPE asset_type AS ENUM ('stock', 'gold', 'silver', 'mutual_fund', 'crypto', 'real_estate', 'fixed_deposit', 'other');
+CREATE TYPE loan_status AS ENUM ('active', 'partially_paid', 'closed', 'overdue');
+CREATE TYPE income_frequency AS ENUM ('monthly', 'weekly', 'one_time', 'yearly', 'irregular');
+
+-- USERS
+CREATE TABLE users (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+full_name VARCHAR(120) NOT NULL,
+email VARCHAR(160) UNIQUE NOT NULL,
+password_hash TEXT NOT NULL,
+created_at TIMESTAMPTZ DEFAULT now(),
+updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- ACCOUNTS (bank accounts / wallets / cash-in-hand)
+CREATE TABLE accounts (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+account_type account_type NOT NULL,
+account_name VARCHAR(120) NOT NULL,
+
+-- "HDFC Savings", "GPay Wallet", "Cash in Hand"
+
+provider_name VARCHAR(120),
+
+-- "HDFC Bank", "Google Pay"
+
+account_number_last4 VARCHAR(4),
+opening_balance NUMERIC(14,2) DEFAULT 0,
+current_balance NUMERIC(14,2) DEFAULT 0,
+is_active BOOLEAN DEFAULT true,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- CARDS (credit/debit, linked to a settlement account)
+CREATE TABLE cards (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+account_id UUID REFERENCES accounts(id),
+card_type card_type NOT NULL,
+card_name VARCHAR(120) NOT NULL,
+
+-- "HDFC Regalia"
+
+last4 VARCHAR(4),
+credit_limit NUMERIC(14,2),
+
+-- credit cards only
+
+statement_day SMALLINT,
+
+-- day of month bill is generated
+
+due_day SMALLINT,
+
+-- day of month payment is due
+
+current_outstanding NUMERIC(14,2) DEFAULT 0,
+is_active BOOLEAN DEFAULT true,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- CREDIT CARD BILLING CYCLES
+CREATE TABLE credit_card_bills (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+card_id UUID REFERENCES cards(id) ON DELETE CASCADE,
+billing_start DATE NOT NULL,
+billing_end DATE NOT NULL,
+statement_date DATE NOT NULL,
+due_date DATE NOT NULL,
+total_amount NUMERIC(14,2) NOT NULL,
+minimum_due NUMERIC(14,2),
+paid_amount NUMERIC(14,2) DEFAULT 0,
+status VARCHAR(20) DEFAULT 'unpaid',
+
+-- unpaid / partially_paid / paid
+
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- INCOME SOURCES (supports multiple income streams)
+CREATE TABLE income_sources (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+source_name VARCHAR(120) NOT NULL,
+
+-- "Primary Job", "Freelance", "House Rent"
+
+source_type VARCHAR(60),
+
+-- salary / business / rental / freelance / other
+
+frequency income_frequency DEFAULT 'monthly',
+expected_amount NUMERIC(14,2),
+default_account_id UUID REFERENCES accounts(id),
+is_active BOOLEAN DEFAULT true,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- INCOME TRANSACTIONS (actual amounts received)
+CREATE TABLE income_transactions (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+income_source_id UUID REFERENCES income_sources(id) ON DELETE CASCADE,
+account_id UUID REFERENCES accounts(id),
+amount NUMERIC(14,2) NOT NULL,
+received_on DATE NOT NULL,
+notes TEXT,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- EXPENSE CATEGORIES
+CREATE TABLE expense_categories (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+name VARCHAR(80) NOT NULL,
+icon VARCHAR(40)
+);
+
+-- DAILY EXPENSES
+CREATE TABLE expenses (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+category_id UUID REFERENCES expense_categories(id),
+amount NUMERIC(14,2) NOT NULL,
+spent_on DATE NOT NULL,
+payment_method payment_method NOT NULL,
+account_id UUID REFERENCES accounts(id),
+
+-- which bank/wallet/cash
+
+card_id UUID REFERENCES cards(id),
+
+-- if paid by card
+
+merchant VARCHAR(160),
+notes TEXT,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- INVESTMENTS (stocks, gold, silver, MF, etc.)
+CREATE TABLE investments (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+asset_type asset_type NOT NULL,
+name VARCHAR(160) NOT NULL,
+
+-- "Reliance Industries", "24K Gold"
+
+symbol VARCHAR(40),
+quantity NUMERIC(14,4) NOT NULL,
+
+-- shares or grams
+
+unit VARCHAR(20) DEFAULT 'unit',
+purchase_price NUMERIC(14,2) NOT NULL,
+purchase_date DATE NOT NULL,
+account_id UUID REFERENCES accounts(id),
+
+-- per unit
+
+is_active BOOLEAN DEFAULT true,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- PRICE HISTORY (drives current value & % change)
+CREATE TABLE investment_price_history (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+investment_id UUID REFERENCES investments(id) ON DELETE CASCADE,
+price_date DATE NOT NULL,
+price_per_unit NUMERIC(14,2) NOT NULL,
+source VARCHAR(40) DEFAULT 'manual',
+
+-- manual / api
+
+UNIQUE(investment_id, price_date)
+);
+
+-- CREDIT SCORE HISTORY
+CREATE TABLE credit_scores (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+bureau VARCHAR(40) DEFAULT 'CIBIL',
+score SMALLINT NOT NULL,
+recorded_on DATE NOT NULL,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- LOANS GIVEN (money the user lent to other people)
+CREATE TABLE loans_given (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+
+-- lender
+
+borrower_name VARCHAR(120) NOT NULL,
+borrower_contact VARCHAR(60),
+principal_amount NUMERIC(14,2) NOT NULL,
+amount_given_on DATE NOT NULL,
+payment_mode payment_method NOT NULL,
+
+-- how the money was sent
+
+account_id UUID REFERENCES accounts(id),
+interest_rate NUMERIC(5,2) DEFAULT 0,
+expected_return_date DATE,
+status loan_status DEFAULT 'active',
+notes TEXT,
+created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- LOAN REPAYMENTS
+CREATE TABLE loan_repayments (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+loan_id UUID REFERENCES loans_given(id) ON DELETE CASCADE,
+amount NUMERIC(14,2) NOT NULL,
+paid_on DATE NOT NULL,
+payment_mode payment_method,
+notes TEXT
+);
+
+-- NET WORTH SNAPSHOTS (precomputed by a scheduled job)
+CREATE TABLE net_worth_snapshots (
+id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+snapshot_date DATE NOT NULL,
+total_cash NUMERIC(14,2),
+total_investments NUMERIC(14,2),
+total_loans_receivable NUMERIC(14,2),
+total_liabilities NUMERIC(14,2),
+net_worth NUMERIC(14,2) NOT NULL,
+UNIQUE(user_id, snapshot_date)
+
+);
+
+-- INDEXES
+CREATE INDEX idx_expenses_user_date ON expenses(user_id, spent_on);
+CREATE INDEX idx_income_tx_source ON income_transactions(income_source_id);
+CREATE INDEX idx_investments_user ON investments(user_id);
+CREATE INDEX idx_price_history_investment_date ON investment_price_history(investment_id, price_date);
+CREATE INDEX idx_loans_user_status ON loans_given(user_id, status);
+
+5. Application Architecture
+App Router with route groups: (auth) for login/register, (dashboard) for the protected app.
+Server Components for read-heavy pages (dashboard, reports); Server Actions for mutations (add expense, add investment) instead of hand-rolled API routes
+where possible — less boilerplate, fully type-safe.
+Route Handlers (/api/...) kept only for things that need a stable HTTP endpoint (e.g. a future mobile app, or webhook for price updates).
+Prisma Client as a singleton (lib/db.ts) to avoid connection-pool exhaustion in dev (Next.js hot reload).
+NextAuth with the Credentials provider initially; Google OAuth can be added without schema changes (NextAuth manages its own Account/Session tables
+alongside users).
+
+6. Folder Structure
+
+finance-portfolio-app/
+├── prisma/
+│
+
+├── schema.prisma
+
+│
+
+└── migrations/
+
+├── src/
+│
+
+├── app/
+
+│
+
+│
+
+├── (auth)/
+
+│
+
+│
+
+│
+
+├── login/page.tsx
+
+│
+
+│
+
+│
+
+└── register/page.tsx
+
+│
+
+│
+
+├── (dashboard)/
+
+│
+
+│
+
+│
+
+├── layout.tsx
+
+│
+
+│
+
+│
+
+├── dashboard/page.tsx
+
+│
+
+│
+
+│
+
+├── income/page.tsx
+
+│
+
+│
+
+│
+
+├── expenses/page.tsx
+
+│
+
+│
+
+│
+
+├── investments/page.tsx
+
+│
+
+│
+
+│
+
+├── investments/[id]/page.tsx
+
+│
+
+│
+
+│
+
+├── credit-cards/page.tsx
+
+│
+
+│
+
+│
+
+├── credit-score/page.tsx
+
+│
+
+│
+
+│
+
+├── loans/page.tsx
+
+│
+
+│
+
+│
+
+├── networth/page.tsx
+
+│
+
+│
+
+│
+
+└── settings/page.tsx
+
+│
+
+│
+
+├── api/
+
+│
+
+│
+
+│
+
+├── auth/[...nextauth]/route.ts
+
+│
+
+│
+
+│
+
+├── investments/prices/route.ts
+
+│
+
+│
+
+│
+
+└── networth/recalculate/route.ts (snapshot job trigger)
+
+│
+
+│
+
+└── layout.tsx
+
+│
+
+├── components/
+
+│
+
+│
+
+├── dashboard/
+
+(NetWorthCard, CreditScoreGauge, IncomeSummary,
+
+│
+
+│
+
+│
+
+ExpenseBreakdownChart, InvestmentSummary,
+
+│
+
+│
+
+│
+
+LoansSummary, UpcomingBills)
+
+│
+
+│
+
+├── forms/
+
+(ExpenseForm, IncomeForm, InvestmentForm,
+
+│
+
+│
+
+│
+
+LoanForm, CreditScoreForm, CardForm)
+
+│
+
+│
+
+└── ui/
+
+(shadcn/ui components)
+
+│
+
+├── lib/
+
+│
+
+│
+
+├── db.ts
+
+(Prisma client singleton)
+
+│
+
+│
+
+├── auth.ts
+
+(NextAuth config)
+
+│
+
+│
+
+├── calculations.ts
+
+(net worth, % change, billing cycle helpers)
+
+│
+
+│
+
+└── validators.ts
+
+(Zod schemas, shared client+server)
+
+│
+
+└── actions/
+
+├── docker-compose.yml
+
+(price refresh endpoint/cron target)
+
+(Server Actions: addExpense, addIncome, addInvestment, ...)
+(local Postgres for dev)
+
+├── .env.example
+└── package.json
+
+7. Dashboard Design
+A single screen, top to bottom, in plain language:
+1. Net Worth — large number + up/down arrow vs. last month
+2. Credit Score Gauge — color-coded (red/amber/green) with last-updated date
+3. Income This Month — total received, number of active income sources, and remaining balance (income − expenses so far)
+4. Expense Breakdown — pie/bar chart by category and by payment method (cash vs UPI vs card)
+5. Investments — total invested vs. current value, overall % gain/loss, broken down by stocks / gold / silver / other
+6. Upcoming Credit Card Bills — card name, statement date, due date, amount due, days remaining
+7. Loans Given — total amount out, who owes what, next expected return date, overdue flagged in red
+Each card on the dashboard links through to its full module page for detail and editing.
+
+8. Core Business Logic
+
+Net worth formula (computed by a scheduled job into net_worth_snapshots):
+
+Net Worth = (Cash & Bank Balances + Current Investment Value + Loans Receivable Outstanding)
+− (Credit Card Outstanding + Other Liabilities)
+
+Investment % change (per holding, and weighted-average for the whole portfolio):
+
+% Change = ((Current Price − Purchase Price) / Purchase Price) × 100
+Current Value = Quantity × Current Price
+
+Credit card billing cycle: each card stores statement_day/due_day as defaults, but every actual cycle gets its own row in credit_card_bills (real banks shift
+dates around month-end and holidays, so don't compute it blindly — record what the bank actually issued).
+
+9. Optional External Integrations (Phase 2+, not required for
+V1)
+Need
+Option
+Note
+Live stock
+NSE/BSE data via a market data API (e.g. Alpha
+Free tiers are rate-limited; manual entry is a fine fallback
+prices
+Vantage, Twelve Data)
+Gold/silver
+metals-api.com, goldapi.io
+Usually a paid tier for production use
+prices
+CIBIL/credit Bureau APIs require a registered business
+V1 should rely on the user manually entering scores they pull
+bureau score agreement (not available to individual developers) from their bank app or bureau's own free monthly check
+
+10. Security Considerations
+Never store full card numbers — only last4.
+Passwords hashed with bcrypt (handled by NextAuth Credentials provider).
+All money tables scoped by user_id; enforce row-level checks in every Server Action/query, not just at the UI.
+HTTPS everywhere; environment secrets via .env (never committed).
+Rate-limit auth endpoints (e.g. Upstash Redis) to slow down brute-force attempts.
+Consider an audit_log table later for who-changed-what, since this is financial data.
+
+11. Implementation Roadmap
+Phase
+Scope
+Rough Duration
+0
+Repo init, Next.js + Tailwind + shadcn, Postgres via Docker, Prisma setup, NextAuth 3–4 days
+1
+Accounts, cards, income sources/transactions, expenses (full CRUD)
+1 week
+2
+Investments module + manual price entry + % change calculations
+4–5 days
+3
+Credit score tracking + credit card billing cycle tracking
+3–4 days
+4
+Loans given module + repayment tracking
+3–4 days
+5
+Net worth engine (scheduled snapshot job)
+2–3 days
+6
+Dashboard UI with all charts wired to real data
+1 week
+7
+Polish: due-date reminders, CSV export, audit log, deploy
+1 week
+Total: roughly 6–7 weeks for a solo developer working part-time; faster with focused full-time effort.
+
+12. Getting Started Commands
+npx create-next-app@latest finance-portfolio-app --typescript --tailwind --app
+cd finance-portfolio-app
+npm install prisma @prisma/client next-auth zod react-hook-form @hookform/resolvers recharts date-fns bcryptjs
+npx prisma init --datasource-provider postgresql
+
+docker-compose.yml for local Postgres:
+
+version: '3.8'
+services:
+postgres:
+image: postgres:16-alpine
+restart: always
+environment:
+POSTGRES_USER: finance_user
+POSTGRES_PASSWORD: change_me
+POSTGRES_DB: finance_portfolio
+ports:
+- "5432:5432"
+volumes:
+- pgdata:/var/lib/postgresql/data
+volumes:
+pgdata:
+
+13. Future Enhancements
+Multi-currency support (amount fields already neutral — just add a currency column)
+Bank statement import (CSV/PDF parsing) to auto-fill expenses
+Receipt photo upload + OCR for merchant/amount extraction
+Email/SMS reminders for credit card due dates and loan return dates
+Native mobile app sharing the same API
+Multi-user/family accounts with shared net worth view
+
+

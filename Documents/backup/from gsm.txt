@@ -1,0 +1,86 @@
+Message (Enter to send message to 'ESP32 Dev Module' on 'COM14')
+New Line
+115200 baud
+15:49:01.105 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:49:05.203 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:49:31.137 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,26,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:49:43.974 -> Received: &&*~MMG-0-_qAJebzQgo-0352~1740305982369~$
+15:50:09.252 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:50:10.304 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:50:11.322 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:50:19.756 -> Received: &&*~OFF~1740306019310~$
+15:50:45.528 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:50:46.525 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:50:48.327 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:51:01.327 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:51:05.069 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:51:31.385 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:52:05.074 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,31,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:52:16.391 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:52:44.174 -> Received: &&*~PM,1,5,sYjlOajg5O,3~1740306163492~$
+15:52:45.408 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:52:46.510 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:53:05.167 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:53:16.471 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,31,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:53:30.494 -> Received: &&*~PG,1,sYjlOajg5O,jFgD1fMtkV,1,_qAJebzQgo,1025,1027,1000000~1740306208985~$
+15:53:31.913 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:53:44.074 -> Received: &&*~EPM,sYjlOajg5O,0,0,0,0,1740306300~1740306223579~$
+15:53:45.482 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:53:46.566 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:54:05.367 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:54:32.709 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:02.694 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:05.004 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:28.069 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:29.214 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,26,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:42.868 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:44.869 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,26,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:57.875 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:55:59.824 -> Received: &&*~OFF~1740306359304~$
+15:56:00.769 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:56:24.170 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:56:25.180 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,27,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:56:26.269 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:56:27.370 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:56:31.073 -> Received: &&*~OFF~1740306390346~$
+15:56:39.789 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,28,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+
+
+
+&&*~PG,0,sYjlOajg5O,jFgD1fMtkV,1,_qAJebzQgo,1245,1250,1234567~1740372112640~$
+
+V1 - sYjlOajg5O
+V2 - jFgD1fMtkV
+V3 - 
+
+&&*~MMV-0-AUFBdbjLBd-kNBoCYsGHZ-0005~1740374220572~$ V1
+&&*~MMV-0-ZJkGrNPaOJ-kNBoCYsGHZ-0005~1740374394688~$ V2
+&&*~MMV-0-sIRp2F7MN_-kNBoCYsGHZ-0005~1740374475073~$ V3
+&&*~MMV-0-FdfspYqcU8-kNBoCYsGHZ-0005~1740374496937~$ V4
+
+&&*~MMG-0-_qAJebzQgo-0005~1740374683280~$
+&&*~GP-1-3-Hsz_ucmY1B-sIRp2F7MN_,FdfspYqcU8-kNBoCYsGHZ-0,0-0,0~1740374727629~$
+
+&&*~MMG-0-Hsz_ucmY1B-0005~1740374895123~$
+
+
+
+//......................
+
+15:18:48.155 -> Received: &&*~PG,0,sYjlOajg5O,ZpkklCul7X,3,_qAJebzQgo,1725,1735,1230560~1740390526803~$
+15:18:49.487 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:18:54.873 -> Received: &&*~PG,1,sYjlOajg5O,ZpkklCul7X,3,_qAJebzQgo,1725,1735,1230560~1740390533521~$
+15:18:56.219 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:19:05.587 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:19:08.000 -> Received: &&*~EPM,sYjlOajg5O,0,0,0,0,1740390540~1740390546607~$
+15:19:09.417 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:19:27.293 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:19:41.428 -> Received: &&*~PG,1,B09t_imRgS,_ztNtcKnkp,1,_qAJebzQgo,1328,1428,1234567~1740390580319~$
+15:19:57.287 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:20:05.294 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,31,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:20:27.432 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,31,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:20:57.527 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:21:05.494 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:21:42.526 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,30,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+15:22:05.798 -> Received: &&*~Data_received,5.3,1,2G,airtelgprs.com,29,1,0,861736078469183,404940969259688,ND,ND,ND,ND,ND,ND,ND,ND,ND~$
+

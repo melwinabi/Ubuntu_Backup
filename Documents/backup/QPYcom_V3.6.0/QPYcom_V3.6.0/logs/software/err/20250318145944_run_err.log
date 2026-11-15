@@ -1,0 +1,10 @@
+[2025-03-18 15:00:03] Traceback (most recent call last):
+[2025-03-18 15:00:03]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:00:03] IndexError[2025-03-18 15:00:03] : [2025-03-18 15:00:03] list index out of range[2025-03-18 15:00:03] 
+[2025-03-18 15:00:46] Traceback (most recent call last):
+[2025-03-18 15:00:46] [2025-03-18 15:00:46]   File "wxglade_out.py", line 152, in if_ymodem
+[2025-03-18 15:00:46] [2025-03-18 15:00:46]   File "wxglade_out.py", line 129, in waitSerialReturn
+[2025-03-18 15:00:46] [2025-03-18 15:00:46]   File "serial\serialutil.py", line 594, in inWaiting
+[2025-03-18 15:00:46] [2025-03-18 15:00:46]   File "serial\serialwin32.py", line 259, in in_waiting
+[2025-03-18 15:00:46] [2025-03-18 15:00:46] serial.serialutil.SerialException: ClearCommError failed (OSError(9, 'The handle is invalid.', None, 6))
+[2025-03-18 15:00:46] 

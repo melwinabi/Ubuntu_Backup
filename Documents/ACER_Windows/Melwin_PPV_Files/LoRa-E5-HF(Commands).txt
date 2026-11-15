@@ -1,0 +1,22 @@
+LoRa - E-5
+
+
+1. AT
+2. AT+RESET
+3. AT
+4. AT+MODE="TEST"
+
+****CONFIGURATION SETUP***********
+   (FOR BOTH Tx AND Rx)
+5. AT+TEST=RFCFG,433,SF12,125,12,15,20,ON,ON,ON
+   
+   866: Frequency set to 866 MHz.
+   SF12: Spread Factor set to SF12 for a longer range and lower data rate.
+   125: Bandwidth set to 125 kHz.
+   12: TX Preamble length of 12.
+   15: RX Preamble length of 15.
+   14: Transmission Power set to 14 dBm.
+   OFF: IQ inversion is disabled.
+   OFF: Network mode is disabled (non-LoRaWAN communication)
+
+6. RX:     || TX: AT+TEST=RXLRPKT

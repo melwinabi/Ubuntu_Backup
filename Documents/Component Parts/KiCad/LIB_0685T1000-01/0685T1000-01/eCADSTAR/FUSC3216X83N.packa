@@ -1,0 +1,13 @@
+(unit MM)
+
+(package "0685T1000-01"
+    (type UNDEF)
+    (uver 2)
+    (cuser "SamacSys")
+    (uuser "SamacSys")
+    (utime 2021-12-14-11:30:26)
+    (mountForm default
+        (footprintRef "FUSC3216X83N")
+        (spec "System")
+    )
+)

@@ -1,0 +1,3 @@
+[2025-03-19 16:46:55] Traceback (most recent call last):
+[2025-03-19 16:46:55]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-19 16:46:55] TypeError[2025-03-19 16:46:55] : [2025-03-19 16:46:55] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-19 16:46:55] 

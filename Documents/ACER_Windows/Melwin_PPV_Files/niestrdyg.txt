@@ -1,0 +1,815 @@
+//working with no proper time out 
+#include <Arduino_FreeRTOS.h>
+#include <semphr.h>
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
+SemaphoreHandle_t xSerialSemaphore;
+int menu = 12;
+int up = 11;
+int down = 10;
+int back = 9;
+int select = 8;
+int S_f = 0;
+int Y = 1;
+int Flag = 0;
+int M, U, D, B, S;
+int j;
+int C = 0;
+int Set=0;
+int sts=0;  
+int St;
+int state2;
+int hr=00;
+int mn=00;
+int sec=00;
+int dd=00;
+int mm=00;
+int yy=00;
+long int previous=0;
+long int Time;
+void TaskButton(void *pvParameters);
+void TaskLCD(void *pvParameters);
+void Menu();
+void Menu2();
+void curs(int c);
+String case1,case2,case3,case4;
+String ROW2,ROW3,ROW4;
+String Mode1="AUT";
+String Mode2="AUT";
+String Mode3="AUT";
+String Mode4="AUT";
+String Mode5="AUT";
+void setup() {
+  Serial.begin(9600);
+  lcd.begin(20, 4);
+  lcd.clear();
+  pinMode(menu, INPUT_PULLUP);
+  pinMode(up, INPUT_PULLUP);
+  pinMode(down, INPUT_PULLUP);
+  pinMode(back, INPUT_PULLUP);
+  pinMode(select, INPUT_PULLUP);
+  xSerialSemaphore = xSemaphoreCreateMutex();
+  xTaskCreate(TaskButton, "ButtonTask", 128, NULL, 2, NULL);
+  xTaskCreate(TaskLCD, "LCDTask", 128, NULL, 1, NULL);
+}
+
+void loop() {}
+
+void TaskButton(void *pvParameters) {
+  (void)pvParameters;
+  for (;;) {
+    if (xSemaphoreTake(xSerialSemaphore, (TickType_t)5) == pdTRUE) {
+      M = digitalRead(menu);
+      U = digitalRead(up);
+      D = digitalRead(down);
+      B = digitalRead(back);
+      S = digitalRead(select);      
+      delay(275);
+      if(sts==0){
+          sts=1;
+        }else{
+          sts=0;
+        }
+//....................................Menu 
+      if (M == LOW ) { 
+        C=0;      
+        Menu();
+      }
+ 
+//................................dOWN     
+      if (Flag == 1 && D == LOW) { 
+        C++;      
+        curs(C);              
+        if (C == 4 && Flag == 1) {
+          Menu2();
+          curs(0);          
+        }
+      }
+
+      if (Flag == 2 && D == LOW) {
+        C++;
+        curs(C);
+        if (C > 1) {
+          C = 0;
+          curs(C);
+        }
+      }
+//....................................BACK     
+      if (Flag == 2 && B == LOW) {  
+        C = 0;
+        Menu();
+      }
+
+      if (Flag == 1 && C == 3 && S == LOW) {
+//       Clock();
+      }
+//.......................................up     
+      if (Flag == 1 && U == LOW) {
+        C--;
+        curs(C);
+        if (C <= 0) {
+          C = 0;
+          curs(C);
+        }
+      }
+       if(Flag==2&&U==LOW){
+          C--;
+          curs(C);
+       if(C<=-1&&U==LOW){
+          C=3;
+          Menu();
+    }
+  }
+      
+      
+//..............................SELECTTIONA..................
+      if (C == 0 &&Flag == 1 && S == LOW&&sts==0) {
+        C=0;
+        set_A1();
+      }
+        
+       
+      if(Flag==3&&D==LOW){
+        C++;      
+        curs(C);              
+        if (C == 4 && Flag == 3) {
+          set_A2();
+          curs(0);  
+      }
+    }
+//...............................UP.................
+ 
+
+      if (Flag == 3 && U == LOW) { 
+        C--;
+        curs(C);
+        if (C < 0) {
+          C=0;
+          curs(C);
+        }
+      }
+      if (Flag == 4 && U == LOW) {
+        set_A1();
+      }
+ //...................................UP......................   
+//..............................SELECTTIONA..................    
+//..............................SELECTTIONB..................  
+if (C == 1 &&Flag == 1 && S == LOW) {
+        C=0;
+        set_B1();
+       }
+      if(Flag==5&&D==LOW){
+        C++;      
+        curs(C);              
+       if (C == 4 && Flag == 5) {
+          set_B2();
+          curs(0);  
+      }
+    }
+//...............................UP.................
+ 
+      if (Flag == 5 && U == LOW) { 
+        C--;
+        curs(C);
+        if (C < 0) {
+          C=0;
+          curs(C);
+        }
+      }
+      if (Flag == 6 && U == LOW) {
+        set_B1();
+      }
+ //...................................UP......................   
+//..............................SELECTTIONB.................. 
+
+//..............................SELECTTIONC.................. 
+if (C == 2 &&Flag == 1 && S == LOW) {
+        C=0;
+        set_C1();
+       }
+      if(Flag==7&&D==LOW){
+        C++;      
+        curs(C);              
+       if (C == 4 && Flag == 7) {
+          set_C2();
+          curs(0);  
+      }
+    }
+//...............................UP.................
+ 
+      if (Flag == 7 && U == LOW) { 
+        C--;
+        curs(C);
+        if (C < 0) {
+          C=0;
+          curs(C);
+        }
+      }
+      if (Flag == 8 && U == LOW) {
+        set_C1();
+      }
+//..............................SELECTTIONC.................. 
+
+
+//..............................SELECTTIOND.................. 
+if (C == 0 &&Flag == 2 && S == LOW) {
+        C=0;
+        set_D1();
+       }
+      if(Flag==9&&D==LOW){
+        C++;      
+        curs(C);              
+       if (C == 4 && Flag == 9) {
+          set_D2();
+          curs(0);  
+      }
+    }
+//...............................UP.................
+ 
+      if (Flag == 9 && U == LOW) { 
+        C--;
+        curs(C);
+        if (C < 0) {
+          C=0;
+          curs(C);
+        }
+      }
+      if (Flag == 10 && U == LOW) {
+        set_C1();
+      }
+//..............................SELECTTIOND.................. 
+//..............................SELECTTIONE.................. 
+if (C == 1 &&Flag == 2 && S == LOW) {
+        C=0;
+        set_E1();
+       }
+      if(Flag==11&&D==LOW){
+        C++;      
+        curs(C);              
+       if (C == 4 && Flag == 11) {
+          set_E2();
+          curs(0);  
+      }
+    }
+//...........................UP.................
+ 
+      if (Flag == 11 && U == LOW) { 
+        C--;
+        curs(C);
+        if (C < 0) {
+          C=0;
+          curs(C);
+        }
+      }
+      if (Flag == 12 && U == LOW) {
+        set_C1();
+      }
+//..............................SELECTTIONE.................. 
+
+//........................................Menu....................
+//....................................SETTING VIEW MP.............................
+  if (Flag == 3  && C==0 && S == LOW && sts==1)
+  {
+      case1="Raw Water Pumb";
+      C=0;
+      Set_view();
+  }
+
+  if (Flag == 3  && C==1 && S == LOW)
+  {
+      case1="AB";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 3  && C==2 && S == LOW)
+  {
+      case1="RP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 3  && C==3 && S == LOW)
+  {
+      case1="FFP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 4  && C==4 && S == LOW)
+  {
+      case1="TWP";
+      C=0;
+      Set_view();
+  }
+
+  
+//....................................SETTING VIEW MR.............................
+  if (Flag == 5  && C==0 && S == LOW&&sts==1)
+  {
+      case1="Raw Water Pumb";
+      C=0;
+      Set_view();
+  }
+
+  if (Flag == 5  && C==1 && S == LOW)
+  {
+      case1="AB";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 5  && C==2 && S == LOW)
+  {
+      case1="RP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 5  && C==3 && S == LOW)
+  {
+      case1="FFP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 6  && C==4 && S == LOW)
+  {
+      case1="TWP";
+      C=0;
+      Set_view();
+  }
+
+//....................................SETTING VIEW PM.............................
+  if (Flag == 7  && C==0 && S == LOW&&sts==1)
+  {
+      case1="Raw Water Pumb";
+      C=0;
+      Set_view();
+  }
+
+  if (Flag == 7  && C==1 && S == LOW)
+  {
+      case1="AB";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 7  && C==2 && S == LOW)
+  {
+      case1="RP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 7  && C==3 && S == LOW)
+  {
+      case1="FFP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 8  && C==4 && S == LOW)
+  {
+      case1="TWP";
+      C=0;
+      Set_view();
+  }
+//....................................SETTING VIEW PC.............................
+  if (Flag == 9  && C==0 && S == LOW&&sts==1)
+  {
+      case1="Raw Water Pumb";
+      C=0;
+      Set_view();
+  }
+
+  if (Flag == 9  && C==1 && S == LOW)
+  {
+      case1="AB";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 9  && C==2 && S == LOW)
+  {
+      case1="RP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 9  && C==3 && S == LOW)
+  {
+      case1="FFP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 10  && C==4 && S == LOW)
+  {
+      case1="TWP";
+      C=0;
+      Set_view();
+  }
+
+//....................................SETTING VIEW GRNL.............................
+  if (Flag == 11  && C==0 && S == LOW&&sts==1)
+  {
+      case1="Raw Water Pumb";
+      C=0;
+      Set_view();
+  }
+
+  if (Flag == 11  && C==1 && S == LOW)
+  {
+      case1="AB";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 5  && C==2 && S == LOW)
+  {
+      case1="RP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 11  && C==3 && S == LOW)
+  {
+      case1="FFP";
+      C=0;
+      Set_view();
+  }
+   if (Flag == 12  && C==4 && S == LOW)
+  {
+      case1="TWP";
+      C=0;
+      Set_view();
+  }
+
+//....................................SETTING VIEW.............................
+//..............................TIME.................. 
+//..............................TIME.................................. 
+//.....................................................BACK...........   
+//.....................................................BACK...........
+//.......................................aut man.................................
+      if(B==LOW){
+         C=0;
+         A_M1();
+      }
+      if(D==LOW&&Flag==14){
+        C++;
+        curs(C);
+        if(C>3){
+           C=0;
+           A_M2();         
+        }       
+      }
+      if(U==LOW&&Flag==14){
+        C--;
+        if(C<0){
+          C=0;
+        }
+        curs(C);
+      }
+      if(U==LOW&&C==0&&Flag==15){
+        C=3;
+        A_M1();
+      }
+     /////.....................Toggle AU MAN...........
+      if(S==LOW&&C==0&&Flag==14){
+        Serial.print("HAIII");
+        if(Mode1=="AUT"){
+          Mode1="MANU";
+        }else{
+          Mode1="AUT";
+        }
+        A_M1();
+      }
+
+       if(S==LOW&&C==1&&Flag==14){
+        Serial.print("HAIII");
+        if(Mode2=="AUT"){
+          Mode2="MANU";
+        }else{
+          Mode2="AUT";
+        }
+        A_M1();
+      }
+
+       if(S==LOW&&C==2&&Flag==14){
+        Serial.print("HAIII");
+        if(Mode3=="AUT"){
+          Mode3="MANU";
+        }else{
+          Mode3="AUT";
+        }
+        A_M1();
+      }
+
+       if(S==LOW&&C==3&&Flag==14){
+        Serial.print("HAIII");
+        if(Mode4=="AUT"){
+          Mode4="MANU";
+        }else{
+          Mode4="AUT";
+        }
+        A_M1();
+      }
+
+       if(S==LOW&&C==0&&Flag==15){
+        Serial.print("HAIII");
+        if(Mode5=="AUT"){
+          Mode5="MANU";
+        }else{
+          Mode5="AUT";
+        }
+        A_M2();
+      }
+     /////.....................Toggle AU MAN...........
+//.......................................aut man.................................
+      Serial.println(C);
+      //Serial.println(Flag);
+      xSemaphoreGive(xSerialSemaphore);
+    }
+    vTaskDelay(50 / portTICK_PERIOD_MS);
+  }
+}
+
+
+void TaskLCD(void *pvParameters) {
+  (void)pvParameters;
+  for (;;) {
+    if (xSemaphoreTake(xSerialSemaphore, (TickType_t)5) == pdTRUE) {
+      xSemaphoreGive(xSerialSemaphore);
+       if (S_f == 0) {
+        Scrolling_screen(Y);
+        Y++;
+        if (Y > 5) {
+          Y = 1;
+        }
+      }
+      if(Flag==1||Flag==2&&Flag!=0){
+        j++;
+      }       
+      else{
+       j=0;
+      }
+      Serial.println(j);      
+      if(j>50){
+        S_f = 0;
+        Serial.println("me");
+      }
+      else
+      {
+        S_f = 1;
+      }
+    }
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
+  }
+}
+//...............................................................................FUNCTION............................
+void Scrolling_screen(int y) {
+  Flag=0;
+  if (y == 1) index_1();
+  if (y == 2) index_2();
+  if (y == 3) index_3();
+  if (y == 4) index_4();
+  if (y == 5) index_5();
+}
+
+void index_1() {
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("231 242 210 PN AUT");
+  lcd.setCursor(1, 1);
+  lcd.print("R.W.P -> Mode");
+  lcd.setCursor(1, 2);
+  lcd.print("1 ON | 2 OFF");
+  lcd.setCursor(1, 3);
+  lcd.print("NS @60 Min");
+  vTaskDelay(3000 / portTICK_PERIOD_MS);
+}
+
+void index_2() {
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("231 242 210 PN AUT");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower -> Mode");
+  lcd.setCursor(1, 2);
+  lcd.print("1 ON | 2 OFF");
+  lcd.setCursor(1, 3);
+  lcd.print("NS @60 Min");
+  vTaskDelay(3000 / portTICK_PERIOD_MS);
+}
+
+void index_3() {
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("231 242 210 PN AUT");
+  lcd.setCursor(1, 1);
+  lcd.print("R.C.P -> Mode");
+  lcd.setCursor(1, 2);
+  lcd.print("ON/OFF");
+  lcd.setCursor(1, 3);
+  lcd.print("NS @60 Min");
+  vTaskDelay(3000 / portTICK_PERIOD_MS);
+}
+
+void index_4() {
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("231 242 210 PN AUT");
+  lcd.setCursor(1, 1);
+  lcd.print("F.F.P -> Mode");
+  lcd.setCursor(1, 2);
+  lcd.print("1 ON | 2 OFF");
+  lcd.setCursor(1, 3);
+  lcd.print("NS @60 Min");
+  vTaskDelay(3000 / portTICK_PERIOD_MS);
+}
+
+void index_5() {
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("231 242 210 PN AUT");
+  lcd.setCursor(1, 1);
+  lcd.print("T.W.P -> Mode");
+  lcd.setCursor(1, 2);
+  lcd.print("1 ON | 2 OFF");
+  lcd.setCursor(1, 3);
+  lcd.print("NS @60 Min  20Amps");
+  vTaskDelay(3000 / portTICK_PERIOD_MS);
+}
+
+void Menu() {
+  S_f = 1;
+  Flag = 1;
+  lcd.clear();
+  curs(C); 
+  lcd.setCursor(1, 0);
+  lcd.print("Motor Phase");
+  lcd.setCursor(1, 1);
+  lcd.print("Motor Rating");
+  lcd.setCursor(1, 2);
+  lcd.print("Pump Mode");
+  lcd.setCursor(1, 3);
+  lcd.print("Timer");
+}
+
+void Menu2() {
+  Set=0;
+  Flag = 2;
+  curs(C);
+  lcd.clear();
+  lcd.setCursor(1, 0);
+  lcd.print("Pump Changeover");
+  lcd.setCursor(1, 1);
+  lcd.print("General");
+}
+
+void set_A1() {
+  Flag = 3;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Raw Water Pump");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower");
+  lcd.setCursor(1, 2);
+  lcd.print("Recirculation Pump");
+  lcd.setCursor(1, 3);
+  lcd.print("Filter Feed Pump");
+}
+
+void set_A2() {
+  Flag = 4;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Treated Water Pump");
+}
+
+void set_B1() {
+  Flag = 5;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Raw Water Pump");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower");
+  lcd.setCursor(1, 2);
+  lcd.print("Recirculation Pump");
+  lcd.setCursor(1, 3);
+  lcd.print("Filter Feed Pump");
+}
+
+void set_B2() {
+  Flag = 6;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Treated Water Pump");
+}
+
+void set_C1() {
+  Flag = 7;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Raw Water Pump");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower");
+  lcd.setCursor(1, 2);
+  lcd.print("Recirculation Pump");
+  lcd.setCursor(1, 3);
+  lcd.print("Filter Feed Pump");
+}
+
+void set_C2() {
+  Flag = 8;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Treated Water Pump");
+}
+
+void set_D1() {
+  Flag = 9;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Raw Water Pump");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower");
+  lcd.setCursor(1, 2);
+  lcd.print("Recirculation Pump");
+  lcd.setCursor(1, 3);
+  lcd.print("Filter Feed Pump");
+}
+
+void set_D2() {
+  Flag = 10;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Treated Water Pump");
+}
+
+void set_E1() {
+  Flag = 11;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Raw Water Pump");
+  lcd.setCursor(1, 1);
+  lcd.print("Air Blower");
+  lcd.setCursor(1, 2);
+  lcd.print("Recirculation Pump");
+  lcd.setCursor(1, 3);
+  lcd.print("Filter Feed Pump");
+}
+
+void set_E2() {
+  Flag = 12;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print("Treated Water Pump");
+}
+void A_M1(){
+  Flag = 14;
+   lcd.clear();
+   curs(C);
+   lcd.setCursor(1, 0);
+   lcd.print("R.W.P : "+Mode1);
+   lcd.setCursor(1, 1);
+   lcd.print("AR.BL : "+Mode2);
+   lcd.setCursor(1, 2);
+   lcd.print("R.C.P : "+Mode3);
+   lcd.setCursor(1, 3);
+   lcd.print("F.F.P : "+Mode4);   
+}
+void A_M2(){
+   Flag = 15;
+   lcd.clear();
+   curs(C);
+   lcd.setCursor(1, 0);
+   lcd.print("T.W.P : "+Mode5);
+}
+void Set_view(){
+  Flag = 13;
+  lcd.clear();
+  curs(C);
+  lcd.setCursor(1, 0);
+  lcd.print(case1);
+  lcd.setCursor(1, 1);
+  lcd.print(case2);
+  lcd.setCursor(1, 2);
+  lcd.print(case3);
+  lcd.setCursor(1, 3);
+  lcd.print(case4);
+}
+
+void curs(int c) {
+  for (int i = 0; i < 4; i++) {
+    lcd.setCursor(0, i);
+    lcd.print(" ");
+  }
+  lcd.setCursor(0, c);
+  lcd.print(">");
+}
+void curs2(int b){
+  for (int i = 0; i < 4; i++) {
+    lcd.setCursor(i,0);
+    lcd.print(" ");
+  }
+  lcd.setCursor(b,2);
+  lcd.print("|");
+}

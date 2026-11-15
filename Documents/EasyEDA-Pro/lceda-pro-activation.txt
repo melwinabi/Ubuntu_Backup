@@ -1,0 +1,8 @@
+{
+    "username": "asmelwin3",
+    "customer_code": "3921316A",
+    "email": "asmelwin3@gmail.com",
+    "phone": "",
+    "company": "",
+    "license": "dXNlcm5hbWV8Y3VzdG9tZXJfY29kZXxlbWFpbHxwaG9uZXxjb21wYW55,y1nQJ9xFCJjY70GN8O4XYIFQgHKsnJ8Zt0WTkDnCgOB9V3fXmHVscvVK6GtRA+kYXykTMW50fDxvVo+hTSwhtWO4nwWOexmszn1aL5KwHaRBnqcd0duNullsErnkQRvaX9xV9oADzDbGL/NpupgaTdLvoxAYQkWxOLYgXMOO62s="
+}

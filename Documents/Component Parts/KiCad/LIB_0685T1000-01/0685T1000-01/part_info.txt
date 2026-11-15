@@ -1,0 +1,9 @@
+Manufacturer=BelFuse
+PartNumber=0685T1000-01
+PartCategory=Fuse
+PackageCategory=Fuses Chip
+PinCount=2
+Version=1.1
+Released=2021-12-14 11:30:26
+Downloaded=2026-05-05 15:56:14
+3D=Y

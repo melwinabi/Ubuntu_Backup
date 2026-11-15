@@ -1,0 +1,9 @@
+[2025-04-04 17:05:02:578] ===============================C:\Users\hardw\Downloads\QFlash_V6.1_Temp_20221104\QFlash_V6.1_Temp_20221104.exe
+[2025-04-04 17:05:03:421] UartWatchProc: Call WaitCommEvent() fail, [ErrorCode:0x00000016][EventMask:0x00000000].
+[2025-04-04 17:05:03:421] UartWatchProc: Call WaitCommEvent() fail, [ErrorCode:0x00000016][EventMask:0x00000000].
+[2025-04-04 17:05:03:421] UartWatchProc: Call WaitCommEvent() fail, [ErrorCode:0x00000016][EventMask:0x00000000].
+[2025-04-04 17:05:03:421] UartWatchProc: Call WaitCommEvent() fail, [ErrorCode:0x00000016][EventMask:0x00000000].
+[2025-04-04 17:05:03:429] UartWatchProc: Call WaitCommEvent() fail, [ErrorCode:0x00000016][EventMask:0x00000000].
+[2025-04-04 17:05:04:617] Write: Call ClearCommError() fail, [ErrorCode: 0x00000016].
+[2025-04-04 17:05:04:617] Write: Call WriteFile() fail, [ErrorCode: 0x00000016].
+[2025-04-04 17:05:05:128] Call Clear() fail, [ErrorCode:0x00000016].

@@ -1,0 +1,13 @@
+[Image_List]
+Number_of_Images = 1
+1_Image_Enable = 1
+1_Image_Image_ID = 0x30
+1_Image_Path = system.bin
+1_Image_Flash_Entry_Address = 0x00024000
+1_Image_ID_Name = 1
+Number_of_Images = 1
+1_Image_Enable = 1
+1_Image_Image_ID = 0x31
+1_Image_Path = customer_fs.bin
+1_Image_Flash_Entry_Address = 0x006A3000
+1_Image_ID_Name = 2

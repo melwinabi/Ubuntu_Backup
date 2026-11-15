@@ -1,0 +1,219 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Childern.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f1eaea;
+    min-height: 100vh;  /* always at least full viewport height */
+
+}
+
+
+.container {
+    position: relative;           /* needed for pseudo-element */
+    width: 450px;
+    background-color: #f1eaea;    /* fallback color */
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #aaa;
+    overflow: hidden;             /* make sure pseudo-element stays inside */
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Children_1.jpg'); /* your image */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;                /* 50% opacity for the image */
+    z-index: 0;                   /* behind the content */
+    border-radius: 12px;          /* match container rounded corners */
+}
+
+.container::after {
+    content: "";
+    position: absolute;
+    top: -10px;                 /* distance from top */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;               /* adjust logo width */
+    height: 70px;              /* adjust logo height */
+    background-image: url('flag.png'); /* your small image */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;                /* above background, behind text */
+    opacity: 100%;              /* slight transparency */
+}
+
+/* make sure content is above the pseudo-element */
+.container * {
+    position: relative;
+    z-index: 1;
+}
+
+.container_1 {
+    width:96%;
+    height: 8%;
+    background: white;
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 0 0 10px #aaa;
+    position: fixed;   /* fix the container */
+    bottom: 1%;         /* stick to bottom */
+    left: 50%;         /* center horizontally */
+    transform: translateX(-50%); /* correct centering */
+    background-color: #022a65;
+}
+
+.footer-content .college-name {
+    padding-top: 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.footer-content .designer {
+    margin-top: -.5%;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.footer-content .names {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.footer-content .year {
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.scroll-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #777;
+    border-radius: 8px;
+    margin-bottom: 15px;
+
+    /* Scroll for long dropdown */
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+/* Scrollbar design */
+.scroll-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroll-select::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.scroll-select::-webkit-scrollbar-track {
+    background: #e0e0e0;
+}
+
+.image-preview {
+    width: 100%;
+    max-height: 250px;
+    margin-top: 15px;
+    display: none;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #03b146;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #029034;
+}
+
+/* Spinner (circular moving buffer) */
+.result-box {
+    margin-top: -50px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 8px;
+    font-size: 17px;
+    display: none;
+    align-items: -50px;
+    justify-content: center;
+    gap: 12px;
+    color: #fefeff;
+}
+
+/* spinner container */
+.spinner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 4px solid rgba(0,0,0,0.12);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    animation: spin 1s linear infinite;
+    flex-shrink: 0;
+}
+
+/* alternate moving-dot loader (optional extra flair) */
+.spinner-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    position: relative;
+    animation: dotMove 1s linear infinite;
+}
+
+/* Animations */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes dotMove {
+    0%   { left: -6px; opacity: 0; }
+    30%  { left: 0px; opacity: 1; }
+    70%  { left: 6px; opacity: 1; }
+    100% { left: 12px; opacity: 0; }
+}
+
+/* Ensure the preview img is above background (if needed) */
+.image-preview { z-index: 2; }

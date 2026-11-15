@@ -1,0 +1,7 @@
+[2025-03-19 16:14:18] Traceback (most recent call last):
+[2025-03-19 16:14:18] [2025-03-19 16:14:18]   File "wxglade_out.py", line 141, in if_ymodem
+[2025-03-19 16:14:18] [2025-03-19 16:14:18]   File "wxglade_out.py", line 129, in waitSerialReturn
+[2025-03-19 16:14:18] [2025-03-19 16:14:18]   File "serial\serialutil.py", line 594, in inWaiting
+[2025-03-19 16:14:18] [2025-03-19 16:14:18]   File "serial\serialwin32.py", line 259, in in_waiting
+[2025-03-19 16:14:18] [2025-03-19 16:14:18] serial.serialutil.SerialException: ClearCommError failed (OSError(9, 'The handle is invalid.', None, 6))
+[2025-03-19 16:14:18] 

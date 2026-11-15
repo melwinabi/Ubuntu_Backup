@@ -1,0 +1,93 @@
+
+
+
+>>>
+import usys
+>>>
+print(usys.startup_file())
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'startup_file'
+>>>
+import usys
+>>>
+usys.set_startup_file('main.py')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'set_startup_file'
+>>>
+import os
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: no module named 'os'
+>>>
+Sending: int> 
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940969500211*89919409129695002112*IND airtel*404*40*5*42139*180844554*7*00.0000000*11.1111111*0*$$
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+import ql_fs
+
+>>>
+
+>>>
+print(ql_fs.listdir("/usr"))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'listdir'
+>>>
+import sys
+>>>
+sys.path.append("/usr")
+>>>
+import main
+
+{
+  "IP": "mqtt.ppvgroups.in",
+  "Port": "1883"
+}
+CenMark_hardware_557
+>>>
+>>>
+Sending: int> 
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*180844554*7*00.0000000*11.1111111*0*$$'
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244594*7*00.0000000*11.1111111*0*$$'
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 

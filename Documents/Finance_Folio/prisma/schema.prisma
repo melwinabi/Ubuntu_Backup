@@ -1,0 +1,278 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                String             @id @default(uuid())
+  customId          String?            @unique
+  fullName          String
+  email             String             @unique
+  passwordHash      String
+  dob               DateTime?
+  profilePic        String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  accounts          Account[]
+  cards             Card[]
+  incomeSources     IncomeSource[]
+  expenseCategories ExpenseCategory[]
+  expenses          Expense[]
+  investments       Investment[]
+  creditScores      CreditScore[]
+  loansGiven        LoanGiven[]
+  netWorthSnapshots NetWorthSnapshot[]
+
+  @@map("users")
+}
+
+model Account {
+  id                 String              @id @default(uuid())
+  userId             String
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountType        String              // 'bank' | 'wallet' | 'cash' | 'other'
+  accountName        String
+  providerName       String?
+  accountNumberLast4 String?
+  openingBalance     Float               @default(0.0)
+  currentBalance     Float               @default(0.0)
+  isActive           Boolean             @default(true)
+  createdAt          DateTime            @default(now())
+  cards              Card[]
+  incomeTransactions IncomeTransaction[]
+  expenses           Expense[]
+  investments        Investment[]
+  loansGiven         LoanGiven[]
+
+  @@map("accounts")
+}
+
+model Card {
+  id                 String           @id @default(uuid())
+  userId             String
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accountId          String?
+  account            Account?         @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  cardType           String           // 'credit' | 'debit'
+  cardName           String
+  last4              String?
+  creditLimit        Float?
+  statementDay       Int?
+  dueDay             Int?
+  currentOutstanding Float            @default(0.0)
+  isActive           Boolean          @default(true)
+  createdAt          DateTime         @default(now())
+  bills              CreditCardBill[]
+  expenses           Expense[]
+
+  @@map("cards")
+}
+
+model CreditCardBill {
+  id            String   @id @default(uuid())
+  cardId        String
+  card          Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  billingStart  DateTime
+  billingEnd    DateTime
+  statementDate DateTime
+  dueDate       DateTime
+  totalAmount   Float
+  minimumDue    Float?
+  paidAmount    Float    @default(0.0)
+  status        String   @default("unpaid") // 'unpaid' | 'partially_paid' | 'paid'
+  createdAt     DateTime @default(now())
+
+  @@map("credit_card_bills")
+}
+
+model IncomeSource {
+  id               String              @id @default(uuid())
+  userId           String
+  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sourceName       String
+  sourceType       String?             // 'salary' | 'business' | 'rental' | 'freelance' | 'other'
+  frequency        String              @default("monthly") // 'monthly' | 'weekly' | 'one_time' | 'yearly' | 'irregular'
+  expectedAmount   Float?
+  defaultAccountId String?
+  isActive         Boolean             @default(true)
+  createdAt        DateTime            @default(now())
+  transactions     IncomeTransaction[]
+
+  @@map("income_sources")
+}
+
+model IncomeTransaction {
+  id             String       @id @default(uuid())
+  incomeSourceId String
+  incomeSource   IncomeSource @relation(fields: [incomeSourceId], references: [id], onDelete: Cascade)
+  accountId      String?
+  account        Account?     @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  amount         Float
+  receivedOn     DateTime
+  notes          String?
+  createdAt      DateTime     @default(now())
+
+  @@map("income_transactions")
+}
+
+model ExpenseCategory {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  icon      String?
+  expenses  Expense[]
+
+  @@map("expense_categories")
+}
+
+model Expense {
+  id            String          @id @default(uuid())
+  userId        String
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId    String?
+  category      ExpenseCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  amount        Float
+  spentOn       DateTime
+  paymentMethod String          // 'cash' | 'upi' | 'credit_card' | 'debit_card' | 'net_banking' | 'cheque' | 'other'
+  accountId     String?
+  account       Account?        @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  cardId        String?
+  card          Card?           @relation(fields: [cardId], references: [id], onDelete: SetNull)
+  merchant      String?
+  notes         String?
+  savedAmount   Float           @default(0.0)
+  createdAt     DateTime        @default(now())
+
+  @@map("expenses")
+}
+
+model Investment {
+  id            String                   @id @default(uuid())
+  userId        String
+  user          User                     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assetType     String                   // 'stock' | 'gold' | 'silver' | 'mutual_fund' | 'crypto' | 'real_estate' | 'fixed_deposit' | 'other'
+  name          String
+  symbol        String?
+  quantity      Float
+  unit          String                   @default("unit")
+  purchasePrice Float
+  purchaseDate  DateTime
+  accountId     String?
+  account       Account?                 @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  isActive      Boolean                  @default(true)
+  createdAt     DateTime                 @default(now())
+  prices        InvestmentPriceHistory[]
+  subType       String?                  // 'physical' | 'digital' | 'sgb' | 'small_cap' | 'mid_cap' | 'large_cap' | 'corporate' | 'government'
+  isSIP         Boolean                  @default(false)
+  sipFrequency  String?                  // 'weekly' | 'monthly' | 'half_yearly' | 'yearly'
+  sipAmount     Float?
+  sipNextDate   DateTime?
+  sipStatus     String                   @default("active") // 'active' | 'cancelled'
+  sipCancelDate DateTime?
+  alerts        InvestmentAlert[]
+  sipSkips      InvestmentSipSkip[]
+
+  @@map("investments")
+}
+
+model InvestmentPriceHistory {
+  id           String     @id @default(uuid())
+  investmentId String
+  investment   Investment @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+  priceDate    DateTime
+  pricePerUnit Float
+  source       String     @default("manual") // 'manual' | 'api'
+
+  @@unique([investmentId, priceDate])
+  @@map("investment_price_history")
+}
+
+model InvestmentAlert {
+  id           String     @id @default(uuid())
+  userId       String
+  investmentId String?
+  investment   Investment? @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+  title        String
+  alertDate    DateTime
+  isTriggered  Boolean    @default(false)
+  notes        String?
+  createdAt    DateTime   @default(now())
+
+  @@map("investment_alerts")
+}
+
+model InvestmentSipSkip {
+  id           String     @id @default(uuid())
+  investmentId String
+  investment   Investment @relation(fields: [investmentId], references: [id], onDelete: Cascade)
+  skipDate     DateTime
+  createdAt    DateTime   @default(now())
+
+  @@unique([investmentId, skipDate])
+  @@map("investment_sip_skips")
+}
+
+model CreditScore {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bureau     String   @default("CIBIL")
+  score      Int
+  recordedOn DateTime
+  createdAt  DateTime @default(now())
+
+  @@map("credit_scores")
+}
+
+model LoanGiven {
+  id                 String           @id @default(uuid())
+  userId             String
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  borrowerName       String
+  borrowerContact    String?
+  principalAmount    Float
+  amountGivenOn      DateTime
+  paymentMode        String           // 'cash' | 'upi' | 'credit_card' | 'debit_card' | 'net_banking' | 'cheque' | 'other'
+  accountId          String?
+  account            Account?         @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  interestRate       Float            @default(0.0)
+  expectedReturnDate DateTime?
+  status             String           @default("active") // 'active' | 'partially_paid' | 'closed' | 'overdue'
+  notes              String?
+  createdAt          DateTime         @default(now())
+  repayments         LoanRepayment[]
+
+  @@map("loans_given")
+}
+
+model LoanRepayment {
+  id          String    @id @default(uuid())
+  loanId      String
+  loan        LoanGiven @relation(fields: [loanId], references: [id], onDelete: Cascade)
+  amount      Float
+  paidOn      DateTime
+  paymentMode String?
+  notes       String?
+
+  @@map("loan_repayments")
+}
+
+model NetWorthSnapshot {
+  id                   String   @id @default(uuid())
+  userId               String
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  snapshotDate         DateTime
+  totalCash            Float?
+  totalInvestments     Float?
+  totalLoansReceivable Float?
+  totalLiabilities     Float?
+  netWorth             Float
+
+  @@unique([userId, snapshotDate])
+  @@map("net_worth_snapshots")
+}

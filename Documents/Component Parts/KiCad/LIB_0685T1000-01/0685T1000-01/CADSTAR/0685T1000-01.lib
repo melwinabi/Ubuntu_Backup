@@ -1,0 +1,18 @@
+.0685T1000-01 :1 ;BEL FUSE - 0685T1000-01 - FUSE, SMD, 1A, SLOW BLOW, 1206
+FUSC3216X83N
+*STM F
+*NGS
+*PLB 1="1" 2="2"
+*MXP 2
+*DFN 0685T1000-01
+~!Manufacturer_Name (BelFuse)
+~!Manufacturer_Part_Number (0685T1000-01)
+~!Mouser Part Number (-)
+~!Mouser Price/Stock (-)
+~!Arrow Part Number (-)
+~!Arrow Price/Stock (-)
+~!Link Datasheet (https://www.belfuse.com/resources/datasheets/circuitprotection/ds-cp-c1t-series.pdf)
+~!Height (0.83mm)
+~!3D_Model (0685T1000-01)
+"0685T1000-01"
+1.1!U 2.1!U 

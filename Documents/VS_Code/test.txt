@@ -1,0 +1,6 @@
+hello from melwin
+
+git commands 
+
+1. git init
+

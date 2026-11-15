@@ -1,0 +1,136 @@
+
+<style>
+.card { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; padding: 16px; margin-bottom: 12px; cursor: pointer; transition: border-color .2s; }
+.card:hover { border-color: var(--color-border-primary); }
+.card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.rank { font-size: 22px; font-weight: 500; min-width: 32px; }
+.card-title { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+.card-sub { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+.badge { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+.badge-hot { background: #FAECE7; color: #993C1D; }
+.badge-fast { background: #E1F5EE; color: #085041; }
+.badge-india { background: #E6F1FB; color: #0C447C; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.bar-label { font-size: 11px; color: var(--color-text-secondary); min-width: 90px; }
+.bar-track { flex: 1; height: 6px; background: var(--color-border-tertiary); border-radius: 3px; }
+.bar-fill { height: 6px; border-radius: 3px; }
+.detail-row { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+.detail-item { font-size: 11px; color: var(--color-text-secondary); }
+.detail-item strong { color: var(--color-text-primary); font-weight: 500; }
+.section-title { font-size: 13px; font-weight: 500; color: var(--color-text-secondary); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .04em; }
+</style>
+
+<h2 class="sr-only">Most in-demand IoT products you can build with your embedded skills</h2>
+
+<div class="section-title">🔥 Highest demand — build these first</div>
+
+<div class="card" onclick="sendPrompt('How do I build a smart agriculture soil moisture and irrigation controller using ESP32? What sensors do I need and how much can I sell it for in Tamil Nadu?')">
+  <div class="card-header">
+    <div class="rank" style="color:#1D9E75">1</div>
+    <div style="flex:1">
+      <div class="card-title">Smart agriculture sensors</div>
+      <div class="card-sub">Soil moisture, irrigation control, crop monitoring</div>
+    </div>
+    <span class="badge badge-hot">🔥 #1 in India</span>
+    <span class="badge badge-india">Tamil Nadu fit</span>
+  </div>
+  <div class="bar-row"><div class="bar-label">Market growth</div><div class="bar-track"><div class="bar-fill" style="width:88%;background:#1D9E75"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">14.4% CAGR</div></div>
+  <div class="bar-row"><div class="bar-label">Build difficulty</div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#EF9F27"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Easy</div></div>
+  <div class="bar-row"><div class="bar-label">Your profit/unit</div><div class="bar-track"><div class="bar-fill" style="width:75%;background:#1D9E75"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">High</div></div>
+  <div class="detail-row">
+    <div class="detail-item">Build cost: <strong>₹800–2,000</strong></div>
+    <div class="detail-item">Sell price: <strong>₹6,000–18,000</strong></div>
+    <div class="detail-item">Hardware: <strong>ESP32 + soil/DHT sensors</strong></div>
+    <div class="detail-item">Buyers: <strong>Farmers, agri companies, govt</strong></div>
+  </div>
+</div>
+
+<div class="card" onclick="sendPrompt('How do I build an IoT energy monitor or smart electricity meter using ESP32 and CT sensors? How do I sell it to homes and shops in India?')">
+  <div class="card-header">
+    <div class="rank" style="color:#378ADD">2</div>
+    <div style="flex:1">
+      <div class="card-title">Energy monitoring device</div>
+      <div class="card-sub">Smart power meter, electricity usage tracker for homes & shops</div>
+    </div>
+    <span class="badge badge-fast">📈 India mandate</span>
+  </div>
+  <div class="bar-row"><div class="bar-label">Market growth</div><div class="bar-track"><div class="bar-fill" style="width:82%;background:#378ADD"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">India smart meter mandate</div></div>
+  <div class="bar-row"><div class="bar-label">Build difficulty</div><div class="bar-track"><div class="bar-fill" style="width:35%;background:#EF9F27"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Easy–medium</div></div>
+  <div class="bar-row"><div class="bar-label">Your profit/unit</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#378ADD"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Very high</div></div>
+  <div class="detail-row">
+    <div class="detail-item">Build cost: <strong>₹600–1,200</strong></div>
+    <div class="detail-item">Sell price: <strong>₹4,000–10,000</strong></div>
+    <div class="detail-item">Hardware: <strong>ESP32 + CT sensor + PZEM</strong></div>
+    <div class="detail-item">Buyers: <strong>Homes, hotels, factories</strong></div>
+  </div>
+</div>
+
+<div class="card" onclick="sendPrompt('How do I build a GPS vehicle tracker with SIM module for fleet tracking? How do I make monthly subscription income from it?')">
+  <div class="card-header">
+    <div class="rank" style="color:#D85A30">3</div>
+    <div style="flex:1">
+      <div class="card-title">GPS vehicle / asset tracker</div>
+      <div class="card-sub">Fleet tracking, logistics, stolen vehicle recovery</div>
+    </div>
+    <span class="badge badge-hot">💰 Recurring income</span>
+  </div>
+  <div class="bar-row"><div class="bar-label">Market growth</div><div class="bar-track"><div class="bar-fill" style="width:78%;background:#D85A30"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">$55B market by 2026</div></div>
+  <div class="bar-row"><div class="bar-label">Build difficulty</div><div class="bar-track"><div class="bar-fill" style="width:40%;background:#EF9F27"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Medium</div></div>
+  <div class="bar-row"><div class="bar-label">Your profit/unit</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#D85A30"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Very high + monthly SIM fees</div></div>
+  <div class="detail-row">
+    <div class="detail-item">Build cost: <strong>₹700–1,500</strong></div>
+    <div class="detail-item">Sell price: <strong>₹3,500–8,000</strong></div>
+    <div class="detail-item">Hardware: <strong>SIM7600 + GPS + STM32</strong></div>
+    <div class="detail-item">Monthly sub: <strong>₹200–500/device</strong></div>
+  </div>
+</div>
+
+<div class="card" onclick="sendPrompt('How do I build an industrial IoT predictive maintenance sensor for factories? What sensors detect machine vibration and temperature?')">
+  <div class="card-header">
+    <div class="rank" style="color:#7F77DD">4</div>
+    <div style="flex:1">
+      <div class="card-title">Industrial predictive maintenance sensor</div>
+      <div class="card-sub">Vibration, temperature alerts for factory machines</div>
+    </div>
+    <span class="badge badge-fast">🏭 B2B high value</span>
+  </div>
+  <div class="bar-row"><div class="bar-label">Market growth</div><div class="bar-track"><div class="bar-fill" style="width:92%;background:#7F77DD"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">20.7% CAGR — fastest</div></div>
+  <div class="bar-row"><div class="bar-label">Build difficulty</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:#EF9F27"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Medium–hard</div></div>
+  <div class="bar-row"><div class="bar-label">Your profit/unit</div><div class="bar-track"><div class="bar-fill" style="width:90%;background:#7F77DD"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Highest</div></div>
+  <div class="detail-row">
+    <div class="detail-item">Build cost: <strong>₹1,500–4,000</strong></div>
+    <div class="detail-item">Sell price: <strong>₹15,000–80,000</strong></div>
+    <div class="detail-item">Hardware: <strong>MEMS + STM32 + LoRa/WiFi</strong></div>
+    <div class="detail-item">Buyers: <strong>Auto plants, textile mills</strong></div>
+  </div>
+</div>
+
+<div class="card" onclick="sendPrompt('How do I build a remote health monitoring IoT device with SpO2, temperature and BP sensors? What is the India market for medical IoT?')">
+  <div class="card-header">
+    <div class="rank" style="color:#D4537E">5</div>
+    <div style="flex:1">
+      <div class="card-title">Remote health monitoring</div>
+      <div class="card-sub">SpO2, temperature, BP — for elderly care, clinics</div>
+    </div>
+    <span class="badge badge-fast">🏥 23% CAGR</span>
+  </div>
+  <div class="bar-row"><div class="bar-label">Market growth</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:#D4537E"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">23% CAGR — medical IoT</div></div>
+  <div class="bar-row"><div class="bar-label">Build difficulty</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:#EF9F27"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">Medium</div></div>
+  <div class="bar-row"><div class="bar-label">Your profit/unit</div><div class="bar-track"><div class="bar-fill" style="width:72%;background:#D4537E"></div></div><div style="font-size:11px;color:var(--color-text-secondary)">High</div></div>
+  <div class="detail-row">
+    <div class="detail-item">Build cost: <strong>₹1,200–3,000</strong></div>
+    <div class="detail-item">Sell price: <strong>₹8,000–25,000</strong></div>
+    <div class="detail-item">Hardware: <strong>MAX30102 + ESP32 + OLED</strong></div>
+    <div class="detail-item">Buyers: <strong>Clinics, elderly homes</strong></div>
+  </div>
+</div>
+
+<div style="background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:12px;padding:14px;margin-top:6px">
+  <div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px">💡 Start here — your Week 1 action</div>
+  <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.7">Build product #1 (agriculture sensor) first — Tamil Nadu has <strong style="color:var(--color-text-primary)">6 crore farmers</strong>, government subsidy programs, and zero local competition in smart agri sensors. Sell to 10 farmers nearby = ₹60,000–1.8L income. Then reinvest.</div>
+  <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+    <span onclick="sendPrompt('Give me a step by step plan to build and sell a smart agriculture IoT sensor in Tamil Nadu in 60 days')" style="font-size:12px;padding:5px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;color:var(--color-text-primary)">60-day plan →</span>
+    <span onclick="sendPrompt('What are the government subsidy schemes for IoT agriculture startups in Tamil Nadu?')" style="font-size:12px;padding:5px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;color:var(--color-text-primary)">Govt schemes →</span>
+    <span onclick="sendPrompt('How much does it cost to build 10 agriculture IoT sensor prototypes and what components do I need to order?')" style="font-size:12px;padding:5px 12px;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:20px;cursor:pointer;color:var(--color-text-primary)">Parts list →</span>
+  </div>
+</div>

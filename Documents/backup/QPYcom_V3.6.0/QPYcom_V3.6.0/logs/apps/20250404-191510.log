@@ -1,0 +1,22 @@
+
+
+Sending: int> 
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244564*7*00.0000000*11.1111111*0*$$
+
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*3002850
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+Sending: int> 
+
+Sending: int> 

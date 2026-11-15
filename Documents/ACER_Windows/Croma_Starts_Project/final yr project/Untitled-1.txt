@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Multi toggle</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="jssfile.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+    <div class="heading">
+        <h1>Design of smart Agri robot with soil analyser using IoT</h1>
+        <h3>Pesticide Mixing Section</h3>
+    </div>
+    <div class="wrapper">   
+        <div class="progress">
+            <a class="icon1">
+                <h2>TYPE A</h2>
+            </a>
+            <button class="push-btn" id="btn-type-a">Toggle A</button>
+        </div>
+        <div class="progress">
+            <a class="icon1">
+                <h2>TYPE B</h2>
+            </a>
+            <button class="push-btn" id="btn-type-b">Toggle B</button>
+        </div>
+        <div class="progress">
+            <a class="icon1">
+                <h2>TYPE C</h2>
+            </a>
+            <button class="push-btn" id="btn-type-c">Toggle C</button>
+        </div>
+        <div class="progress">
+            <a class="icon1">
+                <h2>TYPE D</h2>
+            </a>
+            <button class="push-btn" id="btn-type-d">Toggle D</button>
+        </div>  
+        <div class="progress">
+            <a class="icon1">
+                <h2>OFF/ON</h2>
+            </a>
+            <button class="push-btn" id="btn-on-off">Toggle ON/OFF</button>
+        </div>  
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Ubuntu 24.04 Migration Backup
+
+This repository contains the backup of personal files, projects, and system configurations prior to Windows installation.
+
+## Directory Structure
+- `srm/`: Pinned SRM project & study materials
+- `Documents/`: All active code repositories, electronics designs, PlatformIO, KiCad, embedded projects, and work documents
+- `Downloads/`: Important documents, PDFs, datasheets, resumes, and project downloads
+- `Pictures/`: Personal photos and images
+- `Music/` & `Videos/`: Media directories
+- `system_info/`: Complete list of installed APT packages, Snap packages, and system specs for reference on Windows.

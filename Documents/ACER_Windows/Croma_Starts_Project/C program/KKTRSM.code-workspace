@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../KKTRSM"
+		},
+		{
+			"path": "../CSS"
+		},
+		{
+			"path": "../HTML"
+		},
+		{
+			"path": "../JavaScript"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "JavaScript"
+	}
+}

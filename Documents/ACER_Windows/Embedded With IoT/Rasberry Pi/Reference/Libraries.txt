@@ -1,0 +1,35 @@
+from array import array
+import binascii
+import cmath
+import collections
+import framebuf
+import gc
+from machine import Pin, I2C, SPI, UART, ADC, PWM, Timer, DAC, RTC, SD, TouchPad
+import math
+import micropython
+import network
+import os
+import random
+import re
+import select
+import socket
+import struct
+import sys
+import time
+import ubinascii
+import ucollections
+import uerrno
+import uhashlib
+import uio
+import ujson
+import uos
+import urandom
+import ure
+import uselect
+import usocket
+import ustruct
+import utime
+import uheapq
+import uzlib
+import zlib
+import rp2

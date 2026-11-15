@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3D Worker Position Monitor</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;background:#0f1117;color:#e4e4e7;min-height:100vh}
+.hdr{background:#18181b;border-bottom:1px solid #27272a;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.hdr h1{font-size:18px;font-weight:600}
+.hdr-right{display:flex;align-items:center;gap:16px}
+.st{display:flex;align-items:center;gap:8px;font-size:13px;color:#a1a1aa}
+.dot{width:8px;height:8px;border-radius:50%;background:#ef4444}
+.dot.on{background:#22c55e;box-shadow:0 0 6px #22c55e80}
+.logout{background:transparent;border:1px solid #3f3f46;color:#a1a1aa;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.logout:hover{background:#27272a;color:#fff}
+.tabs{display:flex;gap:0;background:#18181b;border-bottom:1px solid #27272a;padding:0 20px}
+.tab{padding:14px 20px;color:#71717a;cursor:pointer;font-size:13px;border-bottom:2px solid transparent;transition:.15s}
+.tab:hover{color:#e4e4e7}
+.tab.active{color:#fff;border-bottom-color:#6366f1}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding:20px;max-width:1300px;margin:0 auto}
+.card{background:#18181b;border:1px solid #27272a;border-radius:10px;padding:16px}
+.card h2{font-size:12px;color:#71717a;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.big{font-size:36px;font-weight:700;color:#fff}
+.unit{font-size:13px;color:#71717a;margin-left:2px}
+.full{grid-column:1/-1}
+.half{grid-column:span 2}
+.alert{background:#7f1d1d40;border:1px solid #ef444480;color:#fca5a5;padding:8px 12px;border-radius:6px;font-size:13px;display:none;grid-column:1/-1}
+.alert.show{display:block}
+.log{max-height:160px;overflow-y:auto;font-family:'SF Mono',Consolas,monospace;font-size:11px;color:#a1a1aa;background:#1c1c22;border-radius:6px;padding:10px;margin-top:4px}
+.log div{padding:2px 0;border-bottom:1px solid #ffffff06}
+.ts{color:#6366f1}
+.winfo{display:flex;align-items:center;gap:16px}
+.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.wname{font-size:15px;font-weight:600;margin-bottom:2px}
+.wmeta{font-size:12px;color:#a1a1aa}
+
+.room{position:relative;width:100%;aspect-ratio:1;background:#1c1c22;border:2px solid #3f3f46;border-radius:8px;margin-top:6px;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:20% 20%}
+.anchor{position:absolute;width:24px;height:24px;background:#6366f1;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;transform:translate(-50%,-50%);color:#fff;z-index:3;box-shadow:0 0 6px #6366f180}
+.anchor.ceiling{background:#a855f7;box-shadow:0 0 6px #a855f780}
+.tag{position:absolute;width:18px;height:18px;background:#f59e0b;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 12px #f59e0bc0;transition:left .25s,top .25s;z-index:5}
+.tag::after{content:'';position:absolute;inset:-4px;border:2px solid #f59e0b60;border-radius:50%;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.5);opacity:0}}
+.axis-lbl{position:absolute;font-size:10px;color:#71717a;font-weight:500}
+.scale-lbl{position:absolute;font-size:9px;color:#52525b;font-family:Consolas,monospace}
+
+.zside{position:relative;width:100%;height:140px;background:#1c1c22;border:2px solid #3f3f46;border-radius:8px;margin-top:6px;overflow:hidden;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:100% 25%}
+.zfloor{position:absolute;bottom:0;left:0;right:0;height:2px;background:#6b7280;z-index:1}
+.zceil{position:absolute;top:0;left:0;right:0;height:2px;background:#a855f7}
+.zceil-anchor{position:absolute;top:8px;left:50%;width:24px;height:18px;background:#a855f7;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;transform:translateX(-50%);color:#fff;box-shadow:0 0 6px #a855f780}
+.zfloor-anchors{position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:space-around;padding:0 16px}
+.zfloor-anchor{width:24px;height:18px;background:#6366f1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;box-shadow:0 0 6px #6366f180}
+.ztag{position:absolute;left:50%;width:18px;height:18px;background:#f59e0b;border-radius:50%;transform:translate(-50%,50%);box-shadow:0 0 12px #f59e0bc0;transition:bottom .25s;z-index:5}
+.ztag::after{content:'';position:absolute;inset:-4px;border:2px solid #f59e0b60;border-radius:50%;animation:pulse 1.6s infinite}
+.zlbl{position:absolute;font-size:10px;color:#71717a;font-weight:500}
+
+.dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.dchip{background:#1c1c22;border-radius:6px;padding:10px;text-align:center}
+.dchip .dn{font-size:10px;color:#71717a;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.dchip .dval{font-size:20px;font-weight:600;color:#fff;margin-top:4px}
+.dchip .dr{font-size:10px;color:#a1a1aa;margin-top:4px}
+
+.dlist{display:flex;flex-direction:column;gap:8px}
+.drow{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#1c1c22;border-radius:8px;border:1px solid #27272a}
+.drow:hover{border-color:#3f3f46}
+.drow .dlabel{font-size:14px;font-weight:500;color:#fff}
+.drow .dcount{font-size:12px;color:#71717a}
+.drow .dactions{display:flex;gap:8px}
+.dbtn{background:#27272a;color:#e4e4e7;border:1px solid #3f3f46;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:12px;text-decoration:none;display:inline-block}
+.dbtn:hover{background:#3f3f46}
+.dbtn.primary{background:#6366f1;border-color:#6366f1;color:#fff}
+.dbtn.primary:hover{background:#4f46e5}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}
+.smc{padding:12px;background:#1c1c22;border-radius:8px;text-align:center}
+.smc .slabel{font-size:10px;color:#71717a;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.smc .sval{font-size:20px;font-weight:600;color:#fff}
+.empty{padding:40px;text-align:center;color:#71717a;font-size:13px}
+.modal{position:fixed;inset:0;background:#0f1117f0;display:flex;align-items:center;justify-content:center;z-index:999}
+.login{background:#18181b;border:1px solid #27272a;border-radius:12px;padding:32px;width:360px}
+.login h2{font-size:20px;margin-bottom:4px;color:#fff;font-weight:600}
+.login .sub{font-size:13px;color:#71717a;margin-bottom:24px}
+.login label{display:block;font-size:12px;color:#71717a;margin-bottom:6px;margin-top:14px;text-transform:uppercase;letter-spacing:.5px}
+.login input{width:100%;background:#27272a;border:1px solid #3f3f46;color:#e4e4e7;padding:10px;border-radius:6px;font-size:14px}
+.login input:focus{outline:none;border-color:#6366f1}
+.login button{width:100%;background:#6366f1;color:#fff;border:none;padding:11px;border-radius:6px;cursor:pointer;font-size:14px;margin-top:22px;font-weight:500}
+.login button:hover{background:#4f46e5}
+.login .err{color:#ef4444;font-size:12px;margin-top:12px;display:none}
+.login .err.show{display:block}
+</style>
+</head>
+<body>
+
+<div class="modal" id="loginModal">
+  <div class="login">
+    <h2>3D Position Monitor</h2>
+    <div class="sub">Sign in to continue</div>
+    <label>Username</label>
+    <input type="text" id="loginUser" autocomplete="username">
+    <label>Password</label>
+    <input type="password" id="loginPass" autocomplete="current-password">
+    <div class="err" id="loginErr">Incorrect username or password</div>
+    <button onclick="tryLogin()">Sign in</button>
+  </div>
+</div>
+
+<div class="hdr" id="mainHdr" style="display:none">
+  <h1>3D Worker Position Monitor</h1>
+  <div class="hdr-right">
+    <div class="st"><div class="dot" id="dot"></div><span id="connSt">Connecting...</span></div>
+    <button class="logout" onclick="logout()">Sign out</button>
+  </div>
+</div>
+
+<div class="tabs" id="mainTabs" style="display:none">
+  <div class="tab active" id="tabLive" onclick="showTab('live')">Live</div>
+  <div class="tab" id="tabHist" onclick="showTab('history')">Historical data</div>
+</div>
+
+<div id="liveTab" class="grid" style="display:none">
+
+  <div class="alert" id="alert"></div>
+
+  <div class="card full">
+    <div class="winfo">
+      <div class="avatar">W1</div>
+      <div>
+        <div class="wname">Worker #1</div>
+        <div class="wmeta">Status: <span id="wSt" style="color:#a1a1aa">Waiting</span> | Last: <span id="wTs">—</span> | Packets: <span id="sPkt">0</span> | Update rate: <span id="hz">0</span> Hz</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>X position</h2>
+    <div class="big"><span id="xVal">—</span><span class="unit">m</span></div>
+    <div style="font-size:11px;color:#71717a;margin-top:4px">Range: 0 – 1.0 m</div>
+  </div>
+  <div class="card">
+    <h2>Y position</h2>
+    <div class="big"><span id="yVal">—</span><span class="unit">m</span></div>
+    <div style="font-size:11px;color:#71717a;margin-top:4px">Range: 0 – 1.0 m</div>
+  </div>
+  <div class="card">
+    <h2>Z position</h2>
+    <div class="big"><span id="zVal">—</span><span class="unit">m</span></div>
+    <div style="font-size:11px;color:#71717a;margin-top:4px">Range: 0 – 1.5 m</div>
+  </div>
+
+  <div class="card half">
+    <h2>Top-down view (X / Y plane) — 1.5m × 1.5m room</h2>
+    <div class="room" id="room">
+      <span class="axis-lbl" style="left:6px;top:4px">+Y</span>
+      <span class="axis-lbl" style="right:6px;bottom:4px">+X</span>
+      <span class="scale-lbl" style="left:6px;bottom:4px">0,0</span>
+      <span class="scale-lbl" style="left:50%;bottom:4px;transform:translateX(-50%)">0.75m</span>
+      <span class="scale-lbl" style="right:6px;top:4px">1.5m,1.5m</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Side view (Z) — 1.5m height</h2>
+    <div class="zside" id="zside">
+      <span class="zlbl" style="left:8px;top:4px">Ceiling</span>
+      <span class="zlbl" style="left:8px;bottom:4px">Floor</span>
+      <span class="scale-lbl" style="right:8px;top:4px">1.5m</span>
+      <span class="scale-lbl" style="right:8px;top:50%">0.75m</span>
+      <span class="scale-lbl" style="right:8px;bottom:4px">0m</span>
+      <div class="zceil"></div>
+      <div class="zceil-anchor">A4</div>
+      <div class="zfloor"></div>
+      <div class="zfloor-anchors">
+        <div class="zfloor-anchor">A1</div>
+        <div class="zfloor-anchor">A2</div>
+        <div class="zfloor-anchor">A3</div>
+      </div>
+      <div class="ztag" id="ztag" style="bottom:0%"></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <h2>Distances to anchors</h2>
+    <div class="dgrid">
+      <div class="dchip"><div class="dn">A1 (floor)</div><div class="dval"><span id="d1">—</span><span class="unit">m</span></div><div class="dr">RSSI <span id="r1">—</span> dBm</div></div>
+      <div class="dchip"><div class="dn">A2 (floor)</div><div class="dval"><span id="d2">—</span><span class="unit">m</span></div><div class="dr">RSSI <span id="r2">—</span> dBm</div></div>
+      <div class="dchip"><div class="dn">A3 (floor)</div><div class="dval"><span id="d3">—</span><span class="unit">m</span></div><div class="dr">RSSI <span id="r3">—</span> dBm</div></div>
+      <div class="dchip"><div class="dn">A4 (ceiling)</div><div class="dval"><span id="d4">—</span><span class="unit">m</span></div><div class="dr">RSSI <span id="r4">—</span> dBm</div></div>
+    </div>
+  </div>
+
+  <div class="card full">
+    <h2>Live log</h2>
+    <div class="log" id="log"></div>
+  </div>
+</div>
+
+<div id="historyTab" class="grid" style="display:none">
+  <div class="card full">
+    <h2>Saved sessions by date</h2>
+    <div id="dateList"><div class="empty">Loading...</div></div>
+  </div>
+  <div class="card full" id="dateDetail" style="display:none">
+    <h2>Session summary <span id="detailDate" style="color:#6366f1"></span></h2>
+    <div class="summary" id="summaryStats"></div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <a href="#" class="dbtn primary" id="downloadZipBtn">Download all as ZIP</a>
+      <button class="dbtn" onclick="closeDetail()">Back</button>
+    </div>
+    <h2 style="margin-top:20px">All readings (<span id="fileCount">0</span>)</h2>
+    <div id="fileList" style="max-height:400px;overflow-y:auto;margin-top:8px;font-family:'SF Mono',Consolas,monospace;font-size:11px"></div>
+  </div>
+</div>
+
+<script>
+// Anchors at 1m spacing in a small room
+const ANCHORS = [
+  {name:'A1', x:0.0, y:0.0, z:0.0, ceiling:false},
+  {name:'A2', x:1.0, y:0.0, z:0.0, ceiling:false},
+  {name:'A3', x:0.5, y:1.0, z:0.0, ceiling:false},
+  {name:'A4', x:0.5, y:0.5, z:1.0, ceiling:true},
+];
+// Visualization range slightly larger than anchor extents
+const ROOM_X_MAX = 1.5;
+const ROOM_Y_MAX = 1.5;
+const Z_MAX = 1.5;
+
+var authToken = null;
+var eventSource = null;
+
+function drawAnchors(){
+  const room = document.getElementById('room');
+  for (const a of ANCHORS){
+    const el = document.createElement('div');
+    el.className = 'anchor' + (a.ceiling ? ' ceiling' : '');
+    el.textContent = a.name;
+    el.style.left = (a.x / ROOM_X_MAX * 100) + '%';
+    el.style.top = (100 - a.y / ROOM_Y_MAX * 100) + '%';
+    el.title = `${a.name} at (${a.x}, ${a.y}, ${a.z})${a.ceiling ? ' [ceiling]' : ''}`;
+    room.appendChild(el);
+  }
+  const tag = document.createElement('div');
+  tag.className = 'tag';
+  tag.id = 'tag';
+  tag.style.left = '50%';
+  tag.style.top = '50%';
+  room.appendChild(tag);
+}
+
+async function tryLogin(){
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  try {
+    const res = await fetch('/api/login', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+    if (res.ok) {
+      const data = await res.json();
+      authToken = data.token;
+      localStorage.setItem('authToken', authToken);
+      showDashboard();
+      startLiveStream();
+    } else {
+      document.getElementById('loginErr').classList.add('show');
+    }
+  } catch (e) {
+    document.getElementById('loginErr').textContent = 'Cannot reach server: ' + e.message;
+    document.getElementById('loginErr').classList.add('show');
+  }
+}
+
+async function logout() {
+  try { await fetch('/api/logout', {method:'POST',headers:{'X-Auth-Token':authToken}}); } catch(e) {}
+  if (eventSource) { eventSource.close(); eventSource = null; }
+  authToken = null;
+  localStorage.removeItem('authToken');
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('loginModal').style.display = 'flex';
+  document.getElementById('mainHdr').style.display = 'none';
+  document.getElementById('mainTabs').style.display = 'none';
+  document.getElementById('liveTab').style.display = 'none';
+  document.getElementById('historyTab').style.display = 'none';
+}
+
+function showDashboard() {
+  document.getElementById('loginModal').style.display = 'none';
+  document.getElementById('mainHdr').style.display = 'flex';
+  document.getElementById('mainTabs').style.display = 'flex';
+  showTab('live');
+}
+
+function showTab(name) {
+  document.getElementById('tabLive').classList.toggle('active', name === 'live');
+  document.getElementById('tabHist').classList.toggle('active', name === 'history');
+  document.getElementById('liveTab').style.display = (name === 'live') ? 'grid' : 'none';
+  document.getElementById('historyTab').style.display = (name === 'history') ? 'grid' : 'none';
+  if (name === 'history') loadDates();
+}
+
+document.getElementById('loginPass').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+document.getElementById('loginUser').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+(function checkExistingSession() {
+  const t = localStorage.getItem('authToken');
+  if (t) {
+    authToken = t;
+    fetch('/api/dates', {headers:{'X-Auth-Token':t}}).then(r => {
+      if (r.ok) { showDashboard(); startLiveStream(); }
+      else { authToken = null; localStorage.clear(); showLogin(); }
+    }).catch(() => showLogin());
+  } else {
+    showLogin();
+  }
+})();
+
+function startLiveStream() {
+  if (eventSource) eventSource.close();
+  eventSource = new EventSource('/api/live?token=' + encodeURIComponent(authToken));
+  eventSource.onopen = () => {
+    document.getElementById('dot').classList.add('on');
+    document.getElementById('connSt').textContent = 'Connected (live)';
+    addLog('Live stream connected');
+  };
+  eventSource.onerror = () => {
+    document.getElementById('dot').classList.remove('on');
+    document.getElementById('connSt').textContent = 'Reconnecting...';
+  };
+  eventSource.onmessage = (e) => {
+    try {
+      const msg = JSON.parse(e.data);
+      if (msg.hello) return;
+      if (msg.raw) handle(msg.raw);
+    } catch(err) { addLog('Parse error: ' + err); }
+  };
+}
+
+async function loadDates() {
+  try {
+    const res = await fetch('/api/dates', {headers:{'X-Auth-Token':authToken}});
+    if (!res.ok) return;
+    const dates = await res.json();
+    const el = document.getElementById('dateList');
+    if (dates.length === 0) { el.innerHTML = '<div class="empty">No data recorded yet.</div>'; return; }
+    el.innerHTML = '<div class="dlist">' + dates.map(d => `
+      <div class="drow">
+        <div><div class="dlabel">${d.date}</div><div class="dcount">${d.count} readings</div></div>
+        <div class="dactions">
+          <button class="dbtn primary" onclick="openDate('${d.date}')">View</button>
+          <a class="dbtn" href="/api/download/${d.date}?token=${authToken}">Download ZIP</a>
+        </div>
+      </div>
+    `).join('') + '</div>';
+  } catch(e) {}
+}
+
+async function openDate(date) {
+  document.getElementById('detailDate').textContent = date;
+  document.getElementById('dateDetail').style.display = 'block';
+  document.getElementById('downloadZipBtn').href = `/api/download/${date}?token=${authToken}`;
+  const sumRes = await fetch(`/api/summary/${date}`, {headers:{'X-Auth-Token':authToken}});
+  const summary = await sumRes.json();
+  const sEl = document.getElementById('summaryStats');
+  if (summary.count > 0) {
+    sEl.innerHTML = `
+      <div class="smc"><div class="slabel">Readings</div><div class="sval">${summary.count}</div></div>
+      <div class="smc"><div class="slabel">Min</div><div class="sval">${summary.min.toFixed(2)}</div></div>
+      <div class="smc"><div class="slabel">Max</div><div class="sval">${summary.max.toFixed(2)}</div></div>
+      <div class="smc"><div class="slabel">Avg</div><div class="sval">${summary.avg.toFixed(2)}</div></div>`;
+  } else {
+    sEl.innerHTML = '<div class="empty">No readings</div>';
+  }
+  const fRes = await fetch(`/api/files/${date}`, {headers:{'X-Auth-Token':authToken}});
+  const files = await fRes.json();
+  document.getElementById('fileCount').textContent = files.length;
+  const fList = document.getElementById('fileList');
+  fList.innerHTML = files.slice(0, 200).map(f =>
+    `<div style="padding:4px 0;border-bottom:1px solid #27272a20"><a href="/api/file/${date}/${f}?token=${authToken}" target="_blank" style="color:#6366f1;text-decoration:none">${f}</a></div>`
+  ).join('');
+}
+function closeDetail() { document.getElementById('dateDetail').style.display = 'none'; }
+
+var hzCnt = 0, lastT = 0, distN = 0;
+setInterval(() => {
+  const el = document.getElementById('hz');
+  if (el) { el.textContent = hzCnt; hzCnt = 0; }
+}, 1000);
+setInterval(() => {
+  if (lastT > 0 && Date.now() - lastT > 10000) {
+    const a = document.getElementById('alert');
+    if (a) {
+      a.textContent = 'No data from worker for 10+ seconds';
+      a.classList.add('show');
+      const s = document.getElementById('wSt');
+      s.textContent = 'OFFLINE';
+      s.style.color = '#ef4444';
+    }
+  }
+}, 3000);
+
+function handle(raw) {
+  hzCnt++; lastT = Date.now(); distN++;
+  const x = raw.x ?? 0, y = raw.y ?? 0, z = raw.z ?? 0;
+
+  document.getElementById('xVal').textContent = x.toFixed(2);
+  document.getElementById('yVal').textContent = y.toFixed(2);
+  document.getElementById('zVal').textContent = z.toFixed(2);
+
+  if (raw.d1 != null) document.getElementById('d1').textContent = raw.d1.toFixed(2);
+  if (raw.d2 != null) document.getElementById('d2').textContent = raw.d2.toFixed(2);
+  if (raw.d3 != null) document.getElementById('d3').textContent = raw.d3.toFixed(2);
+  if (raw.d4 != null) document.getElementById('d4').textContent = raw.d4.toFixed(2);
+  if (raw.rssi1 != null) document.getElementById('r1').textContent = raw.rssi1;
+  if (raw.rssi2 != null) document.getElementById('r2').textContent = raw.rssi2;
+  if (raw.rssi3 != null) document.getElementById('r3').textContent = raw.rssi3;
+  if (raw.rssi4 != null) document.getElementById('r4').textContent = raw.rssi4;
+
+  document.getElementById('wSt').textContent = 'ACTIVE';
+  document.getElementById('wSt').style.color = '#22c55e';
+  document.getElementById('wTs').textContent = new Date().toLocaleTimeString();
+  document.getElementById('sPkt').textContent = distN;
+
+  const tag = document.getElementById('tag');
+  if (tag) {
+    const px = Math.max(0, Math.min(100, x / ROOM_X_MAX * 100));
+    const py = Math.max(0, Math.min(100, 100 - y / ROOM_Y_MAX * 100));
+    tag.style.left = px + '%';
+    tag.style.top = py + '%';
+  }
+
+  const ztag = document.getElementById('ztag');
+  if (ztag) {
+    const pz = Math.max(0, Math.min(100, z / Z_MAX * 100));
+    ztag.style.bottom = pz + '%';
+  }
+
+  document.getElementById('alert').classList.remove('show');
+  addLog(`<span style="color:#f59e0b">(${x.toFixed(2)}, ${y.toFixed(2)}, ${z.toFixed(2)})</span>`);
+}
+
+function addLog(m) {
+  const el = document.getElementById('log');
+  if (!el) return;
+  const d = document.createElement('div');
+  d.innerHTML = '<span class="ts">[' + new Date().toLocaleTimeString() + ']</span> ' + m;
+  el.prepend(d);
+  if (el.children.length > 200) el.removeChild(el.lastChild);
+}
+
+drawAnchors();
+</script>
+</body>
+</html>

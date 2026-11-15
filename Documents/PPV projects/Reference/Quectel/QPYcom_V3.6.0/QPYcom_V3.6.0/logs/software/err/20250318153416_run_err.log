@@ -1,0 +1,18 @@
+[2025-03-18 15:34:44] Traceback (most recent call last):
+[2025-03-18 15:34:44]   File "wxglade_out.py", line 5728, in modFileRmFunc
+[2025-03-18 15:34:44] IndexError[2025-03-18 15:34:44] : [2025-03-18 15:34:44] list index out of range[2025-03-18 15:34:44] 
+[2025-03-18 15:34:49] Traceback (most recent call last):
+[2025-03-18 15:34:49]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:34:49] IndexError[2025-03-18 15:34:49] : [2025-03-18 15:34:49] list index out of range[2025-03-18 15:34:49] 
+[2025-03-18 15:34:50] Traceback (most recent call last):
+[2025-03-18 15:34:50]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:34:50] IndexError[2025-03-18 15:34:50] : [2025-03-18 15:34:50] list index out of range[2025-03-18 15:34:50] 
+[2025-03-18 15:34:51] Traceback (most recent call last):
+[2025-03-18 15:34:51]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:34:51] IndexError[2025-03-18 15:34:51] : [2025-03-18 15:34:51] list index out of range[2025-03-18 15:34:51] 
+[2025-03-18 15:34:52] Traceback (most recent call last):
+[2025-03-18 15:34:52]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:34:52] IndexError[2025-03-18 15:34:52] : [2025-03-18 15:34:52] list index out of range[2025-03-18 15:34:52] 
+[2025-03-18 15:34:52] Traceback (most recent call last):
+[2025-03-18 15:34:52]   File "wxglade_out.py", line 5867, in modFileTreeRightClick
+[2025-03-18 15:34:52] IndexError[2025-03-18 15:34:52] : [2025-03-18 15:34:52] list index out of range[2025-03-18 15:34:52] 

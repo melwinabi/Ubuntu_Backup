@@ -1,0 +1,55 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+  width: 100vw;
+  height:100vh;
+  display: flex;    /*  arrange in horizontal or vertical */
+  justify-content:center; 
+  align-items:center;
+  flex-direction: column; /* colum is to arrange content in vertical*/
+  background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("images/trbcg.jpg");/*we should give 2 colours for linear gradient*/
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  }
+.counter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.tim{
+    font-family:serif ;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+}
+#clock{
+    align-items: center;
+    color: red;
+}
+
+/* code for all type screen */
+
+@media (min-width:576px) {
+    .tim{
+             font-size: 30px;
+    }
+    .box{
+        font-size: 20px;
+    }
+}
+
+@media (min-width:786px) {
+    .tim{
+        font-size: 50px;
+    }
+    .box{
+        font-size: 23px;
+    }
+}

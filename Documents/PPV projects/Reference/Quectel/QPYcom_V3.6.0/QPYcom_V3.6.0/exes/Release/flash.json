@@ -1,0 +1,112 @@
+{
+  "GD25LQ64C": {
+    "manufacturer": "GigaDevice",
+    "vendorId": "0xC8",
+    "deviceId": "0x6017"
+  },
+  "XM25QU16C": {
+    "manufacturer": "XMC",
+    "vendorId": "0x20",
+    "deviceId": "0x5015"
+  },
+  "P25Q16L": {
+    "manufacturer": "PUYA",
+    "vendorId": "0x85",
+    "deviceId": "0x6015"
+  },
+  "ZB25LQ64A": {
+    "manufacturer": "ZBIT",
+    "vendorId": "0x5E",
+    "deviceId": "0x7017"
+  },
+  "W25Q64JW": {
+    "manufacturer": "Winbond",
+    "vendorId": "0xEF",
+    "deviceId": "0x6017"
+  },
+  "FM25M64C": {
+    "manufacturer": "Dosilicon",
+    "vendorId": "0xF8",
+    "deviceId": "0x4317"
+  },
+  "XM25QU64B": {
+    "manufacturer": "XMC",
+    "vendorId": "0x20",
+    "deviceId": "0x5017"
+  },
+  "XM25QU64C": {
+    "manufacturer": "XMC",
+    "vendorId": "0x20",
+    "deviceId": "0x4117"
+  },
+  "P25Q64LE": {
+    "manufacturer": "PUYA",
+    "vendorId": "0x85",
+    "deviceId": "0x6017"
+  },
+  "GD25LE128E": {
+    "manufacturer": "GigaDevice",
+    "vendorId": "0xC8",
+    "deviceId": "0x6018"
+  },
+  "GD25LF128E": {
+    "manufacturer": "GigaDevice",
+    "vendorId": "0xC8",
+    "deviceId": "0x6318"
+  },
+  "DQ25Q128AL": {
+    "manufacturer": "DouQiTech",
+    "vendorId": "0x54",
+    "deviceId": "0x6018"
+  },
+  "FM25M4AA": {
+    "manufacturer": "Dosilicon",
+    "vendorId": "0xF8",
+    "deviceId": "0x4218"
+  },
+  "DS25M4AB": {
+    "manufacturer": "Dosilicon",
+    "vendorId": "0xE5",
+    "deviceId": "0x4218"
+  },
+  "W25Q128JW-IQ": {
+    "manufacturer": "Winbond",
+    "vendorId": "0xEF",
+    "deviceId": "0x6018"
+  },
+  "W25Q128JW-IM": {
+    "manufacturer": "Winbond",
+    "vendorId": "0xEF",
+    "deviceId": "0x8018"
+  },
+  "MX25U12835F": {
+    "manufacturer": "Macronix",
+    "vendorId": "0xC2",
+    "deviceId": "0x2538"
+  },
+  "XM25QU128B": {
+    "manufacturer": "XMC",
+    "vendorId": "0x20",
+    "deviceId": "0x5018"
+  },
+  "XM25QU128C": {
+    "manufacturer": "XMC",
+    "vendorId": "0x20",
+    "deviceId": "0x4118"
+  },
+  "P25Q128LE": {
+    "manufacturer": "Puya",
+    "vendorId": "0x85",
+    "deviceId": "0x6018"
+  },
+  "ZB25LQ128B": {
+    "manufacturer": "ZBIT",
+    "vendorId": "0x5E",
+    "deviceId": "0x5018"
+  },
+  "FM25W128": {
+    "manufacturer": "Fudan",
+    "vendorId": "0xA1",
+    "deviceId": "0x2818"
+  }
+}

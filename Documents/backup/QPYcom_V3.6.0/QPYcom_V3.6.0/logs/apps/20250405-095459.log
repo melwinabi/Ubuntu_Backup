@@ -1,0 +1,30 @@
+
+
+import example
+>>>example.exec('/usr/main.py')
+CenMark_hardware_760
+>>>
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##WMfO30028504049409686065198991000920984748682FIND airtel40440542139180844554700.000000011.11111110*$$
+Sending: int> 
+
+Sending: int> 
+Sending: int> 
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+
+INFO:MQTT:Published message: b'##WMfO30028504049409686065198991000920984748682FIND airtel40440542139180844554700.000000011.11111110*$$
+Sending: int> 
+Sending: int> 
+
+Sending: int> 
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##WMfO30028504049409686065198991000920984748682FIND airtel40440542139180844554700.00000000*$$
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##WMfO30028504049409686065198991000920984748682FIND airtel40440542139180844554700.00000000*$$

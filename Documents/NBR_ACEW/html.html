@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI-Based Maternal & Neonatal Health Monitoring System</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.12.0"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>AI-Based Maternal & Neonatal Health Monitoring System</h2>
+
+    <!-- Select Time Period -->
+    <label>Select Pregnant Time Period:</label>
+    <select id="Period_select" class="scroll-select">
+        <option value="" selected disabled>Time Period On Week</option>
+        <option value="Period_1">Week 4 to 6</option>
+        <option value="Period_2">Week 6 to 8</option>
+        <option value="Period_3">Week 10 to 12</option>
+        <option value="Period_4">Week 18 to 20</option>
+        <option value="Period_5">Week 28 to 32</option>
+        <option value="Period_6">Week 32 to 36</option> 
+        <option value="Period_7">Week 36 to 38</option>
+        <option value="Period_8">New Born (Upto 30days)</option>  
+    </select>
+
+    <!-- Select Test Model -->
+    <label>Select Test Model:</label>
+    <select id="model_Select" class="scroll-select">
+        <option value="" selected disabled>Select a Model</option>
+    </select>
+
+    <!-- Upload Image -->
+    <label>Upload Scan/Image:</label>
+    <input type="file" id="imageUpload" accept="image/*">
+
+    <!-- Image Preview -->
+    <img id="preview" class="image-preview" src="" alt="">
+
+    <!-- Predict Button -->
+    <button id="predictBtn">Predict</button>
+
+    <!-- Result Output -->
+    <div id="result" class="result-box"></div>
+
+</div>
+<!-- Result Popup -->
+<!-- <div id="resultPopup" class="popup-overlay">
+    <div class="popup-box">
+        <h2 id="popupTitle"></h2>
+        <p id="popupMessage"></p>
+        <button id="closePopup">Close</button>
+    </div>
+</div> -->
+
+<div class="container_1">
+    <div class="footer-content">
+        <div class="designer">Designed by</div>
+        <div class="college-name">Arunachala College of Engineering for Women, Nagercoil</div>
+        <div class="names">
+            <span>JithishaK</span> ,   <span>Deepsiha S J</span> ,   <span>Abinaya T</span>
+        </div>
+        <div class="year">@2025-2026</div>
+    </div>
+</div>
+
+<script src="js.js"></script>
+</body>
+</html>

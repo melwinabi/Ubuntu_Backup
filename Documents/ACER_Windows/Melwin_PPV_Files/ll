@@ -1,0 +1,225 @@
+#include <SPI.h>
+#include <LoRa.h>
+
+#define ss 10
+#define rst 9
+#define dio0 2
+
+int D8 = 8;
+int D4 = 4;
+int D3 = 3;
+int Length;
+int Flag;
+const int rssiMin = -122; 
+const int rssiMax = -23;  
+String mqttString;
+String Node[10];
+String SerialData = "";
+String received = "";
+String lastTransmitted = ""; 
+String part1, part2, part3;
+String Message, Percentage, MsgSnr;
+
+void setup() 
+{
+  Serial.begin(115200);
+  pinMode(D3, OUTPUT);
+  pinMode(D8, OUTPUT);
+  pinMode(D4, OUTPUT);
+
+  LoRa.setPins(ss, rst, dio0);
+  if (!LoRa.begin(433E6)) 
+  {
+    Serial.println("Starting LoRa failed!");
+    while (true);
+  }
+  LoRa.setSyncWord(0xA5);
+}
+
+void loop() 
+{
+  if (Serial.available()>0) 
+  {
+    SerialData = Serial.readString();
+    processSerialData();
+    Serial.print("Ser : ");
+    Serial.println(SerialData);
+    handleMQTT();
+  } 
+  processLoRaRxData();
+  handleAckConditions();
+  monitorPressure();
+  received = "";
+  SerialData = "";
+}
+
+void processSerialData()
+{
+  if (SerialData.startsWith("*")) 
+  {
+    int dataEnd = SerialData.indexOf("$");
+    if (dataEnd != -1) 
+    {
+      String payload = SerialData.substring(1, dataEnd);
+      SerialData = "";
+      Length = payload.length() / 7;
+      for (int n = 0; n < Length; n++) 
+      {
+        int startIdx = n * 7;
+        int endIdx = startIdx + 7;
+        if (endIdx <= payload.length()) 
+        {
+          Node[n] = payload.substring(startIdx, endIdx);
+        } 
+        else 
+        {
+          break;
+        }
+      }
+    }
+  }
+}
+
+void handleMQTT() 
+{
+  parseMessage(SerialData);
+  if (Flag == 1)
+  {
+    Message = "Tx." + part1 + "." + part2 + "." + part3;
+    sendLoRaData(Message);
+    Flag = 0;
+  }
+}
+
+void processLoRaRxData()
+{
+  int packetSize = LoRa.parsePacket();
+  if (packetSize) 
+  {
+    received = "";
+    MsgSnr = "";
+    Percentage = "";
+
+    while (LoRa.available()) 
+    {
+      received += (char)LoRa.read();
+    }
+    received.trim();
+    parseMessage(received);
+    float snr = LoRa.packetSnr();
+    MsgSnr = String(snr);
+    float rssi = LoRa.packetRssi();
+    Percentage = String(calculatePercentage(rssi, rssiMin, rssiMax)) + "%";
+  }
+}
+
+void handleAckConditions()
+{
+  if (received.startsWith("Ack."))
+  {
+    if (received == "Ack.1002850.01.1")
+    {
+      digitalWrite(D8, HIGH);
+      Serial.println(received);
+    }
+    else if (received == "Ack.1002850.01.0")
+    {
+      digitalWrite(D8, LOW);
+      Serial.println(received);
+    }
+    else if (received == "Ack.1002851.01.1")
+    {
+      digitalWrite(D4, HIGH);
+      Serial.println(received);
+    }
+    else if (received == "Ack.1002851.01.0")
+    {
+      digitalWrite(D4, LOW);
+      Serial.println(received);
+    }
+
+    if (part2 == "RSS") 
+    {
+      String Strength = "Ack." + part1 + "." + Percentage + "." + MsgSnr;
+      Serial.println(Strength);
+    }
+    else if (part2 == "Bt") 
+    {
+      Serial.println(received);
+    } 
+    if (received != lastTransmitted) 
+    { 
+      Serial.println("1111 ");
+      delay(100);
+      sendLoRaData(received);     
+      lastTransmitted = received;   
+    }    
+  }
+}
+
+void monitorPressure()
+{
+  int potValue = analogRead(A0); 
+  float voltage = potValue * (4.0 / 1023.0) + 0.5; 
+  float pressure = (voltage - 0.5) / 4.0 * 10.0; 
+
+  if ((pressure >= 9) || (pressure <= 2))
+  {
+    String pressureStr = String(pressure, 2);
+    if (pressure <= 2)
+    {
+      Serial.println("Ack. Low_Pressure: " + pressureStr);
+    }
+    if (pressure >= 9)
+    {
+      Serial.println("Ack. High_Pressure: " + pressureStr);
+    }
+  }
+}
+
+void parseMessage(String input)
+{
+  Serial.print("MQTT :");
+  Serial.println(input);
+  if (input.startsWith("Cenmark_PPVTx.") || input.startsWith("Ack."))
+  {
+    input.trim();
+    int startIdx = input.indexOf('.') + 1;
+    int part1EndIdx = input.indexOf('.', startIdx);
+    part1 = input.substring(startIdx, part1EndIdx);
+
+    startIdx = part1EndIdx + 1;
+    int part2EndIdx = input.indexOf('.', startIdx);
+    part2 = input.substring(startIdx, part2EndIdx);
+
+    startIdx = part2EndIdx + 1;
+    part3 = input.substring(startIdx);
+
+    for (int s = 0; s < Length; s++)
+    {
+      if (part1 == Node[s])
+      {
+        Flag = 1;
+        break;
+      }
+    }
+  }
+}
+
+void sendLoRaData(String data)
+{
+  LoRa.beginPacket();
+  digitalWrite(D3, HIGH);
+  delay(200);
+  digitalWrite(D3, LOW);
+  LoRa.print(data);
+  LoRa.endPacket();
+  Message = " ";
+}
+
+float calculatePercentage(int input, int min, int max) 
+{
+  if (input < min) input = min;
+  if (input > max) input = max;
+  return ((float)(input - min) / (max - min)) * 100;
+}

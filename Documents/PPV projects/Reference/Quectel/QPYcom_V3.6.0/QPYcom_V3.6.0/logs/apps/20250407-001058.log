@@ -1,0 +1,72 @@
+
+
+Received from ESP32> ##*AVL*3002850*000
+##*AVL*3002850*000
+UART Read Error: name 'mqtt_handler' isn't define
+
+Received from ESP32> ##*25
+##*25
+UART Read Error: name 'mqtt_handler' isn't define
+
+Received from ESP32> ##*26
+##*26
+UART Read Error: name 'mqtt_handler' isn't define
+
+INFO:MQTT:Network connection successful!
+Connectin
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002850*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244594*7*00.0000000*11.1111111*0'
+INFO:MQTT:Subscribe Recv: Topic=3002850_SUC, Msg=$$*RCD*3002850
+$$*RCD*300285
+
+INFO:MQTT:Network connection successful!
+Connectin
+
+Received from ESP32> ##*AVL*3002851*000
+##*5
+##*AVL*3002851*000
+##*
+
+Received from ESP32> ##*6
+##*
+
+INFO:MQTT:Subscribe Recv: Topic=3002851_SUC, Msg=$$*RCD*3002851
+$$*RCD*300285
+INFO:MQTT:Published message: b'##*WMfO*3002851*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244594*7*00.0000000*11.1111111*0
+
+Received from ESP32> ##*7
+##*
+
+Received from ESP32> ##*8
+##*
+
+Received from ESP32> ##*9
+##*
+
+Received from ESP32> ##*AVL*3002851*000
+##*AVL*3002851*00
+Received from ESP32> ##*10
+##*1
+
+INFO:MQTT:Network connection successful!
+Connectin
+
+INFO:MQTT:Connected to MQTT Broker and Subscribed to Topic
+INFO:MQTT:Published Initial Messag
+INFO:MQTT:Published message: b'##*WMfO*3002851*404940968606519*8991000920984748682F*IND airtel*404*40*5*42139*155244564*7*00.0000000*11.1111111*0
+INFO:MQTT:Subscribe Recv: Topic=3002851_SUC, Msg=$$*RCD*3002851
+$$*RCD*300285
+Received from ESP32> ##*56
+##*5
+
+INFO:MQTT:Subscribe Recv: Topic=3002851_SUC, Msg=@@*$&$*3002851*010*100285801.2
+@@*$&$*3002851*010*100285801.
+
+Received from ESP32> ##*57
+##*5
+INFO:MQTT:Subscribe Recv: Topic=3002851_SUC, Msg=@@*$&$*3002851*010*100285801.2
+@@*$&$*3002851*010*100285801.
+
+INFO:MQTT:Subscribe Recv: Topic=3002851_SUC, Msg=@@*$&$*3002851*010*100285801.2
+@@*$&$*3002851*010*100285801.

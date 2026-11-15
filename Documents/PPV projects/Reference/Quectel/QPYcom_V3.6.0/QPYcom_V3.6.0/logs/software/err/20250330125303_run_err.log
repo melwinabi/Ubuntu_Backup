@@ -1,0 +1,9 @@
+[2025-03-30 13:02:28] Traceback (most recent call last):
+[2025-03-30 13:02:28]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-30 13:02:28] TypeError[2025-03-30 13:02:28] : [2025-03-30 13:02:28] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-30 13:02:28] 
+[2025-03-30 13:02:52] Traceback (most recent call last):
+[2025-03-30 13:02:52]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-30 13:02:52] TypeError[2025-03-30 13:02:52] : [2025-03-30 13:02:52] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-30 13:02:52] 
+[2025-03-30 13:05:52] Traceback (most recent call last):
+[2025-03-30 13:05:52]   File "wxglade_out.py", line 3999, in serRcvHandler
+[2025-03-30 13:05:52] TypeError[2025-03-30 13:05:52] : [2025-03-30 13:05:52] TreeCtrl.Expand(): argument 1 has unexpected type 'NoneType'[2025-03-30 13:05:52] 

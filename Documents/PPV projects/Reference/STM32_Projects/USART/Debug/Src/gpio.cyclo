@@ -1,0 +1,12 @@
+../Src/gpio.c:10:6:rcc_enable_gpio	4
+../Src/gpio.c:16:6:rcc_enable_usart1	1
+../Src/gpio.c:20:6:rcc_enable_usart2	1
+../Src/gpio.c:24:6:gpio_init_alternate	2
+../Src/gpio.c:40:6:gpio_init_output_level	2
+../Src/gpio.c:55:6:usart1_init	1
+../Src/gpio.c:60:6:usart1_write_char	2
+../Src/gpio.c:65:6:usart1_read_char	2
+../Src/gpio.c:70:6:usart1_write_string	2
+../Src/gpio.c:77:6:usart2_init	1
+../Src/gpio.c:82:6:usart2_write_char	2
+../Src/gpio.c:87:6:usart2_write_string	2
